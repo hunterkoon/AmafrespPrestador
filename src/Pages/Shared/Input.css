@@ -1,0 +1,21 @@
+input:focus {
+  outline: none;
+  border-color: #25b099;
+  background: #fff;
+  box-shadow: 0 0 0 3px #3bc3a7;
+}
+input:hover {
+  outline: none;
+  border-color: #25b099;
+  background: #fff;
+  box-shadow: 0 0 0 3px #3bc3a7;
+}
+
+input {
+  border: none;
+  height: 35px;
+  font-size: 13pt;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  margin: auto 1rem;
+}
