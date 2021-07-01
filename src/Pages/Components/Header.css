@@ -1,8 +1,12 @@
 header {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  width: 100vw;
   background-color: #ffff;
-  position: relative;
-  height: 15vh;
+  height: 12vh;
   border-bottom: solid 1px #dcdcdc;
+  z-index: 1;
 }
 
 p {
@@ -11,5 +15,5 @@ p {
 .logo {
   float: left;
   margin: 1.6em;
-  width: 15em;
+  width: 25vh;
 }

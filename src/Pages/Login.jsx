@@ -16,26 +16,33 @@ const Login = () => {
           <Title text="Login" color="#474747" />
           <Title text="Portal Amafresp Prestador" />
         </div>
-        <Input
-          type={'text'}
-          placeholder={'CNPJ/CPF'}
-          width={'20em'}
-          label={'CNPJ/CPF'}
-        />
-        <Input
-          type={'text'}
-          placeholder={'Usuário'}
-          width={'20em'}
-          label={'USUÁRIO'}
-        />
-        <Input
-          type={'password'}
-          placeholder={'Senha'}
-          width={'20em'}
-          label={'SENHA'}
-        />
-
-        <Button value="Entrar" />
+        <form action="">
+          <Input
+            type={'text'}
+            placeholder={'CNPJ/CPF'}
+            width={'100%'}
+            label={'CNPJ/CPF'}
+          />
+          <Input
+            type={'text'}
+            placeholder={'Usuário'}
+            width={'100%'}
+            label={'USUÁRIO'}
+          />
+          <Input
+            type={'password'}
+            placeholder={'Senha'}
+            width={'100%'}
+            label={'SENHA'}
+          />
+          <div className="button-div">
+            <Button value="Entrar" />
+          </div>
+          <div className="links-menu">
+            <p>Recuperar senha</p>
+            <p>Primeiro acesso</p>
+          </div>
+        </form>
       </div>
     </div>
   );

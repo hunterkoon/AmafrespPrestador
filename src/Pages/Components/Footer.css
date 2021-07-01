@@ -1,4 +1,6 @@
 .footer {
+  font-family: NotoSans-Regular;
+  justify-content: center;
   width: 100%;
   height: 10vh;
   z-index: 2;
@@ -6,4 +8,15 @@
   background-color: #fff;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  position: relative;
+  color: #474747;
+}
+.paragraph {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: auto 1rem;
+}
+.footer-img {
+  margin: auto 1rem;
 }

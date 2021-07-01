@@ -2,22 +2,50 @@
   width: 100%;
 }
 .Main-login {
+  margin-top: 17vh;
+  max-height: 100vh;
+  font-family: NotoSans-Regular;
   width: 100%;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 50% 40%;
+  column-gap: 10%;
 }
 img {
+  float: initial;
   max-width: 100vh;
 }
 
 .Login {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 5em;
 }
 .titles {
   text-align: left;
   margin: 1rem auto;
-  margin-bottom: 3rem;
+  margin: 1em;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: row;
+  width: 26vw;
+}
+.links-menu {
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 1em;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .Main-login {
+    display: block;
+  }
 }

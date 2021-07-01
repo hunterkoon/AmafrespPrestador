@@ -5,7 +5,8 @@ import Logo_Afresp from '../../Assets/Logo_TIAfresp.svg';
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>Todos os direitos</p>
+      <p className="paragraph">Todos os direitos reservados © </p>
+      <img className="footer-img" src={Logo_Afresp} alt="" />
     </footer>
   );
 };
