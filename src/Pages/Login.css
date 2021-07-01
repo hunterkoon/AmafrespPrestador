@@ -1,24 +1,23 @@
-.Login-Image {
-  width: 100%;
-}
 .Main-login {
-  margin-top: 17vh;
-  max-height: 100vh;
   font-family: NotoSans-Regular;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 50% 40%;
+  display: flex;
+  flex-direction: row;
   column-gap: 10%;
 }
-img {
-  float: initial;
-  max-width: 100vh;
+
+.Image-login-div {
+  display: flex;
+  height: 100%;
+  width: 50%;
+}
+.Image-login-div img {
+  width: 100%;
 }
 
 .Login {
-  width: 50%;
   display: flex;
   flex-direction: column;
+  width: 30%;
 }
 .titles {
   text-align: left;
@@ -31,7 +30,6 @@ img {
 .button-div {
   display: flex;
   flex-direction: row;
-  width: 26vw;
 }
 .links-menu {
   font-size: 1em;
@@ -41,11 +39,21 @@ img {
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 90%;
 }
-
-@media (max-width: 1000px) {
+@media only screen and (max-width: 900px) {
   .Main-login {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .Login {
+    width: 100%;
+  }
+  .Image-login-div {
+    width: 50%;
+  }
+  .input {
+    width: 100%;
   }
 }

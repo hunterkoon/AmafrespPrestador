@@ -1,19 +1,18 @@
 header {
   display: flex;
   flex-direction: row;
-  position: fixed;
-  width: 100vw;
+  position: relative;
+  width: auto;
   background-color: #ffff;
   height: 12vh;
   border-bottom: solid 1px #dcdcdc;
   z-index: 1;
 }
 
-p {
-  margin: 0;
+.Image {
+  margin: 1em;
+  width: 100%;
 }
-.logo {
-  float: left;
-  margin: 1.6em;
-  width: 25vh;
+.Header img {
+  margin: auto 1rem;
 }

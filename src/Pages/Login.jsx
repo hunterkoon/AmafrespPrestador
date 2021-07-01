@@ -6,6 +6,13 @@ import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
 
 const Login = () => {
+  let inputWidth = '90%';
+
+  // const [inputWidth, setinputWidth] = React.useState(0);
+  // React.useEffect(() => {
+  //   setinputWidth(window.innerWidth / 3);
+  // }, [window.innerWidth]);
+
   return (
     <div className="Main-login">
       <div className="Image-login-div">
@@ -18,21 +25,22 @@ const Login = () => {
         </div>
         <form action="">
           <Input
+            className="input"
             type={'text'}
             placeholder={'CNPJ/CPF'}
-            width={'100%'}
+            width={inputWidth}
             label={'CNPJ/CPF'}
           />
           <Input
             type={'text'}
             placeholder={'Usuário'}
-            width={'100%'}
+            width={inputWidth}
             label={'USUÁRIO'}
           />
           <Input
             type={'password'}
             placeholder={'Senha'}
-            width={'100%'}
+            width={inputWidth}
             label={'SENHA'}
           />
           <div className="button-div">

@@ -1,7 +1,7 @@
 .footer {
   font-family: NotoSans-Regular;
   justify-content: center;
-  width: 100%;
+  width: auto;
   height: 10vh;
   z-index: 2;
   border-top: solid 1px #dcdcdc;
