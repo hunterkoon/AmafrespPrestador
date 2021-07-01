@@ -1,0 +1,18 @@
+button {
+  font-family: NotoSans-Regular;
+  width: 130px;
+  height: 46px;
+  border-radius: 10px;
+  border: none;
+  background-color: #25b099;
+  font-size: 13pt;
+  color: #ffff;
+}
+
+button:hover {
+  cursor: pointer;
+  outline: none;
+  border-color: #25b099;
+  box-shadow: 0 0 0 5px #3bc3a7;
+  transition: 200ms;
+}

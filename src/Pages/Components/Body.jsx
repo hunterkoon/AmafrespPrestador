@@ -1,10 +1,10 @@
 import React from 'react';
 import Login from '../Login';
+import '../Components/Body.css';
 
 const Body = () => {
   return (
-    <body>
-      <p>Este é um corpo</p>
+    <body className="Body">
       <Login />
     </body>
   );

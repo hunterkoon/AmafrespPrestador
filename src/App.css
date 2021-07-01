@@ -1,9 +1,6 @@
-.font-face-nosa {
-  font-family: 'NotoSans';
-}
-
 .App {
   text-align: center;
+  font-family: NotoSans-Bold;
 }
 
 .App-logo {

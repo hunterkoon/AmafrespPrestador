@@ -1,9 +1,11 @@
 import React from 'react';
+import './Header.css';
+import Logotipo from '../../Assets/Logo Amafresp.svg';
 
 const Header = () => {
   return (
-    <header>
-      <p> Header Site</p>
+    <header className="Header">
+      <img src={Logotipo} alt="Logotipo Amafresp" className="logo" />
     </header>
   );
 };

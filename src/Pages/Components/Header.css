@@ -1,0 +1,15 @@
+header {
+  background-color: #ffff;
+  position: relative;
+  height: 15vh;
+  border-bottom: solid 1px #dcdcdc;
+}
+
+p {
+  margin: 0;
+}
+.logo {
+  float: left;
+  margin: 1.6em;
+  width: 15em;
+}

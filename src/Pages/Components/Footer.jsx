@@ -1,8 +1,10 @@
 import React from 'react';
+import './Footer.css';
+import Logo_Afresp from '../../Assets/Logo_TIAfresp.svg';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <p>Todos os direitos</p>
     </footer>
   );

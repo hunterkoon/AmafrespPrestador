@@ -12,14 +12,16 @@ const Input = ({ ...props }) => {
   // };
 
   return (
-    <input
-      className="Input"
-      type={props.type}
-      placeholder={props.placeholder}
-      style={{
-        width: props.width,
-      }}
-    />
+    <div className="input-div">
+      <label>{props.label}</label>
+      <input
+        className="Input"
+        type={props.type}
+        style={{
+          width: props.width,
+        }}
+      />
+    </div>
   );
 };
 
