@@ -4,7 +4,7 @@ import './Login.css';
 import LoginImg from '../Assets/Login_IMG.svg';
 import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
-import Title_decorated from './Shared/Title_decorated';
+import Titledecorated from './Shared/Titledecorated';
 
 const Login = () => {
   let inputWidth = '95%';
@@ -15,7 +15,7 @@ const Login = () => {
       </div>
       <div className="login">
         <div className="titles">
-          <Title_decorated text="Login" />
+          <Titledecorated text="Login" />
           <Title text="Portal Amafresp Prestador" />
         </div>
         <form action="">

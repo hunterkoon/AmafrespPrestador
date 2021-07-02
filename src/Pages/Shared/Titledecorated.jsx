@@ -1,7 +1,7 @@
 import React from 'react';
-import './Title_decorated.css';
+import './Titledecorated.css';
 
-const Title_decorated = ({ ...props }) => {
+const Titledecorated = ({ ...props }) => {
   return (
     <h1
       className="text-decorated"
@@ -15,4 +15,4 @@ const Title_decorated = ({ ...props }) => {
   );
 };
 
-export default Title_decorated;
+export default Titledecorated;
