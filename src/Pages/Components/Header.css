@@ -7,12 +7,80 @@
   z-index: 3;
   height: 10vh;
   position: fixed;
+  align-items: center;
+  justify-content: space-between;
+}
+.div-img-logotipo {
+  width: 50%;
+}
+.div-img-logotipo img {
+  margin: 2em;
+  width: 10rem;
 }
 
-.Image {
-  margin: 1em;
-  width: 100%;
+.main-div-user::before {
+  content: '';
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../Assets/User_Green.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
-.Header img {
-  margin: auto 1rem;
+.div-user-info {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.span-user {
+  text-decoration: underline;
+  font-size: 0.8em;
+  font-family: NotoSans-Bold;
+  margin: 0;
+}
+
+.span-employ {
+  font-family: NotoSans-Regular;
+  color: #474747;
+  font-size: 0.8em;
+  margin: 0;
+}
+.main-div-user {
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+.a-sair {
+  width: 5%;
+  font-size: 1em;
+  position: relative;
+  font-family: NotoSans-Regular;
+  color: #474747;
+  text-decoration: underline;
+}
+.hamburguinho {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .a-sair {
+    width: 40%;
+  }
+  .hamburguinho {
+    display: block;
+    position: absolute;
+    right: 1em;
+  }
+  .main-div-user {
+    width: 25%;
+  }
+  .main-div-user::before {
+    display: none;
+  }
+  .div-user-info {
+    display: none;
+  }
 }
