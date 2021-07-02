@@ -1,5 +1,4 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './Pages/Components/Header';
 import Footer from './Pages/Components/Footer';
 import Login from './Pages/Login';
