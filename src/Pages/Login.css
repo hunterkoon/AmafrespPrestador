@@ -1,23 +1,26 @@
-.Main-login {
+.main-login {
   font-family: NotoSans-Regular;
   display: flex;
   flex-direction: row;
-  column-gap: 10%;
+  column-gap: 5%;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
-.Image-login-div {
+.image-login-div {
   display: flex;
   height: 100%;
   width: 50%;
 }
-.Image-login-div img {
-  width: 100%;
+.image-login-div img {
+  width: 90%;
 }
 
-.Login {
+.login {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 35%;
+  margin-right: 10%;
 }
 .titles {
   text-align: left;
@@ -42,18 +45,34 @@
   width: 90%;
 }
 @media only screen and (max-width: 900px) {
-  .Main-login {
+  .main-login {
     display: flex;
     flex-direction: column;
     width: 100%;
+    align-items: center;
+    column-gap: none;
   }
-  .Login {
+  .login {
     width: 100%;
+    text-align: center;
+    margin: 0;
   }
-  .Image-login-div {
+  .titles {
+    align-items: center;
+    text-align: center;
+  }
+  .image-login-div {
     width: 50%;
   }
   .input {
     width: 100%;
+  }
+  form {
+    width: 90%;
+    align-self: center;
+  }
+  .links-menu {
+    display: flex;
+    flex-direction: column;
   }
 }

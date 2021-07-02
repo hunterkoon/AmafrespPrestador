@@ -2,7 +2,7 @@ button {
   font-family: NotoSans-Regular;
   width: 8em;
   height: 2.5em;
-  border-radius: 0.5vw;
+  border-radius: 10px;
   border: none;
   background-color: #25b099;
   font-size: 2.4vh;

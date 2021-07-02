@@ -4,23 +4,18 @@ import './Login.css';
 import LoginImg from '../Assets/Login_IMG.svg';
 import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
+import Title_decorated from './Shared/Title_decorated';
 
 const Login = () => {
-  let inputWidth = '90%';
-
-  // const [inputWidth, setinputWidth] = React.useState(0);
-  // React.useEffect(() => {
-  //   setinputWidth(window.innerWidth / 3);
-  // }, [window.innerWidth]);
-
+  let inputWidth = '95%';
   return (
-    <div className="Main-login">
-      <div className="Image-login-div">
+    <div className="main-login">
+      <div className="image-login-div">
         <img src={LoginImg} alt="Imagem de Profissionais da medicina" />
       </div>
-      <div className="Login">
+      <div className="login">
         <div className="titles">
-          <Title text="Login" color="#474747" />
+          <Title_decorated text="Login" />
           <Title text="Portal Amafresp Prestador" />
         </div>
         <form action="">

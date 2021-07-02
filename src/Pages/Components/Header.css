@@ -1,12 +1,10 @@
-header {
+.Header {
   display: flex;
   flex-direction: row;
-  position: relative;
-  width: auto;
-  background-color: #ffff;
-  height: 12vh;
+  width: 100%;
   border-bottom: solid 1px #dcdcdc;
-  z-index: 1;
+  z-index: 3;
+  height: 10vh;
 }
 
 .Image {
