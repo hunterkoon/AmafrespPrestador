@@ -1,6 +1,10 @@
 .App {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
+  width: auto;
+  height: auto;
+  overflow: hidden;
   font-family: NotoSans-Bold;
+  position: relative;
+}
+.header-app {
+  position: relative;
 }
