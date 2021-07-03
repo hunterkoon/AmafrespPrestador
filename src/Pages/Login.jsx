@@ -5,7 +5,7 @@ import LoginImg from '../Assets/Login_IMG.svg';
 import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
 import Titledecorated from './Shared/Titledecorated';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = ({ ...props }) => {
   let inputWidth = '95%';
@@ -41,10 +41,8 @@ const Login = ({ ...props }) => {
           />
 
           <div className="button-div">
-            <Link to="/conta">
-              <a href="/conta">
-                <Button value="Entrar" />
-              </a>
+            <Link to="conta">
+              <Button value="Entrar"> </Button>
             </Link>
           </div>
 
