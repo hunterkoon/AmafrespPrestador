@@ -76,6 +76,7 @@
     width: 100%;
   }
   form {
+    padding-right: 3%;
     width: 90%;
     align-self: center;
   }

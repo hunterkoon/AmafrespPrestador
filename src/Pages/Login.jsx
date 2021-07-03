@@ -5,8 +5,9 @@ import LoginImg from '../Assets/Login_IMG.svg';
 import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
 import Titledecorated from './Shared/Titledecorated';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ ...props }) => {
   let inputWidth = '95%';
   return (
     <div className="main-login">
@@ -38,9 +39,13 @@ const Login = () => {
             width={inputWidth}
             label={'SENHA'}
           />
+
           <div className="button-div">
-            <Button value="Entrar" />
+            <Link to="/conta">
+              <Button value="Entrar" />{' '}
+            </Link>
           </div>
+
           <div className="links-menu">
             <p>Recuperar senha</p>
             <p>Primeiro acesso</p>

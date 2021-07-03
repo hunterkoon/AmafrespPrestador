@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 import Logotipo from '../../Assets/Logo Amafresp.svg';
 import Hamburguinho from '../../Assets/Hamburguinho.svg';
+import { BrowserRouter as Link } from 'react-router-dom';
 
 const Header = ({ ...props }) => {
   const hidden = props.user ? 'inline-flex' : 'none';
@@ -17,9 +18,11 @@ const Header = ({ ...props }) => {
           <span className="span-employ">{props.employ}</span>
         </div>
       </div>
-      <a className="a-sair" href="/login">
-        Sair
-      </a>
+      <Link>
+        <a className="a-sair" href="/">
+          Sair
+        </a>
+      </Link>
       <a className="hamburguinho" href="/menu">
         <img src={Hamburguinho} alt="" />
       </a>
