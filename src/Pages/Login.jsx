@@ -42,7 +42,9 @@ const Login = ({ ...props }) => {
 
           <div className="button-div">
             <Link to="/conta">
-              <Button value="Entrar" />{' '}
+              <a href="/conta">
+                <Button value="Entrar" />
+              </a>
             </Link>
           </div>
 
