@@ -5,7 +5,7 @@ import LoginImg from '../Assets/Login_IMG.svg';
 import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
 import Titledecorated from './Shared/Titledecorated';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Link } from 'react-router-dom';
 
 const Login = ({ ...props }) => {
   let inputWidth = '95%';
