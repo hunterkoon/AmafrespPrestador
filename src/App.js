@@ -14,7 +14,7 @@ function App() {
           employ="Clinica Gabriel C 23.855.030/0001-73"
         />
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Login />
           </Route>
           <Route path="/conta">
