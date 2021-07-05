@@ -7,6 +7,7 @@ import iconRecadastro from "../../Assets/iconRecadastramentoBackgroundGreen.svg"
 import iconFaleConosco from "../../Assets/iconFaleConoscoBackgroundGreen.svg";
 const MenuPrestador = () => {
 
+
   const handleMouseOver = (event) => {
     const item = event.target;
     const imgAItem = event.target.children[0];
@@ -33,6 +34,7 @@ const MenuPrestador = () => {
       <ul>
         <li
           className="li-conta"
+          
           onMouseEnter={handleMouseOver}
           onMouseLeave={handleMouseLeave}
         >
