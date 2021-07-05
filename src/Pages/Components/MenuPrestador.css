@@ -36,9 +36,7 @@ a{   font-family: NotoSans-Regular;
 .main-menu ul {
   margin-top: 10vh;
 }
-.li-faleConosco{
-margin-top: 30vh;
-}
+
 @keyframes iconsAnime{
     from{  transform: rotate(-10deg)}
     to{  transform: rotate(10deg)}

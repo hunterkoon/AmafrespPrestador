@@ -1,6 +1,6 @@
 {
-  "name": "amafrespprestador",
-  "homepage": "./",
+  "name": "AmafresPrestador",
+  "homepage": "/home",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
