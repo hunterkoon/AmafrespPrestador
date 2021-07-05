@@ -1,12 +1,14 @@
-a{   font-family: NotoSans-Regular;
-    display: flex;
-    flex-direction: row;
-    color: #ffff;
-    text-decoration: none;
-    align-items: center;
-    
-    }
-
+.main-menu a {
+  font-family: NotoSans-Regular;
+  display: flex;
+  flex-direction: row;
+  color: #ffff;
+  text-decoration: none;
+  align-items: center;
+}
+.main-menu a:hover {
+  opacity: 80%;
+}
 
 .main-menu {
   font-family: NotoSans-Regular;
@@ -15,8 +17,8 @@ a{   font-family: NotoSans-Regular;
   background-color: #25b099;
   color: #fff;
 }
-.main-menu img{
-    margin: auto 1em
+.main-menu img {
+  margin: auto 1em;
 }
 
 .main-menu li {
@@ -26,27 +28,28 @@ a{   font-family: NotoSans-Regular;
   margin-top: 8%;
 }
 .animation {
-        animation-name:iconsAnime;
-        animation-duration: 100ms;
-        animation-direction: alternate-reverse;
-        animation-iteration-count: 3;
-      
-    }
+  animation-name: iconsAnime;
+  animation-duration: 100ms;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: 3;
+  opacity: 80%;
+}
 
 .main-menu ul {
   margin-top: 10vh;
 }
 
-@keyframes iconsAnime{
-    from{  transform: rotate(-10deg)}
-    to{  transform: rotate(10deg)}
-
-
+@keyframes iconsAnime {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
 }
 
-@media only screen and (max-width:1024px){
-    .main-menu{
-        display: none;
-    }
-
+@media only screen and (max-width: 1024px) {
+  .main-menu {
+    display: none;
+  }
 }
