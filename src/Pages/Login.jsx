@@ -21,6 +21,7 @@ const Login = ({ ...props }) => {
         </div>
         <form action="">
           <Input
+          id='cnpj'
             className="input"
             type={'text'}
             placeholder={'CNPJ/CPF'}
@@ -28,12 +29,14 @@ const Login = ({ ...props }) => {
             label={'CNPJ/CPF'}
           />
           <Input
+           id='user'
             type={'text'}
             placeholder={'Usuário'}
             width={inputWidth}
             label={'USUÁRIO'}
           />
           <Input
+           id='password'
             type={'password'}
             placeholder={'Senha'}
             width={inputWidth}
@@ -45,11 +48,11 @@ const Login = ({ ...props }) => {
               <Button value="Entrar"> </Button>
             </Link>
           </div>
-
           <div className="links-menu">
             <p>Recuperar senha</p>
             <p>Primeiro acesso</p>
           </div>
+
         </form>
       </div>
     </div>

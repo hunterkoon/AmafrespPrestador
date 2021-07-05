@@ -4,13 +4,14 @@ import './Input.css';
 const Input = ({ ...props }) => {
   return (
     <div className="input-div">
-      <label>{props.label}</label>
+      <label for={props.id}>{props.label}</label>
       <input
         className="Input"
         type={props.type}
         style={{
           width: props.width,
         }}
+        id={props.id}
       />
     </div>
   );

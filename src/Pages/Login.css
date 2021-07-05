@@ -1,10 +1,12 @@
+
 .main-login {
   font-family: NotoSans-Regular;
   display: flex;
   flex-direction: row;
   column-gap: 5%;
-  height: 79.9vh;
+  height: auto;
   margin-top: 10vh;
+
 }
 .image-login-div {
   z-index: -1;
@@ -13,11 +15,12 @@
   align-self: flex-end;
 }
 .login {
-  margin: auto 10rem;
+  margin: auto 5%;
   display: flex;
   flex-direction: column;
   width: 30%;
   justify-content: center;
+
 }
 .image-login-div img {
   position: relative;
@@ -32,6 +35,8 @@
 }
 
 .button-div {
+  padding-left: 7px;
+  width: 90%;
   display: flex;
   flex-direction: row;
 }
@@ -39,7 +44,7 @@
   font-size: 1em;
   cursor: pointer;
   text-decoration: underline;
-  margin: 1em;
+  margin: 0.8em auto;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
@@ -76,11 +81,11 @@
     width: 100%;
   }
   form {
-    padding-right: 3%;
     width: 90%;
     align-self: center;
   }
   .links-menu {
+    font-size: 1em;
     display: flex;
     flex-direction: row;
   }

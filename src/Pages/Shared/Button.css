@@ -1,13 +1,13 @@
 button {
   font-family: NotoSans-Regular;
-  width: 8em;
-  height: 2.5em;
+  width: 135px;
+  height: 45px;
   border-radius: 10px;
   border: none;
   background-color: #25b099;
-  font-size: 2.4vh;
+  font-size: 1em ;
   color: #ffff;
-  margin: 3%;
+  margin: 1em auto;
 }
 
 button:hover {

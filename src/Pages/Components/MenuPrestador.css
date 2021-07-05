@@ -1,0 +1,54 @@
+a{   font-family: NotoSans-Regular;
+    display: flex;
+    flex-direction: row;
+    color: #ffff;
+    text-decoration: none;
+    align-items: center;
+    
+    }
+
+
+.main-menu {
+  font-family: NotoSans-Regular;
+  height: 100%;
+  margin-top: 10vh;
+  background-color: #25b099;
+  color: #fff;
+}
+.main-menu img{
+    margin: auto 1em
+}
+
+.main-menu li {
+  cursor: pointer;
+  margin: 3%;
+  list-style-type: none;
+  margin-top: 8%;
+}
+.animation {
+        animation-name:iconsAnime;
+        animation-duration: 100ms;
+        animation-direction: alternate-reverse;
+        animation-iteration-count: 3;
+        opacity: 80%;
+    }
+
+.main-menu ul {
+  margin-top: 10vh;
+}
+.li-faleConosco{
+margin-top: 30vh;
+}
+@keyframes iconsAnime{
+    from{  transform: rotate(-10deg)}
+    to{  transform: rotate(10deg)}
+
+
+}
+
+@media only screen and (max-width:1024px){
+    .main-menu{
+        display: none;
+    }
+
+}
