@@ -13,7 +13,7 @@ const SubItemMenu = ({ ...props }) => {
       }}
     >
       <Link to={props.link}>
-        <img src={props.subMenuSrcImg} />
+        <img src={props.subMenuSrcImg} alt={props.alt} />
         {props.itemSubMenu}
       </Link>
     </section>

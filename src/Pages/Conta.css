@@ -9,7 +9,7 @@
 }
 .div-context {
   display: flex;
-  color: black;
+  flex-direction: row;
   z-index: 3;
   align-self: center;
   justify-self: center;

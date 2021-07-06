@@ -31,10 +31,17 @@ const MenuPrestador = () => {
       onMouseOut={handleMouseLeave}
     >
       <ul>
-        <ItemMenu item="Conta" srcItem={iconHome} srcSeta="" link="/conta" />
+        <ItemMenu
+          alt="item menu home page"
+          item="Conta"
+          srcItem={iconHome}
+          srcSeta=""
+          link="/conta"
+        />
 
         <div onClick={() => setAtivo(ativo ? false : true)}>
           <ItemMenu
+            alt="item menu usuários"
             item="Usuários"
             srcItem={iconUser}
             srcSeta={Seta}
@@ -56,6 +63,7 @@ const MenuPrestador = () => {
         </div>
 
         <ItemMenu
+          alt="item menu recadastramento"
           item="Recadastramento"
           srcItem={iconRecadastro}
           srcSeta=""
@@ -63,6 +71,7 @@ const MenuPrestador = () => {
         />
         <div style={{ position: 'absolute', bottom: '15vh' }}>
           <ItemMenu
+            alt="item menu fale conosco"
             item="Fale Conosco"
             srcItem={iconFaleConosco}
             srcSeta=""

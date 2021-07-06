@@ -11,7 +11,7 @@ const ItemMenu = ({ ...props }) => {
         <img
           className="img-item-menu-seta"
           src={props.srcSeta}
-          alt={props.alt}
+          alt=""
           style={{
             transform: props.state === true ? 'rotate(90deg)' : 'rotate(0deg)',
           }}

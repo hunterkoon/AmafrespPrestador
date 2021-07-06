@@ -1,16 +1,14 @@
-import React from "react";
-import "./Conta.css";
-import Menu from "../Pages/Components/MenuPrestador";
+import React from 'react';
+import './Conta.css';
+import Menu from '../Pages/Components/MenuPrestador';
 
-const Conta = () => {
+const Conta = ({ ...props }) => {
   return (
     <div className="main-conta">
-      <div className='div-menu'>
+      <div className="div-menu">
         <Menu />
       </div>
-      <div className='div-context'>
-        <p>context</p>
-        </div>
+      <div className="div-context">{props.children}</div>
     </div>
   );
 };
