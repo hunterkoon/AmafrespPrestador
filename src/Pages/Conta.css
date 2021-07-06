@@ -1,26 +1,22 @@
 .main-conta {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
   height: 89.9vh;
   align-self: center;
   justify-content: center;
   width: 100%;
-  
 }
-.div-context{
+.div-context {
   display: flex;
   color: black;
   z-index: 3;
   align-self: center;
   justify-self: center;
-
 }
 
-
-@media only screen and (max-width:1024px){
-  .main-conta{
+@media only screen and (max-width: 1024px) {
+  .main-conta {
     grid-template-columns: 0% 100%;
   }
-
 }

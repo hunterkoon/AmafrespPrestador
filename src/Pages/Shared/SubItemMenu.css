@@ -1,0 +1,17 @@
+.add-user-sub {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  background-color: #017663;
+  position: relative;
+  width: 100%;
+  transition: 150ms;
+  align-items: center;
+}
+.add-user-sub img {
+  width: 1em;
+}
+.add-user-sub img {
+  margin-left: 4em;
+}

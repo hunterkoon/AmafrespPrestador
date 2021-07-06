@@ -1,103 +1,70 @@
-import React from "react";
-import "./MenuPrestador.css";
-import { Link } from "react-router-dom";
-import iconHome from "../../Assets/iconHomeBackgroundGreen.svg";
-import iconUser from "../../Assets/iconUsersBackgroundGreen.svg";
-import iconRecadastro from "../../Assets/iconRecadastramentoBackgroundGreen.svg";
-import iconFaleConosco from "../../Assets/iconFaleConoscoBackgroundGreen.svg";
-import More from "../../Assets/More.svg";
-import Seta from "../../Assets/Seta.svg";
-import Mananger from "../../Assets/Mananger.svg";
+import React from 'react';
+import './MenuPrestador.css';
+import iconHome from '../../Assets/iconHomeBackgroundGreen.svg';
+import iconUser from '../../Assets/iconUsersBackgroundGreen.svg';
+import iconRecadastro from '../../Assets/iconRecadastramentoBackgroundGreen.svg';
+import iconFaleConosco from '../../Assets/iconFaleConoscoBackgroundGreen.svg';
+import More from '../../Assets/More.svg';
+import Seta from '../../Assets/Seta.svg';
+import Mananger from '../../Assets/Mananger.svg';
+import ItemMenu from '../Shared/ItemMenu';
+import SubItemMenu from '../Shared/SubItemMenu';
 
 const MenuPrestador = () => {
-  const [mouseHandle, setMouseHandle] = React.useState("none");
+  const [ativo, setAtivo] = React.useState(false);
 
+  console.log(ativo);
 
   const handleMouse = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
-    console.log(tag)
-     return  tag === "A" ? imgTag.classList.add("animation"):false
-      
+    console.log(tag);
+    return tag === 'A' ? imgTag.classList.toggle('animation') : false;
   };
-
-  const handleMouseLeave = (event) => {
-    const tag = event.target.tagName;
-    const imgTag = event.target.children[0];
-    console.log(tag)
-     return  tag === "A" ? imgTag.classList.remove("animation"):false
-      
-  };
-
-
-// React.useEffect(()=>{}[])
-
 
   return (
-    <nav className="main-menu" 
-          onMouseOver={handleMouse}
-          onMouseOut={handleMouseLeave}  >
+    <nav
+      className="main-menu"
+      onMouseOver={handleMouse}
+      onMouseOut={handleMouse}
+    >
       <ul>
-        <li className="li-conta">
-          <Link>
-            <img src={iconHome} alt="Icone Para Home Page" />
-            Conta
-          </Link>
-        </li>
+        <ItemMenu item="Conta" srcItem={iconHome} srcSeta="" link="/conta" />
 
-        <li
-          className="li-usuarios"
-          onClick={() =>
-            setMouseHandle(mouseHandle === "none" ? "block" : "none")
-          }
-        >
-          <Link>
-            <img src={iconUser} alt="Icone Para Home Page" />
-            Usuários
-            <img
-              className="li-img-seta"
-              src={Seta}
-              alt="Icone Para Home Page"
-              style={{
-                transform: mouseHandle === "block" ? "rotate(90deg)" : null,
-              }}
+        <div onClick={() => setAtivo(ativo ? false : true)}>
+          <ItemMenu
+            item="Usuários"
+            srcItem={iconUser}
+            srcSeta={Seta}
+            state={ativo}
+          >
+            <SubItemMenu
+              link="/conta/usuario"
+              state={ativo}
+              itemSubMenu="Adicionar Usuário"
+              subMenuSrcImg={More}
             />
-          </Link>
-        </li>
+            <SubItemMenu
+              link="/conta/gerenciar"
+              state={ativo}
+              itemSubMenu="Gerênciar"
+              subMenuSrcImg={Mananger}
+            />
+          </ItemMenu>
+        </div>
 
-        <section
-          className="li-section-usuarios"
-          style={{
-            opacity: mouseHandle === "block" ? "100%" : null,
-            height: mouseHandle === "block" ? "10em" : null,
-            display: mouseHandle === "block" ? "flex" : null,
-          }}
-        >
-          <Link>
-            <img src={More} style={{ width: "1em" }} />
-            <section>Novo usuário</section>
-          </Link>
-
-          <Link>
-            <img src={Mananger} style={{ width: "1em" }} />
-            <section>Gerênciar</section>
-          </Link>
-        </section>
-
-        <li className="li-recadastramento">
-          <Link>
-            <img src={iconRecadastro} alt="Icone Para Recadastramento" />
-            <section>Recadastramento</section>
-          </Link>
-        </li>
-
-        <li className="li-faleConosco">
-          <Link>
-            <img src={iconFaleConosco} alt="Icone Para Fala conosco" />
-            <section>Fale Cononosco</section>
-
-          </Link>
-        </li>
+        <ItemMenu
+          item="Recadastramento"
+          srcItem={iconRecadastro}
+          srcSeta=""
+          link="/conta/recadastramento"
+        />
+        <ItemMenu
+          item="Fale Conosco"
+          srcItem={iconFaleConosco}
+          srcSeta=""
+          link="/conta/faleconosco"
+        />
       </ul>
     </nav>
   );
