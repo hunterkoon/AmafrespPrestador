@@ -16,7 +16,6 @@
   animation-duration: 100ms;
   animation-direction: alternate-reverse;
   animation-iteration-count: 3;
-  opacity: 70%;
 }
 
 @keyframes iconsAnime {
