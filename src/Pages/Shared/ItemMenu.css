@@ -7,9 +7,9 @@
   text-decoration: none;
   align-items: center;
 }
-.li-item-menu a:hover {
+/* .li-item-menu a:hover {
   opacity: 70%;
-}
+} */
 .li-item-menu img {
   margin: auto 1em;
 }
