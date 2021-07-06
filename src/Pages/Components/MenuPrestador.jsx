@@ -61,12 +61,14 @@ const MenuPrestador = () => {
           srcSeta=""
           link="/conta/recadastramento"
         />
-        <ItemMenu
-          item="Fale Conosco"
-          srcItem={iconFaleConosco}
-          srcSeta=""
-          link="/conta/faleconosco"
-        />
+        <div style={{ position: 'absolute', bottom: '15vh' }}>
+          <ItemMenu
+            item="Fale Conosco"
+            srcItem={iconFaleConosco}
+            srcSeta=""
+            link="/conta/faleconosco"
+          />
+        </div>
       </ul>
     </nav>
   );
