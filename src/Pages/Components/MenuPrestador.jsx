@@ -13,20 +13,22 @@ import SubItemMenu from '../Shared/SubItemMenu';
 const MenuPrestador = () => {
   const [ativo, setAtivo] = React.useState(false);
 
-  console.log(ativo);
-
-  const handleMouse = (event) => {
+  const handleMouseEnter = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
-    console.log(tag);
-    return tag === 'A' ? imgTag.classList.toggle('animation') : false;
+    return tag === 'A' ? imgTag.classList.add('animation') : false;
+  };
+  const handleMouseLeave = (event) => {
+    const tag = event.target.tagName;
+    const imgTag = event.target.children[0];
+    return tag === 'A' ? imgTag.classList.remove('animation') : false;
   };
 
   return (
     <nav
       className="main-menu"
-      onMouseOver={handleMouse}
-      onMouseOut={handleMouse}
+      onMouseOver={handleMouseEnter}
+      onMouseOut={handleMouseLeave}
     >
       <ul>
         <ItemMenu item="Conta" srcItem={iconHome} srcSeta="" link="/conta" />
