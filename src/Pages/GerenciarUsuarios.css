@@ -1,0 +1,8 @@
+.div-main-gerenciarUsuarios {
+  padding: 3em;
+  position: relative;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

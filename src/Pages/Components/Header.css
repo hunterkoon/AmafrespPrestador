@@ -2,16 +2,15 @@
   background-color: #ffff;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 100vw;
   border-bottom: solid 1px #dcdcdc;
-  z-index: 1;
+  z-index: 99;
   height: 10vh;
   position: fixed;
   align-items: center;
-  justify-content: space-between;
 }
 .div-img-logotipo {
-  width: 50%;
+  width: 48%;
 }
 .div-img-logotipo img {
   margin: 2em;
@@ -46,7 +45,7 @@
   margin: 0;
 }
 .main-div-user {
-  justify-content: center;
+  justify-content: flex-end;
   cursor: pointer;
   align-items: center;
   width: 50%;
@@ -54,7 +53,8 @@
   flex-direction: row;
 }
 .a-sair {
-  width: 5%;
+  display: flex;
+  width: 2em;
   font-size: 1em;
   position: relative;
   font-family: NotoSans-Regular;

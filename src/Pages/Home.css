@@ -1,0 +1,17 @@
+.div-main-home {
+  padding: 3em;
+  position: relative;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.div-main-home img {
+  align-self: center;
+  width: 45%;
+}
+.div-main-home p {
+  font-family: NotoSans-Regular;
+  color: #474747;
+  text-align: center;
+}

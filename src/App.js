@@ -5,7 +5,7 @@ import Login from './Pages/Login';
 import Conta from './Pages/Conta';
 import Recadastramento from './Pages/Recadastramento';
 import Home from './Pages/Home';
-import Usuarios from './Pages/Usuarios';
+import Usuarios from './Pages/AdicionarUsuarios';
 import GerenciarUsuarios from './Pages/GerenciarUsuarios';
 import FaleConosco from './Pages/FaleConosco';
 

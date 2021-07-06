@@ -8,3 +8,7 @@
 .header-app {
   position: relative;
 }
+p {
+  font-family: NotoSans-Regular;
+  color: #474747;
+}

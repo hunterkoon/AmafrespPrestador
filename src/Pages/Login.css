@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: row;
   column-gap: 5%;
-  height: auto;
+  height: 79.9vh;
   margin-top: 10vh;
 }
 .image-login-div {
   z-index: -1;
   display: flex;
-  width: 65%;
+  width: 60%;
   align-self: flex-end;
 }
 .login {
@@ -21,8 +21,9 @@
   z-index: 0;
 }
 .image-login-div img {
+  padding-left: 10%;
   position: relative;
-  width: 95%;
+  width: 80%;
 }
 .titles {
   text-align: left;

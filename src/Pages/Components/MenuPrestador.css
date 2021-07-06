@@ -1,11 +1,10 @@
 .main-menu {
   font-family: NotoSans-Regular;
-  height: 79.9vh;
-  margin-top: 10vh;
+  height: 84.9vh;
+  margin-top: 5vh;
   background-color: #25b099;
   color: #fff;
 }
-
 .main-menu ul {
   padding: 0;
   margin-top: 10vh;
