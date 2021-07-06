@@ -4,7 +4,7 @@ import './GerenciarUsuarios.css';
 const GerenciarUsuarios = () => {
   return (
     <div className="div-main-gerenciarUsuarios">
-      <Titledecorated text="Gerênciar Usuários" />
+      <Titledecorated text="Gerenciar Usuários" />
     </div>
   );
 };
