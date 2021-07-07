@@ -8,12 +8,12 @@ import Home from './Pages/Home';
 import Usuarios from './Pages/AdicionarUsuarios';
 import GerenciarUsuarios from './Pages/GerenciarUsuarios';
 import FaleConosco from './Pages/FaleConosco';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {GlobalStorage} from './Pages/UserContext'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App">    
       <Router>
         <Header/>
         <Switch>
@@ -38,7 +38,9 @@ function App() {
         </Switch>
         <Footer />
       </Router>
+  
     </div>
+
   );
 }
 
