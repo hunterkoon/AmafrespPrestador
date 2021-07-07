@@ -10,7 +10,7 @@ import Mananger from '../../Assets/Mananger.svg';
 import ItemMenu from '../Shared/ItemMenu';
 import SubItemMenu from '../Shared/SubItemMenu';
 
-const MenuPrestador = () => {
+const MenuPrestador = ({ ...props }) => {
   const [ativo, setAtivo] = React.useState(false);
 
   const handleMouseEnter = (event) => {
@@ -26,6 +26,9 @@ const MenuPrestador = () => {
 
   return (
     <nav
+      style={{
+        display: props.show ? props.show : null,
+      }}
       className="main-menu"
       onMouseOver={handleMouseEnter}
       onMouseOut={handleMouseLeave}

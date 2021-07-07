@@ -5,7 +5,9 @@ import Hamburguinho from '../../Assets/Hamburguinho.svg';
 import { Link } from 'react-router-dom';
 
 const Header = ({ ...props }) => {
+  const [hamburguer, setHamburguer] = React.useState(false);
   const hidden = props.user ? 'inline-flex' : 'none';
+
   return (
     <header className="Header">
       <div className="div-img-logotipo">
@@ -21,7 +23,11 @@ const Header = ({ ...props }) => {
           <span className="a-sair">Sair</span>
         </Link>
       </div>
-      <a className="hamburguinho" href="/menu">
+      <a
+        onClick={() => setHamburguer(false ? true : false)}
+        className="hamburguinho"
+        href="#"
+      >
         <img src={Hamburguinho} alt="" />
       </a>
     </header>
