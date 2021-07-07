@@ -1,14 +1,16 @@
-import React from 'react';
-import Input from './Shared/Input';
-import './Login.css';
-import LoginImg from '../Assets/Login_IMG.svg';
-import Title from '../Pages/Shared/Title';
-import Button from './Shared/Button';
-import Titledecorated from './Shared/Titledecorated';
-import { Link } from 'react-router-dom';
+import React from "react";
+import Input from "./Shared/Input";
+import "./Login.css";
+import LoginImg from "../Assets/Login_IMG.svg";
+import Title from "../Pages/Shared/Title";
+import Button from "./Shared/Button";
+import Titledecorated from "./Shared/Titledecorated";
+import { Link } from "react-router-dom";
+
 
 const Login = ({ ...props }) => {
-  let inputWidth = '95%';
+  let inputWidth = "95%";
+
   return (
     <div className="main-login">
       <div className="image-login-div">
@@ -21,38 +23,41 @@ const Login = ({ ...props }) => {
         </div>
         <form action="">
           <Input
-          id='cnpj'
+            id="cnpj"
             className="input"
-            type={'text'}
-            placeholder={'CNPJ/CPF'}
+            type={"text"}
+            placeholder={"CNPJ/CPF"}
             width={inputWidth}
-            label={'CNPJ/CPF'}
+            label={"CNPJ/CPF"}
           />
           <Input
-           id='user'
-            type={'text'}
-            placeholder={'Usuário'}
+            id="user"
+            type={"text"}
+            placeholder={"Usuário"}
             width={inputWidth}
-            label={'USUÁRIO'}
+            label={"USUÁRIO"}
           />
           <Input
-           id='password'
-            type={'password'}
-            placeholder={'Senha'}
+            id="password"
+            type={"password"}
+            placeholder={"Senha"}
             width={inputWidth}
-            label={'SENHA'}
+            label={"SENHA"}
           />
 
           <div className="button-div">
             <Link to="conta">
-              <Button value="Entrar"> </Button>
+              <Button
+              Click={'teste'}
+                value="Entrar"
+              >
+              </Button>
             </Link>
           </div>
           <div className="links-menu">
             <p>Recuperar senha</p>
             <p>Primeiro acesso</p>
           </div>
-
         </form>
       </div>
     </div>

@@ -5,6 +5,8 @@
   column-gap: 5%;
   height: 79.9vh;
   margin-top: 10vh;
+  animation-name: pageview;
+  animation-duration:400ms;
 }
 .image-login-div {
   z-index: -1;
@@ -88,4 +90,13 @@
     display: flex;
     flex-direction: row;
   }
+}
+
+
+
+@keyframes pageview {
+
+  from{opacity: 15%; transform: translate3d(-150px, 0, 0);  }
+  to{opacity:  100%;   transform: translate3d(0px, 0, 0); }
+
 }

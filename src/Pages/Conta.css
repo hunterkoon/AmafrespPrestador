@@ -2,10 +2,11 @@
   display: grid;
   grid-template-columns: 15% 85%;
   grid-template-rows: 1fr;
+  transition: 150ms;
 }
 .div-context {
+
   overflow-y: auto;
-  width: 100%;
   max-height: 89.9vh;
 }
 
@@ -21,9 +22,16 @@
   .main-conta {
     grid-template-columns: 25% 75%;
   }
+  .div-context {
+    max-height: 100vh;
+  }
 }
 @media only screen and (min-width: 1141px) and (max-width: 1700px) {
   .main-conta {
     grid-template-columns: 20% 80%;
   }
+  .div-context {
+    max-height: 100vh;
+  }
 }
+

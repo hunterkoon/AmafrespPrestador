@@ -1,4 +1,5 @@
 .main-menu {
+  transition: 200ms;
   font-family: NotoSans-Regular;
   height: 84.9vh;
   margin-top: 5vh;
@@ -29,5 +30,6 @@
 @media only screen and (max-width: 1024px) {
   .main-menu {
     display: none;
+
   }
 }

@@ -15,10 +15,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header
-          user="Gabriel Pinheiro Campos"
-          employ="Clinica Gabriel C 23.855.030/0001-73"
-        />
+        <Header/>
         <Switch>
           <Route exact path="/">
             <Login />
