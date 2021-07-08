@@ -1,24 +1,23 @@
-import React from "react";
-import "./MenuPrestador.css";
-import iconHome from "../../Assets/iconHomeBackgroundGreen.svg";
-import iconUser from "../../Assets/iconUsersBackgroundGreen.svg";
-import iconRecadastro from "../../Assets/iconRecadastramentoBackgroundGreen.svg";
-import iconFaleConosco from "../../Assets/iconFaleConoscoBackgroundGreen.svg";
-import More from "../../Assets/More.svg";
-import Seta from "../../Assets/Seta.svg";
-import ItemMenu from "../Shared/ItemMenu";
-import SubItemMenu from "../Shared/SubItemMenu";
+import React from 'react';
+import './MenuPrestador.css';
+import iconHome from '../../Assets/iconHomeBackgroundGreen.svg';
+import iconUser from '../../Assets/iconUsersBackgroundGreen.svg';
+import iconRecadastro from '../../Assets/iconRecadastramentoBackgroundGreen.svg';
+import iconFaleConosco from '../../Assets/iconFaleConoscoBackgroundGreen.svg';
+import More from '../../Assets/More.svg';
+import Seta from '../../Assets/Seta.svg';
+import ItemMenu from '../Shared/ItemMenu';
+import SubItemMenu from '../Shared/SubItemMenu';
 
-const MenuPrestador = ({ ...props }) => {
+const MenuPrestador = () => {
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [menuItemRecadastramento, setmenuItemRecadastramento] =
     React.useState(false);
- 
 
   const handleMouse = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
-    return tag === "A" ? imgTag.classList.toggle("animation") : false;
+    return tag === 'A' ? imgTag.classList.toggle('animation') : false;
   };
 
   return (
@@ -38,6 +37,7 @@ const MenuPrestador = ({ ...props }) => {
 
         <div onClick={() => setmenuItemUsuarios(!menuItemUsuarios)}>
           <ItemMenu
+            link="/conta"
             alt="item menu usuários"
             item="Usuários"
             srcItem={iconUser}
@@ -62,6 +62,7 @@ const MenuPrestador = ({ ...props }) => {
           onClick={() => setmenuItemRecadastramento(!menuItemRecadastramento)}
         >
           <ItemMenu
+            link="/conta"
             alt="item menu Recadastro"
             item="Recadastramento"
             srcItem={iconRecadastro}
@@ -83,7 +84,7 @@ const MenuPrestador = ({ ...props }) => {
           </ItemMenu>
         </div>
 
-        <div style={{ position: "absolute", bottom: "15vh" }}>
+        <div style={{ position: 'absolute', bottom: '15vh' }}>
           <ItemMenu
             alt="item menu fale conosco"
             item="Fale Conosco"

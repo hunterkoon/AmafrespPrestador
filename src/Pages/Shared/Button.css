@@ -7,7 +7,7 @@ button {
   background-color: #25b099;
   font-size: 1em;
   color: #ffff;
-  margin: 1% auto ;
+  margin: 1rem auto;
 }
 
 button:hover {
