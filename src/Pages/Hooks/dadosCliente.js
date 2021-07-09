@@ -3,6 +3,7 @@ export const dadosCliente = [
     DADOS: [
       {
         NOME: 'Gabriel Pinheiro',
+        DEPARTAMENTO: 'Tecnologia da Informação',
         NOME_FANTASIA: 'AFRESP',
         EMPRESA:
           'Associação dos Agentes Fiscais de Renda do Estado de São Paulo',
