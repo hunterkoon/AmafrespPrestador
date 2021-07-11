@@ -28,3 +28,9 @@ a {
   display: flex;
   text-decoration: unset;
 }
+label {
+  font-family: NotoSans-Regular;
+  color: unset;
+  text-decoration: unset;
+  font-size: 0.8rem;
+}

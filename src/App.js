@@ -10,6 +10,7 @@ import GerenciarUsuarios from './Pages/GerenciarUsuarios';
 import FaleConosco from './Pages/FaleConosco';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { GlobalStorage } from './Pages/GlobalContext';
+import Perfil from './Pages/Perfil';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route exact path="/conta/faleconosco">
               <Conta>{<FaleConosco />}</Conta>
+            </Route>
+            <Route exact path="/conta/perfil">
+              <Conta>{<Perfil />}</Conta>
             </Route>
           </Switch>
           <Footer />

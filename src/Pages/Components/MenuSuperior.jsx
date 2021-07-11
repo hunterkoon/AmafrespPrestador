@@ -6,10 +6,16 @@ import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom';
 
 const MenuSuperior = () => {
-  const { dados, profile } = React.useContext(GlobalContext);
+  const { dados, profile, setProfile } = React.useContext(GlobalContext);
 
   return dados && profile ? (
-    <div className="main-div-menu">
+    <div
+      style={{
+        opacity: profile ? '100%' : '0%',
+      }}
+      onClick={() => setProfile(!profile)}
+      className="main-div-menu"
+    >
       <div className="main-h1-menu">
         <h1>Dados Prestador / Colaborador</h1>
       </div>
@@ -47,7 +53,7 @@ const MenuSuperior = () => {
               <h4>{dados.DEPARTAMENTO}</h4>
             </li>
             <section className="colab-section-profile">
-              <Link>
+              <Link to="/conta/perfil">
                 <img src={User_Profile} alt="" />
                 Perfil
               </Link>

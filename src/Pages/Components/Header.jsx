@@ -2,38 +2,60 @@ import React from 'react';
 import './Header.css';
 import Logotipo from '../../Assets/Logo Amafresp.svg';
 import Hamburguinho from '../../Assets/Hamburguinho.svg';
+import Seta from '../../Assets/Seta_Verde.svg';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
 import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const { click, setClick, dados, setDados, setProfile, profile } =
-    React.useContext(GlobalContext);
+  const {
+    click,
+    setClick,
+    dados,
+    setDados,
+    setProfile,
+    profile,
+    login,
+    setLogin,
+  } = React.useContext(GlobalContext);
 
   const logout = () => {
-    setClick(!click);
-    setDados({});
+    setLogin(false);
+    setDados(false);
+    setProfile(false);
   };
   return (
     <>
       <MenuSuperior />
       <header className="Header">
         <div className="div-img-logotipo">
-          <img src={Logotipo} alt="Logotipo Amafresp" />
+          <Link to="/">
+            <img src={Logotipo} alt="Logotipo Amafresp" />
+          </Link>
         </div>
-        {dados && click === true ? (
+        {dados && login === true ? (
           <div onClick={() => setProfile(!profile)} className="main-div-user">
-            <div className="div-user-info">
-              <span className="span-user">{dados.NOME.toUpperCase()}</span>
-              <span className="span-employ">{dados.EMPRESA.toUpperCase()}</span>
+            <div className="div-user-info-panel">
+              <img
+                id="user"
+                style={{
+                  transform:
+                    profile === false ? 'Rotate(180deg)' : 'Rotate(0deg)',
+                }}
+                className="Seta"
+                src={Seta}
+                alt=""
+              />
             </div>
-            <Link to="/">
-              <span onClick={() => setClick(!click)} className="a-sair">
-                Sair
-              </span>
-            </Link>
+            <div className="div-user-info">
+              <span className="span-user">{dados.NOME}</span>
+              <span className="span-employ">{dados.EMPRESA}</span>
+            </div>
           </div>
         ) : null}
+        <div onClick={logout} className="div-sair">
+          <Link to="/">Sair</Link>
+        </div>
         <a onClick={() => logout} className="hamburguinho" href="#menu">
           <img src={Hamburguinho} alt="" />
         </a>

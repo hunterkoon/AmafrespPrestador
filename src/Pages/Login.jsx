@@ -8,7 +8,7 @@ import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Pages/GlobalContext';
 const Login = () => {
-  const { click, setClick } = React.useContext(GlobalContext);
+  const { setLogin, login } = React.useContext(GlobalContext);
 
   let inputWidth = '95%';
   return (
@@ -45,9 +45,9 @@ const Login = () => {
             label={'SENHA'}
           />
 
-          <div className="button-div">
+          <div className="button-div" onClick={() => setLogin(true)}>
             <Link to="conta">
-              <Button onClick={() => setClick(!click)} value="Entrar"></Button>
+              <Button value="Entrar"></Button>
             </Link>
           </div>
           <div className="links-menu">

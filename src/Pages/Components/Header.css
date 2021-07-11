@@ -9,11 +9,21 @@
   position: fixed;
   align-items: center;
 }
+.div-img-logotipo a {
+  margin: 1.6rem;
+  font-family: NotoSans-Regular;
+  color: none;
+  align-items: center;
+  align-self: end;
+  align-content: none;
+  display: flex;
+  text-decoration: none;
+}
 .div-img-logotipo {
   width: 48%;
 }
 .div-img-logotipo img {
-  margin: 2em;
+  margin: 0;
   width: 10rem;
 }
 
@@ -45,6 +55,7 @@
   margin: 0;
 }
 .main-div-user {
+  margin-right: 5em;
   justify-content: flex-end;
   cursor: pointer;
   align-items: center;
@@ -52,17 +63,25 @@
   display: flex;
   flex-direction: row;
 }
-.a-sair {
-  display: flex;
-  width: 2em;
-  font-size: 1em;
-  position: relative;
-  font-family: NotoSans-Regular;
-  color: #474747;
-  text-decoration: underline;
+.div-sair {
+  position: absolute;
+  right: 0;
+  margin: 2em;
 }
 .hamburguinho {
   display: none;
+}
+.div-user-info-panel {
+  flex-direction: column;
+  align-items: center;
+}
+
+.Seta {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  transition: 150ms;
+  position: relative;
+  width: 1em;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -81,6 +100,9 @@
     display: none;
   }
   .div-user-info {
+    display: none;
+  }
+  .div-sair {
     display: none;
   }
 }

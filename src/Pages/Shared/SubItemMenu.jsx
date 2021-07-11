@@ -8,6 +8,7 @@ const SubItemMenu = ({ ...props }) => {
       state={props.state}
       className="add-user-sub"
       style={{
+        backgroundColor: props.clicked ? 'black' : null,
         height: props.state ? '3em' : '0em',
         opacity: props.state ? '100%' : '0',
       }}

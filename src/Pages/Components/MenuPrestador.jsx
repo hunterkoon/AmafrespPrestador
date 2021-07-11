@@ -13,6 +13,13 @@ const MenuPrestador = () => {
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [menuItemRecadastramento, setmenuItemRecadastramento] =
     React.useState(false);
+  const [clicou, setClicou] = React.useState(false);
+
+  // const handleClick = ({target}) =>{
+
+  //   target.
+
+  // }
 
   const handleMouse = (event) => {
     const tag = event.target.tagName;
@@ -35,7 +42,7 @@ const MenuPrestador = () => {
           link="/conta"
         />
 
-        <div onClick={() => setmenuItemUsuarios(!menuItemUsuarios)}>
+        <div onClick={() => setmenuItemUsuarios(true)}>
           <ItemMenu
             link="/conta"
             alt="item menu usuários"
@@ -49,12 +56,14 @@ const MenuPrestador = () => {
               state={menuItemUsuarios}
               itemSubMenu="Adicionar Usuário"
               subMenuSrcImg={More}
+              clicked={false}
             />
             <SubItemMenu
               link="/conta/gerenciar"
               state={menuItemUsuarios}
               itemSubMenu="Gerênciar"
               subMenuSrcImg={More}
+              clicked={true}
             />
           </ItemMenu>
         </div>
