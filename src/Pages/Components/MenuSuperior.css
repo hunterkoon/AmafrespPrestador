@@ -64,7 +64,12 @@
   font-weight: bold;
   margin: 1%;
 }
-
+.img-back {
+  position: absolute;
+  bottom: 0;
+  left: 47%;
+  display: flex;
+}
 .main-div-menu img {
   cursor: pointer;
 }

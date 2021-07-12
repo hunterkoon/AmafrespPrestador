@@ -8,7 +8,7 @@ import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Pages/GlobalContext';
 const Login = () => {
-  const { setLogin, login } = React.useContext(GlobalContext);
+  const { setLogin } = React.useContext(GlobalContext);
 
   let inputWidth = '95%';
   return (

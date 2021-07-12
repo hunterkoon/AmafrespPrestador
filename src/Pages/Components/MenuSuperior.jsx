@@ -1,6 +1,6 @@
 import React from 'react';
 import './MenuSuperior.css';
-// import Button_Back from '../../Assets/Button_Back.svg';
+import Button_Back from '../../Assets/Button_Back.svg';
 import User_Profile from '../../Assets/UserProfille.svg';
 import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom';
@@ -11,13 +11,13 @@ const MenuSuperior = () => {
   return dados && profile ? (
     <div
       style={{
-        opacity: profile ? '100%' : '0%',
+        opacity: profile === true ? '100%' : '0%',
       }}
       onClick={() => setProfile(!profile)}
       className="main-div-menu"
     >
       <div className="main-h1-menu">
-        <h1>Dados Prestador / Colaborador</h1>
+        <h1>Dados Prestador / Usuário</h1>
       </div>
       <div className="main-div-dados-menu">
         <div className="prestador-div-menu">
@@ -59,6 +59,7 @@ const MenuSuperior = () => {
               </Link>
             </section>
           </ul>
+          <img className="img-back" src={Button_Back} alt="" />
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ export const GlobalStorage = ({ children }) => {
   const [click, setClick] = React.useState(false);
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
+  // const [focusMenu, setFocusMenu] = React.useState(false);
 
   const getDataGeneral = () => {
     login === true ? setDados(dadosCliente[0].DADOS[0]) : setDados({});

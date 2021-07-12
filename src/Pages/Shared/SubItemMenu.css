@@ -15,3 +15,6 @@
 .add-user-sub img {
   margin-left: 4em;
 }
+.selected {
+  background-color: #38c6ae;
+}

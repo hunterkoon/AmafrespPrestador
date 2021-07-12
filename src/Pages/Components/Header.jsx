@@ -8,16 +8,8 @@ import { GlobalContext } from '../GlobalContext';
 import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const {
-    click,
-    setClick,
-    dados,
-    setDados,
-    setProfile,
-    profile,
-    login,
-    setLogin,
-  } = React.useContext(GlobalContext);
+  const { dados, setDados, setProfile, profile, login, setLogin } =
+    React.useContext(GlobalContext);
 
   const logout = () => {
     setLogin(false);

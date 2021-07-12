@@ -13,19 +13,25 @@ const MenuPrestador = () => {
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [menuItemRecadastramento, setmenuItemRecadastramento] =
     React.useState(false);
-  const [clicou, setClicou] = React.useState(false);
-
-  // const handleClick = ({target}) =>{
-
-  //   target.
-
-  // }
 
   const handleMouse = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
     return tag === 'A' ? imgTag.classList.toggle('animation') : false;
   };
+
+  const handleWindow = () => {
+    window.document.addEventListener('click', function removeMenu(event) {
+      if (event.target.tagName !== 'A') {
+        setmenuItemUsuarios(false);
+        setmenuItemRecadastramento(false);
+      }
+    });
+  };
+
+  React.useEffect(() => {
+    handleWindow();
+  }, [menuItemUsuarios, menuItemRecadastramento]);
 
   return (
     <nav
@@ -42,7 +48,7 @@ const MenuPrestador = () => {
           link="/conta"
         />
 
-        <div onClick={() => setmenuItemUsuarios(true)}>
+        <div onClick={() => setmenuItemUsuarios(!menuItemUsuarios)}>
           <ItemMenu
             link="/conta"
             alt="item menu usuários"
@@ -56,14 +62,12 @@ const MenuPrestador = () => {
               state={menuItemUsuarios}
               itemSubMenu="Adicionar Usuário"
               subMenuSrcImg={More}
-              clicked={false}
             />
             <SubItemMenu
               link="/conta/gerenciar"
               state={menuItemUsuarios}
               itemSubMenu="Gerênciar"
               subMenuSrcImg={More}
-              clicked={true}
             />
           </ItemMenu>
         </div>

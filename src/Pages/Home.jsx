@@ -9,15 +9,19 @@ const Home = () => {
   return (
     <div className="div-main-home">
       <Titledecorated text={`Olá,${dadosCliente[0].DADOS[0].NOME}`} />
-      <img src={MainImage} alt="" />
 
-      <p>
-        Seja bem vindo ao novo Portal Amafresp . Agora você pode consultar seus
-        dados,realizar o recadastramento entre outras funcionalidades. Em caso
-        de dúvidas, consulte o nosso Regulamento.
-      </p>
+      <div className="div-img">
+        <img src={MainImage} alt="" />
+      </div>
 
-      <Button value="Recadastrar" />
+      <div className="div-text">
+        <p>
+          Seja bem vindo ao novo Portal Amafresp . Agora você pode consultar
+          seus dados,realizar o recadastramento entre outras funcionalidades. Em
+          caso de dúvidas, consulte o nosso Regulamento.
+        </p>
+        <Button value="Recadastrar" />
+      </div>
     </div>
   );
 };
