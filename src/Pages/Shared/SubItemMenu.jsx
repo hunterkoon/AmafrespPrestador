@@ -5,11 +5,11 @@ import './SubItemMenu.css';
 const SubItemMenu = ({ ...props }) => {
   return (
     <section
-      state={props.state}
-      className="add-user-sub"
+      className={'add-user-sub'}
       style={{
-        height: props.state ? '3em' : '0em',
-        opacity: props.state ? '100%' : '0',
+        paddingTop: '0.6em',
+        paddingBotton: '0.6em',
+        height: '10em',
       }}
     >
       <Link to={props.link}>

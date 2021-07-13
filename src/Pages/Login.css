@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: row;
   column-gap: 5%;
-  height: 79.9vh;
+  height: 90vh;
   margin-top: 10vh;
+  animation-name: pageview;
+  animation-duration: 400ms;
 }
 .image-login-div {
   z-index: -1;
@@ -34,11 +36,14 @@
 }
 
 .button-div {
-  padding-left: 7px;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
+.button-div button {
+  margin: 0.75em;
+}
+
 .links-menu {
   font-size: 1em;
   cursor: pointer;
@@ -87,5 +92,16 @@
     font-size: 1em;
     display: flex;
     flex-direction: row;
+  }
+}
+
+@keyframes pageview {
+  from {
+    opacity: 15%;
+    transform: translate3d(-150px, 0, 0);
+  }
+  to {
+    opacity: 100%;
+    transform: translate3d(0px, 0, 0);
   }
 }

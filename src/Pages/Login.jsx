@@ -6,8 +6,10 @@ import Title from '../Pages/Shared/Title';
 import Button from './Shared/Button';
 import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
+import { GlobalContext } from '../Pages/GlobalContext';
+const Login = () => {
+  const { setLogin, error } = React.useContext(GlobalContext);
 
-const Login = ({ ...props }) => {
   let inputWidth = '95%';
   return (
     <div className="main-login">
@@ -19,9 +21,10 @@ const Login = ({ ...props }) => {
           <Titledecorated text="Login" />
           <Title text="Portal Amafresp Prestador" />
         </div>
-        <form action="">
+        <form action="POST">
           <Input
-          id='cnpj'
+            error={error}
+            id="cnpj"
             className="input"
             type={'text'}
             placeholder={'CNPJ/CPF'}
@@ -29,30 +32,35 @@ const Login = ({ ...props }) => {
             label={'CNPJ/CPF'}
           />
           <Input
-           id='user'
+            error={error}
+            id="user"
             type={'text'}
             placeholder={'Usuário'}
             width={inputWidth}
             label={'USUÁRIO'}
           />
           <Input
-           id='password'
+            error={error}
+            id="password"
             type={'password'}
             placeholder={'Senha'}
             width={inputWidth}
             label={'SENHA'}
           />
 
-          <div className="button-div">
+          <div className="button-div" onClick={() => setLogin(true)}>
             <Link to="conta">
-              <Button value="Entrar"> </Button>
+              <Button value="Entrar"></Button>
             </Link>
           </div>
           <div className="links-menu">
-            <p>Recuperar senha</p>
-            <p>Primeiro acesso</p>
+            <Link to="/conta/recuperarsenha/">
+              <p>Recuperar senha</p>
+            </Link>
+            <Link to="/conta/primeiroacesso/">
+              <p>Primeiro acesso</p>
+            </Link>
           </div>
-
         </form>
       </div>
     </div>

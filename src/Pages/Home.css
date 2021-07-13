@@ -1,17 +1,68 @@
 .div-main-home {
-  padding: 3em;
+  padding: 1em;
   position: relative;
-  margin-top: 8vh;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
 }
-.div-main-home img {
+.button-recadastrar {
+  margin: 1em auto;
+}
+
+.div-img {
+  top: 0;
+  margin: 0 auto;
+  position: relative;
   align-self: center;
-  width: 45%;
+  padding-bottom: 2em;
+  width: 75%;
 }
-.div-main-home p {
-  font-family: NotoSans-Regular;
+.div-text {
+  margin: 0 auto;
+  width: 50%;
+  position: relative;
   color: #474747;
   text-align: center;
+}
+
+.div-main-home {
+  animation-name: pageview;
+  animation-duration: 400ms;
+}
+
+@keyframes pageview {
+  from {
+    opacity: 15%;
+    transform: translate3d(-150px, 0, 0);
+  }
+  to {
+    opacity: 100%;
+    transform: translate3d(0px, 0, 0);
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1024px) {
+  .div-img {
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 1rem auto;
+    position: inherit;
+    width: 98%;
+  }
+  .div-text {
+    margin: 1rem auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 98%;
+    position: inherit;
+  }
+  .div-main-home {
+    height: 100vh;
+  }
+  .div-main-home img {
+    width: 90%;
+    margin-top: 2em;
+  }
 }

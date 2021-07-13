@@ -1,6 +1,7 @@
 .main-menu {
+  transition: 200ms;
   font-family: NotoSans-Regular;
-  height: 84.9vh;
+  height: fill;
   margin-top: 5vh;
   background-color: #25b099;
   color: #fff;
@@ -10,6 +11,9 @@
   margin-top: 10vh;
 }
 
+.transiction-menu {
+  animation: opacityAnime forwards 200ms;
+}
 .animation {
   animation-name: iconsAnime;
   animation-duration: 100ms;
@@ -26,6 +30,16 @@
   }
 }
 
+@keyframes opacityAnime {
+  from {
+    opacity: 0;
+    height: 50%;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .main-menu {
     display: none;
