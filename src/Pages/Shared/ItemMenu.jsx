@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import './ItemMenu.css';
 
 const ItemMenu = ({ ...props }) => {
+  console.log(props.clicked);
   return (
-    <li className="li-item-menu" state={props.state}>
-      <Link to={props.link}>
+    <li className="li-item-menu">
+      <Link to={props.link} onClick={props.clicked}>
         <img src={props.srcItem} alt={props.alt} />
         {props.item}
         <img
@@ -13,11 +14,13 @@ const ItemMenu = ({ ...props }) => {
           src={props.srcSeta}
           alt=""
           style={{
-            transform: props.state === true ? 'rotate(90deg)' : 'rotate(0deg)',
+            transform: props.state ? 'rotate(90deg)' : 'rotate(0deg)',
           }}
         />
       </Link>
-      {props.children}
+      {props.state ? (
+        <div style={{ height: '10em' }}> {props.children} </div>
+      ) : null}
     </li>
   );
 };

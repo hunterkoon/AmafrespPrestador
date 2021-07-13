@@ -1,13 +1,16 @@
 .div-main-home {
-  padding: 3em;
+  padding: 1em;
   position: relative;
-  margin-top: 8vh;
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+.button-recadastrar {
+  margin: 1em auto;
+}
 
 .div-img {
+  top: 0;
   margin: 0 auto;
   position: relative;
   align-self: center;

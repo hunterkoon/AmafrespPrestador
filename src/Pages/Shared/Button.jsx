@@ -1,8 +1,12 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ ...props }) => {
-  return <button onClick={props.onClick}>{props.value}</button>;
+const ButtonM = ({ ...props }) => {
+  return (
+    <button variant="contained" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 };
 
-export default Button;
+export default ButtonM;

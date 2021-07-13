@@ -8,7 +8,7 @@ import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Pages/GlobalContext';
 const Login = () => {
-  const { setLogin } = React.useContext(GlobalContext);
+  const { setLogin, error } = React.useContext(GlobalContext);
 
   let inputWidth = '95%';
   return (
@@ -21,8 +21,9 @@ const Login = () => {
           <Titledecorated text="Login" />
           <Title text="Portal Amafresp Prestador" />
         </div>
-        <form action="">
+        <form action="POST">
           <Input
+            error={error}
             id="cnpj"
             className="input"
             type={'text'}
@@ -31,6 +32,7 @@ const Login = () => {
             label={'CNPJ/CPF'}
           />
           <Input
+            error={error}
             id="user"
             type={'text'}
             placeholder={'Usuário'}
@@ -38,6 +40,7 @@ const Login = () => {
             label={'USUÁRIO'}
           />
           <Input
+            error={error}
             id="password"
             type={'password'}
             placeholder={'Senha'}
@@ -51,8 +54,12 @@ const Login = () => {
             </Link>
           </div>
           <div className="links-menu">
-            <p>Recuperar senha</p>
-            <p>Primeiro acesso</p>
+            <Link to="/conta/recuperarsenha/">
+              <p>Recuperar senha</p>
+            </Link>
+            <Link to="/conta/primeiroacesso/">
+              <p>Primeiro acesso</p>
+            </Link>
           </div>
         </form>
       </div>

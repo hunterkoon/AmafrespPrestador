@@ -6,9 +6,9 @@ import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom';
 
 const MenuSuperior = () => {
-  const { dados, profile, setProfile } = React.useContext(GlobalContext);
+  const { data, profile, setProfile } = React.useContext(GlobalContext);
 
-  return dados && profile ? (
+  return data && profile ? (
     <div
       style={{
         opacity: profile === true ? '100%' : '0%',
@@ -24,20 +24,20 @@ const MenuSuperior = () => {
           <ul>
             <li>
               <h2>Empresa:</h2>
-              <h4>{dados.EMPRESA}</h4>
+              <h4>{data.EMPRESA}</h4>
             </li>
             <li>
               <h2>CNPJ:</h2>
-              <h4>{dados.CNPJ}</h4>
+              <h4>{data.CNPJ}</h4>
             </li>
 
             <li>
               <h2>Segmento:</h2>
-              <h4>{dados.SEGMENTO}</h4>
+              <h4>{data.SEGMENTO}</h4>
             </li>
             <li>
               <h2>Tipo Credenciado: </h2>
-              <h4>{dados.TIPO_CREDENCIADO}</h4>
+              <h4>{data.CREDENCIADO}</h4>
             </li>
           </ul>
         </div>
@@ -46,11 +46,11 @@ const MenuSuperior = () => {
           <ul>
             <li>
               <h2>Nome:</h2>
-              <h4>{dados.NOME}</h4>
+              <h4>{data.NOME}</h4>
             </li>
             <li>
               <h2>Departamento:</h2>
-              <h4>{dados.DEPARTAMENTO}</h4>
+              <h4>{data.DEPARTAMENTO}</h4>
             </li>
             <section className="colab-section-profile">
               <Link to="/conta/perfil">

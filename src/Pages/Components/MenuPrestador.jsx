@@ -21,17 +21,21 @@ const MenuPrestador = () => {
   };
 
   const handleWindow = () => {
-    window.document.addEventListener('click', function removeMenu(event) {
-      if (event.target.tagName !== 'A') {
+    window.document.addEventListener('click', function removeMenu({ target }) {
+      if (target.tagName !== 'A') {
         setmenuItemUsuarios(false);
         setmenuItemRecadastramento(false);
       }
     });
   };
-
-  React.useEffect(() => {
-    handleWindow();
-  }, [menuItemUsuarios, menuItemRecadastramento]);
+  handleWindow();
+  const handleToggleMenu = (state, value) => {
+    state(!value);
+    return (
+      menuItemRecadastramento ? setmenuItemRecadastramento(false) : null,
+      menuItemUsuarios ? setmenuItemUsuarios(false) : null
+    );
+  };
 
   return (
     <nav
@@ -48,15 +52,18 @@ const MenuPrestador = () => {
           link="/conta"
         />
 
-        <div onClick={() => setmenuItemUsuarios(!menuItemUsuarios)}>
-          <ItemMenu
-            link="/conta"
-            alt="item menu usuários"
-            item="Usuários"
-            srcItem={iconUser}
-            srcSeta={Seta}
-            state={menuItemUsuarios}
-          >
+        <ItemMenu
+          state={menuItemUsuarios}
+          link="/conta/usuario"
+          alt="item menu usuários"
+          item="Usuários"
+          srcItem={iconUser}
+          srcSeta={Seta}
+          clicked={() =>
+            handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
+          }
+        >
+          <div class="transiction-menu">
             <SubItemMenu
               link="/conta/usuario"
               state={menuItemUsuarios}
@@ -69,33 +76,36 @@ const MenuPrestador = () => {
               itemSubMenu="Gerênciar"
               subMenuSrcImg={More}
             />
-          </ItemMenu>
-        </div>
-        <div
-          onClick={() => setmenuItemRecadastramento(!menuItemRecadastramento)}
+          </div>
+        </ItemMenu>
+
+        <ItemMenu
+          state={menuItemRecadastramento}
+          link="/conta/recadastramento"
+          alt="item menu Recadastro"
+          item="Recadastramento"
+          srcItem={iconRecadastro}
+          srcSeta={Seta}
+          clicked={() =>
+            handleToggleMenu(
+              setmenuItemRecadastramento,
+              menuItemRecadastramento,
+            )
+          }
         >
-          <ItemMenu
-            link="/conta"
-            alt="item menu Recadastro"
-            item="Recadastramento"
-            srcItem={iconRecadastro}
-            srcSeta={Seta}
-            state={menuItemRecadastramento}
-          >
+          <div class="transiction-menu">
             <SubItemMenu
               link="/conta/recadastramento"
-              state={menuItemRecadastramento}
               itemSubMenu="Realizar Recadastramento"
               subMenuSrcImg={More}
             />
             <SubItemMenu
               link="/conta/recadastramento"
-              state={menuItemRecadastramento}
               itemSubMenu="Status"
               subMenuSrcImg={More}
             />
-          </ItemMenu>
-        </div>
+          </div>
+        </ItemMenu>
 
         <div style={{ position: 'absolute', bottom: '15vh' }}>
           <ItemMenu

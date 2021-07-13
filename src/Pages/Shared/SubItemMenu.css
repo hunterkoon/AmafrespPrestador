@@ -6,15 +6,21 @@
   background-color: #017663;
   position: relative;
   width: 100%;
-  transition: 150ms;
   align-items: center;
+  transition: 3.5s;
 }
+
 .add-user-sub img {
   width: 1em;
 }
 .add-user-sub img {
   margin-left: 4em;
 }
+.add-user-sub span:active {
+  background-color: green;
+  opacity: 80%;
+}
+
 .selected {
   background-color: #38c6ae;
 }

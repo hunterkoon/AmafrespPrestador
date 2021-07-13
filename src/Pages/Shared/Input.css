@@ -19,15 +19,14 @@ input:hover {
 }
 
 input {
-
   text-indent: 1em;
   font-family: NotoSans-Regular;
   border: none;
   height: 2.3rem;
   font-size: 1em;
   border-radius: 8px;
-  background-color: #EBEBEB;
-  margin: 0.5em auto;
+  background-color: #ebebeb;
+  margin: 1em auto;
   color: #474747;
 }
 div {

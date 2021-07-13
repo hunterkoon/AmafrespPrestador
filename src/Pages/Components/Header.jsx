@@ -8,12 +8,11 @@ import { GlobalContext } from '../GlobalContext';
 import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const { dados, setDados, setProfile, profile, login, setLogin } =
+  const { data, setProfile, profile, login, setLogin } =
     React.useContext(GlobalContext);
 
   const logout = () => {
     setLogin(false);
-    setDados(false);
     setProfile(false);
   };
   return (
@@ -25,7 +24,7 @@ export default function Header() {
             <img src={Logotipo} alt="Logotipo Amafresp" />
           </Link>
         </div>
-        {dados && login === true ? (
+        {login ? (
           <div onClick={() => setProfile(!profile)} className="main-div-user">
             <div className="div-user-info-panel">
               <img
@@ -40,8 +39,8 @@ export default function Header() {
               />
             </div>
             <div className="div-user-info">
-              <span className="span-user">{dados.NOME}</span>
-              <span className="span-employ">{dados.EMPRESA}</span>
+              <span className="span-user">{data.NOME}</span>
+              <span className="span-employ">{data.EMPRESA}</span>
             </div>
           </div>
         ) : null}

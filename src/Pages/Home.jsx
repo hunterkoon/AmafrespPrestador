@@ -20,6 +20,8 @@ const Home = () => {
           seus dados,realizar o recadastramento entre outras funcionalidades. Em
           caso de dúvidas, consulte o nosso Regulamento.
         </p>
+      </div>
+      <div className="button-recadastrar">
         <Button value="Recadastrar" />
       </div>
     </div>
