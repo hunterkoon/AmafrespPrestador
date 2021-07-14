@@ -49,7 +49,7 @@ const Login = () => {
           />
 
           <div className="button-div" onClick={() => setLogin(true)}>
-            <Link to="conta">
+            <Link to="/home">
               <Button value="Entrar"></Button>
             </Link>
           </div>

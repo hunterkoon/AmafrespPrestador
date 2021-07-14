@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './ItemMenu.css';
 
 const ItemMenu = ({ ...props }) => {
-  console.log(props.clicked);
   return (
     <li className="li-item-menu">
       <Link to={props.link} onClick={props.clicked}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MenuPrestador.css';
+import './MenuLateral.css';
 import iconHome from '../../Assets/iconHomeBackgroundGreen.svg';
 import iconUser from '../../Assets/iconUsersBackgroundGreen.svg';
 import iconRecadastro from '../../Assets/iconRecadastramentoBackgroundGreen.svg';
@@ -9,7 +9,7 @@ import Seta from '../../Assets/Seta.svg';
 import ItemMenu from '../Shared/ItemMenu';
 import SubItemMenu from '../Shared/SubItemMenu';
 
-const MenuPrestador = () => {
+const MenuLateral = () => {
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [menuItemRecadastramento, setmenuItemRecadastramento] =
     React.useState(false);
@@ -49,12 +49,10 @@ const MenuPrestador = () => {
           item="Conta"
           srcItem={iconHome}
           srcSeta=""
-          link="/conta"
         />
 
         <ItemMenu
           state={menuItemUsuarios}
-          link="/conta/usuario"
           alt="item menu usuários"
           item="Usuários"
           srcItem={iconUser}
@@ -65,13 +63,12 @@ const MenuPrestador = () => {
         >
           <div class="transiction-menu">
             <SubItemMenu
-              link="/conta/usuario"
+              link="/conta/usuarios"
               state={menuItemUsuarios}
               itemSubMenu="Adicionar Usuário"
               subMenuSrcImg={More}
             />
             <SubItemMenu
-              link="/conta/gerenciar"
               state={menuItemUsuarios}
               itemSubMenu="Gerênciar"
               subMenuSrcImg={More}
@@ -81,9 +78,8 @@ const MenuPrestador = () => {
 
         <ItemMenu
           state={menuItemRecadastramento}
-          link="/conta/recadastramento"
           alt="item menu Recadastro"
-          item="Recadastramento"
+          item="Atualização Cadastral"
           srcItem={iconRecadastro}
           srcSeta={Seta}
           clicked={() =>
@@ -95,15 +91,10 @@ const MenuPrestador = () => {
         >
           <div class="transiction-menu">
             <SubItemMenu
-              link="/conta/recadastramento"
-              itemSubMenu="Realizar Recadastramento"
+              itemSubMenu="Realizar Atualização Cadastral"
               subMenuSrcImg={More}
             />
-            <SubItemMenu
-              link="/conta/recadastramento"
-              itemSubMenu="Status"
-              subMenuSrcImg={More}
-            />
+            <SubItemMenu itemSubMenu="Status" subMenuSrcImg={More} />
           </div>
         </ItemMenu>
 
@@ -113,7 +104,6 @@ const MenuPrestador = () => {
             item="Fale Conosco"
             srcItem={iconFaleConosco}
             srcSeta=""
-            link="/conta/faleconosco"
           />
         </div>
       </ul>
@@ -121,4 +111,4 @@ const MenuPrestador = () => {
   );
 };
 
-export default MenuPrestador;
+export default MenuLateral;

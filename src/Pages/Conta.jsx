@@ -1,7 +1,8 @@
 import React from 'react';
-import './Conta.css';
-import Menu from '../Pages/Components/MenuPrestador';
 
+import './Conta.css';
+import Menu from './Components/MenuLateral';
+import Home from './Home';
 const Conta = ({ ...props }) => {
   return (
     <div className="main-conta">
