@@ -6,6 +6,7 @@ import Home from './Home';
 import Gerenciar from './GerenciarUsuarios';
 import FaleConosco from './FaleConosco';
 import AdicionarUsuarios from './AdicionarUsuarios';
+import Recadastramento from './Recadastramento';
 const Conta = () => {
   return (
     <div className="main-conta">
@@ -16,6 +17,7 @@ const Conta = () => {
           <Route path="Gerenciar" element={<Gerenciar />} />
           <Route path="FaleConosco" element={<FaleConosco />} />
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
+          <Route path="Recadastramento" element={<Recadastramento />} />
         </Routes>
       </div>
     </div>

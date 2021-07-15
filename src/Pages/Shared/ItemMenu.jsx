@@ -5,11 +5,7 @@ import './ItemMenu.css';
 const ItemMenu = ({ ...props }) => {
   return (
     <li className="li-item-menu">
-      <NavLink
-        // activeStyle={{ color: 'black' }}
-        to={props.link}
-        onClick={props.clicked}
-      >
+      <NavLink to={props.link} onClick={props.clicked}>
         <img src={props.srcItem} alt={props.alt} />
         {props.item}
         <img

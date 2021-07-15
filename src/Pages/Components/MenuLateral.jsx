@@ -71,7 +71,7 @@ const MenuLateral = () => {
               subMenuSrcImg={More}
             />
             <SubItemMenu
-              link="/conta/Gerenciar"
+              link="Gerenciar"
               state={menuItemUsuarios}
               itemSubMenu="Gerênciar"
               subMenuSrcImg={More}
@@ -95,7 +95,7 @@ const MenuLateral = () => {
         >
           <div class="transiction-menu">
             <SubItemMenu
-              link=""
+              link="Recadastramento"
               itemSubMenu="Realizar Atualização Cadastral"
               subMenuSrcImg={More}
             />
@@ -105,7 +105,7 @@ const MenuLateral = () => {
 
         <div style={{ position: 'absolute', bottom: '15vh' }}>
           <ItemMenu
-            link=""
+            link="status"
             alt="item menu fale conosco"
             item="Fale Conosco"
             srcItem={iconFaleConosco}
