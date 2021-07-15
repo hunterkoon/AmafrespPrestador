@@ -6,6 +6,7 @@ const Usuarios = () => {
   return (
     <div className="div-main-adicionarUsuarios">
       <Titledecorated text="Usuários" />
+      TESTE
     </div>
   );
 };

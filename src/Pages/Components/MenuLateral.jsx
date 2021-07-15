@@ -45,6 +45,7 @@ const MenuLateral = () => {
     >
       <ul>
         <ItemMenu
+          link="/conta"
           alt="item menu home page"
           item="Conta"
           srcItem={iconHome}
@@ -52,6 +53,7 @@ const MenuLateral = () => {
         />
 
         <ItemMenu
+          link=""
           state={menuItemUsuarios}
           alt="item menu usuários"
           item="Usuários"
@@ -63,12 +65,13 @@ const MenuLateral = () => {
         >
           <div class="transiction-menu">
             <SubItemMenu
-              link="/conta/usuarios"
+              link="AdicionarUsuarios"
               state={menuItemUsuarios}
               itemSubMenu="Adicionar Usuário"
               subMenuSrcImg={More}
             />
             <SubItemMenu
+              link="/conta/Gerenciar"
               state={menuItemUsuarios}
               itemSubMenu="Gerênciar"
               subMenuSrcImg={More}
@@ -77,6 +80,7 @@ const MenuLateral = () => {
         </ItemMenu>
 
         <ItemMenu
+          link=""
           state={menuItemRecadastramento}
           alt="item menu Recadastro"
           item="Atualização Cadastral"
@@ -91,15 +95,17 @@ const MenuLateral = () => {
         >
           <div class="transiction-menu">
             <SubItemMenu
+              link=""
               itemSubMenu="Realizar Atualização Cadastral"
               subMenuSrcImg={More}
             />
-            <SubItemMenu itemSubMenu="Status" subMenuSrcImg={More} />
+            <SubItemMenu link="" itemSubMenu="Status" subMenuSrcImg={More} />
           </div>
         </ItemMenu>
 
         <div style={{ position: 'absolute', bottom: '15vh' }}>
           <ItemMenu
+            link=""
             alt="item menu fale conosco"
             item="Fale Conosco"
             srcItem={iconFaleConosco}

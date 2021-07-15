@@ -21,25 +21,6 @@
   animation-iteration-count: 3;
 }
 
-@keyframes iconsAnime {
-  from {
-    transform: rotate(-10deg);
-  }
-  to {
-    transform: rotate(10deg);
-  }
-}
-
-@keyframes opacityAnime {
-  from {
-    opacity: 0;
-    height: 50%;
-  }
-  to {
-    opacity: 1;
-    height: 100%;
-  }
-}
 @media only screen and (max-width: 1024px) {
   .main-menu {
     display: none;

@@ -8,23 +8,19 @@ import { GlobalContext } from '../GlobalContext';
 import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const { data, setProfile, profile, login, setLogin } =
+  const { data, setProfile, profile, login, logout } =
     React.useContext(GlobalContext);
 
-  const logout = () => {
-    setLogin(false);
-    setProfile(false);
-  };
   return (
     <>
       <MenuSuperior />
       <header className="Header">
         <div className="div-img-logotipo">
           <Link to="/">
-            <img src={Logotipo} alt="Logotipo Amafresp" />
+            <img onClick={logout} src={Logotipo} alt="Logotipo Amafresp" />
           </Link>
         </div>
-        {login ? (
+        {login && data ? (
           <div onClick={() => setProfile(!profile)} className="main-div-user">
             <div className="div-user-info-panel">
               <img
@@ -39,15 +35,15 @@ export default function Header() {
               />
             </div>
             <div className="div-user-info">
-              <span className="span-user">{data.NOME}</span>
-              <span className="span-employ">{data.EMPRESA}</span>
+              <span className="span-user">{data[0].NOME}</span>
+              <span className="span-employ">{data[0].EMPRESA}</span>
             </div>
           </div>
         ) : null}
         <div onClick={logout} className="div-sair">
-          <Link to="/">Sair</Link>
+          <Link to="./">Sair</Link>
         </div>
-        <a onClick={() => logout} className="hamburguinho" href="#menu">
+        <a className="hamburguinho" href="#menu">
           <img src={Hamburguinho} alt="" />
         </a>
       </header>

@@ -8,9 +8,10 @@ import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Pages/GlobalContext';
 const Login = () => {
-  const { setLogin, error } = React.useContext(GlobalContext);
+  const { error, handleloginPage } = React.useContext(GlobalContext);
 
   let inputWidth = '95%';
+
   return (
     <div className="main-login">
       <div className="image-login-div">
@@ -21,7 +22,12 @@ const Login = () => {
           <Titledecorated text="Login" />
           <Title text="Portal Amafresp Prestador" />
         </div>
-        <form action="POST">
+        <form
+          action="POST"
+          onClick={(event) => {
+            event.preventDefault();
+          }}
+        >
           <Input
             error={error}
             id="cnpj"
@@ -48,8 +54,8 @@ const Login = () => {
             label={'SENHA'}
           />
 
-          <div className="button-div" onClick={() => setLogin(true)}>
-            <Link to="/home">
+          <div className="button-div" onClick={handleloginPage}>
+            <Link to="/conta">
               <Button value="Entrar"></Button>
             </Link>
           </div>

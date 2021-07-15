@@ -19,10 +19,13 @@ p {
 }
 h1,
 h2,
-h3,
-h4 {
+h3 {
   font-family: NotoSans-Bold;
   font-size: 1rem;
+}
+h4 {
+  font-weight: lighter;
+  font-family: NotoSans-Regular;
 }
 a {
   color: unset;
@@ -38,16 +41,6 @@ label {
   font-size: 1rem;
 }
 
-@keyframes pageview {
-  from {
-    opacity: 15%;
-    transform: translate3d(-150px, 0, 0);
-  }
-  to {
-    opacity: 100%;
-    transform: translate3d(0px, 0, 0);
-  }
-}
 button {
   margin: 1rem auto;
 }
