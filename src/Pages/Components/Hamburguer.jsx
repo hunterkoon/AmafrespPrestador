@@ -2,7 +2,6 @@ import React from 'react';
 import './Hamburguer.css';
 import { GlobalContext } from '../GlobalContext';
 const Hamburguer = () => {
-  const location = document.location.pathname;
   const { animateMenu, setAnimateMenu } = React.useContext(GlobalContext);
 
   const handleClick = () => {

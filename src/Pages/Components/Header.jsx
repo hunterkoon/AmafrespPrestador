@@ -8,7 +8,7 @@ import { GlobalContext } from '../GlobalContext';
 import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const { data, setProfile, profile, login, logout, hamburguer } =
+  const { data, setProfile, profile, login, logout, width } =
     React.useContext(GlobalContext);
 
   return (
@@ -43,7 +43,7 @@ export default function Header() {
         <div onClick={logout} className="div-sair">
           <Link to="./">Sair</Link>
         </div>
-        {hamburguer ? (
+        {width <= 1024 ? (
           <div className="div-hamburguer">
             <Hamburguer />
           </div>

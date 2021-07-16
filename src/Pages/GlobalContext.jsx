@@ -1,6 +1,6 @@
 import React from 'react';
 import useFetch from './Hooks/useFetch';
-// import useWindowDimensions from './Hooks/getDimensionScreen';
+import useWindowDimensions from './Hooks/getDimensionScreen';
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
@@ -9,8 +9,8 @@ export const GlobalStorage = ({ children }) => {
   const [login, setLogin] = React.useState(false);
   const [input, setInput] = React.useState('');
   const [animateMenu, setAnimateMenu] = React.useState();
-  const [hamburguer, setHamburguer] = React.useState();
   const { data, loading, error, request, setData } = useFetch();
+  const { width, height } = useWindowDimensions();
 
   const logout = () => {
     setLogin(false);
@@ -53,8 +53,8 @@ export const GlobalStorage = ({ children }) => {
         setData,
         animateMenu,
         setAnimateMenu,
-        hamburguer,
-        setHamburguer,
+        width,
+        height,
       }}
     >
       {children}

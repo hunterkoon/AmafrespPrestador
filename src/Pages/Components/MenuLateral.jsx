@@ -55,22 +55,21 @@ const MenuLateral = () => {
     );
   };
 
-  // const handleAnimateMenu = ({ target }) => {
-  //   let location = target.innerText;
+  const handleAnimateMenu = ({ target }) => {
+    let location = target.innerText;
 
-  //   function validateLocation() {
-  //     if (location === 'Conta') {
-  //       return (location = '/');
-  //     } else if (location === 'Sair') {
-  //       return (location = 'login');
-  //     } else return location;
-  //   }
-
-  //   return setTimeout(() => {
-  //     navigate('./' + validateLocation());
-  //     setAnimateMenu(false);
-  //   }, 300);
-  // };
+    function validateLocation() {
+      if (location === 'Conta') {
+        return (location = '/');
+      } else if (location === 'Sair') {
+        return (location = '../');
+      } else return location;
+    }
+    return setTimeout(() => {
+      navigate('./' + validateLocation());
+      setAnimateMenu(false);
+    }, 200);
+  };
 
   return (
     <nav
@@ -79,7 +78,7 @@ const MenuLateral = () => {
       onMouseOut={handleMouse}
     >
       <ul>
-        <span>
+        <span onClick={handleAnimateMenu}>
           <ItemMenu
             alt="item menu home page"
             item="Conta"
@@ -141,7 +140,7 @@ const MenuLateral = () => {
           </div>
         </ItemMenu>
 
-        <span className="div-fale-conosco">
+        <span onClick={handleAnimateMenu} className="div-fale-conosco">
           <ItemMenu
             alt="item menu fale conosco"
             item="Contatos"
@@ -150,9 +149,9 @@ const MenuLateral = () => {
         </span>
 
         {animateMenu ? (
-          <div className="div-menu-sair">
+          <span onClick={handleAnimateMenu} className="div-menu-sair">
             <ItemMenu alt="item menu fale conosco" item="Sair" srcItem={Sair} />
-          </div>
+          </span>
         ) : null}
       </ul>
     </nav>
