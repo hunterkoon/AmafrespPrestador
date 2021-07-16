@@ -1,11 +1,13 @@
 .main-menu {
+  display: flex;
   transition: 200ms;
   font-family: NotoSans-Regular;
-  height: fill;
+  height: 100%;
   margin-top: 5vh;
   background-color: #25b099;
   color: #fff;
 }
+
 .main-menu ul {
   padding: 0;
   margin-top: 10vh;
@@ -20,9 +22,32 @@
   animation-direction: alternate-reverse;
   animation-iteration-count: 3;
 }
+.div-fale-conosco {
+  position: absolute;
+  bottom: 15vh;
+}
+
+.hambuguerClick {
+  display: flex;
+  position: absolute;
+  transition: 200ms;
+  font-family: NotoSans-Regular;
+  height: 100%;
+  margin-top: 5vh;
+  background-color: #25b099;
+  color: #fff;
+  z-index: 98;
+}
 
 @media only screen and (max-width: 1024px) {
   .main-menu {
     display: none;
+  }
+  .div-fale-conosco {
+    position: relative;
+    bottom: 0;
+  }
+  .hambuguerClick ul {
+    padding-inline-start: 0px;
   }
 }

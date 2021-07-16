@@ -1,5 +1,6 @@
 import React from 'react';
 import useFetch from './Hooks/useFetch';
+// import useWindowDimensions from './Hooks/getDimensionScreen';
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
@@ -7,12 +8,15 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [input, setInput] = React.useState('');
+  const [animateMenu, setAnimateMenu] = React.useState();
+  const [hamburguer, setHamburguer] = React.useState();
   const { data, loading, error, request, setData } = useFetch();
 
   const logout = () => {
     setLogin(false);
     setProfile(false);
   };
+
   React.useEffect(() => {
     handlelogin();
   }, [login]);
@@ -26,7 +30,6 @@ export const GlobalStorage = ({ children }) => {
   const handleloginPage = () => {
     handlelogin();
     setLogin(true);
-    console.log('realizou login');
   };
 
   return (
@@ -48,6 +51,10 @@ export const GlobalStorage = ({ children }) => {
         error,
         request,
         setData,
+        animateMenu,
+        setAnimateMenu,
+        hamburguer,
+        setHamburguer,
       }}
     >
       {children}

@@ -1,14 +1,14 @@
 import React from 'react';
 import './Header.css';
 import Logotipo from '../../Assets/Logo Amafresp.svg';
-import Hamburguinho from '../../Assets/Hamburguinho.svg';
+import Hamburguer from './Hamburguer';
 import Seta from '../../Assets/Seta_Verde.svg';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
 import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const { data, setProfile, profile, login, logout } =
+  const { data, setProfile, profile, login, logout, hamburguer } =
     React.useContext(GlobalContext);
 
   return (
@@ -43,9 +43,11 @@ export default function Header() {
         <div onClick={logout} className="div-sair">
           <Link to="./">Sair</Link>
         </div>
-        <a className="hamburguinho" href="#menu">
-          <img src={Hamburguinho} alt="" />
-        </a>
+        {hamburguer ? (
+          <div className="div-hamburguer">
+            <Hamburguer />
+          </div>
+        ) : null}
       </header>
     </>
   );

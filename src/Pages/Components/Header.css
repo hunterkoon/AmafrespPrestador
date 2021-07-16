@@ -20,7 +20,7 @@
   text-decoration: none;
 }
 .div-img-logotipo {
-  width: 48%;
+  width: auto;
 }
 .div-img-logotipo img {
   margin: 0;
@@ -37,7 +37,6 @@
   background-size: contain;
 }
 .div-user-info {
-  margin: 1em;
   display: flex;
   flex-direction: column;
 }
@@ -47,7 +46,6 @@
   font-family: NotoSans-Bold;
   margin: 0;
 }
-
 .span-employ {
   font-family: NotoSans-Regular;
   color: #474747;
@@ -55,22 +53,19 @@
   margin: 0;
 }
 .main-div-user {
-  margin-right: 5em;
-  justify-content: flex-end;
+  position: relative;
   cursor: pointer;
   align-items: center;
-  width: 50%;
+  width: auto;
   display: flex;
   flex-direction: row;
 }
 .div-sair {
-  position: absolute;
-  right: 0;
-  margin: 2em;
+  display: block;
+  flex-direction: row;
+  position: relative;
 }
-.hamburguinho {
-  display: none;
-}
+
 .div-user-info-panel {
   flex-direction: column;
   align-items: center;
@@ -81,22 +76,20 @@
   padding-right: 0.5em;
   transition: 150ms;
   position: relative;
-  width: 1em;
+  width: auto;
 }
 
 @media only screen and (max-width: 1024px) {
-  .a-sair {
-    width: 40%;
-  }
-  .hamburguinho {
-    display: block;
-    position: absolute;
-    right: 3rem;
+  .Header {
+    justify-content: space-between;
   }
   .main-div-user {
-    width: 25%;
+    width: auto;
+    left: 60%;
   }
   .main-div-user::before {
+    color: grey;
+    content: 'Dados';
     display: none;
   }
   .div-user-info {
@@ -105,4 +98,6 @@
   .div-sair {
     display: none;
   }
+}
+@media only screen and (min-width: 1024px) {
 }

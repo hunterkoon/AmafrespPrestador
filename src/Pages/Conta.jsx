@@ -15,7 +15,7 @@ const Conta = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Gerenciar" element={<Gerenciar />} />
-          <Route path="FaleConosco" element={<FaleConosco />} />
+          <Route path="Contatos" element={<FaleConosco />} />
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
           <Route path="Recadastramento" element={<Recadastramento />} />
         </Routes>

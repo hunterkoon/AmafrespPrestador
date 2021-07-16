@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import './ItemMenu.css';
 
 const ItemMenu = ({ ...props }) => {
   return (
     <li className="li-item-menu">
-      <NavLink to={props.link} onClick={props.clicked}>
+      <a style={{ cursor: 'pointer' }} onClick={props.clicked}>
         <img src={props.srcItem} alt={props.alt} />
         {props.item}
         <img
@@ -16,7 +16,7 @@ const ItemMenu = ({ ...props }) => {
             transform: props.state ? 'rotate(90deg)' : 'rotate(0deg)',
           }}
         />
-      </NavLink>
+      </a>
       {props.state ? (
         <div style={{ height: '10em' }}> {props.children} </div>
       ) : null}

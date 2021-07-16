@@ -14,7 +14,7 @@ const SubItemMenu = ({ ...props }) => {
     >
       <NavLink to={props.link}>
         <img src={props.subMenuSrcImg} alt={props.alt} />
-        {props.itemSubMenu}
+        <h4> {props.itemSubMenu} </h4>
       </NavLink>
     </section>
   );
