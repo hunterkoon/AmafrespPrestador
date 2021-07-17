@@ -56,7 +56,7 @@
 }
 .prestador-div-menu ul,
 .colab-div-menu ul {
-  height: fill;
+  height: stretch;
   align-items: center;
   display: flex;
   flex-direction: row;

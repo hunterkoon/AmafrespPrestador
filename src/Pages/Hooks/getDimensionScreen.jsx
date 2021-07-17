@@ -1,30 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-function getDimensionScreen  () {
+function getDimensionScreen() {
+  const { innerWidth: width, innerHeight: height } = window;
 
-const {innerWidth: width , innerHeight: height} = window;
+  return {
+    width,
+    height,
+  };
+}
 
-    return {
-        width,            
-        height
-    };
-} ;
+export default function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = React.useState(
+    getDimensionScreen(),
+  );
 
-
-export default function useWindowDimensions(){
-
-    const [windowDimensions, setWindowDimensions] = React.useState(getDimensionScreen ());
-
-    React.useEffect(() => {
-        function handleResize() {
-          setWindowDimensions(getDimensionScreen());
-        }
-    
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
-    
-      return windowDimensions;
+  React.useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getDimensionScreen());
     }
 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
+  return windowDimensions;
+}

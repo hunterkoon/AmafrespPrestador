@@ -3,31 +3,40 @@ import './Header.css';
 import Logotipo from '../../Assets/Logo Amafresp.svg';
 import Hamburguer from './Hamburguer';
 import Seta from '../../Assets/Seta_Verde.svg';
+import MenuSuperior from './MenuSuperior';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
-import MenuSuperior from './MenuSuperior';
 
 export default function Header() {
-  const { data, setProfile, profile, login, logout, width } =
-    React.useContext(GlobalContext);
+  const {
+    setLogin,
+    data,
+    setProfile,
+    profile,
+    login,
+    handleWindowHamburguer,
+    location,
+    handleLogoDirection,
+  } = React.useContext(GlobalContext);
 
   return (
-    <>
+    <React.Fragment>
       <MenuSuperior />
       <header className="Header">
         <div className="div-img-logotipo">
-          <Link to="/">
-            <img onClick={logout} src={Logotipo} alt="Logotipo Amafresp" />
-          </Link>
+          <img
+            onClick={handleLogoDirection}
+            src={Logotipo}
+            alt="Logotipo Amafresp"
+          />
         </div>
-        {login && data ? (
+        {login ? (
           <div onClick={() => setProfile(!profile)} className="main-div-user">
             <div className="div-user-info-panel">
               <img
                 id="user"
                 style={{
-                  transform:
-                    profile === false ? 'Rotate(180deg)' : 'Rotate(0deg)',
+                  transform: profile ? 'Rotate(0deg)' : 'Rotate(180deg)',
                 }}
                 className="Seta"
                 src={Seta}
@@ -35,20 +44,22 @@ export default function Header() {
               />
             </div>
             <div className="div-user-info">
-              <span className="span-user">{data[0].NOME}</span>
-              <span className="span-employ">{data[0].EMPRESA}</span>
+              <span className="span-user">{'NOME USER'}</span>
+              <span className="span-employ">{'NOME EMPRESA'}</span>
             </div>
           </div>
         ) : null}
-        <div onClick={logout} className="div-sair">
-          <Link to="./">Sair</Link>
-        </div>
-        {width <= 1024 ? (
+
+        <Link to="./" className="div-sair" onClick={() => setLogin(false)}>
+          Sair
+        </Link>
+
+        {handleWindowHamburguer() ? (
           <div className="div-hamburguer">
             <Hamburguer />
           </div>
         ) : null}
       </header>
-    </>
+    </React.Fragment>
   );
 }

@@ -11,6 +11,7 @@
 .main-menu ul {
   padding: 0;
   margin-top: 10vh;
+  width: stretch;
 }
 
 .transiction-menu {
@@ -27,18 +28,6 @@
   bottom: 15vh;
 }
 
-.hambuguerClick {
-  display: flex;
-  position: absolute;
-  transition: 200ms;
-  font-family: NotoSans-Regular;
-  height: 100%;
-  margin-top: 5vh;
-  background-color: #25b099;
-  color: #fff;
-  z-index: 98;
-}
-
 @media only screen and (max-width: 1024px) {
   .main-menu {
     display: none;
@@ -48,6 +37,25 @@
     bottom: 0;
   }
   .hambuguerClick ul {
+    width: stretch;
     padding-inline-start: 0px;
+  }
+  .hambuguerClick {
+    display: flex;
+    position: absolute;
+    transition: 200ms;
+    width: 80%;
+    font-family: NotoSans-Regular;
+    height: 100%;
+    margin-top: 10vh;
+    background-color: #25b099;
+    color: #fff;
+    z-index: 98;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hambuguerClick {
+    display: none;
   }
 }

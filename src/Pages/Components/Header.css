@@ -61,9 +61,12 @@
   flex-direction: row;
 }
 .div-sair {
-  display: block;
+  right: 5%;
+  height: 100%;
+  display: flex;
   flex-direction: row;
-  position: relative;
+  position: absolute;
+  z-index: 99;
 }
 
 .div-user-info-panel {

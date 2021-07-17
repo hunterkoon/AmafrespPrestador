@@ -54,6 +54,11 @@
   flex-direction: row;
   width: 95%;
 }
+@media only screen and (max-width: 420px) {
+  .image-login-div {
+    display: none;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .main-login {
     display: flex;

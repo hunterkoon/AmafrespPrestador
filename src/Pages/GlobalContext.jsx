@@ -1,9 +1,11 @@
 import React from 'react';
 import useFetch from './Hooks/useFetch';
 import useWindowDimensions from './Hooks/getDimensionScreen';
+import { useNavigate } from 'react-router';
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+  const location = document.location.pathname;
   const [click, setClick] = React.useState(false);
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
@@ -11,25 +13,36 @@ export const GlobalStorage = ({ children }) => {
   const [animateMenu, setAnimateMenu] = React.useState();
   const { data, loading, error, request, setData } = useFetch();
   const { width, height } = useWindowDimensions();
+  const navigate = useNavigate();
 
-  const logout = () => {
-    setLogin(false);
-    setProfile(false);
+  const handleLogoDirection = () => {
+    if (location != '/conta/*') {
+      console.log(location);
+      return navigate('/');
+    } else {
+      console.log(location);
+      return navigate('/conta');
+    }
   };
 
   React.useEffect(() => {
-    handlelogin();
-  }, [login]);
+    handleLoginContext();
+  }, []);
 
-  function handlelogin() {
-    if (login === true) {
-      request('http://localhost:3036/prestador');
+  const handleLoginContext = () => {
+    if (login !== true) {
+      navigate('/');
     }
-  }
+  };
 
-  const handleloginPage = () => {
-    handlelogin();
-    setLogin(true);
+  const handleWindowHamburguer = () => {
+    if (width <= 1024 && login === true) {
+      console.log('true');
+      return true;
+    } else {
+      console.log('false');
+      return false;
+    }
   };
 
   return (
@@ -45,8 +58,6 @@ export const GlobalStorage = ({ children }) => {
         setInput,
         data,
         setData,
-        logout,
-        handleloginPage,
         loading,
         error,
         request,
@@ -55,6 +66,9 @@ export const GlobalStorage = ({ children }) => {
         setAnimateMenu,
         width,
         height,
+        handleWindowHamburguer,
+        handleLogoDirection,
+        location,
       }}
     >
       {children}

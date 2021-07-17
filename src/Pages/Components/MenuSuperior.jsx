@@ -6,8 +6,8 @@ import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom';
 
 const MenuSuperior = () => {
-  const { profile, setProfile, data } = React.useContext(GlobalContext);
-  return profile && data ? (
+  const { profile, setProfile, data, login } = React.useContext(GlobalContext);
+  return profile && login ? (
     <div className="main-div-menu">
       <div className="main-h1-menu">
         <h1>Dados Prestador / Usuário</h1>
@@ -17,20 +17,24 @@ const MenuSuperior = () => {
           <ul>
             <li>
               <h2>Empresa:</h2>
-              <h4>{data[0].EMPRESA}</h4>
+              {/* <h4>{data[0].EMPRESA}</h4> */}
+              <h4>{'Lorem Ipsum'}</h4>
             </li>
             <li>
               <h2>CNPJ:</h2>
-              <h4>{data[0].CNPJ}</h4>
+              {/* <h4>{data[0].CNPJ}</h4> */}
+              <h4>{'Lorem Ipsum'}</h4>
             </li>
 
             <li>
               <h2>Segmento:</h2>
-              <h4>{data[0].SEGMENTO}</h4>
+              {/* <h4>{data[0].SEGMENTO}</h4> */}
+              <h4>{'Lorem Ipsum'}</h4>
             </li>
             <li>
               <h2>Tipo Credenciado: </h2>
-              <h4>{data[0].TIPO_CREDENCIADO}</h4>
+              {/* <h4>{data[0].TIPO_CREDENCIADO}</h4> */}
+              <h4>{'Lorem Ipsum'}</h4>
             </li>
           </ul>
         </div>
@@ -39,11 +43,13 @@ const MenuSuperior = () => {
           <ul>
             <li>
               <h2>Nome:</h2>
-              <h4>{data[0].NOME}</h4>
+              {/* <h4>{data[0].NOME}</h4> */}
+              <h4>{'Lorem Ipsum'}</h4>
             </li>
             <li>
               <h2>Departamento:</h2>
-              <h4>{data[0].DEPARTAMENTO}</h4>
+              {/* <h4>{data[0].DEPARTAMENTO}</h4> */}
+              <h4>{'Lorem Ipsum'}</h4>
             </li>
             <section className="colab-section-profile">
               <Link to="/conta/perfil">
@@ -62,6 +68,7 @@ const MenuSuperior = () => {
       </div>
     </div>
   ) : null;
+  // ) : null;
 };
 
 export default MenuSuperior;

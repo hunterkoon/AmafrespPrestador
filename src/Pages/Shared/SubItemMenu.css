@@ -5,7 +5,7 @@
   align-self: center;
   background-color: #017663;
   position: relative;
-  width: 100%;
+  width: stretch;
   align-items: center;
   transition: 3.5s;
 }

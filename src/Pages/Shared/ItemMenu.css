@@ -1,4 +1,5 @@
 .li-item-menu a {
+  width: stretch;
   margin-left: 1em;
   font-family: NotoSans-Regular;
   display: flex;
@@ -14,6 +15,7 @@
   margin: auto 1em;
 }
 .li-item-menu {
+  width: stretch;
   margin-top: 1.6em;
 }
 .img-item-menu-seta {

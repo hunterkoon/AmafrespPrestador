@@ -5,7 +5,6 @@
   transition: 150ms;
 }
 .div-context {
-
   overflow-y: auto;
   max-height: 89.9vh;
 }
@@ -26,12 +25,12 @@
     max-height: 100vh;
   }
 }
-@media only screen and (min-width: 1141px) and (max-width: 1700px) {
+
+@media only screen and (min-width: 1140px) and (max-width: 1700px) {
   .main-conta {
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 22% 78%;
   }
   .div-context {
     max-height: 100vh;
   }
 }
-
