@@ -16,15 +16,10 @@ export const GlobalStorage = ({ children }) => {
   const navigate = useNavigate();
 
   const handleLogoDirection = () => {
-    if (location != '/conta/*') {
-      console.log(location);
-      return navigate('/');
-    } else {
-      console.log(location);
+    if (login) {
       return navigate('/conta');
-    }
+    } else return navigate('/');
   };
-
   React.useEffect(() => {
     handleLoginContext();
   }, []);
