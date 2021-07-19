@@ -61,9 +61,3 @@ code {
     transform: translate3d(0px, 0, 0);
   }
 }
-.active h4 {
-  text-decoration: underline;
-}
-li {
-  list-style-type: none;
-}
