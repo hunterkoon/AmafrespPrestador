@@ -1,0 +1,21 @@
+.div-main-error {
+  margin-top: 15vh;
+  padding: 1em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.h1-error {
+  margin: 1% auto;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+.img-error {
+  margin: 3% auto;
+  display: flex;
+  flex-direction: row;
+  width: 10%;
+  align-self: center;
+}

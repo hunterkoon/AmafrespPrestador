@@ -14,7 +14,10 @@
   width: auto;
   cursor: pointer;
   margin: 1em;
-  width: 10rem;
+  width: 10em;
+}
+.div-img-logotipo {
+  width: 15vw;
 }
 
 .main-div-user::before {
@@ -43,19 +46,20 @@
   margin: 0;
 }
 .main-div-user {
-  position: relative;
   cursor: pointer;
   align-items: center;
-  width: auto;
   display: flex;
   flex-direction: row;
+  width: 70vw;
+  justify-content: flex-end;
+  margin: 2em;
 }
 .div-sair {
-  right: 5%;
-  height: 100%;
+  justify-content: center;
+  width: 10vw;
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   z-index: 99;
 }
 
@@ -77,13 +81,15 @@
     justify-content: space-between;
   }
   .main-div-user {
+    padding-left: 15%;
+    justify-content: center;
+    align-self: center;
     width: auto;
-    left: 60%;
   }
-  .main-div-user::before {
-    color: grey;
-    content: 'Dados';
-    display: none;
+  .main-div-user::after {
+    width: auto;
+    display: flex;
+    position: relative;
   }
   .div-user-info {
     display: none;

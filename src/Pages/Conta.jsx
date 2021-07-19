@@ -2,11 +2,12 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './Conta.css';
 import Menu from './Components/MenuLateral';
-import Home from './Home';
-import Gerenciar from './GerenciarUsuarios';
-import FaleConosco from './FaleConosco';
-import AdicionarUsuarios from './AdicionarUsuarios';
-import Recadastramento from './Recadastramento';
+import Home from './Conta/Home';
+import Gerenciar from './Conta/GerenciarUsuarios';
+import FaleConosco from './Conta/FaleConosco';
+import AdicionarUsuarios from './Conta/AdicionarUsuarios';
+import Recadastramento from './Conta/Recadastramento';
+import Status from './Conta/Status';
 const Conta = () => {
   return (
     <div className="main-conta">
@@ -18,6 +19,7 @@ const Conta = () => {
           <Route path="Contatos" element={<FaleConosco />} />
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
           <Route path="Recadastramento" element={<Recadastramento />} />
+          <Route path="Status" element={<Status />} />
         </Routes>
       </div>
     </div>

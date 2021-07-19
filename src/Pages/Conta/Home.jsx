@@ -1,14 +1,14 @@
 import React from 'react';
-import Titledecorated from './Shared/Titledecorated';
-import Button from './Shared/Button';
-import MainImage from '../Assets/Conta.svg';
-import { dadosCliente } from '../Pages/Hooks/dadosCliente';
+import Titledecorated from '../Shared/Titledecorated';
+import Button from '../Shared/Button';
+import MainImage from '../../Assets/Conta.svg';
 import './Home.css';
 
 const Home = () => {
   return (
     <div className="div-main-home">
-      <Titledecorated text={`Olá,${dadosCliente[0].DADOS[0].NOME}`} />
+      {/* <Titledecorated text={`Olá,${'SomeBody'}`} /> */}
+      <Titledecorated text="Olá Visitante" />
 
       <div className="div-img">
         <img src={MainImage} alt="" />

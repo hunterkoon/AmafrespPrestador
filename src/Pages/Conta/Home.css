@@ -1,9 +1,10 @@
 .div-main-home {
-  padding: 1em;
+  padding: 2em;
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  margin-top: 10vh;
 }
 .button-recadastrar {
   margin: 1em auto;
@@ -15,7 +16,7 @@
   position: relative;
   align-self: center;
   padding-bottom: 2em;
-  width: 75%;
+  width: 65%;
 }
 .div-text {
   margin: 0 auto;

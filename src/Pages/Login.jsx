@@ -60,10 +60,10 @@ const Login = () => {
             </Link>
           </div>
           <div className="links-menu">
-            <Link to="/conta/recuperarsenha/">
+            <Link to="/recuperarsenha/">
               <p>Recuperar senha</p>
             </Link>
-            <Link to="/conta/primeiroacesso/">
+            <Link to="/primeiroacesso/">
               <p>Primeiro acesso</p>
             </Link>
           </div>

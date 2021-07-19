@@ -55,6 +55,8 @@ const MenuLateral = () => {
     );
   };
 
+  // MANIPULA EVENTOS E DIRECIONAMENTO NO MENU PARA ITENS PAI
+
   const handleAnimateMenu = ({ target }) => {
     let location = target.innerText;
 
@@ -65,6 +67,7 @@ const MenuLateral = () => {
         return (location = '../');
       } else return location;
     }
+
     return setTimeout(() => {
       navigate('./' + validateLocation());
       setAnimateMenu(false);

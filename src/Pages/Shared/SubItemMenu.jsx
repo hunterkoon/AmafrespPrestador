@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './SubItemMenu.css';
 
 const SubItemMenu = ({ ...props }) => {
@@ -12,10 +12,10 @@ const SubItemMenu = ({ ...props }) => {
         height: '10em',
       }}
     >
-      <NavLink to={props.link}>
+      <Link to={props.link}>
         <img src={props.subMenuSrcImg} alt={props.alt} />
         <h4> {props.itemSubMenu} </h4>
-      </NavLink>
+      </Link>
     </section>
   );
 };

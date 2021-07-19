@@ -2,10 +2,12 @@ import React from 'react';
 import './Hamburguer.css';
 import { GlobalContext } from '../GlobalContext';
 const Hamburguer = () => {
-  const { animateMenu, setAnimateMenu } = React.useContext(GlobalContext);
+  const { animateMenu, setAnimateMenu, setProfile } =
+    React.useContext(GlobalContext);
 
   const handleClick = () => {
     setAnimateMenu(!animateMenu);
+    setProfile(false);
   };
 
   return (

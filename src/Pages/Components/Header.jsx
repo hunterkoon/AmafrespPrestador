@@ -15,9 +15,15 @@ export default function Header() {
     profile,
     login,
     handleWindowHamburguer,
-    location,
     handleLogoDirection,
+    animateMenu,
+    setAnimateMenu,
   } = React.useContext(GlobalContext);
+
+  const handleClick = () => {
+    setProfile(!profile);
+    setAnimateMenu(false);
+  };
 
   return (
     <React.Fragment>
@@ -31,7 +37,7 @@ export default function Header() {
           />
         </div>
         {login ? (
-          <div onClick={() => setProfile(!profile)} className="main-div-user">
+          <div onClick={handleClick} className="main-div-user">
             <div className="div-user-info-panel">
               <img
                 id="user"

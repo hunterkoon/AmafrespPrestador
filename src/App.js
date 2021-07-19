@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import Conta from './Pages/Conta';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStorage } from './Pages/GlobalContext';
+import NotFound from './Pages/NotFound';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
           <div className="App">
             <Header />
             <Routes>
-              <Route exact path="/*" element={<Login />} />
+              <Route exact path="/" element={<Login />} />
               <Route path="/conta/*" element={<Conta />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
           </div>
