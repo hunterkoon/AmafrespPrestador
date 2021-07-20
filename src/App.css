@@ -44,3 +44,42 @@ label {
 button {
   margin: 1rem auto;
 }
+@keyframes opacityAnime {
+  from {
+    opacity: 0;
+    height: 50%;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+  }
+}
+@keyframes opacityAnimeSup {
+  from {
+    opacity: 0;
+    height: 0vh;
+  }
+  to {
+    opacity: 1;
+    height: 30vh;
+  }
+}
+@keyframes iconsAnime {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes pageview {
+  from {
+    opacity: 15%;
+    transform: translate3d(-150px, 0, 0);
+  }
+  to {
+    opacity: 100%;
+    transform: translate3d(0px, 0, 0);
+  }
+}

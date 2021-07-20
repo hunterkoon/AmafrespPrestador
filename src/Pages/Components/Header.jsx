@@ -56,7 +56,11 @@ export default function Header() {
           </div>
         ) : null}
 
-        <Link to="./" className="div-sair" onClick={() => setLogin(false)}>
+        <Link
+          to="./"
+          className={login ? 'div-sair' : 'div-sair-nologin'}
+          onClick={() => setLogin(false)}
+        >
           Sair
         </Link>
 

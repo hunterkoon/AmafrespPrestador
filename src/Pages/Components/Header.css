@@ -62,6 +62,14 @@
   position: relative;
   z-index: 99;
 }
+.div-sair-nologin {
+  justify-content: flex-end;
+  width: 79vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 99;
+}
 
 .div-user-info-panel {
   flex-direction: column;
