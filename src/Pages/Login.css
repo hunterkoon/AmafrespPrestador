@@ -99,14 +99,3 @@
     flex-direction: row;
   }
 }
-
-@keyframes pageview {
-  from {
-    opacity: 15%;
-    transform: translate3d(-150px, 0, 0);
-  }
-  to {
-    opacity: 100%;
-    transform: translate3d(0px, 0, 0);
-  }
-}

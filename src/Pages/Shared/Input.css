@@ -3,7 +3,11 @@
   font-size: 1em;
   font-family: NotoSans-Regular;
 }
-
+.p-input {
+  right: 5vw;
+  color: red;
+  position: absolute;
+}
 input:focus {
   outline: none;
   border-color: #25b099;

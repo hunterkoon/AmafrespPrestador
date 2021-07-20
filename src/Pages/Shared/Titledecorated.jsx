@@ -8,6 +8,7 @@ const Titledecorated = ({ ...props }) => {
       style={{
         color: props.color,
         fontSize: props.size,
+        marginBottom: props.botton,
       }}
     >
       {props.text}

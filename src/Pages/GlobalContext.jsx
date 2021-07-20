@@ -9,11 +9,18 @@ export const GlobalStorage = ({ children }) => {
   const [click, setClick] = React.useState(false);
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
-  const [input, setInput] = React.useState('');
   const [animateMenu, setAnimateMenu] = React.useState();
   const { data, loading, error, request, setData } = useFetch();
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
+
+  const [primeiroAcesso, setPrimeiroAcesso] = React.useState({
+    email: '',
+    CONFIRMEemail: '',
+    senha: '',
+    CONFIRMEsenha: '',
+    CPFcnpj: '',
+  });
 
   const handleLogoDirection = () => {
     if (login) {
@@ -49,8 +56,6 @@ export const GlobalStorage = ({ children }) => {
         setProfile,
         login,
         setLogin,
-        input,
-        setInput,
         data,
         setData,
         loading,
@@ -64,6 +69,8 @@ export const GlobalStorage = ({ children }) => {
         handleWindowHamburguer,
         handleLogoDirection,
         location,
+        primeiroAcesso,
+        setPrimeiroAcesso,
       }}
     >
       {children}

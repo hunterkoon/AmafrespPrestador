@@ -3,13 +3,36 @@
   position: relative;
   margin-top: 8vh;
   display: flex;
-  flex-direction: column;
-  height: 70vh;
-  animation-name: pageview;
-  animation-duration: 400ms;
+  flex-direction: row;
+  height: 100vh;
 }
 
-.div-form {
+.div-form-primeiro-acesso {
+  width: 50%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+.div-img-primeiro-acesso {
+  width: 50%;
+}
+.img-primeiro-acesso {
+  width: 100%;
+  z-index: -1;
+}
+.form-primeiro-acesso {
+  align-self: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+  width: 50%;
+}
+
+.button-form-primeiro-acesso {
+  width: 100%;
+}
+.button-form-primeiro-acesso button {
+  z-index: 99;
+  margin: 0;
+  margin-top: 3%;
 }

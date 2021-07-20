@@ -8,10 +8,10 @@ button {
   font-size: 1em;
   color: #ffff;
   margin: 0.5em auto;
+  cursor: pointer;
 }
 
 button:hover {
-  cursor: pointer;
   outline: none;
   border-color: #25b099;
   box-shadow: 0 0 0 5px #3bc3a7;
