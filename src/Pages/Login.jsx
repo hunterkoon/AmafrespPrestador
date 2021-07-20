@@ -63,7 +63,7 @@ const Login = () => {
             <Link to="/recuperarsenha/">
               <p>Recuperar senha</p>
             </Link>
-            <Link to="/primeiroacesso/">
+            <Link to="/PrimeiroAcesso/">
               <p>Primeiro acesso</p>
             </Link>
           </div>

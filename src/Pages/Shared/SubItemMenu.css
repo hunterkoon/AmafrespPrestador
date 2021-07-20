@@ -5,8 +5,8 @@
   align-self: center;
   background-color: #017663;
   position: relative;
-  width: stretch;
-  align-items: center;
+  width: 100%;
+  align-items: stretch;
   transition: 3.5s;
 }
 

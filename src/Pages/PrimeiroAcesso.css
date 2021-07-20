@@ -1,0 +1,15 @@
+.div-main-primeiro-acesso {
+  padding: 3em;
+  position: relative;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  animation-name: pageview;
+  animation-duration: 400ms;
+}
+
+.div-form {
+  display: flex;
+  flex-direction: row;
+}

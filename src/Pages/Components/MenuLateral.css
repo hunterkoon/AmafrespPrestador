@@ -11,7 +11,7 @@
 .main-menu ul {
   padding: 0;
   margin-top: 10vh;
-  width: stretch;
+  width: 100%;
 }
 
 .transiction-menu {
@@ -37,7 +37,7 @@
     bottom: 0;
   }
   .hambuguerClick ul {
-    width: stretch;
+    width: 100%;
     padding-inline-start: 0px;
   }
   .hambuguerClick {
