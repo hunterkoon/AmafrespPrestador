@@ -10,7 +10,45 @@ import { GlobalContext } from '../Pages/GlobalContext';
 const Login = () => {
   const { error, setLogin } = React.useContext(GlobalContext);
 
-  let inputWidth = '95%';
+  const loginFields = [
+    {
+      id: 'cpfCNPJ',
+      type: 'text',
+      require: 'true',
+      label: 'CPF/CNPJ',
+      maxLength: '18',
+    },
+    {
+      id: 'user',
+      type: 'text',
+      require: 'true',
+      label: 'Usuário',
+    },
+    {
+      id: 'senha',
+      type: 'password',
+      require: 'true',
+      label: 'Senha',
+      maxLength: '18',
+    },
+  ];
+  const [fieldsLogin, setFieldsLogin] = React.useState(
+    loginFields.reduce((acc, field) => {
+      return {
+        ...acc,
+        [field.id]: '',
+      };
+    }, {}),
+  );
+  const handleChange = ({ target }) => {
+    const { id, value } = target;
+    setFieldsLogin({ ...fieldsLogin, [id]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLogin(true);
+  };
 
   return (
     <div className="main-login">
@@ -22,42 +60,26 @@ const Login = () => {
           <Titledecorated text="Login" />
           <Title text="Portal Amafresp Prestador" />
         </div>
-        <form
-          action="POST"
-          onClick={(event) => {
-            event.preventDefault();
-          }}
-        >
-          <Input
-            error={error}
-            id="cnpj"
-            className="input"
-            type={'text'}
-            placeholder={'CNPJ/CPF'}
-            width={inputWidth}
-            label={'CNPJ/CPF'}
-          />
-          <Input
-            error={error}
-            id="user"
-            type={'text'}
-            placeholder={'Usuário'}
-            width={inputWidth}
-            label={'USUÁRIO'}
-          />
-          <Input
-            error={error}
-            id="password"
-            type={'password'}
-            placeholder={'Senha'}
-            width={inputWidth}
-            label={'SENHA'}
-          />
+        <form onSubmit={handleSubmit}>
+          {loginFields.map(
+            ({ id, label, type, require, pattern, title, maxLength }) => (
+              <Input
+                width="95%"
+                maxLength={maxLength}
+                title={title}
+                pattern={pattern}
+                label={label}
+                type={type}
+                id={id}
+                require={require}
+                value={fieldsLogin[id]}
+                onChange={handleChange}
+              />
+            ),
+          )}
 
-          <div className="button-div" onClick={() => setLogin(true)}>
-            <Link to="/conta">
-              <Button value="Entrar"></Button>
-            </Link>
+          <div className="button-div">
+            <Button value="Entrar"></Button>
           </div>
           <div className="links-menu">
             <Link to="/recuperarsenha/">

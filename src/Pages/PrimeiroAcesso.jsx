@@ -4,18 +4,60 @@ import Button from '../Pages/Shared/Button';
 import './PrimeiroAcesso.css';
 import PrimeiroAcessoImg from '../Assets/PrimeiroAcesso.svg';
 import Titledecorated from './Shared/Titledecorated';
-import { GlobalContext } from './GlobalContext';
 
 const PrimeiroAcesso = () => {
-  const { primeiroAcesso, setPrimeiroAcesso } = React.useContext(GlobalContext);
+  const formFields = [
+    {
+      id: 'email',
+      type: 'email',
+      label: 'E-mail',
+      require: 'true',
+    },
+    {
+      id: 'CONFIRMEemail',
+      type: 'email',
+      label: 'Confirme seu E-mail',
+      require: 'true',
+    },
+    {
+      id: 'CPFcnpj',
+      type: 'text',
+      label: 'CPF/CNPJ',
+      // require: 'false',
+      // pattern: '[0-9]{11} ',
+      // title:
+      //   'Digite um CPF no formato: xxx.xxx.xxx-xx ou um CNPJ no formato xx.xxx.xxx/xxxx-xx',
+      maxLength: '18',
+    },
+    {
+      id: 'senha',
+      type: 'password',
+      label: 'Senha',
+      require: 'true',
+      maxLength: '18',
+    },
+    {
+      id: 'CONFIRMEsenha',
+      type: 'password',
+      label: 'Confirme sua Senha',
+      require: 'true',
+      maxLength: '18',
+    },
+  ];
 
-  const [erroForm, setErroForm] = React.useState('');
-
-  const widthInput = '100%';
+  const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
+    formFields.reduce((acc, field) => {
+      return {
+        ...acc,
+        [field.id]: '',
+      };
+    }, {}),
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(primeiroAcesso);
+
+    //GERAR FUNÇÃO DE FETCH POST
   };
 
   const handleChange = ({ target }) => {
@@ -35,47 +77,25 @@ const PrimeiroAcesso = () => {
       <div className="div-form-primeiro-acesso">
         <form className="form-primeiro-acesso" onSubmit={handleSubmit}>
           <Titledecorated botton="2em" text="Primeiro Acesso" />
-          <Input
-            error={erroForm}
-            width={widthInput}
-            label="E-mail"
-            type="email"
-            id="email"
-            value={primeiroAcesso.email}
-            onChange={handleChange}
-          />
-          <Input
-            type="email"
-            width={widthInput}
-            label="Confirme seu E-mail"
-            id="CONFIRMEemail"
-            value={primeiroAcesso.CONFIRMEemail}
-            onChange={handleChange}
-          />
-          <Input
-            width={widthInput}
-            label="CPF/CNPJ"
-            id="CPFcnpj"
-            value={primeiroAcesso.CPFcnpj}
-            onChange={handleChange}
-          />
-          <Input
-            width={widthInput}
-            type="password"
-            label="Senha"
-            id="senha"
-            value={primeiroAcesso.senha}
-            onChange={handleChange}
-          />
-          <Input
-            width={widthInput}
-            type="password"
-            label="Confirme sua Senha"
-            id="CONFIRMEsenha"
-            value={primeiroAcesso.CONFIRMEsenha}
-            onChange={handleChange}
-          />
-
+          {formFields.map(
+            ({ id, label, type, require, pattern, title, maxLength }) => (
+              <>
+                <Input
+                  maxLength={maxLength}
+                  title={title}
+                  pattern={pattern}
+                  key={id}
+                  width="100%"
+                  label={label}
+                  type={type}
+                  id={id}
+                  value={primeiroAcesso[id]}
+                  require={require}
+                  onChange={handleChange}
+                />
+              </>
+            ),
+          )}
           <div className="button-form-primeiro-acesso">
             <Button value="Registrar" />
           </div>

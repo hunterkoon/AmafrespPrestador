@@ -14,27 +14,21 @@ export const GlobalStorage = ({ children }) => {
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
 
-  const [primeiroAcesso, setPrimeiroAcesso] = React.useState({
-    email: '',
-    CONFIRMEemail: '',
-    senha: '',
-    CONFIRMEsenha: '',
-    CPFcnpj: '',
-  });
-
   const handleLogoDirection = () => {
     if (login) {
       return navigate('/conta');
     } else return navigate('/');
   };
 
-  // RETORNA PARA AREA DE LOGIN CASO LOGIN = FALSE
-  // React.useEffect(() => {
-  //   handleLoginContext();
-  // }, []);
+  //RETORNA PARA AREA DE LOGIN CASO LOGIN = FALSE
+  React.useEffect(() => {
+    handleLoginContext();
+  }, [login]);
 
   const handleLoginContext = () => {
-    if (login !== true) {
+    if (login === true) {
+      navigate('/conta');
+    } else {
       navigate('/');
     }
   };
@@ -69,8 +63,6 @@ export const GlobalStorage = ({ children }) => {
         handleWindowHamburguer,
         handleLogoDirection,
         location,
-        primeiroAcesso,
-        setPrimeiroAcesso,
       }}
     >
       {children}
