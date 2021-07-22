@@ -20,7 +20,7 @@
 .img-primeiro-acesso {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 40%;
   z-index: -1;
 }
 .form-primeiro-acesso {
@@ -53,5 +53,20 @@
   }
   .div-form-primeiro-acesso {
     width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1700px) {
+  .div-img-primeiro-acesso {
+    width: 50%;
+  }
+  .img-primeiro-acesso {
+    width: 50%;
+  }
+  .form-primeiro-acesso {
+    width: 50%;
+  }
+  .div-form-primeiro-acesso {
+    width: 50%;
   }
 }

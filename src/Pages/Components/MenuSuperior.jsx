@@ -1,6 +1,7 @@
 import React from 'react';
 import './MenuSuperior.css';
 import Button_Back from '../../Assets/Button_Back.svg';
+
 import User_Profile from '../../Assets/UserProfille.svg';
 import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom';
@@ -51,12 +52,21 @@ const MenuSuperior = () => {
               {/* <h4>{data[0].DEPARTAMENTO}</h4> */}
               <h4>{'Lorem Ipsum'}</h4>
             </li>
-            <section className="colab-section-profile">
-              <Link to="/conta/perfil">
-                <img src={User_Profile} alt="" />
-                Perfil
-              </Link>
-            </section>
+
+            <li>
+              <section className="colab-section-user">
+                <Link to="/conta/perfil">
+                  <img className="colab-img-user" src={User_Profile} alt="" />
+                  <span
+                    style={{
+                      textDecoration: 'underline',
+                    }}
+                  >
+                    Perfil
+                  </span>
+                </Link>
+              </section>
+            </li>
           </ul>
           <img
             onClick={() => setProfile(!profile)}

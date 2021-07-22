@@ -10,6 +10,7 @@
   box-shadow: 5px 5px 10px #999999;
   border-radius: 10px;
   margin-left: 2.5vw;
+  height: 30vh;
 }
 .main-h1-menu {
   border-radius: 0px 0px 10px 10px;
@@ -20,9 +21,10 @@
 }
 .main-div-dados-menu {
   display: grid;
+  width: auto;
   grid-template-columns: 65% 1fr;
   border-radius: 10px;
-  height: -webkit-fill-available;
+  height: fill;
 }
 /* .prestador-div-menu {
   height: fill;
@@ -34,20 +36,24 @@
 }
 
 .colab-div-menu {
+  width: auto;
   height: auto;
   border-radius: 0 0 10px 0;
 }
 
+.colab-div-menu ul li {
+  margin: 3%;
+}
+
 .colab-div-menu,
-.colab-div-menu li h2,
-.colab-div-menu li h4 {
+.colab-div-menu ul li h2,
+.colab-div-menu ul li h4 {
   color: #ffff;
   background-color: #25b099;
 }
-.colab-div-menu li,
-.colab-div-menu h1,
-.prestador-div-menu li,
-.prestador-div-menu h1 {
+
+.prestador-div-menu ul li,
+.prestador-div-menu ul h2 {
   list-style: none;
   margin: 2% 2% 2% 2%;
   font-size: 1rem;
@@ -56,10 +62,12 @@
 }
 .prestador-div-menu ul,
 .colab-div-menu ul {
-  height: stretch;
+  height: fill;
   align-items: center;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 1em;
 }
 
 .main-div-menu div li h4 {
@@ -82,13 +90,59 @@
 .main-div-menu img {
   cursor: pointer;
 }
-.colab-section-profile {
-  display: flex;
-  align-items: center;
-  right: 5vw;
-  position: absolute;
-  text-decoration: underline;
-}
-.colab-section-profile img {
-  margin-right: 1em;
+
+@media only screen and (max-width: 1024px) {
+  .main-div-menu {
+    animation: opacityAnimeSupMovel forwards 300ms;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .colab-section-user {
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-div-dados-menu,
+  .main-div-dados-menu ul {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .img-back {
+    display: none;
+  }
+
+  .prestador-div-menu {
+    background-color: #f5f5f5;
+    height: 60%;
+  }
+  .colab-div-menu {
+    height: 40%;
+  }
+  .colab-div-menu ul li,
+  .prestador-div-menu ul li {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0.6em auto;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-div-menu,
+  .main-div-dados-menu,
+  .colab-div-menu {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
