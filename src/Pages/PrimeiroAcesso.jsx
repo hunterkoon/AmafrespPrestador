@@ -79,21 +79,19 @@ const PrimeiroAcesso = () => {
           <Titledecorated botton="2em" text="Primeiro Acesso" />
           {formFields.map(
             ({ id, label, type, require, pattern, title, maxLength }) => (
-              <>
-                <Input
-                  maxLength={maxLength}
-                  title={title}
-                  pattern={pattern}
-                  key={id}
-                  width="100%"
-                  label={label}
-                  type={type}
-                  id={id}
-                  value={primeiroAcesso[id]}
-                  require={require}
-                  onChange={handleChange}
-                />
-              </>
+              <Input
+                key={id}
+                maxLength={maxLength}
+                title={title}
+                pattern={pattern}
+                label={label}
+                type={type}
+                id={id}
+                require={require}
+                width="100%"
+                value={primeiroAcesso[id]}
+                onChange={handleChange}
+              />
             ),
           )}
           <div className="button-form-primeiro-acesso">
