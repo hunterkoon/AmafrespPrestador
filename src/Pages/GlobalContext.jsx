@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router';
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const location = document.location.pathname;
-  const [click, setClick] = React.useState(false);
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState();
@@ -44,14 +42,12 @@ export const GlobalStorage = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        click,
-        setClick,
+        data,
+        setData,
         profile,
         setProfile,
         login,
         setLogin,
-        data,
-        setData,
         loading,
         error,
         request,
@@ -62,8 +58,6 @@ export const GlobalStorage = ({ children }) => {
         height,
         handleWindowHamburguer,
         handleLogoDirection,
-        location,
-        navigate,
       }}
     >
       {children}
