@@ -3,6 +3,7 @@ import Titledecorated from '../Shared/Titledecorated';
 import Button from '../Shared/Button';
 import MainImage from '../../Assets/Conta.svg';
 import './Home.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -22,7 +23,9 @@ const Home = () => {
         </p>
       </div>
       <div className="button-recadastrar">
-        <Button value="Recadastrar" />
+        <Link to="Recadastramento">
+          <Button value="Recadastrar" />
+        </Link>
       </div>
     </div>
   );

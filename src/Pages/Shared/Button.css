@@ -7,13 +7,13 @@ button {
   background-color: #25b099;
   font-size: 1em;
   color: #ffff;
-  margin: 0.5em auto;
   cursor: pointer;
+  margin: 0;
 }
 
 button:hover {
   outline: none;
   border-color: #25b099;
-  box-shadow: 0 0 0 5px #3bc3a7;
+  box-shadow: 0 0 0 3px #3bc3a7;
   transition: 200ms;
 }

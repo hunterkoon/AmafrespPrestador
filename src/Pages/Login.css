@@ -35,24 +35,18 @@
   margin-top: 2rem;
 }
 
-.button-div {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-.button-div button {
-  margin: 0.75em;
-}
-
 .links-menu {
   font-size: 1em;
   cursor: pointer;
   text-decoration: underline;
-  margin: 0.8em auto;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  width: 95%;
+  width: 100%;
+}
+.button-div {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 @media only screen and (max-width: 420px) {
   .image-login-div {

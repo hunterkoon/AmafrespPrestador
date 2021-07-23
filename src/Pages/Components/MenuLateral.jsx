@@ -13,7 +13,8 @@ import { useNavigate } from 'react-router';
 import { GlobalContext } from '../GlobalContext';
 
 const MenuLateral = () => {
-  const { animateMenu, setAnimateMenu } = React.useContext(GlobalContext);
+  const { animateMenu, setAnimateMenu, setLogin, width } =
+    React.useContext(GlobalContext);
   const navigate = useNavigate();
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [menuItemRecadastramento, setmenuItemRecadastramento] =
@@ -76,7 +77,9 @@ const MenuLateral = () => {
 
   return (
     <nav
-      className={animateMenu ? 'hambuguerClick' : 'main-menu'}
+      className={
+        animateMenu && width <= '1024' ? 'hambuguerClick' : 'main-menu'
+      }
       onMouseOver={handleMouse}
       onMouseOut={handleMouse}
     >
@@ -100,7 +103,7 @@ const MenuLateral = () => {
             handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
           }
         >
-          <div class="transiction-menu">
+          <div className="transiction-menu">
             <SubItemMenu
               link="AdicionarUsuarios"
               state={menuItemUsuarios}
@@ -129,7 +132,7 @@ const MenuLateral = () => {
             )
           }
         >
-          <div class="transiction-menu">
+          <div className="transiction-menu">
             <SubItemMenu
               link="Recadastramento"
               itemSubMenu="Realizar Atualização Cadastral"
@@ -152,8 +155,13 @@ const MenuLateral = () => {
         </span>
 
         {animateMenu ? (
-          <span onClick={handleAnimateMenu} className="div-menu-sair">
-            <ItemMenu alt="item menu fale conosco" item="Sair" srcItem={Sair} />
+          <span className="div-menu-sair">
+            <ItemMenu
+              clicked={() => setLogin(false)}
+              alt="item menu fale conosco"
+              item="Sair"
+              srcItem={Sair}
+            />
           </span>
         ) : null}
       </ul>

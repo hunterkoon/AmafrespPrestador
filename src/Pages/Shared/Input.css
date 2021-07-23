@@ -8,29 +8,25 @@
   color: red;
   position: absolute;
 }
+
+input:hover,
 input:focus {
   outline: none;
   border-color: #25b099;
   background: #fff;
-  box-shadow: 0 0 0 0.3vw #3bc3a7;
-}
-input:hover {
-  outline: none;
-  border-color: #25b099;
-  background: #fff;
-  box-shadow: 0 0 0 0.3vw #3bc3a7;
+  box-shadow: 0 0 0 3px #3bc3a7;
   transition: 200ms;
 }
 
 input {
-  text-indent: 1em;
+  text-indent: 3%;
   font-family: NotoSans-Regular;
   border: none;
-  height: 2.3rem;
+  height: 3rem;
   font-size: 1em;
   border-radius: 8px;
   background-color: #ebebeb;
-  margin: 1em auto;
+  margin-top: 1em;
   color: #474747;
 }
 div {
@@ -38,6 +34,6 @@ div {
   flex-direction: column;
 }
 label {
-  margin-left: 1em;
+  margin-top: 1em;
   text-align: left;
 }

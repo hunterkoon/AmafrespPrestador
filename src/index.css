@@ -22,3 +22,9 @@ code {
   src: local('NotoSans'), url('./fonts/NotoSans-Bold.ttf') format('truetype');
   font-weight: bold;
 }
+.active {
+  text-decoration: underline;
+}
+li {
+  list-style-type: none;
+}

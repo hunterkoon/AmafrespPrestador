@@ -66,14 +66,15 @@ const Login = () => {
           {loginFields.map(
             ({ id, label, type, require, pattern, title, maxLength }) => (
               <Input
-                width="95%"
+                key={id}
+                width="100%"
                 maxLength={maxLength}
                 title={title}
                 pattern={pattern}
                 label={label}
                 type={type}
                 id={id}
-                require={require}
+                // require={require}
                 value={fieldsLogin[id]}
                 onChange={handleChange}
               />

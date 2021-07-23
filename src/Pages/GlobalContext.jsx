@@ -24,9 +24,6 @@ export const GlobalStorage = ({ children }) => {
   React.useEffect(() => {
     handleLoginContext();
   }, [login]);
-  // React.useEffect(() => {
-  //   setLogin(true);
-  // }, []);
 
   const handleLoginContext = () => {
     if (login === true) {
@@ -66,6 +63,7 @@ export const GlobalStorage = ({ children }) => {
         handleWindowHamburguer,
         handleLogoDirection,
         location,
+        navigate,
       }}
     >
       {children}

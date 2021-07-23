@@ -7,7 +7,8 @@
   position: relative;
   width: 100%;
   align-items: stretch;
-  transition: 3.5s;
+  transition: 2s;
+  height: 5em;
 }
 
 .add-user-sub img {
@@ -15,10 +16,6 @@
 }
 .add-user-sub img {
   margin-left: 4em;
-}
-.add-user-sub span:active {
-  background-color: green;
-  opacity: 80%;
 }
 
 .selected {

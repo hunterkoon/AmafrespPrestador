@@ -24,10 +24,14 @@ export default function Header() {
     setProfile(!profile);
     setAnimateMenu(false);
   };
-
+  const handleLogout = () => {
+    setLogin(false);
+    setProfile(false);
+    console.log('logout');
+  };
   return (
     <React.Fragment>
-      <MenuSuperior />
+      {login && profile ? <MenuSuperior /> : null}
       <header className="Header">
         <div className="div-img-logotipo">
           <img
@@ -56,15 +60,14 @@ export default function Header() {
           </div>
         ) : null}
 
-        <Link
-          to="./"
+        <div
+          onClick={handleLogout}
           className={login ? 'div-sair' : 'div-sair-nologin'}
-          onClick={() => setLogin(false)}
         >
           Sair
-        </Link>
+        </div>
 
-        {handleWindowHamburguer() ? (
+        {handleWindowHamburguer() && login ? (
           <div className="div-hamburguer">
             <Hamburguer />
           </div>

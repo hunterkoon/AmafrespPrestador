@@ -61,8 +61,10 @@
   flex-direction: row;
   position: relative;
   z-index: 99;
+  cursor: pointer;
 }
 .div-sair-nologin {
+  cursor: pointer;
   justify-content: flex-end;
   width: 79vw;
   display: flex;
@@ -82,6 +84,15 @@
   transition: 150ms;
   position: relative;
   width: auto;
+}
+@media only screen and (max-width: 400px) {
+  .main-div-user {
+    position: absolute;
+    left: 35%;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
