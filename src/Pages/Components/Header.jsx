@@ -16,8 +16,8 @@ export default function Header() {
     login,
     handleWindowHamburguer,
     handleLogoDirection,
-    animateMenu,
     setAnimateMenu,
+    width,
   } = React.useContext(GlobalContext);
 
   const handleClick = () => {
@@ -31,7 +31,7 @@ export default function Header() {
   };
   return (
     <React.Fragment>
-      {login && profile ? <MenuSuperior /> : null}
+      <MenuSuperior />
       <header className="Header">
         <div className="div-img-logotipo">
           <img
@@ -41,8 +41,11 @@ export default function Header() {
           />
         </div>
         {login ? (
-          <div onClick={handleClick} className="main-div-user">
-            <div className="div-user-info-panel">
+          <div
+            className="main-div-user"
+            onClick={width <= '1024' ? handleClick : null}
+          >
+            <div onClick={handleClick} className="div-user-info-panel">
               <img
                 id="user"
                 style={{
@@ -53,7 +56,7 @@ export default function Header() {
                 alt=""
               />
             </div>
-            <div className="div-user-info">
+            <div onClick={handleClick} className="div-user-info">
               <span className="span-user">{'NOME USER'}</span>
               <span className="span-employ">{'NOME EMPRESA'}</span>
             </div>

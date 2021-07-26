@@ -48,11 +48,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
 }
-@media only screen and (max-width: 420px) {
-  .image-login-div {
-    display: none;
-  }
-}
+
 @media only screen and (max-width: 1024px) {
   .main-login {
     display: flex;
@@ -63,15 +59,17 @@
     height: 100vh;
   }
   .login {
-    width: 100%;
+    width: 95%;
     text-align: center;
     margin: 0;
+    padding: 0;
   }
   .titles {
     align-items: center;
     text-align: center;
   }
   .image-login-div {
+    display: none;
     align-self: center;
     width: 50%;
   }
@@ -81,6 +79,9 @@
     bottom: 0;
   }
   .input {
+    padding: 0;
+
+    margin: 0;
     width: 100%;
   }
   form {

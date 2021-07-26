@@ -1,25 +1,28 @@
 import React from 'react';
 import './MenuSuperior.css';
 import Button_Back from '../../Assets/Button_Back.svg';
-
 import User_Profile from '../../Assets/UserProfille.svg';
 import { GlobalContext } from '../GlobalContext';
 import { Link } from 'react-router-dom';
+import Button from '../Shared/Button';
 
 const MenuSuperior = () => {
   const { profile, setProfile, data, login } = React.useContext(GlobalContext);
   return (
     <>
-      <div className="main-div-menu">
+      <div
+        className={
+          profile && login ? 'main-div-menu' : 'main-div-menu-deactived '
+        }
+      >
         <div className="main-h1-menu">
           <h1>Dados Prestador / Usuário</h1>
+          <span onClick={() => setProfile(false)} className="span-buttons">
+            <Button color="#f5f5f5" value="Voltar" textColor="#25b099" />
+            <Button color="#f5f5f5" value="Perfil" textColor="#25b099" />
+          </span>
         </div>
-        <div
-          style={{
-            height: '0vh',
-          }}
-          className="main-div-dados-menu"
-        >
+        <div className="main-div-dados-menu">
           <div className="prestador-div-menu">
             <ul>
               <li>

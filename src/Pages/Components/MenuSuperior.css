@@ -1,34 +1,54 @@
-.main-div-menu {
-  animation-name: opacityAnimeSup;
-  animation-fill-mode: forwards;
-  animation-duration: 0.5s;
-  z-index: 10;
+.main-div-menu-deactived {
+  top: 10vh;
+  opacity: 0%;
+  height: 0%;
+  z-index: -1;
+  cursor: none;
   position: absolute;
-  flex-direction: column;
-  display: flex;
+  width: 100%;
+  transition: 0.5s;
+}
+.main-div-menu-deactived div {
+  opacity: 0%;
+  height: 0%;
+  transition: 0.5s;
+}
+.main-div-menu {
+  z-index: 999;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20% 1fr;
   width: 95vw;
   top: 10vh;
   background-color: #f5f5f5;
   box-shadow: 5px 5px 10px #999999;
   border-radius: 10px;
   margin-left: 2.5vw;
-  /* height: 30vh; */
+  height: 35vh;
+  transition: 300ms;
 }
-.main-h1-menu {
-  border-radius: 0px 0px 10px 10px;
-  z-index: 11;
-  box-shadow: 5px 5px 10px #999999;
-  background-color: #25b099;
-  color: #ffffff;
+
+.main-div-menu div {
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
+
 .main-div-dados-menu {
   display: grid;
   width: auto;
   grid-template-columns: 65% 1fr;
   border-radius: 10px;
-  height: fill;
+  height: auto;
 }
-
+.main-h1-menu {
+  border-radius: 10px;
+  z-index: 11;
+  box-shadow: 5px 5px 10px #999999;
+  background-color: #25b099;
+  color: #ffffff;
+}
 .main-h1-menu h1 {
   font-size: 1.2rem;
   color: #ffffff;
@@ -36,12 +56,16 @@
 }
 
 .colab-div-menu {
-  width: auto;
-  height: auto;
-  border-radius: 0 0 10px 0;
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
 }
 
+.colab-div-menu ul {
+  padding: 0;
+}
 .colab-div-menu ul li {
+  width: 33.3%;
   margin: 3%;
 }
 
@@ -69,7 +93,11 @@
   justify-content: space-between;
   margin: 1em;
 }
-
+.prestador-div-menu {
+  border-radius: 10px;
+  height: 100%;
+  background-color: #f5f5f5;
+}
 .main-div-menu div li h4 {
   width: 100%;
   font-size: 1rem;
@@ -90,45 +118,55 @@
 .main-div-menu img {
   cursor: pointer;
 }
-@media only screen and (max-width: 600px) {
-  .prestador-div-menu {
-    background-color: #f5f5f5;
-  }
-  .colab-div-menu {
-    background-color: #25b099;
-  }
+.span-buttons {
+  display: none;
+  text-decoration: underline;
+  font-weight: bolder;
+  margin: 3% auto;
+  align-self: center;
+}
+.span-buttons button {
+  margin: auto 1em;
 }
 @media only screen and (max-width: 1024px) {
-  .main-div-menu {
-    /* animation: animeMenuSup forwards 5s; */
+  .span-buttons {
     display: flex;
-    flex-direction: column;
   }
-  .colab-section-user {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  .main-div-menu {
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    transition: 0.5s;
+    z-index: 999;
+    height: auto;
   }
 
-  .main-div-dados-menu,
+  .main-div-dados-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
   .main-div-dados-menu ul {
     display: flex;
     flex-direction: column;
-    /* flex-direction: column-reverse; */
     margin: 0;
     padding: 0;
     width: 100%;
-  }
-  .img-back {
-    display: none;
+    height: 100%;
   }
 
   .prestador-div-menu {
+    height: 100%;
     background-color: #f5f5f5;
   }
+
   .colab-div-menu {
+    height: 100%;
     background-color: #25b099;
   }
+
   .colab-div-menu ul li,
   .prestador-div-menu ul li {
     display: flex;
@@ -144,8 +182,19 @@
   .main-div-dados-menu,
   .colab-div-menu {
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     border-radius: 0;
     box-shadow: none;
+  }
+  .img-back {
+    display: none;
+  }
+  .main-h1-menu div,
+  .main-h1-menu h1,
+  .main-h1-menu {
+    height: 10%;
+  }
+  .colab-section-user {
+    display: none;
   }
 }
