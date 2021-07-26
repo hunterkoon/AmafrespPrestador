@@ -120,10 +120,7 @@
 }
 .span-buttons {
   display: none;
-  text-decoration: underline;
-  font-weight: bolder;
   margin: 3% auto;
-  align-self: center;
 }
 .span-buttons button {
   margin: auto 1em;

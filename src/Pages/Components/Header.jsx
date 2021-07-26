@@ -27,7 +27,7 @@ export default function Header() {
   const handleLogout = () => {
     setLogin(false);
     setProfile(false);
-    console.log('logout');
+    setAnimateMenu(false);
   };
   return (
     <React.Fragment>

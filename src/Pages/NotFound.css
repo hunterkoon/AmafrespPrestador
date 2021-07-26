@@ -1,13 +1,21 @@
 .div-main-error {
-  margin-top: 15vh;
+  margin-top: 35vh;
   padding: 1em;
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.div-main-error button {
+  margin: 0 auto;
+  margin-top: 3%;
 }
 .h1-error {
-  margin: 1% auto;
+  margin: 5% auto;
   display: flex;
   flex-direction: row;
   align-self: center;
@@ -16,6 +24,6 @@
   margin: 3% auto;
   display: flex;
   flex-direction: row;
-  width: 10%;
+  width: 25%;
   align-self: center;
 }

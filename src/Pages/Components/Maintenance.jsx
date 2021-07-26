@@ -3,7 +3,7 @@ import Manutencao from '../../Assets/Manutencao.svg';
 
 const Maintenance = () => {
   return (
-    <div>
+    <div className="div-main-maintenance">
       <img
         style={{
           margin: '3em',
@@ -21,7 +21,7 @@ const Maintenance = () => {
           alignSelf: 'center',
         }}
       >
-        Em Manutenção...
+        Em Contrução...
       </h1>
     </div>
   );

@@ -18,7 +18,7 @@ const MenuSuperior = () => {
         <div className="main-h1-menu">
           <h1>Dados Prestador / Usuário</h1>
           <span onClick={() => setProfile(false)} className="span-buttons">
-            <Button color="#f5f5f5" value="Voltar" textColor="#25b099" />
+            <Button color="red" value="X" />
             <Button color="#f5f5f5" value="Perfil" textColor="#25b099" />
           </span>
         </div>

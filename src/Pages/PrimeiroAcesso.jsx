@@ -23,10 +23,10 @@ const PrimeiroAcesso = () => {
       id: 'CPFcnpj',
       type: 'text',
       label: 'CPF/CNPJ',
-      // require: 'false',
-      // pattern: '[0-9]{11} ',
-      // title:
-      //   'Digite um CPF no formato: xxx.xxx.xxx-xx ou um CNPJ no formato xx.xxx.xxx/xxxx-xx',
+      require: 'true',
+      pattern: '[0-9]{11} ',
+      title:
+        'Digite um CPF no formato: 00000000000 ou um CNPJ no formato 0000000000000',
       maxLength: '18',
     },
     {

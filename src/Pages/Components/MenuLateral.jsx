@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router';
 import { GlobalContext } from '../GlobalContext';
 
 const MenuLateral = () => {
-  const { animateMenu, setAnimateMenu, setLogin, width } =
+  const { animateMenu, setAnimateMenu, setLogin, width, setProfile } =
     React.useContext(GlobalContext);
   const navigate = useNavigate();
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
@@ -73,6 +73,12 @@ const MenuLateral = () => {
       navigate('./' + validateLocation());
       setAnimateMenu(false);
     }, 200);
+  };
+
+  const handleLogout = () => {
+    setLogin(false);
+    setProfile(false);
+    setAnimateMenu(false);
   };
 
   return (
@@ -157,7 +163,7 @@ const MenuLateral = () => {
         {animateMenu ? (
           <span className="div-menu-sair">
             <ItemMenu
-              clicked={() => setLogin(false)}
+              clicked={handleLogout}
               alt="item menu fale conosco"
               item="Sair"
               srcItem={Sair}
