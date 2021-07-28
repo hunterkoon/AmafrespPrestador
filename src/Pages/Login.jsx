@@ -23,7 +23,7 @@ const Login = () => {
       id: 'user',
       type: 'text',
       require: 'true',
-      label: 'Usuário',
+      label: 'Usuário / E-mail',
     },
     {
       id: 'senha',
@@ -67,7 +67,6 @@ const Login = () => {
             ({ id, label, type, require, pattern, title, maxLength }) => (
               <Input
                 key={id}
-                width="100%"
                 maxLength={maxLength}
                 title={title}
                 pattern={pattern}
@@ -83,14 +82,14 @@ const Login = () => {
 
           <div className="button-div">
             <Button value="Entrar"></Button>
-          </div>
-          <div className="links-menu">
-            <Link to="/recuperarsenha/">
-              <p>Recuperar senha</p>
-            </Link>
-            <Link to="/PrimeiroAcesso/">
-              <p>Primeiro acesso</p>
-            </Link>
+            <div className="links-menu">
+              <Link to="/RecuperarSenha/">
+                <p>Recuperar senha</p>
+              </Link>
+              <Link to="/PrimeiroAcesso/">
+                <p>Primeiro acesso</p>
+              </Link>
+            </div>
           </div>
         </form>
       </div>

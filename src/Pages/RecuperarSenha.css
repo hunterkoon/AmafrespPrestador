@@ -1,0 +1,66 @@
+.div-main-recuperar-senha {
+  padding: 2em;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  margin-top: 10vh;
+  width: 100vw;
+  animation-name: pageview;
+  animation-duration: 400ms;
+}
+
+.div-button-recuperar-senha {
+  display: flex;
+  flex-direction: row;
+  margin: 1em auto;
+  justify-content: space-between;
+}
+.div-form-recuperar-senha {
+  width: 80%;
+  align-self: center;
+}
+.div-img-recuperar-senha {
+  position: relative;
+  align-self: center;
+}
+.div-img-recuperar-senha a {
+  color: white;
+}
+.div-img-recuperar-senha img {
+  position: relative;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1500px) {
+  .div-main-recuperar-senha form {
+    width: 70%;
+    justify-self: center;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .div-main-recuperar-senha {
+    padding: 0;
+    display: flex;
+    height: auto;
+  }
+  .div-form-recuperar-senha {
+    width: 100%;
+    align-items: center;
+  }
+  .div-button-recuperar-senha a {
+    justify-content: flex-end;
+  }
+  .div-form-recuperar-senha form {
+    width: 80%;
+  }
+  .div-main-recuperar-senha h1 {
+    margin: 0 auto;
+  }
+  .div-button-recuperar-senha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

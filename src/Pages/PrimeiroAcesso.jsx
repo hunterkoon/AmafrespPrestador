@@ -8,6 +8,12 @@ import Titledecorated from './Shared/Titledecorated';
 const PrimeiroAcesso = () => {
   const formFields = [
     {
+      id: 'usuarios',
+      type: 'text',
+      label: 'Usuário',
+      require: 'true',
+    },
+    {
       id: 'email',
       type: 'email',
       label: 'E-mail',
@@ -75,7 +81,7 @@ const PrimeiroAcesso = () => {
         />
       </div>
       <div className="div-form-primeiro-acesso">
-        <form className="form-primeiro-acesso" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <Titledecorated botton="2em" text="Primeiro Acesso" />
           {formFields.map(
             ({ id, label, type, require, pattern, title, maxLength }) => (
@@ -88,7 +94,6 @@ const PrimeiroAcesso = () => {
                 type={type}
                 id={id}
                 require={require}
-                width="100%"
                 value={primeiroAcesso[id]}
                 onChange={handleChange}
               />

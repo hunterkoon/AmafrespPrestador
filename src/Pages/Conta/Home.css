@@ -3,8 +3,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 10vh;
+  animation-name: pageview;
+  animation-duration: 400ms;
 }
 .button-recadastrar {
   margin: 1em auto;
@@ -24,11 +26,6 @@
   position: relative;
   color: #474747;
   text-align: center;
-}
-
-.div-main-home {
-  animation-name: pageview;
-  animation-duration: 400ms;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 1024px) {

@@ -4,7 +4,7 @@
   margin-top: 8vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   animation-name: pageview;
   animation-duration: 400ms;
 }

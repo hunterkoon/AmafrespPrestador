@@ -6,6 +6,7 @@ import Seta from '../../Assets/Seta_Verde.svg';
 import MenuSuperior from './MenuSuperior';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
+import { useNavigate } from 'react-router';
 
 export default function Header() {
   const {
@@ -19,12 +20,13 @@ export default function Header() {
     setAnimateMenu,
     width,
   } = React.useContext(GlobalContext);
-
+  const navigate = useNavigate();
   const handleClick = () => {
     setProfile(!profile);
     setAnimateMenu(false);
   };
   const handleLogout = () => {
+    navigate('/');
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
