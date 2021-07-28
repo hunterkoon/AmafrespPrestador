@@ -121,17 +121,19 @@
 }
 .span-buttons {
   display: none;
-  margin: 3% auto;
 }
-.span-buttons button {
-  margin: auto 1em;
-}
+
 @media only screen and (max-width: 1024px) {
   .span-buttons {
     display: flex;
+    margin-top: 1em;
+    flex-direction: row;
+    align-self: center;
+    align-content: center;
+    align-items: center;
   }
   .span-buttons button {
-    margin: 0;
+    margin: 2%;
   }
   .main-div-menu {
     top: 0;

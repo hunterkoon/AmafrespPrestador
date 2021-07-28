@@ -77,8 +77,15 @@ const PrimeiroAcesso = () => {
         <img
           className="img-primeiro-acesso"
           src={PrimeiroAcessoImg}
-          alt="<a href='https://www.freepik.com/vectors/website'>Website vector created by stories - www.freepik.com</a>"
+          alt="Imagem menina segurando chave"
         />
+        <a
+          target="_blank"
+          style={{ color: '#FDFDFD' }}
+          href="https://www.freepik.com/vectors/website"
+        >
+          Website vector created by stories - www.freepik.com
+        </a>
       </div>
       <div className="div-form-primeiro-acesso">
         <form onSubmit={handleSubmit}>

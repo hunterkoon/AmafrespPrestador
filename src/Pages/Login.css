@@ -44,6 +44,21 @@
   margin: 5% auto;
 }
 
+@media only screen and (min-width: 1500px) {
+  .login {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .login form {
+    width: 70%;
+  }
+
+  .titles {
+    width: 70%;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .main-login {
     display: flex;

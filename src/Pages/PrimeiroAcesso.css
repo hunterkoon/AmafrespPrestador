@@ -9,10 +9,14 @@
   animation-duration: 400ms;
 }
 
+.div-form-primeiro-acesso form {
+  width: 70%;
+}
 .div-form-primeiro-acesso {
   margin-top: 10vh;
   position: relative;
-  width: 75%;
+  width: 100%;
+  align-items: center;
   justify-self: center;
   background-color: white;
 }
