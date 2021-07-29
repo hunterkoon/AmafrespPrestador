@@ -19,7 +19,6 @@ export const GlobalStorage = ({ children }) => {
   };
 
   //RETORNA PARA AREA DE LOGIN CASO LOGIN = FALSE
-
   React.useEffect(() => {
     handleLoginContext();
   }, [login]);

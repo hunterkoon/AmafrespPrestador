@@ -1,4 +1,4 @@
-button {
+.button-shared {
   font-family: NotoSans-Regular;
   width: 135px;
   height: 45px;
@@ -11,7 +11,7 @@ button {
   margin: 0;
 }
 
-button:hover {
+.button-shared:hover {
   outline: none;
   border-color: #25b099;
   box-shadow: 0 0 0 3px #3bc3a7;

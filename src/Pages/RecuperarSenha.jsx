@@ -5,6 +5,7 @@ import Input from './Shared/Input';
 import Button from './Shared/Button';
 import RecuperarSenhaImg from '../Assets/RecuperacaoSenha.svg';
 import { Link } from 'react-router-dom';
+import Title from './Shared/Title';
 const RecuperarSenha = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,24 +49,27 @@ const RecuperarSenha = () => {
           </a>
         </div>
         <div className="div-form-recuperar-senha">
-          <Titledecorated botton="2em" text="Recuperação de Senha" />
-          <form onSubmit={handleSubmit}>
-            {recoverFields.map(({ id, label, require, type }) => (
-              <Input
-                key={id}
-                id={id}
-                label={label}
-                require={require}
-                type={type}
-                onChange={handleChange}
-                value={recover[id]}
-              />
-            ))}
-            <div className="div-button-recuperar-senha">
-              <Button value="Recuperar" />
-              <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
-            </div>
-          </form>
+          <div className="div-inputs-recuperar-senha">
+            <Titledecorated text="Recuperação de Senha" />
+            <Title text="Portal Amafresp Prestador" />
+            <form onSubmit={handleSubmit}>
+              {recoverFields.map(({ id, label, require, type }) => (
+                <Input
+                  key={id}
+                  id={id}
+                  label={label}
+                  require={require}
+                  type={type}
+                  onChange={handleChange}
+                  value={recover[id]}
+                />
+              ))}
+              <div className="div-button-recuperar-senha">
+                <Button value="Recuperar" />
+                <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

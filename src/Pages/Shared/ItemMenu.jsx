@@ -1,3 +1,4 @@
+import transitions from '@material-ui/core/styles/transitions';
 import React from 'react';
 
 import './ItemMenu.css';
@@ -18,7 +19,7 @@ const ItemMenu = ({ ...props }) => {
         />
       </a>
       {props.state ? (
-        <div style={{ height: '10em' }}> {props.children} </div>
+        <div style={{ height: '6em' }}> {props.children} </div>
       ) : null}
     </li>
   );

@@ -4,6 +4,7 @@ import Button from '../Pages/Shared/Button';
 import './PrimeiroAcesso.css';
 import PrimeiroAcessoImg from '../Assets/PrimeiroAcesso.svg';
 import Titledecorated from './Shared/Titledecorated';
+import Title from './Shared/Title';
 
 const PrimeiroAcesso = () => {
   const formFields = [
@@ -89,7 +90,8 @@ const PrimeiroAcesso = () => {
       </div>
       <div className="div-form-primeiro-acesso">
         <form onSubmit={handleSubmit}>
-          <Titledecorated botton="2em" text="Primeiro Acesso" />
+          <Titledecorated text="Primeiro Acesso" />
+          <Title text="Portal Amafresp Prestador" />
           {formFields.map(
             ({ id, label, type, require, pattern, title, maxLength }) => (
               <Input

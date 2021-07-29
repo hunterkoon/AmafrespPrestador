@@ -4,6 +4,7 @@ import './Button.css';
 const Button = ({ ...props }) => {
   return (
     <button
+      className="button-shared"
       style={{
         backgroundColor: props.color,
         color: props.textColor,

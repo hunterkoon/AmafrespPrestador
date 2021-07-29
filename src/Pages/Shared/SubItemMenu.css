@@ -7,15 +7,14 @@
   position: relative;
   width: 100%;
   align-items: stretch;
-  transition: 2s;
-  height: 5em;
+  height: 3em;
 }
 
 .add-user-sub img {
   width: 1em;
 }
 .add-user-sub img {
-  margin-left: 1.6em;
+  margin-left: 1.7em;
 }
 
 .selected {

@@ -141,7 +141,7 @@ const MenuLateral = () => {
           <div className="transiction-menu">
             <SubItemMenu
               link="Recadastramento"
-              itemSubMenu="Realizar Atualização Cadastral"
+              itemSubMenu="Realizar Atualização"
               subMenuSrcImg={More}
             />
             <SubItemMenu
@@ -152,7 +152,7 @@ const MenuLateral = () => {
           </div>
         </ItemMenu>
 
-        <span onClick={handleAnimateMenu} className="div-fale-conosco">
+        <span onClick={handleAnimateMenu}>
           <ItemMenu
             alt="item menu fale conosco"
             item="Contatos"

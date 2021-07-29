@@ -7,13 +7,14 @@ const Input = ({ ...props }) => {
       <p className="p-input">{props.error}</p>
       <label htmlFor={props.id}>{props.label}</label>
       <input
+        className="input"
         maxLength={props.maxLength}
         title={props.title}
         pattern={props.pattern}
         required={props.require}
         onChange={props.onChange}
         value={props.value}
-        className="Input"
+        className="input"
         type={props.type}
         style={{
           width: props.width,

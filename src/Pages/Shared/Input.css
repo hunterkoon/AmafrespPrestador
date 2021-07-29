@@ -9,8 +9,8 @@
   position: absolute;
 }
 
-input:hover,
-input:focus {
+.input:hover,
+.input:focus {
   outline: none;
   border-color: #25b099;
   background: #fff;
@@ -18,7 +18,7 @@ input:focus {
   transition: 200ms;
 }
 
-input {
+.input {
   text-indent: 3%;
   font-family: NotoSans-Regular;
   border: none;
@@ -29,11 +29,11 @@ input {
   margin-top: 1em;
   color: #474747;
 }
-div {
+.input-div {
   display: flex;
   flex-direction: column;
 }
-label {
+.input-div label {
   margin-top: 1em;
   text-align: left;
 }
