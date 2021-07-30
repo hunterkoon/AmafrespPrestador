@@ -1,73 +1,59 @@
-.main-login {
+.div-main-login {
   font-family: NotoSans-Regular;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  min-height: 100vh;
-  margin-top: 10vh;
   animation-name: pageview;
   animation-duration: 400ms;
+  margin-top: 10vh;
+  height: 80vh;
 }
 
-.login {
-  width: 80%;
-  justify-content: center;
+.div-form-login {
+  width: 70%;
+  align-self: center;
+  justify-self: center;
   z-index: 0;
   background-color: white;
 }
-.image-login-div {
+.div-img-login {
+  justify-content: center;
   z-index: -1;
   display: flex;
   width: 100%;
   align-self: center;
 }
-.image-login-div img {
+.div-img-login img {
   position: relative;
-  width: 100%;
+  width: 50%;
 }
-.titles {
+.div-titles-login {
   text-align: left;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
-.links-menu {
+.div-links-login {
   font-size: 1em;
   cursor: pointer;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin: 5% auto;
+  margin: 1% auto;
 }
-.button-div {
+.div-button-login {
   margin: 5% auto;
-}
-
-@media only screen and (min-width: 1500px) {
-  .login {
-    display: flex;
-    width: 100%;
-    align-items: center;
-  }
-  .login form {
-    width: 70%;
-  }
-
-  .titles {
-    width: 70%;
-  }
 }
 
 @media only screen and (max-width: 1024px) {
-  .main-login {
+  .div-main-login {
     display: flex;
+    flex-direction: column;
     width: 100%;
     align-items: center;
     height: auto;
     margin-top: 10vh;
   }
-  .login {
-    width: 80%;
+  .div-form-login {
+    width: 90%;
   }
 }

@@ -1,44 +1,46 @@
 .div-main-recuperar-senha {
-  padding: 2em;
-  position: relative;
+  font-family: NotoSans-Regular;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  min-height: 100vh;
-  margin-top: 10vh;
-  width: 100vw;
   animation-name: pageview;
   animation-duration: 400ms;
+  margin-top: 10vh;
+  height: 80vh;
+  width: 100%;
+  align-items: center;
+}
+.div-form-recuperar-senha {
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: center;
+}
+.div-form-recuperar-senha form {
+  width: 70%;
+  height: auto;
 }
 
+.div-img-recuperar-senha {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.div-img-recuperar-senha img {
+  width: 75%;
+  align-self: center;
+}
 .div-button-recuperar-senha {
   display: flex;
   flex-direction: row;
-  margin: 1em auto;
+  margin: 5% auto;
   justify-content: space-between;
 }
-.div-form-recuperar-senha {
-  width: 80%;
-  align-self: center;
-}
-.div-img-recuperar-senha {
-  position: relative;
-  align-self: center;
-}
+
 .div-img-recuperar-senha a {
   color: white;
 }
-.div-img-recuperar-senha img {
-  position: relative;
-  width: 100%;
-}
 
-@media only screen and (min-width: 1500px) {
-  .div-main-recuperar-senha form {
-    width: 70%;
-    justify-self: center;
-  }
-}
 @media only screen and (max-width: 1024px) {
   .div-main-recuperar-senha {
     padding: 0;

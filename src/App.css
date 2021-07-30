@@ -4,18 +4,14 @@ html {
   font-family: NotoSans-Regular;
 }
 .App {
-  transition: 185ms;
-  width: auto;
-  height: auto;
+  width: 100%;
+  min-height: 80vh;
   overflow: hidden;
   position: relative;
 }
-.header-app {
-  position: relative;
-}
+
 p {
   color: #474747;
-  margin: 0;
 }
 h1,
 h2,
@@ -35,18 +31,18 @@ a {
   display: flex;
   text-decoration: unset;
 }
+
+li {
+  list-style: none;
+}
 label {
   color: unset;
   text-decoration: unset;
   font-size: 1rem;
 }
 
-button {
-  margin: 1rem auto;
-}
 @keyframes opacityAnime {
   from {
-    opacity: 0;
     height: 50%;
   }
   to {
@@ -56,7 +52,6 @@ button {
 }
 @keyframes opacityAnimeSup {
   from {
-    opacity: 0;
     height: 0vh;
   }
   to {
@@ -66,7 +61,6 @@ button {
 }
 @keyframes opacityAnimeSupMovel {
   from {
-    opacity: 0;
     height: 0vh;
   }
   to {

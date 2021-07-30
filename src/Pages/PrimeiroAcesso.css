@@ -1,45 +1,43 @@
 .div-main-primeiro-acesso {
-  position: relative;
-  margin-top: 10vh;
+  font-family: NotoSans-Regular;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  height: auto;
   animation-name: pageview;
   animation-duration: 400ms;
-}
-
-.div-form-primeiro-acesso form {
-  width: 70%;
+  margin-top: 10vh;
+  height: auto;
+  width: 100%;
 }
 .div-form-primeiro-acesso {
-  margin-top: 10vh;
+  display: flex;
+  width: auto;
   position: relative;
-  width: 100%;
-  align-items: center;
-  justify-self: center;
+  background-color: white;
+  justify-content: center;
+}
+.div-form-primeiro-acesso form {
+  width: 70%;
+  position: relative;
   background-color: white;
 }
 .div-img-primeiro-acesso {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+.div-img-primeiro-acesso img {
+  width: 75%;
   align-self: center;
 }
 
-.div-img-primeiro-acesso img {
-  width: 100%;
-  position: relative;
-}
-.button-form-primeiro-acesso {
+.div-button-form-primeiro-acesso {
   width: 100%;
   margin: 5% auto;
 }
 
-@media only screen and (min-width: 1500px) {
-  .div-main-primeiro-acesso form {
-    width: 70%;
-    justify-self: center;
-  }
-}
 @media only screen and (max-width: 1024px) {
   .div-main-primeiro-acesso {
     width: 100%;
@@ -65,18 +63,3 @@
     width: 80%;
   }
 }
-/* s
-@media only screen and (min-width: 1100px) and (max-width: 1700px) {
-  .div-img-primeiro-acesso {
-    width: 50%;
-  }
-  .img-primeiro-acesso {
-    width: 50%;
-  }
-  .form-primeiro-acesso {
-    width: 50%;
-  }
-  .div-form-primeiro-acesso {
-    width: 50%;
-  }
-} */

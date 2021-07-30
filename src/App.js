@@ -15,8 +15,8 @@ function App() {
     <>
       <HashRouter>
         <GlobalStorage>
+          <Header />
           <div className="App">
-            <Header />
             <Routes>
               <Route exact path="/" element={<Login />} />
               <Route path="/conta/*" element={<Conta />} />
@@ -24,8 +24,8 @@ function App() {
               <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <Footer />
           </div>
+          <Footer />
         </GlobalStorage>
       </HashRouter>
     </>

@@ -62,9 +62,6 @@
   border-radius: 10px;
 }
 
-.colab-div-menu ul {
-  padding: 0;
-}
 .colab-div-menu ul li {
   width: 33.3%;
   margin: 3%;
@@ -87,12 +84,14 @@
 }
 .prestador-div-menu ul,
 .colab-div-menu ul {
-  height: fill;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 1em;
 }
 .prestador-div-menu {
   border-radius: 10px;

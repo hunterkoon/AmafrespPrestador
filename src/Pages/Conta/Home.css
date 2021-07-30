@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 80vh;
   margin-top: 10vh;
   animation-name: pageview;
   animation-duration: 400ms;

@@ -49,27 +49,27 @@ const RecuperarSenha = () => {
           </a>
         </div>
         <div className="div-form-recuperar-senha">
-          <div className="div-inputs-recuperar-senha">
+          {/* <div className="div-inputs-recuperar-senha"> */}
+          <form onSubmit={handleSubmit}>
             <Titledecorated text="Recuperação de Senha" />
             <Title text="Portal Amafresp Prestador" />
-            <form onSubmit={handleSubmit}>
-              {recoverFields.map(({ id, label, require, type }) => (
-                <Input
-                  key={id}
-                  id={id}
-                  label={label}
-                  require={require}
-                  type={type}
-                  onChange={handleChange}
-                  value={recover[id]}
-                />
-              ))}
-              <div className="div-button-recuperar-senha">
-                <Button value="Recuperar" />
-                <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
-              </div>
-            </form>
-          </div>
+            {recoverFields.map(({ id, label, require, type }) => (
+              <Input
+                key={id}
+                id={id}
+                label={label}
+                require={require}
+                type={type}
+                onChange={handleChange}
+                value={recover[id]}
+              />
+            ))}
+            <div className="div-button-recuperar-senha">
+              <Button value="Recuperar" />
+              <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
+            </div>
+          </form>
+          {/* </div> */}
         </div>
       </div>
     </>

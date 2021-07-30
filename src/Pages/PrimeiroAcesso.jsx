@@ -75,11 +75,7 @@ const PrimeiroAcesso = () => {
   return (
     <div className="div-main-primeiro-acesso">
       <div className="div-img-primeiro-acesso">
-        <img
-          className="img-primeiro-acesso"
-          src={PrimeiroAcessoImg}
-          alt="Imagem menina segurando chave"
-        />
+        <img src={PrimeiroAcessoImg} alt="Imagem menina usando celular" />
         <a
           target="_blank"
           style={{ color: '#FDFDFD' }}
@@ -108,7 +104,7 @@ const PrimeiroAcesso = () => {
               />
             ),
           )}
-          <div className="button-form-primeiro-acesso">
+          <div className="div-button-form-primeiro-acesso">
             <Button value="Registrar" />
           </div>
         </form>

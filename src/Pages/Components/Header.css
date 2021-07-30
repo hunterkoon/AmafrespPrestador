@@ -2,10 +2,10 @@
   background-color: #ffff;
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: 100%;
   border-bottom: solid 1px #dcdcdc;
   z-index: 99;
-  height: 10vh;
+  height: 10%;
   position: fixed;
   align-items: center;
 }
