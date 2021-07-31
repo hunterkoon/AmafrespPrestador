@@ -1,11 +1,14 @@
 .main-menu {
+  margin-top: 10vh;
   display: flex;
   transition: 200ms;
   font-family: NotoSans-Regular;
+  min-height: 80vh;
   height: 100%;
-  margin-top: 5vh;
   background-color: #25b099;
   color: #fff;
+  animation-name: pageview;
+  animation-duration: 400ms;
 }
 
 .main-menu ul {

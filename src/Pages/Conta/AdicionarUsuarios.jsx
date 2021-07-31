@@ -5,10 +5,14 @@ import Maintenance from '../Components/Maintenance';
 
 const Usuarios = () => {
   return (
-    <div className="div-main-adicionarUsuarios">
-      <Titledecorated text="Usuários" />
-      <Maintenance />
-    </div>
+    <>
+      <div className="div-main-adicionarUsuarios">
+        <div className="div-title-pages">
+          <Titledecorated text="Usuários" />
+        </div>
+        <Maintenance />
+      </div>
+    </>
   );
 };
 

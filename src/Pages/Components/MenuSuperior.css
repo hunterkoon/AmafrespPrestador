@@ -35,6 +35,23 @@
   margin: 0;
   height: 100%;
 }
+.main-h1-menu {
+  padding: 0;
+  margin: 0;
+  border-radius: 5px;
+  z-index: 11;
+  box-shadow: 5px 5px 10px #999999;
+  background-color: #25b099;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-h1-menu h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
 
 .main-div-dados-menu {
   display: grid;
@@ -43,23 +60,11 @@
   border-radius: 10px;
   height: auto;
 }
-.main-h1-menu {
-  border-radius: 10px;
-  z-index: 11;
-  box-shadow: 5px 5px 10px #999999;
-  background-color: #25b099;
-  color: #ffffff;
-}
-.main-h1-menu h1 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin: 1rem auto;
-}
 
 .colab-div-menu {
   display: flex;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 0px;
 }
 
 .colab-div-menu ul li {
@@ -133,6 +138,10 @@
   }
   .span-buttons button {
     margin: 2%;
+  }
+  .main-h1-menu {
+    display: flex;
+    flex-direction: column;
   }
   .main-div-menu {
     top: 0;

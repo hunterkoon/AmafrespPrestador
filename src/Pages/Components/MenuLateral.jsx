@@ -72,7 +72,7 @@ const MenuLateral = () => {
     return setTimeout(() => {
       navigate('./' + validateLocation());
       setAnimateMenu(false);
-    }, 200);
+    }, 0);
   };
 
   const handleLogout = () => {

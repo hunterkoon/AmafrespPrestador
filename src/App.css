@@ -5,9 +5,34 @@ html {
 }
 .App {
   width: 100%;
-  min-height: 80vh;
+  min-height: 90vh;
   overflow: hidden;
   position: relative;
+}
+.div-title-pages {
+  animation-name: pageview;
+  animation-duration: 400ms;
+  position: relative;
+  margin-top: 5%;
+  margin-left: 3%;
+}
+@media only screen and (max-width: 1300px) {
+  .div-title-pages {
+    margin-left: 5%;
+    margin-top: 10%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .div-title-pages {
+    margin-left: 8%;
+    margin-top: 10%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .div-title-pages {
+    margin-left: 8%;
+    margin-top: 15%;
+  }
 }
 
 p {

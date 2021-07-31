@@ -1,28 +1,13 @@
 import React from 'react';
+import './Maintenance.css';
 import Manutencao from '../../Assets/Manutencao.svg';
+import Title from '../Shared/Title';
 
 const Maintenance = () => {
   return (
     <div className="div-main-maintenance">
-      <img
-        style={{
-          margin: '3em',
-          width: '25%',
-          display: 'flex',
-          alignSelf: 'center',
-        }}
-        className="img-status"
-        src={Manutencao}
-        alt=""
-      />
-      <h1
-        style={{
-          display: 'flex',
-          alignSelf: 'center',
-        }}
-      >
-        Em Contrução...
-      </h1>
+      <Title text="Em Manutenção" />
+      <img className="img-maintenance" src={Manutencao} alt="Gear" />
     </div>
   );
 };

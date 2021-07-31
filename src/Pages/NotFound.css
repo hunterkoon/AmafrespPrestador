@@ -1,29 +1,20 @@
 .div-main-error {
-  margin-top: 35vh;
-  padding: 1em;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   align-self: center;
   align-items: center;
   align-content: center;
   text-align: center;
+  margin-top: 10%;
 }
 .div-main-error button {
-  margin: 0 auto;
-  margin-top: 3%;
+  margin-top: 1%;
 }
-.h1-error {
-  margin: 5% auto;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-}
+
 .img-error {
-  margin: 3% auto;
   display: flex;
   flex-direction: row;
-  width: 25%;
+  width: 10%;
   align-self: center;
 }

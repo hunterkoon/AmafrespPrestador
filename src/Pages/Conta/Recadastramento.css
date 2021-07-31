@@ -1,10 +1,9 @@
 .div-main-recadastramento {
-  padding: 3em;
   position: relative;
-  margin-top: 8vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   animation-name: pageview;
   animation-duration: 400ms;
+  height: auto;
+  width: 100%;
 }

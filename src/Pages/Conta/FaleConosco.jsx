@@ -5,10 +5,14 @@ import Maintenance from '../Components/Maintenance';
 
 const FaleConosco = () => {
   return (
-    <div className="div-main-faleConosco">
-      <Titledecorated text="Fale Conosco" />
-      <Maintenance />
-    </div>
+    <>
+      <div className="div-main-faleConosco">
+        <div className="div-title-pages">
+          <Titledecorated text="Fale Conosco" />
+        </div>
+        <Maintenance />
+      </div>
+    </>
   );
 };
 

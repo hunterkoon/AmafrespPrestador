@@ -5,10 +5,14 @@ import Maintenance from '../Components/Maintenance';
 
 const Status = () => {
   return (
-    <div className="div-main-status">
-      <Titledecorated text="Status atualização cadastral" />
-      <Maintenance />
-    </div>
+    <>
+      <div className="div-main-status">
+        <div className="div-title-pages">
+          <Titledecorated text="Status atualização cadastral" />
+        </div>
+        <Maintenance />
+      </div>
+    </>
   );
 };
 

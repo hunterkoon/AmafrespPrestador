@@ -1,34 +1,32 @@
 .div-main-home {
-  padding: 2em;
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 80vh;
-  margin-top: 10vh;
   animation-name: pageview;
   animation-duration: 400ms;
+  height: auto;
+  width: 100%;
+}
+
+.div-img-home {
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: center;
+}
+.div-img-home img {
+  width: 50%;
+  align-self: center;
 }
 .button-recadastrar {
   margin: 1em auto;
 }
-
-.div-img {
-  top: 0;
-  margin: 0 auto;
-  position: relative;
-  align-self: center;
-  padding-bottom: 2em;
-  width: 65%;
-}
-.div-text {
-  margin: 0 auto;
-  width: 50%;
-  position: relative;
-  color: #474747;
+.div-text-home {
+  margin: 3%;
   text-align: center;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .div-img {
     left: 0;
     top: 0;
@@ -46,6 +44,8 @@
     position: inherit;
   }
   .div-main-home {
+    justify-content: space-around;
+    width: 90%;
     height: 100vh;
   }
   .div-main-home img {

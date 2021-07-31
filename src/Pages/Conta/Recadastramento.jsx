@@ -5,10 +5,14 @@ import Maintenance from '../Components/Maintenance';
 
 const Recadastramento = () => {
   return (
-    <div className="div-main-recadastramento">
-      <Titledecorated text="Atualização Cadastral" />
-      <Maintenance />
-    </div>
+    <>
+      <div className="div-main-recadastramento">
+        <div className="div-title-pages">
+          <Titledecorated text="Atualização Cadastral" />
+        </div>
+        <Maintenance />
+      </div>
+    </>
   );
 };
 

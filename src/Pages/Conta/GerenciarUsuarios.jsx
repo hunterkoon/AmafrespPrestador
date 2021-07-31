@@ -5,10 +5,14 @@ import Maintenance from '../Components/Maintenance';
 
 const GerenciarUsuarios = () => {
   return (
-    <div className="div-main-gerenciarUsuarios">
-      <Titledecorated text="Gerenciar Usuários" />
-      <Maintenance />
-    </div>
+    <>
+      <div className="div-main-gerenciarUsuarios">
+        <div className="div-title-pages">
+          <Titledecorated text="Gerênciar Usuários" />
+        </div>
+        <Maintenance />
+      </div>
+    </>
   );
 };
 
