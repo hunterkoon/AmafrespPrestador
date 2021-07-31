@@ -101,7 +101,17 @@ label {
     transform: rotate(10deg);
   }
 }
-
+.pageView {
+  opacity: 0;
+  animation: pageviewTo 0.4s forwards;
+  transform: translateX(-150px);
+}
+@keyframes pageviewTo {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
 @keyframes pageview {
   from {
     opacity: 15%;
