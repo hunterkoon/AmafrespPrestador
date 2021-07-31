@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <>
-      <div className="div-main-home">
+      <div className="div-main-home pageView">
         <div className="div-title-pages">
           <Titledecorated text="Olá Visitante" />
         </div>

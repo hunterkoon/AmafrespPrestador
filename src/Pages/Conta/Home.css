@@ -2,8 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  animation-name: pageview;
-  animation-duration: 400ms;
   height: auto;
   width: 100%;
 }

@@ -6,6 +6,8 @@ import Button from './Shared/Button';
 import RecuperarSenhaImg from '../Assets/RecuperacaoSenha.svg';
 import { Link } from 'react-router-dom';
 import Title from './Shared/Title';
+import '../App.css';
+
 const RecuperarSenha = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,7 +43,7 @@ const RecuperarSenha = () => {
 
   return (
     <>
-      <div className="div-main-recuperar-senha">
+      <div className="div-main-recuperar-senha pageView">
         <div className="div-img-recuperar-senha">
           <img src={RecuperarSenhaImg} alt="" />
           <a href="https://www.freepik.com/vectors/woman">

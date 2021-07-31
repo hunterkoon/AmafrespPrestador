@@ -53,47 +53,45 @@ const Login = () => {
   };
 
   return (
-    <div className="pageView">
-      <div className="div-main-login">
-        <div className="div-img-login">
-          <img src={LoginImg} alt="Imagem de Profissionais da medicina" />
-        </div>
-        <div className="div-form-login">
-          <div className="div-input-login">
-            <div className="div-titles-login">
-              <Titledecorated text="Login" />
-              <Title text="Portal Amafresp Prestador" />
-            </div>
-            <form onSubmit={handleSubmit}>
-              {loginFields.map(
-                ({ id, label, type, require, pattern, title, maxLength }) => (
-                  <Input
-                    key={id}
-                    maxLength={maxLength}
-                    title={title}
-                    pattern={pattern}
-                    label={label}
-                    type={type}
-                    id={id}
-                    // require={require}
-                    value={fieldsLogin[id]}
-                    onChange={handleChange}
-                  />
-                ),
-              )}
-              <div className="div-button-login">
-                <Button value="Entrar"></Button>
-                <div className="div-links-login">
-                  <Link to="/RecuperarSenha/">
-                    <p>Recuperar senha</p>
-                  </Link>
-                  <Link to="/PrimeiroAcesso/">
-                    <p>Primeiro acesso</p>
-                  </Link>
-                </div>
-              </div>
-            </form>
+    <div className="div-main-login pageView">
+      <div className="div-img-login">
+        <img src={LoginImg} alt="Imagem de Profissionais da medicina" />
+      </div>
+      <div className="div-form-login">
+        <div className="div-input-login">
+          <div className="div-titles-login">
+            <Titledecorated text="Login" />
+            <Title text="Portal Amafresp Prestador" />
           </div>
+          <form onSubmit={handleSubmit}>
+            {loginFields.map(
+              ({ id, label, type, require, pattern, title, maxLength }) => (
+                <Input
+                  key={id}
+                  maxLength={maxLength}
+                  title={title}
+                  pattern={pattern}
+                  label={label}
+                  type={type}
+                  id={id}
+                  // require={require}
+                  value={fieldsLogin[id]}
+                  onChange={handleChange}
+                />
+              ),
+            )}
+            <div className="div-button-login">
+              <Button value="Entrar"></Button>
+              <div className="div-links-login">
+                <Link to="/RecuperarSenha/">
+                  <p>Recuperar senha</p>
+                </Link>
+                <Link to="/PrimeiroAcesso/">
+                  <p>Primeiro acesso</p>
+                </Link>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

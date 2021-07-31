@@ -10,8 +10,6 @@ html {
   position: relative;
 }
 .div-title-pages {
-  animation-name: pageview;
-  animation-duration: 400ms;
   position: relative;
   margin-top: 5%;
   margin-left: 3%;
@@ -66,7 +64,7 @@ label {
   font-size: 1rem;
 }
 
-@keyframes opacityAnime {
+/* @keyframes opacityAnime {
   from {
     height: 50%;
   }
@@ -92,7 +90,7 @@ label {
     opacity: 1;
     height: 100vh;
   }
-}
+} */
 @keyframes iconsAnime {
   from {
     transform: rotate(-10deg);

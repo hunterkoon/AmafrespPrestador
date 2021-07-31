@@ -5,6 +5,7 @@ import './PrimeiroAcesso.css';
 import PrimeiroAcessoImg from '../Assets/PrimeiroAcesso.svg';
 import Titledecorated from './Shared/Titledecorated';
 import Title from './Shared/Title';
+import '../App.css';
 
 const PrimeiroAcesso = () => {
   const formFields = [
@@ -73,7 +74,7 @@ const PrimeiroAcesso = () => {
   };
 
   return (
-    <div className="div-main-primeiro-acesso">
+    <div className="div-main-primeiro-acesso pageView">
       <div className="div-img-primeiro-acesso">
         <img src={PrimeiroAcessoImg} alt="Imagem menina usando celular" />
         <a
