@@ -105,10 +105,10 @@ label {
 @keyframes pageview {
   from {
     opacity: 15%;
-    transform: translate3d(-150px, 0, 0);
+    transform: translateX(-150px);
   }
   to {
     opacity: 100%;
-    transform: translate3d(0px, 0, 0);
+    transform: translateX(0px);
   }
 }
