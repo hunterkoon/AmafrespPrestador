@@ -84,7 +84,9 @@ const MenuLateral = () => {
   return (
     <nav
       className={
-        animateMenu && width <= '1024' ? 'hambuguerClick' : 'main-menu'
+        animateMenu && width <= '1024'
+          ? 'hambuguerClick pageView'
+          : 'main-menu pageView'
       }
       onMouseOver={handleMouse}
       onMouseOut={handleMouse}
