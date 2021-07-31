@@ -7,7 +7,7 @@ import Button from './Shared/Button';
 import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Pages/GlobalContext';
-
+import '../App.css';
 const Login = () => {
   const { error, setLogin } = React.useContext(GlobalContext);
 

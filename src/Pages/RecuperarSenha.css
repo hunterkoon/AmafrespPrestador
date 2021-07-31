@@ -45,12 +45,14 @@
   .div-main-recuperar-senha {
     padding: 0;
     display: flex;
+    flex-direction: column;
     height: auto;
   }
   .div-form-recuperar-senha {
     width: 100%;
     align-items: center;
   }
+
   .div-button-recuperar-senha a {
     justify-content: flex-end;
   }
@@ -58,7 +60,8 @@
     width: 80%;
   }
   .div-main-recuperar-senha h1 {
-    margin: 0 auto;
+    width: 100%;
+    margin: 1em auto;
   }
   .div-button-recuperar-senha {
     display: flex;
