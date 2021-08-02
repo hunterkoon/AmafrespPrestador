@@ -15,9 +15,6 @@
   width: 100%;
 }
 
-.transiction-menu {
-  animation: opacityAnime forwards 200ms;
-}
 .animation {
   animation-name: iconsAnime;
   animation-duration: 100ms;

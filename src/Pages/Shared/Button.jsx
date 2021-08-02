@@ -1,7 +1,10 @@
 import React from 'react';
+import { GlobalContext } from '../GlobalContext';
 import './Button.css';
 
 const Button = ({ ...props }) => {
+  const { loading } = React.useContext(GlobalContext);
+
   return (
     <button
       className="button-shared"
@@ -12,7 +15,7 @@ const Button = ({ ...props }) => {
       }}
       onClick={props.onClick}
     >
-      {props.value}
+      {loading ? 'Carregando...' : props.value}
     </button>
   );
 };

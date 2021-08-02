@@ -99,24 +99,25 @@ label {
     transform: rotate(10deg);
   }
 }
+.menuView {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: menuViewTo 0.3s forwards;
+}
 .pageView {
   opacity: 0;
   animation: pageviewTo 0.4s forwards;
   transform: translateX(-150px);
 }
-@keyframes pageviewTo {
+@keyframes menuViewTo {
   to {
     opacity: 1;
     transform: initial;
   }
 }
-@keyframes pageview {
-  from {
-    opacity: 15%;
-    transform: translateX(-150px);
-  }
+@keyframes pageviewTo {
   to {
-    opacity: 100%;
-    transform: translateX(0px);
+    opacity: 1;
+    transform: initial;
   }
 }

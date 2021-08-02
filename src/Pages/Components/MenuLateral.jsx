@@ -11,6 +11,7 @@ import ItemMenu from '../Shared/ItemMenu';
 import SubItemMenu from '../Shared/SubItemMenu';
 import { useNavigate } from 'react-router';
 import { GlobalContext } from '../GlobalContext';
+import '../../App.css';
 
 const MenuLateral = () => {
   const { animateMenu, setAnimateMenu, setLogin, width, setProfile } =
@@ -111,7 +112,7 @@ const MenuLateral = () => {
             handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
           }
         >
-          <div className="transiction-menu">
+          <div>
             <SubItemMenu
               link="AdicionarUsuarios"
               state={menuItemUsuarios}
@@ -140,7 +141,7 @@ const MenuLateral = () => {
             )
           }
         >
-          <div className="transiction-menu">
+          <div>
             <SubItemMenu
               link="Recadastramento"
               itemSubMenu="Realizar Atualização"

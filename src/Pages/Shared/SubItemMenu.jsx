@@ -4,7 +4,7 @@ import './SubItemMenu.css';
 
 const SubItemMenu = ({ ...props }) => {
   return (
-    <section className={'add-user-sub'}>
+    <section className="add-user-sub menuView">
       <NavLink
         activeStyle={{
           textDecoration: 'underline',
