@@ -1,31 +1,39 @@
 import React from 'react';
-import useFetch from './Hooks/useFetch';
 import useWindowDimensions from './Hooks/getDimensionScreen';
 import { useNavigate } from 'react-router';
+import { GETDADOS } from './Api';
+import useFetch from './Hooks/useFetch';
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+  const { data, setData, request, loading, error, setError } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState();
-  const { data, loading, error, request, setData } = useFetch();
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
 
-  const handleLogoDirection = () => {
-    if (login) {
-      return navigate('/conta');
-    } else return navigate('/');
-  };
+  // async function LoginValidate() {
+  //   const { url, options } = GETDADOS();
+  //   const { response, json } = await request(url, options);
 
-  //RETORNA PARA AREA DE LOGIN CASO LOGIN = FALSE
+  //   setData(json);
+  //   FreeAcess(json);
+  // }
+
+  //LIBERAÇÃO SIMPLES LOGIN
+
+  // const FreeAcess = (datas) => {
+  //   if (datas) {
+  //     setLogin(true);
+  //   }
+  // };
+
+  //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE
+
   React.useEffect(() => {
-    handleLoginContext();
+    handleLogoDirection();
   }, [login]);
-
-  // React.useEffect(() => {
-  //   setLogin(true);
-  // }, []);
 
   const handleLoginContext = () => {
     if (login === true) {
@@ -42,26 +50,30 @@ export const GlobalStorage = ({ children }) => {
       return false;
     }
   };
-
+  // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
+  const handleLogoDirection = () => {
+    if (login) {
+      return navigate('/conta');
+    } else return navigate('/');
+  };
   return (
     <GlobalContext.Provider
       value={{
-        data,
-        setData,
-        profile,
         setProfile,
-        login,
         setLogin,
-        loading,
-        error,
-        request,
-        setData,
-        animateMenu,
         setAnimateMenu,
-        width,
-        height,
         handleWindowHamburguer,
         handleLogoDirection,
+        // LoginValidate,
+        setData,
+        profile,
+        login,
+        animateMenu,
+        height,
+        width,
+        data,
+        loading,
+        error,
       }}
     >
       {children}

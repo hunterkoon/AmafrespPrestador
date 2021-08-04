@@ -14,6 +14,12 @@ html {
   margin-top: 5%;
   margin-left: 3%;
 }
+.erro {
+  position: absolute;
+  color: red;
+  margin: 0;
+  padding: 0;
+}
 @media only screen and (max-width: 1300px) {
   .div-title-pages {
     margin-left: 5%;

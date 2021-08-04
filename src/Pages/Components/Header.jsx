@@ -4,7 +4,6 @@ import Logotipo from '../../Assets/Logo Amafresp.svg';
 import Hamburguer from './Hamburguer';
 import Seta from '../../Assets/Seta_Verde.svg';
 import MenuSuperior from './MenuSuperior';
-import { Link } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
 import { useNavigate } from 'react-router';
 
@@ -12,6 +11,7 @@ export default function Header() {
   const {
     setLogin,
     data,
+    setData,
     setProfile,
     profile,
     login,
@@ -30,6 +30,7 @@ export default function Header() {
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
+    setData(null);
   };
   return (
     <React.Fragment>
@@ -59,8 +60,12 @@ export default function Header() {
               />
             </div>
             <div onClick={handleClick} className="div-user-info">
-              <span className="span-user">{'NOME USER'}</span>
-              <span className="span-employ">{'NOME EMPRESA'}</span>
+              <span className="span-user">
+                {data ? data[0].NOME : 'NOME USER'}
+              </span>
+              <span className="span-employ">
+                {data ? data[0].EMPRESA : 'NOME USER'}
+              </span>
             </div>
           </div>
         ) : null}

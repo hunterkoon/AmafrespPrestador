@@ -24,7 +24,9 @@ const useFetch = () => {
     }
   }, []);
 
-  return { data, loading, error, request, setData };
+  return { data, loading, error, request, setData, setError };
 };
+
+//TODO Iniciar JSON com indice 0
 
 export default useFetch;

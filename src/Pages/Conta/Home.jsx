@@ -4,25 +4,37 @@ import Button from '../Shared/Button';
 import MainImage from '../../Assets/Conta.svg';
 import './Home.css';
 import { Link } from 'react-router-dom';
+import { GlobalContext } from '../GlobalContext';
 
 const Home = () => {
+  const { data } = React.useContext(GlobalContext);
+
+  function formatName(name) {
+    const arrName = name.split(' ');
+    const firstLetter = arrName[0].charAt(0);
+    const toTitleName =
+      firstLetter + arrName[0].substr(1, arrName[0].length).toLowerCase();
+    return toTitleName;
+  }
+
   return (
     <>
       <div className="div-main-home pageView">
-        <div className="div-title-pages">
-          <Titledecorated text="Olá Visitante" />
+        <div className="div-title-pages pageView">
+          <Titledecorated
+            text={`Olá, ${data ? formatName(data[0].NOME) : 'NOME'}`}
+          />
         </div>
-        {/* <Titledecorated text={`Olá,${'SomeBody'}`} /> */}
-
         <div className="div-img-home">
           <img src={MainImage} alt="" />
         </div>
 
         <div className="div-text-home">
           <p>
-            Seja bem vindo ao novo Portal Amafresp . Agora você pode consultar
-            seus dados,realizar o recadastramento entre outras funcionalidades.
-            Em caso de dúvidas, consulte o nosso Regulamento.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, modi
+            possimus? Officia obcaecati placeat saepe suscipit deleniti rem id,
+            repudiandae nisi numquam sapiente, quae ipsa architecto blanditiis
+            rerum aliquid molestiae!
           </p>
         </div>
         <div className="button-recadastrar">

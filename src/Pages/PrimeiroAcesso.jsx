@@ -1,57 +1,17 @@
 import React from 'react';
 import Input from '../Pages/Shared/Input';
 import Button from '../Pages/Shared/Button';
-import './PrimeiroAcesso.css';
 import PrimeiroAcessoImg from '../Assets/PrimeiroAcesso.svg';
 import Titledecorated from './Shared/Titledecorated';
 import Title from './Shared/Title';
+import { GlobalContext } from '../Pages/GlobalContext';
+import { formFields } from './Shared/Commons/constant/form-primeiro-acesso';
+import { UrlPrimeiroAcesso } from './Shared/Commons/constant/image-url-primeiro-acesso';
+import './PrimeiroAcesso.css';
 import '../App.css';
 
 const PrimeiroAcesso = () => {
-  const formFields = [
-    {
-      id: 'usuarios',
-      type: 'text',
-      label: 'Usuário',
-      require: 'true',
-    },
-    {
-      id: 'email',
-      type: 'email',
-      label: 'E-mail',
-      require: 'true',
-    },
-    {
-      id: 'CONFIRMEemail',
-      type: 'email',
-      label: 'Confirme seu E-mail',
-      require: 'true',
-    },
-    {
-      id: 'CPFcnpj',
-      type: 'text',
-      label: 'CPF/CNPJ',
-      require: 'true',
-      pattern: '[0-9]{11} ',
-      title:
-        'Digite um CPF no formato: 00000000000 ou um CNPJ no formato 0000000000000',
-      maxLength: '18',
-    },
-    {
-      id: 'senha',
-      type: 'password',
-      label: 'Senha',
-      require: 'true',
-      maxLength: '18',
-    },
-    {
-      id: 'CONFIRMEsenha',
-      type: 'password',
-      label: 'Confirme sua Senha',
-      require: 'true',
-      maxLength: '18',
-    },
-  ];
+  const { error } = React.useContext(GlobalContext);
 
   const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
     formFields.reduce((acc, field) => {
@@ -80,7 +40,7 @@ const PrimeiroAcesso = () => {
         <a
           target="_blank"
           style={{ color: '#FDFDFD' }}
-          href="https://www.freepik.com/vectors/website"
+          href={UrlPrimeiroAcesso}
         >
           Website vector created by stories - www.freepik.com
         </a>

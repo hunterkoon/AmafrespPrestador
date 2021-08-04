@@ -1,10 +1,19 @@
-import userEvent from '@testing-library/user-event';
+const baseURL = 'http://192.168.0.106:3036';
 
-const baseURL = 'http://localhost:3036/prestador';
+// export function GETDADOS() {
+//   return {
+//     url: baseURL,
+//     options: { method: 'GET' },
+//   };
+// }
 
-export function GETDADOS() {
+export function GETDADOS(user, pass, email) {
+  // const login = { USER: user, PASSWORD: pass, EMAIL: email };
   return {
-    url: baseURL,
-    options: { method: 'GET' },
+    url: baseURL + '/prestador/',
+    options: {
+      method: 'GET',
+      // body: JSON.stringify(login),
+    },
   };
 }

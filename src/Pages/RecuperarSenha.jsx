@@ -7,12 +7,18 @@ import RecuperarSenhaImg from '../Assets/RecuperacaoSenha.svg';
 import { Link } from 'react-router-dom';
 import Title from './Shared/Title';
 import '../App.css';
+import { useNavigate } from 'react-router';
+import { GlobalContext } from './GlobalContext';
 
 const RecuperarSenha = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(recover);
+    // Adicionar Validação através de fetch com retorno 200
+    navigate('/RecuperacaoSucessfull');
   };
+
   const recoverFields = [
     {
       id: 'cnpj',
@@ -68,6 +74,7 @@ const RecuperarSenha = () => {
             ))}
             <div className="div-button-recuperar-senha">
               <Button value="Recuperar" />
+              {/* Caso a resposta retornar 200 Mudar página */}
               <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
             </div>
           </form>

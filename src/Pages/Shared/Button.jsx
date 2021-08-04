@@ -4,7 +4,6 @@ import './Button.css';
 
 const Button = ({ ...props }) => {
   const { loading } = React.useContext(GlobalContext);
-
   return (
     <button
       className="button-shared"

@@ -45,7 +45,7 @@ const MenuLateral = () => {
   };
   React.useEffect(() => {
     handleWindow();
-  }, []);
+  }, [handleWindow]);
 
   // ADICIONA LISTA DE SUBMENUS AO CLICAR NO ITEM PAI
 
@@ -67,7 +67,8 @@ const MenuLateral = () => {
         return (location = '/');
       } else if (location === 'Sair') {
         return (location = '../');
-      } else return location;
+      }
+      return location;
     }
 
     return setTimeout(() => {

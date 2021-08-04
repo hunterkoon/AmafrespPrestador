@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './MenuSuperior.css';
 import Button_Back from '../../Assets/Button_Back.svg';
 import User_Profile from '../../Assets/UserProfille.svg';
 import { GlobalContext } from '../GlobalContext';
-import { Link } from 'react-router-dom';
 import Button from '../Shared/Button';
 
 const MenuSuperior = () => {
@@ -27,24 +27,20 @@ const MenuSuperior = () => {
             <ul>
               <li>
                 <h2>Empresa:</h2>
-                {/* <h4>{data[0].EMPRESA}</h4> */}
-                <h4>{'Lorem Ipsum'}</h4>
+                <h4>{data ? data[0].EMPRESA : 'Erro'}</h4>
               </li>
               <li>
                 <h2>CNPJ:</h2>
-                {/* <h4>{data[0].CNPJ}</h4> */}
-                <h4>{'Lorem Ipsum'}</h4>
+                <h4>{data ? data[0].CNPJ : 'Erro'}</h4>
               </li>
 
               <li>
                 <h2>Segmento:</h2>
-                {/* <h4>{data[0].SEGMENTO}</h4> */}
-                <h4>{'Lorem Ipsum'}</h4>
+                <h4>{data ? data[0].SEGMENTO : 'Erro'}</h4>
               </li>
               <li>
                 <h2>Tipo Credenciado: </h2>
-                {/* <h4>{data[0].TIPO_CREDENCIADO}</h4> */}
-                <h4>{'Lorem Ipsum'}</h4>
+                <h4>{data ? data[0].TIPO_CREDENCIADO : 'Erro'}</h4>
               </li>
             </ul>
           </div>
@@ -53,13 +49,11 @@ const MenuSuperior = () => {
             <ul>
               <li>
                 <h2>Nome:</h2>
-                {/* <h4>{data[0].NOME}</h4> */}
-                <h4>{'Lorem Ipsum'}</h4>
+                <h4>{data ? data[0].NOME : 'Erro'}</h4>
               </li>
               <li>
                 <h2>Departamento:</h2>
-                {/* <h4>{data[0].DEPARTAMENTO}</h4> */}
-                <h4>{'Lorem Ipsum'}</h4>
+                <h4>{data ? data[0].DEPARTAMENTO : 'Erro'}</h4>
               </li>
 
               <li>

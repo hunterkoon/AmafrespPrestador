@@ -7,9 +7,11 @@ import Button from './Shared/Button';
 import Titledecorated from './Shared/Titledecorated';
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../Pages/GlobalContext';
+import useFetch from './Hooks/useFetch';
 import '../App.css';
 const Login = () => {
   const { error, setLogin } = React.useContext(GlobalContext);
+  const { data } = useFetch();
 
   const loginFields = [
     {
@@ -41,13 +43,22 @@ const Login = () => {
       };
     }, {}),
   );
+
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setFieldsLogin({ ...fieldsLogin, [id]: value });
   };
+  //POST ITEM PARA O SERVIDOR E RECEBER RESPOSTA
+
+  // React.useEffect(()=>{
+
+  //   async function fetchData(){
+  //     await  const request('http://localhost:3036/prestador')
+  //   };
+
+  // },[])
 
   const handleSubmit = (event) => {
-    // ADD FETCH POST
     event.preventDefault();
     setLogin(true);
   };
