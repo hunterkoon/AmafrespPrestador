@@ -39,6 +39,12 @@ input:checked+.span-slider:before {
     transform: translateX(96.5%);
 }
 
+@media only screen and (min-width:1600px){
+    
+    input:checked+.span-slider:before {
+        transform: translateX(97.2%);
+    }
+}
 
 .span-slider.rounded {
     border-radius: 15px;

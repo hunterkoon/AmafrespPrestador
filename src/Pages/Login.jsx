@@ -74,7 +74,7 @@ const Login = () => {
         <div className="div-img-login">
           <div>
             <img
-              className={option ? "pageView" : null}
+              className={option ? 'pageView' : 'pageViewDrop'}
               src={option ? UsuarioLogin : LoginImg}
               alt="Imagem de Profissionais da medicina"
             />

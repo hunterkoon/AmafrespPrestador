@@ -71,33 +71,7 @@ label {
   font-size: 1rem;
 }
 
-/* @keyframes opacityAnime {
-  from {
-    height: 50%;
-  }
-  to {
-    opacity: 1;
-    height: 100%;
-  }
-}
-@keyframes opacityAnimeSup {
-  from {
-    height: 0vh;
-  }
-  to {
-    opacity: 1;
-    height: 35vh;
-  }
-}
-@keyframes opacityAnimeSupMovel {
-  from {
-    height: 0vh;
-  }
-  to {
-    opacity: 1;
-    height: 100vh;
-  }
-} */
+
 @keyframes iconsAnime {
   from {
     transform: rotate(-10deg);
@@ -106,10 +80,10 @@ label {
     transform: rotate(10deg);
   }
 }
-.menuViewDrop {
+.pageViewDrop {
   opacity: 0;
-  transform: translateY(-30px);
-  animation: menuViewTo 0.3s forwards;
+  transform: translateX(-120px);
+  animation: menuViewFrom 0.3s forwards;
 }
 .menuView {
   opacity: 0;
@@ -127,6 +101,14 @@ label {
     transform: initial;
   }
 }
+@keyframes menuViewFrom {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+
 @keyframes pageviewTo {
   to {
     opacity: 1;
