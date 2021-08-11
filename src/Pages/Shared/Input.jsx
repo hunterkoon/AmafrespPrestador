@@ -14,7 +14,6 @@ const Input = ({ ...props }) => {
         required={props.require}
         onChange={props.onChange}
         value={props.value}
-        className="input"
         type={props.type}
         style={{
           width: props.width,

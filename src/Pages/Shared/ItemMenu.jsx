@@ -1,4 +1,3 @@
-import transitions from '@material-ui/core/styles/transitions';
 import React from 'react';
 
 import './ItemMenu.css';

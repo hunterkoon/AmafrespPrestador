@@ -1,7 +1,7 @@
 import React from "react";
 import useWindowDimensions from "./Hooks/getDimensionScreen";
 import { useNavigate } from "react-router";
-import { GETDADOS } from "./Api";
+// import { GETDADOS } from "./Api";
 import useFetch from "./Hooks/useFetch";
 export const GlobalContext = React.createContext();
 

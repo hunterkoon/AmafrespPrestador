@@ -10,7 +10,7 @@ import Title from "../Pages/Shared/Title";
 import Titledecorated from "./Shared/Titledecorated";
 import LoginImg from "../Assets/Login_2.svg";
 import UsuarioLogin from "../Assets/UsuarioLogin.svg";
-import Modal from "../Pages/Components/Modal";
+import SwitchButton from "./Shared/SwitchButton";
 import "./Login.css";
 import "../App.css";
 
@@ -68,6 +68,8 @@ const Login = () => {
     );
   };
 
+
+
   return (
     <>
       <div className="div-main-login pageView">
@@ -95,18 +97,21 @@ const Login = () => {
                 text={option ? "Login - Usuário" : "Login - Administrador"}
               />
               <Title text="Portal Amafresp Prestador" />
-              <Modal />
             </div>
+
+            <div className='div-switch-login'>
+              <SwitchButton rounded={true} />
+            </div>
+
 
             <form onSubmit={handleSubmit}>
               {handlerMapping(option ? loginCommon : loginAdm)}
               {option ? (
                 <div className="div-button-login-user">
-                  <Button value="Entrar"></Button>                  
-                    <Link to="/RecuperarSenha/">
-                      <p>Recuperar senha</p>
-                    </Link>
-               
+                  <Button value="Entrar"></Button>
+                  <Link to="/RecuperarSenha/">
+                    <p>Recuperar senha</p>
+                  </Link>
                 </div>
               ) : (
                 <div className="div-button-login menuView">

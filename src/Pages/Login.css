@@ -4,10 +4,11 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     margin-top: 10vh;
-    min-height: auto;
+    min-height: 80vh;
 }
 
 .div-form-login {
+    transition: 0.4s;
     width: 70%;
     /* align-self: center; */
     justify-self: center;

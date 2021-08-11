@@ -1,6 +1,6 @@
 import { React, useEffect, useContext, useState } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { loginOptions } from "../Shared/Commons/constant/switch-button-options";
+import { loginOptions } from "./Commons/constant/switch-button-options";
 import SwitchSelector from "react-switch-selector";
 import "./Modal.css";
 

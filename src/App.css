@@ -105,6 +105,11 @@ label {
     transform: rotate(10deg);
   }
 }
+.menuViewDrop {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: menuViewTo 0.3s forwards;
+}
 .menuView {
   opacity: 0;
   transform: translateY(30px);
