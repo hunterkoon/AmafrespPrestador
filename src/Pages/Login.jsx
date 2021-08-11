@@ -68,27 +68,19 @@ const Login = () => {
     );
   };
 
-
-
   return (
     <>
       <div className="div-main-login pageView">
-        <div className="div-img-login pageView">
-          {option ? (
-            <div>
-              <img
-                className="pageView"
-                src={UsuarioLogin}
-                alt="Imagem de Profissionais da medicina"
-              />
-              <a href={UrlImgLogin}>www.freepik.com</a>
-            </div>
-          ) : (
-            <div className="pageView">
-              <img src={LoginImg} alt="Imagem de Profissionais da medicina" />
-              <a href={UrlImgLogin}>www.freepik.com</a>
-            </div>
-          )}
+        <div className="div-img-login">
+          <div>
+            <img
+              className={option ? "pageView" : null}
+              src={option ? UsuarioLogin : LoginImg}
+              alt="Imagem de Profissionais da medicina"
+            />
+            <a href={UrlImgLogin}>www.freepik.com</a>
+          </div>
+
         </div>
         <div className="div-form-login">
           <div className="div-input-login">
@@ -106,27 +98,21 @@ const Login = () => {
 
             <form onSubmit={handleSubmit}>
               {handlerMapping(option ? loginCommon : loginAdm)}
-              {option ? (
-                <div className="div-button-login-user">
-                  <Button value="Entrar"></Button>
+              
+              <div className={ !option ? 'div-button-login' :'div-button-login-user' }>
+                <Button value="Entrar"></Button>
+                <div className={option ? null :"div-links-login "}>
                   <Link to="/RecuperarSenha/">
                     <p>Recuperar senha</p>
                   </Link>
-                </div>
-              ) : (
-                <div className="div-button-login menuView">
-                  <Button value="Entrar"></Button>
-                  <div className="div-links-login">
-                    <Link to="/RecuperarSenha/">
-                      <p>Recuperar senha</p>
-                    </Link>
+                  {!option ?
                     <Link to="/PrimeiroAcesso/">
                       <p>Primeiro acesso</p>
-                    </Link>
-                  </div>
+                    </Link> : null}
                 </div>
-              )}
+              </div>
             </form>
+
           </div>
         </div>
       </div>

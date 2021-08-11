@@ -14,17 +14,27 @@ const SwitchButton = ({ rounded = false, props }) => {
     })
 
     return (
-        <div className='div-switch-main'>
-            <label className='label-switch'>
-                <input onChange={() => setOption(!option)} checked={option} type="checkbox" />
-                <span className={sliderCX} />
-                <div className='spans'>
-                    <span className={!option ? 'spanMoveIt': 'spanWithoutMove'}>Administrador</span>
-                    <span className={option ? 'spanMoveIt': 'spanWithoutMove'}>Usuário</span>
-                </div>
-            </label>
+        <>
+            <h1 style={{
 
-        </div>
+                margin: '0',
+                marginTop:'2%',
+                textAlign: 'center',
+                display: 'block',
+                color:'#474747',
+
+            }}>Escolha uma categoria!</h1>
+            <div className='div-switch-main'>
+                <label className='label-switch'>
+                    <input onChange={() => setOption(!option)} checked={option} type="checkbox" />
+                    <span className={sliderCX} />
+                    <div className='spans'>
+                        <span className={!option ? 'spanMoveIt' : 'spanWithoutMove'}>Administrador</span>
+                        <span className={option ? 'spanMoveIt' : 'spanWithoutMove'}>Usuário</span>
+                    </div>
+                </label>
+            </div>
+        </>
 
     )
 }

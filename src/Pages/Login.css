@@ -10,7 +10,6 @@
 .div-form-login {
     transition: 0.4s;
     width: 70%;
-    /* align-self: center; */
     justify-self: center;
     z-index: 0;
     background-color: white;
@@ -40,21 +39,23 @@
 .div-links-login {
     font-size: 1em;
     cursor: pointer;
-    justify-content: space-between;
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: 1% auto;
+    margin: 5% auto;
+    justify-content: space-between;
 }
+
 
 .div-button-login {
     margin: 5% auto;
 }
-
 .div-button-login-user {
-    display: flex;
     margin: 5% auto;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+
 }
 
 @media only screen and (max-width: 1024px) {

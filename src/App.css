@@ -40,6 +40,7 @@ html {
 }
 
 p {
+  margin: 0;
   color: #474747;
 }
 h1,
