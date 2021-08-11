@@ -33,9 +33,7 @@ export const GlobalStorage = ({ children }) => {
 
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE
 
-  React.useEffect(() => {
-    handleLogoDirection();
-  }, [login]);
+
 
   const handleLoginContext = () => {
     if (login === true) {
@@ -43,7 +41,11 @@ export const GlobalStorage = ({ children }) => {
     } else {
       navigate("/");
     }
-  };
+  }; 
+  
+  React.useEffect(() => {
+    handleLogoDirection();
+  }, [login]);
   // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
   const handleWindowHamburguer = () => {
     if (width <= 1024 && login === true) {
