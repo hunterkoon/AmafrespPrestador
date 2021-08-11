@@ -11,7 +11,7 @@ export const GlobalStorage = ({ children }) => {
   const { data, setData, request, loading, error, setError } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
-  const [animateMenu, setAnimateMenu] = React.useState();
+  const [animateMenu, setAnimateMenu] = React.useState(null);
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -31,21 +31,13 @@ export const GlobalStorage = ({ children }) => {
   //   }
   // };
 
-  //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE
-
-
-
-  const handleLoginContext = () => {
-    if (login === true) {
-      navigate("/conta");
-    } else {
-      navigate("/");
-    }
-  }; 
+  
   
   React.useEffect(() => {
+    console.log("passou no global")
     handleLogoDirection();
   }, [login]);
+
   // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
   const handleWindowHamburguer = () => {
     if (width <= 1024 && login === true) {
@@ -54,7 +46,10 @@ export const GlobalStorage = ({ children }) => {
       return false;
     }
   };
+
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
+  //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
+  
   const handleLogoDirection = () => {
     if (login) {
       return navigate("/conta");

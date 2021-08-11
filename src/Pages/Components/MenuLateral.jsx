@@ -30,30 +30,36 @@ const MenuLateral = () => {
 
   // ESCONDE ITENS DO MENU CASO ITEM CLICADO NÃO ATENDA OS PARAMETROS DE TAG A OU CLASSENAME
 
-  const handleWindow = () => {
-    window.document.addEventListener('click', function removeMenu({ target }) {
-      if (target.tagName !== 'A' && target.tagName !== 'H4') {
-        setmenuItemUsuarios(false);
-        setmenuItemRecadastramento(false);
-      } else if (
-        target.tagName !== 'A' &&
-        target.className !== 'div-sub-3-animate'
-      ) {
-        setAnimateMenu(false);
-      }
-    });
-  };
-  React.useEffect(() => {
-    handleWindow();
-  }, [handleWindow]);
+// TODO - ADICIONAR OUTRA FORMA DE HANDLEWINDOW PARA OCULPAR MENUS (DANDO ERRO NO CONSOLE)
+
+  // const handleWindow = () => {
+  //   window.document.addEventListener('click', function removeMenu({ target }) {
+  //     if (target.tagName !== 'A' && target.tagName !== 'H4') {
+  //       setmenuItemUsuarios(false);
+  //       setmenuItemRecadastramento(false);
+  //     } else if (
+  //       target.tagName !== 'A' &&
+  //       target.className !== 'div-sub-3-animate'
+  //     ) {
+  //       setAnimateMenu(false);
+  //     }
+  //   });
+  // };
+
+  // React.useEffect(() => {
+  //   console.log("passou no menu")
+  //   handleWindow();
+  // }, []);
 
   // ADICIONA LISTA DE SUBMENUS AO CLICAR NO ITEM PAI
 
+  //TODO - VERIFICAR FUNCIONAMENTO
+  
   const handleToggleMenu = (state, value) => {
     state(!value);
     return (
-      menuItemRecadastramento ? setmenuItemRecadastramento(false) : null,
-      menuItemUsuarios ? setmenuItemUsuarios(false) : null
+     [ menuItemRecadastramento ? setmenuItemRecadastramento(false) : null ,
+      menuItemUsuarios ? setmenuItemUsuarios(false) : null]
     );
   };
 
@@ -163,6 +169,8 @@ const MenuLateral = () => {
             srcItem={iconFaleConosco}
           />
         </span>
+
+        {/* // TODO - VERIFICAR PORQUE ITEM NAO DESAPARECE QUANDO MENU É ESTENDIDO */}
 
         {animateMenu ? (
           <span className="div-menu-sair">
