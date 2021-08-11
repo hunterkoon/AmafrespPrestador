@@ -1,11 +1,13 @@
-import React from 'react';
-import useWindowDimensions from './Hooks/getDimensionScreen';
-import { useNavigate } from 'react-router';
-import { GETDADOS } from './Api';
-import useFetch from './Hooks/useFetch';
+import React from "react";
+import useWindowDimensions from "./Hooks/getDimensionScreen";
+import { useNavigate } from "react-router";
+import { GETDADOS } from "./Api";
+import useFetch from "./Hooks/useFetch";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+
+  const [option, setOption] = React.useState(null);
   const { data, setData, request, loading, error, setError } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
@@ -37,9 +39,9 @@ export const GlobalStorage = ({ children }) => {
 
   const handleLoginContext = () => {
     if (login === true) {
-      navigate('/conta');
+      navigate("/conta");
     } else {
-      navigate('/');
+      navigate("/");
     }
   };
   // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
@@ -53,8 +55,8 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   const handleLogoDirection = () => {
     if (login) {
-      return navigate('/conta');
-    } else return navigate('/');
+      return navigate("/conta");
+    } else return navigate("/");
   };
   return (
     <GlobalContext.Provider
@@ -66,6 +68,8 @@ export const GlobalStorage = ({ children }) => {
         handleLogoDirection,
         // LoginValidate,
         setData,
+        setOption,
+        option,
         profile,
         login,
         animateMenu,
