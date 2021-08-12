@@ -2,11 +2,10 @@
   font-family: NotoSans-Bold;
   color: #474747;
   font-size: 4.3vh;
-
   z-index: 1;
-
   position: relative;
 }
+
 .text-decorated::after {
   content: '';
   display: block;

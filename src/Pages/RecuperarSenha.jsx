@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { GlobalContext } from "./GlobalContext";
 import { UrlRecuperarSenha } from "./Shared/Commons/constant/image-url-primeiro-acesso";
+import { recoverFiedsAdm, recoverFiedsCommon } from "./Shared/Commons/constant/form-recuperacao";
+import RecuperarSenhaImg from "../Assets/RecuperacaoSenha.svg";
+import Titledecorated from "../Pages/Shared/Titledecorated";
+import IconDoubt from '../Assets/IconDoubt.svg'
 import Title from "./Shared/Title";
 import Input from "./Shared/Input";
 import Button from "./Shared/Button";
-import Titledecorated from "../Pages/Shared/Titledecorated";
-import RecuperarSenhaImg from "../Assets/RecuperacaoSenha.svg";
-// import Modal from "./Components/Modal";
-import { recoverFiedsAdm } from "./Shared/Commons/constant/form-recuperacao";
+import SwitchButton from "./Shared/SwitchButton";
+import './Login.css'
 import "./RecuperarSenha.css";
 import "../App.css";
 
@@ -18,10 +20,9 @@ const RecuperarSenha = () => {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Adicionar Validação através de fetch com retorno 200
+    // TODO - Adicionar Validação através de fetch com retorno 200
     navigate("/RecuperacaoSucessfull");
   };
-
 
   const [recover, setRecover] = React.useState(
     recoverFiedsAdm.reduce((acc, item) => {
@@ -37,6 +38,26 @@ const RecuperarSenha = () => {
     setRecover({ ...recover, [id]: value });
   };
 
+
+  const recoverFields = (list) => {
+    return (
+      list.map(({ id, label, require, type, key }) => (
+        <div key={key} className="menuView">
+          <Input
+            key={id}
+            id={id}
+            label={label}
+            require={require}
+            type={type}
+            onChange={handleChange}
+            value={recover[id]}
+          />
+        </div>
+      ))
+    )
+
+  }
+
   return (
     <>
       <div className="div-main-recuperar-senha pageView">
@@ -44,8 +65,8 @@ const RecuperarSenha = () => {
           <img src={RecuperarSenhaImg} alt="" />
           <a href={UrlRecuperarSenha}>www.freepik.com</a>
         </div>
+        
         <div className="div-form-recuperar-senha">
-          {/* <div className="div-inputs-recuperar-senha"> */}
           <form onSubmit={handleSubmit}>
             <Titledecorated
               text={
@@ -55,25 +76,28 @@ const RecuperarSenha = () => {
               }
             />
             <Title text="Portal Amafresp Prestador" />
-            {/* <Modal /> */}
-            {recoverFiedsAdm.map(({ id, label, require, type }) => (
-              <Input
-                key={id}
-                id={id}
-                label={label}
-                require={require}
-                type={type}
-                onChange={handleChange}
-                value={recover[id]}
-              />
-            ))}
+            <div className='div-switch-login'>
+
+              <SwitchButton
+                width={"85%"}
+                rounded={true} />
+              <Link to='/Help/'>
+                <img src={IconDoubt} alt="" />
+              </Link>
+            </div>
+
+            {recoverFields(!option
+              ? recoverFiedsAdm
+              : recoverFiedsCommon
+            )}
+
             <div className="div-button-recuperar-senha">
               <Button value="Recuperar" />
-              {/* Caso a resposta retornar 200 Mudar página */}
-              <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
+              <Link to="/RecuperarEmail">
+                Esqueci meu e-mail
+              </Link>
             </div>
           </form>
-          {/* </div> */}
         </div>
       </div>
     </>

@@ -11,6 +11,7 @@ import Titledecorated from "./Shared/Titledecorated";
 import LoginImg from "../Assets/Login_2.svg";
 import UsuarioLogin from "../Assets/UsuarioLogin.svg";
 import SwitchButton from "./Shared/SwitchButton";
+import IconDoubt from '../Assets/IconDoubt.svg'
 import "./Login.css";
 import "../App.css";
 
@@ -80,7 +81,6 @@ const Login = () => {
             />
             <a href={UrlImgLogin}>www.freepik.com</a>
           </div>
-
         </div>
         <div className="div-form-login">
           <div className="div-input-login">
@@ -90,18 +90,17 @@ const Login = () => {
               />
               <Title text="Portal Amafresp Prestador" />
             </div>
-
             <div className='div-switch-login'>
-              <SwitchButton rounded={true} />
+              <SwitchButton width={"85%"} rounded={true} />
+              <Link to='/Help/'><img src={IconDoubt} alt="" /></Link>
             </div>
-
 
             <form onSubmit={handleSubmit}>
               {handlerMapping(option ? loginCommon : loginAdm)}
-              
-              <div className={ !option ? 'div-button-login' :'div-button-login-user' }>
+
+              <div className={!option ? 'div-button-login' : 'div-button-login-user'}>
                 <Button value="Entrar"></Button>
-                <div className={option ? null :"div-links-login "}>
+                <div className={option ? null : "div-links-login"}>
                   <Link to="/RecuperarSenha/">
                     <p>Recuperar senha</p>
                   </Link>
@@ -112,7 +111,6 @@ const Login = () => {
                 </div>
               </div>
             </form>
-
           </div>
         </div>
       </div>

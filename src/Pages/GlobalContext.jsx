@@ -7,7 +7,8 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
 
-  const [option, setOption] = React.useState(null);
+  // estado da aplicação que diz qual nivel de acesso do usuário.
+  const [option, setOption] = React.useState(true);
   const { data, setData, request, loading, error, setError } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
@@ -30,11 +31,9 @@ export const GlobalStorage = ({ children }) => {
   //     setLogin(true);
   //   }
   // };
-
   
   
   React.useEffect(() => {
-    console.log("passou no global")
     handleLogoDirection();
   }, [login]);
 
@@ -46,7 +45,6 @@ export const GlobalStorage = ({ children }) => {
       return false;
     }
   };
-
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   

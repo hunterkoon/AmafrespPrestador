@@ -5,7 +5,7 @@ import './SwitchButton.css'
 
 
 
-const SwitchButton = ({ rounded = false, props }) => {
+const SwitchButton = ({ rounded = false, ...props }) => {
 
     const { option, setOption } = React.useContext(GlobalContext)
 
@@ -14,16 +14,20 @@ const SwitchButton = ({ rounded = false, props }) => {
     })
 
     return (
-        <>
-            <h1 style={{
+        <div style={{
+            width: props.width,
+        }}> 
+            <h3 style={{
 
                 margin: '0',
                 marginTop:'2%',
-                textAlign: 'center',
+                textAlign: 'start',
                 display: 'block',
                 color:'#474747',
+                fontSize:'1rem',
+                fontWeight:'lighter',
 
-            }}>Escolha uma categoria!</h1>
+            }}>Escolha uma categoria!</h3>
             <div className='div-switch-main'>
                 <label className='label-switch'>
                     <input onChange={() => setOption(!option)} checked={option} type="checkbox" />
@@ -34,7 +38,7 @@ const SwitchButton = ({ rounded = false, props }) => {
                     </div>
                 </label>
             </div>
-        </>
+        </div>
 
     )
 }

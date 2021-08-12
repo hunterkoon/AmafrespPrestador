@@ -7,6 +7,7 @@
   height: auto;
   width: 100%;
 }
+
 .div-form-primeiro-acesso {
   display: flex;
   width: auto;
@@ -14,11 +15,13 @@
   background-color: white;
   justify-content: center;
 }
+
 .div-form-primeiro-acesso form {
   width: 70%;
   position: relative;
   background-color: white;
 }
+
 .div-img-primeiro-acesso {
   display: flex;
   flex-direction: column;
@@ -26,6 +29,7 @@
   width: auto;
   height: auto;
 }
+
 .div-img-primeiro-acesso img {
   width: 75%;
   align-self: center;
@@ -47,12 +51,10 @@
   .div-img-primeiro-acesso img {
     width: 100%;
   }
-
   .div-img-primeiro-acesso {
     width: 100%;
     display: flex;
   }
-
   .div-form-primeiro-acesso {
     width: 100%;
   }

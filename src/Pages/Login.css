@@ -46,16 +46,34 @@
     justify-content: space-between;
 }
 
-
 .div-button-login {
-    margin: 5% auto;
+    margin: 4% auto;
 }
+
 .div-button-login-user {
-    margin: 5% auto;
+    margin: 4% auto;
     display: flex;
     justify-content: space-between;
+    align-self: center;
+    align-content: center;
     align-items: center;
+}
 
+.div-switch-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.div-switch-login img {
+    width: 100%;
+}
+
+.div-switch-login a {
+    padding: 0;
+    width: 11%;
+    height: 100%;
+    align-self: flex-end;
 }
 
 @media only screen and (max-width: 1024px) {

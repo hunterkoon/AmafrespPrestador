@@ -40,7 +40,7 @@ const PrimeiroAcesso = () => {
         <a
           target="_blank"
           style={{ color: '#FDFDFD' }}
-          href={UrlPrimeiroAcesso}
+          href={UrlPrimeiroAcesso} rel="noreferrer"
         >
           Website vector created by stories - www.freepik.com
         </a>
