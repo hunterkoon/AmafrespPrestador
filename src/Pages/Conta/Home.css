@@ -42,9 +42,12 @@
     position: inherit;
   }
   .div-main-home {
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     width: 90%;
     height: 100vh;
+    margin: 0 auto;
   }
   .div-main-home img {
     width: 90%;

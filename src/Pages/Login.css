@@ -77,6 +77,13 @@
 }
 
 @media only screen and (max-width: 1024px) {
+
+    .div-img-login img {
+        display: flex;
+        position: relative;
+        width: 60%;
+        margin: 0 auto;
+    }
     .div-main-login {
         display: flex;
         flex-direction: column;
