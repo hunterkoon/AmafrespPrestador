@@ -32,24 +32,24 @@ const MenuLateral = () => {
 
 // TODO - ADICIONAR OUTRA FORMA DE HANDLEWINDOW PARA OCULPAR MENUS (DANDO ERRO NO CONSOLE)
 
-  // const handleWindow = () => {
-  //   window.document.addEventListener('click', function removeMenu({ target }) {
-  //     if (target.tagName !== 'A' && target.tagName !== 'H4') {
-  //       setmenuItemUsuarios(false);
-  //       setmenuItemRecadastramento(false);
-  //     } else if (
-  //       target.tagName !== 'A' &&
-  //       target.className !== 'div-sub-3-animate'
-  //     ) {
-  //       setAnimateMenu(false);
-  //     }
-  //   });
-  // };
+  const handleWindow = () => {
+    window.document.addEventListener('click', function removeMenu({ target }) {
+      if (target.tagName !== 'A' && target.tagName !== 'H4') {
+        setmenuItemUsuarios(false);
+        setmenuItemRecadastramento(false);
+      } else if (
+        target.tagName !== 'A' &&
+        target.className !== 'div-sub-3-animate'
+      ) {
+        setAnimateMenu(false);
+      }
+    });
+  };
 
-  // React.useEffect(() => {
-  //   console.log("passou no menu")
-  //   handleWindow();
-  // }, []);
+  React.useEffect(() => {
+    console.log("passou no menu")
+    handleWindow();
+  }, []);
 
   // ADICIONA LISTA DE SUBMENUS AO CLICAR NO ITEM PAI
 
