@@ -8,11 +8,18 @@ import FaleConosco from './Conta/FaleConosco';
 import AdicionarUsuarios from './Conta/AdicionarUsuarios';
 import Recadastramento from './Conta/Recadastramento';
 import Status from './Conta/Status';
+import { GlobalContext } from './GlobalContext';
+import { handleWindow } from './Shared/Commons/constant/handler-menu';
+
+
+
 const Conta = () => {
+  const { setAnimateMenu ,  setHandle} = React.useContext(GlobalContext);
+
   return (
-    <div className="main-conta">
-      <div className="div-menu">{<Menu />}</div>
-      <div className="div-context">
+    <div className="main-conta" >
+      <div  className="div-menu">{<Menu />}</div>
+      <div className="div-context" name='app-context' onClick={(e) =>{ return  ([handleWindow(e,setHandle ),handleWindow(e,setAnimateMenu) ])}}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Gerenciar" element={<Gerenciar />} />

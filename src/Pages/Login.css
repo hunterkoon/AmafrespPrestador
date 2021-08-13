@@ -96,3 +96,12 @@
         width: 90%;
     }
 }
+
+@media only screen and (min-width:1600px){
+
+    .div-switch-login img {
+        width: 68%;
+    }
+    
+
+}

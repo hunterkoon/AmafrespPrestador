@@ -12,7 +12,10 @@ export const GlobalStorage = ({ children }) => {
   const { data, setData, request, loading, error, setError } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
-  const [animateMenu, setAnimateMenu] = React.useState(null);
+  const [animateMenu, setAnimateMenu] = React.useState(false);
+  const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
+  const [handle, setHandle] = React.useState(null);
+  const [menuItemRecadastramento, setmenuItemRecadastramento] = React.useState(false);
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -31,8 +34,8 @@ export const GlobalStorage = ({ children }) => {
   //     setLogin(true);
   //   }
   // };
-  
-  
+
+
   React.useEffect(() => {
     handleLogoDirection();
   }, [login]);
@@ -47,7 +50,7 @@ export const GlobalStorage = ({ children }) => {
   };
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
-  
+
   const handleLogoDirection = () => {
     if (login) {
       return navigate("/conta");
@@ -64,6 +67,8 @@ export const GlobalStorage = ({ children }) => {
         // LoginValidate,
         setData,
         setOption,
+        setmenuItemUsuarios,
+        setmenuItemRecadastramento,
         option,
         profile,
         login,
@@ -73,6 +78,9 @@ export const GlobalStorage = ({ children }) => {
         data,
         loading,
         error,
+        menuItemUsuarios,
+        menuItemRecadastramento,
+        handle, setHandle,
       }}
     >
       {children}

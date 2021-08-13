@@ -1,7 +1,5 @@
 import React from 'react';
-
 import './ItemMenu.css';
-
 const ItemMenu = ({ ...props }) => {
   return (
     <li className="li-item-menu">
