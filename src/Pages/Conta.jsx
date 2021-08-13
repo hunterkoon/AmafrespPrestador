@@ -14,12 +14,19 @@ import { handleWindow } from './Shared/Commons/constant/handler-menu';
 
 
 const Conta = () => {
-  const { setAnimateMenu ,  setHandle} = React.useContext(GlobalContext);
-
+  const { setAnimateMenu, setHandle } = React.useContext(GlobalContext);
+  
+  const handleMenuHide = (e) =>{
+    const collectionStates = [setAnimateMenu,setHandle];
+    collectionStates.forEach((states)=>{
+      handleWindow(e ,states)
+    })
+  }
+  
   return (
     <div className="main-conta" >
-      <div  className="div-menu">{<Menu />}</div>
-      <div className="div-context" name='app-context' onClick={(e) =>{ return  ([handleWindow(e,setHandle ),handleWindow(e,setAnimateMenu) ])}}>
+      <div className="div-menu">{<Menu />}</div>
+      <div className="div-context" name='app-context' onClick={(e) => handleMenuHide(e) }>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Gerenciar" element={<Gerenciar />} />

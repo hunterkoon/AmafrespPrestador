@@ -9,7 +9,7 @@ export const GlobalStorage = ({ children }) => {
 
   // estado da aplicação que diz qual nivel de acesso do usuário.
   const [option, setOption] = React.useState(true);
-  const { data, setData, request, loading, error, setError } = useFetch();
+  const { data, setData, loading, error } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);

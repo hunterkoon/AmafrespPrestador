@@ -18,7 +18,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #A6A6A6;
+    background-color: #25b099;
 }
 
 input:checked+.span-slider {
@@ -90,8 +90,3 @@ input:checked+.span-slider:before {
     justify-content: center;
     color: #474747;
 }
-
-/* .div-switch-hide-login{
-    transition: 0.4s;
-    opacity: 30%;
-} */

@@ -16,7 +16,7 @@ import "./Login.css";
 import "../App.css";
 
 const Login = () => {
-  const { error, setLogin, option } = React.useContext(GlobalContext);
+  const { setLogin, option } = React.useContext(GlobalContext);
   const { data } = useFetch();
 
   //POST ITEM PARA O SERVIDOR E RECEBER RESPOSTA
@@ -94,7 +94,6 @@ const Login = () => {
               <SwitchButton width={"85%"} rounded={true} />
               <Link to='/Help/'><img src={IconDoubt} alt="" /></Link>
             </div>
-
             <form onSubmit={handleSubmit}>
               {handlerMapping(option ? loginCommon : loginAdm)}
 
