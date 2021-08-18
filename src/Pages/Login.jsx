@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Pages/GlobalContext";
-import { loginCommon, loginAdm } from "./Shared/Commons/constant/form-login";
+import { FormLogin } from "./Shared/Commons/constant/FormLogin";
 import { UrlImgLogin } from "./Shared/Commons/constant/image-url-primeiro-acesso";
 import Input from "./Shared/Input";
 import Button from "./Shared/Button";
@@ -16,18 +16,9 @@ import "./Login.css";
 import "../App.css";
 
 const Login = () => {
-  const { setLogin, option } = React.useContext(GlobalContext);
+  const { setLogin, option, setLoginData, loginData } = React.useContext(GlobalContext);
   const { data } = useFetch();
-
-  //POST ITEM PARA O SERVIDOR E RECEBER RESPOSTA
-
-  // React.useEffect(()=>{
-
-  //   async function fetchData(){
-  //     await  const request('http://localhost:3036/prestador')
-  //   };
-
-  // },[])
+  const {loginCommon , loginAdm} = FormLogin(loginData)
 
   const [fieldsLogin, setFieldsLogin] = React.useState(
     loginCommon.reduce((acc, field) => {
@@ -50,7 +41,7 @@ const Login = () => {
 
   const handlerMapping = (type) => {
     return type.map(
-      ({ key, id, label, type, require, pattern, title, maxLength }) => (
+      ({ key, id, label, type, require, pattern, title, maxLength, mask , changeBlur, changeFocus }) => (
         <div className="menuView" key={key}>
           <Input
             key={key}
@@ -60,14 +51,21 @@ const Login = () => {
             label={label}
             type={type}
             id={id}
-            // require={require}
             value={fieldsLogin[id]}
             onChange={handleChange}
+            mask={mask}
+            changeBlur={changeBlur}
+            changeFocus={changeFocus}
+            // require={require}
           />
         </div>
       )
     );
   };
+
+  React.useEffect(() => {
+    setLoginData(fieldsLogin)
+  }, [fieldsLogin])
 
   return (
     <>

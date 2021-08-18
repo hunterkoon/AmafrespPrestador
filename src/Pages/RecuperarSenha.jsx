@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { GlobalContext } from "./GlobalContext";
 import { UrlRecuperarSenha } from "./Shared/Commons/constant/image-url-primeiro-acesso";
-import { recoverFiedsAdm, recoverFiedsCommon } from "./Shared/Commons/constant/form-recuperacao";
+import { FormRecuperacao } from "./Shared/Commons/constant/FormRecuperacao";
 import RecuperarSenhaImg from "../Assets/RecuperacaoSenha.svg";
 import Titledecorated from "../Pages/Shared/Titledecorated";
 import IconDoubt from '../Assets/IconDoubt.svg'
@@ -16,13 +16,19 @@ import "./RecuperarSenha.css";
 import "../App.css";
 
 const RecuperarSenha = () => {
-  const { option } = React.useContext(GlobalContext);
+  
+  const { option , recoverData , setRecoverData } = React.useContext(GlobalContext);
+  const { recoverFiedsAdm, recoverFiedsCommon} = FormRecuperacao(recoverData);
+
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     // TODO - Adicionar Validação através de fetch com retorno 200
     navigate("/RecuperacaoSucessfull");
   };
+
+
 
   const [recover, setRecover] = React.useState(
     recoverFiedsAdm.reduce((acc, item) => {
@@ -41,7 +47,7 @@ const RecuperarSenha = () => {
 
   const recoverFields = (list) => {
     return (
-      list.map(({ id, label, require, type, key }) => (
+      list.map(({ id, label, require, type, key, changeBlur, changeFocus,mask}) => (
         <div key={key} className="menuView">
           <Input
             key={id}
@@ -51,12 +57,20 @@ const RecuperarSenha = () => {
             type={type}
             onChange={handleChange}
             value={recover[id]}
+            changeBlur={changeBlur}
+            changeFocus={changeFocus}
+            mask={mask}
           />
         </div>
       ))
     )
 
   }
+
+  React.useEffect(() => {
+    setRecoverData(recover)
+  }, [recover, setRecoverData])
+
 
   return (
     <>

@@ -8,6 +8,9 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({ children }) => {
 
   // estado da aplicação que diz qual nivel de acesso do usuário.
+  const [firtAcessData , setFirtAcessData] = React.useState([0]);
+  const [recoverData , setRecoverData] = React.useState([0]);
+  const [loginData , setLoginData ] = React.useState([0]);
   const [option, setOption] = React.useState(true);
   const { data, setData, loading, error } = useFetch();
   const [profile, setProfile] = React.useState(false);
@@ -81,6 +84,9 @@ export const GlobalStorage = ({ children }) => {
         menuItemUsuarios,
         menuItemRecadastramento,
         handle, setHandle,
+        loginData , setLoginData,
+        recoverData , setRecoverData,
+        firtAcessData , setFirtAcessData
       }}
     >
       {children}
