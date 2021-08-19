@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
-import { GlobalStorage } from './Application/MainPages/GlobalContext';
+import { GlobalStorage } from './Application/Pages/MainPages/GlobalContext';
 
 
 import Header from './Application/Components/MainComponents/Header';
 import Footer from './Application/Components/MainComponents/Footer';
 
-import Login from './Application/MainPages/Login';
-import Conta from './Application/MainPages/Conta';
-import RecuperarSenha from './Application/MainPages/RecuperarSenha';
-import RecuperacaoSucessfull from './Application/MainPages/RecuperacaoSucessfull';
-import NotFound from './Application/MainPages/NotFound';
-import PrimeiroAcesso from './Application/MainPages/PrimeiroAcesso';
+import Login from './Application/Pages/MainPages/Login';
+import Conta from './Application/Pages/MainPages/Conta';
+import RecuperarSenha from './Application/Pages/MainPages/RecuperarSenha';
+import RecuperacaoSucessfull from './Application/Pages/MainPages/RecuperacaoSucessfull';
+import NotFound from './Application/Pages/MainPages/NotFound';
+import PrimeiroAcesso from './Application/Pages/MainPages/PrimeiroAcesso';
 import './App.css';
 
 function App() {

@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { GlobalContext } from "./GlobalContext";
-import { UrlRecuperarSenha } from "../Shared/Commons/Constants/image-url-primeiro-acesso";
-import GeneralForms from "../Shared/Forms/GeneralForms";
-import Titledecorated from "../Components/SubComponents/Titledecorated";
-import Title from "../Components/SubComponents/Title";
-import Input from "../Components/SubComponents/Input";
-import Button from "../Components/SubComponents/Button";
-import SwitchButton from "../Components/SubComponents/SwitchButton";
-import RecuperarSenhaImg from "../../Assets/RecuperacaoSenha.svg";
-import IconDoubt from '../../Assets/IconDoubt.svg'
+import { UrlRecuperarSenha } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
+import GeneralForms from "../../Shared/Forms/GeneralForms";
+import Titledecorated from "../../Components/SubComponents/Titledecorated";
+import Title from "../../Components/SubComponents/Title";
+import Input from "../../Components/SubComponents/Input";
+import Button from "../../Components/SubComponents/Button";
+import SwitchButton from "../../Components/SubComponents/SwitchButton";
+import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
+import IconDoubt from '../../../Assets/IconDoubt.svg'
 import './Login.css'
 import "./RecuperarSenha.css";
-import "../../App.css";
+import "../../../App.css";
 
 const RecuperarSenha = () => {
 

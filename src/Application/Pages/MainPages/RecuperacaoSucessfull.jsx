@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Titledecorated from '../Components/SubComponents/Titledecorated';
-import Title from '../Components/SubComponents/Title';
-import Button from '../Components/SubComponents/Button';
-import Email from '../../Assets/Email.gif';
+import Titledecorated from '../../Components/SubComponents/Titledecorated';
+import Title from '../../Components/SubComponents/Title';
+import Button from '../../Components/SubComponents/Button';
+import Email from '../../../Assets/Email.gif';
 import './RecuperacaoSucessfull.css';
-import '../../App.css';
+import '../../../App.css';
 
 
 const RecuperacaoSucessfull = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import Titledecorated from '../Shared/Titledecorated';
+import Titledecorated from '../../Shared/Titledecorated';
 import './Perfil.css';
-import Maintenance from '../Components/Maintenance';
-import '../../App.css';
+import Maintenance from '../../Components/Maintenance';
+import '../../../App.css';
 
 const FaleConosco = () => {
   return (

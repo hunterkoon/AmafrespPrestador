@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlobalContext } from '../../MainPages/GlobalContext';
+import { GlobalContext } from '../../Pages/MainPages/GlobalContext';
 import { useNavigate } from 'react-router';
 import MenuSuperior from './MenuSuperior';
 import Hamburguer from './Hamburguer';

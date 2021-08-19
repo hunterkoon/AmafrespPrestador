@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { GlobalContext } from '../../MainPages/GlobalContext';
+import { GlobalContext } from '../../Pages/MainPages/GlobalContext';
 import { handleWindow } from '../../Shared/Commons/Helpers/handler-menu';
 import './SubItemMenu.css';
 

@@ -1,7 +1,7 @@
 import React from "react";
-import useWindowDimensions from "../Hooks/getDimensionScreen";
+import useWindowDimensions from "../../Hooks/getDimensionScreen";
 import { useNavigate } from "react-router";
-import useFetch from "../Hooks/useFetch";
+import useFetch from "../../Hooks/useFetch";
 
 // import { GETDADOS } from "./Api";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { GlobalContext } from '../../MainPages/GlobalContext';
+import { GlobalContext } from '../../Pages/MainPages/GlobalContext';
 import ItemMenu from '../SubComponents/ItemMenu';
 import SubItemMenu from '../SubComponents/SubItemMenu';
 import iconFaleConosco from '../../../Assets/iconFaleConoscoBackgroundGreen.svg';

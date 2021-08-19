@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import Title from '../Components/SubComponents/Title';
-import Titledecorated from '../Components/SubComponents/Titledecorated';
-import Button from '../Components/SubComponents/Button';
-import Error from '../../Assets/error.svg'
+import Title from '../../Components/SubComponents/Title';
+import Titledecorated from '../../Components/SubComponents/Titledecorated';
+import Button from '../../Components/SubComponents/Button';
+import Error from '../../../Assets/error.svg'
 import './NotFound.css';
-import '../../App.css';
+import '../../../App.css';
 
 const NotFound = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GlobalContext } from '../../MainPages/GlobalContext';
+import { GlobalContext } from '../../Pages/MainPages/GlobalContext';
 import { Link } from 'react-router-dom';
 import Button_Back from '../../../Assets/Button_Back.svg';
 import User_Profile from '../../../Assets/UserProfille.svg';

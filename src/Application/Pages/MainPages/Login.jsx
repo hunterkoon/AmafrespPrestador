@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../MainPages/GlobalContext";
-import { UrlImgLogin } from "../Shared/Commons/Constants/image-url-primeiro-acesso";
-import useFetch from "../Hooks/useFetch";
-import Input from "../Components/SubComponents/Input";
-import Button from "../Components/SubComponents/Button";
-import Title from "../Components/SubComponents/Title";
-import Titledecorated from "../Components/SubComponents/Titledecorated";
-import SwitchButton from "../Components/SubComponents/SwitchButton";
-import LoginImg from "../../Assets/Login_2.svg";
-import UsuarioLogin from "../../Assets/UsuarioLogin.svg";
-import IconDoubt from '../../Assets/IconDoubt.svg'
-import GeneralForms from "../Shared/Forms/GeneralForms";
+import { UrlImgLogin } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
+import useFetch from "../../Hooks/useFetch";
+import Input from "../../Components/SubComponents/Input";
+import Button from "../../Components/SubComponents/Button";
+import Title from "../../Components/SubComponents/Title";
+import Titledecorated from "../../Components/SubComponents/Titledecorated";
+import SwitchButton from "../../Components/SubComponents/SwitchButton";
+import LoginImg from "../../../Assets/Login_2.svg";
+import UsuarioLogin from "../../../Assets/UsuarioLogin.svg";
+import IconDoubt from '../../../Assets/IconDoubt.svg'
+import GeneralForms from "../../Shared/Forms/GeneralForms";
 import "./Login.css";
-import "../../App.css";
+import "../../../App.css";
 
 const Login = () => {
   const { setLogin, option, setLoginData, loginData } = React.useContext(GlobalContext);

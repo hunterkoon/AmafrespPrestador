@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
-import { handleWindow } from '../Shared/Commons/Helpers/handler-menu';
-import Home from '../AccountPages/Home';
-import Gerenciar from '../AccountPages/GerenciarUsuarios';
-import FaleConosco from '../AccountPages/FaleConosco';
-import AdicionarUsuarios from '../AccountPages/AdicionarUsuarios';
-import Recadastramento from '../AccountPages/Recadastramento';
-import Status from '../AccountPages/Status';
-import Menu from '../Components/MainComponents/MenuLateral';
+import { handleWindow } from '../../Shared/Commons/Helpers/handler-menu';
+
+import Home from '../../Pages/AccountPages/Home';
+import Gerenciar from '../../Pages/AccountPages/GerenciarUsuarios';
+import FaleConosco from '../../Pages/AccountPages/FaleConosco';
+import AdicionarUsuarios from '../../Pages/AccountPages/AdicionarUsuarios';
+import Recadastramento from '../../Pages/AccountPages/Recadastramento';
+import Status from '../../Pages/AccountPages/Status';
+import Menu from '../../Components/MainComponents/MenuLateral';
 import './Conta.css';
 
 

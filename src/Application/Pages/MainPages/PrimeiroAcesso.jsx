@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { GlobalContext } from './GlobalContext';
-import { UrlPrimeiroAcesso } from '../Shared/Commons/Constants/image-url-primeiro-acesso';
-import GeneralForms from '../Shared/Forms/GeneralForms';
-import Titledecorated from '../Components/SubComponents/Titledecorated';
-import Title from '../Components/SubComponents/Title';
-import Input from '../Components/SubComponents/Input';
-import Button from '../Components/SubComponents/Button';
-import PrimeiroAcessoImg from '../../Assets/PrimeiroAcesso.svg';
+import { UrlPrimeiroAcesso } from '../../Shared/Commons/Constants/image-url-primeiro-acesso';
+import GeneralForms from '../../Shared/Forms/GeneralForms';
+import Titledecorated from '../../Components/SubComponents/Titledecorated';
+import Title from '../../Components/SubComponents/Title';
+import Input from '../../Components/SubComponents/Input';
+import Button from '../../Components/SubComponents/Button';
+import PrimeiroAcessoImg from '../../../Assets/PrimeiroAcesso.svg';
 import './PrimeiroAcesso.css';
-import '../../App.css';
+import '../../../App.css';
 
 const PrimeiroAcesso = () => {
   const { error , firtAcessData , setFirtAcessData} = React.useContext(GlobalContext);

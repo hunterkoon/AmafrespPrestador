@@ -1,9 +1,9 @@
 import React from 'react';
 import { GlobalContext } from '../MainPages/GlobalContext';
 import { Link } from 'react-router-dom';
-import Titledecorated from '../Components/SubComponents/Titledecorated';
-import Button from '../Components/SubComponents/Button';
-import MainImage from '../../Assets/Conta.svg'
+import Titledecorated from '../../Components/SubComponents/Titledecorated';
+import Button from '../../Components/SubComponents/Button';
+import MainImage from '../../../Assets/Conta.svg'
 import './Home.css';
 
 const Home = () => {
