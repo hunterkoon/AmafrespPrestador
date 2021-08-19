@@ -1,15 +1,18 @@
-import './App.css';
 import React from 'react';
-import Header from './Pages/Components/Header';
-import Footer from './Pages/Components/Footer';
-import Login from './Pages/Login';
-import Conta from './Pages/Conta';
-import RecuperarSenha from './Pages/RecuperarSenha';
-import RecuperacaoSucessfull from './Pages/RecuperacaoSucessfull';
 import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
-import { GlobalStorage } from './Pages/GlobalContext';
-import NotFound from './Pages/NotFound';
-import PrimeiroAcesso from './Pages/PrimeiroAcesso';
+import { GlobalStorage } from './Aplication/MainPages/GlobalContext';
+
+
+import Header from './Aplication/Components/MainComponents/Header';
+import Footer from './Aplication/Components/MainComponents/Footer';
+
+import Login from './Aplication/MainPages/Login';
+import Conta from './Aplication/MainPages/Conta';
+import RecuperarSenha from './Aplication/MainPages/RecuperarSenha';
+import RecuperacaoSucessfull from './Aplication/MainPages/RecuperacaoSucessfull';
+import NotFound from './Aplication/MainPages/NotFound';
+import PrimeiroAcesso from './Aplication/MainPages/PrimeiroAcesso';
+import './App.css';
 
 function App() {
   return (

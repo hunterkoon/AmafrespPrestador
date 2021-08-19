@@ -1,0 +1,124 @@
+.Header {
+  background-color: #ffff;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: solid 1px #dcdcdc;
+  z-index: 99;
+  height: 10%;
+  position: fixed;
+  align-items: center;
+}
+
+.div-img-logotipo img {
+  width: auto;
+  cursor: pointer;
+  margin: 1em;
+  width: 10em;
+}
+.div-img-logotipo {
+  width: 15vw;
+}
+
+.main-div-user::before {
+  content: '';
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../../Assets/User_Green.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.div-user-info {
+  display: flex;
+  flex-direction: column;
+}
+.span-user {
+  text-decoration: underline;
+  font-size: 0.8em;
+  font-family: NotoSans-Bold;
+  margin: 0;
+}
+.span-employ {
+  font-family: NotoSans-Regular;
+  color: #474747;
+  font-size: 0.8em;
+  margin: 0;
+}
+.main-div-user {
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+  justify-content: flex-end;
+  margin: 2em;
+}
+.div-sair {
+  justify-content: center;
+  width: 10vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 99;
+  cursor: pointer;
+}
+.div-sair-nologin {
+  cursor: pointer;
+  justify-content: flex-end;
+  width: 80vw;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  z-index: 99;
+}
+
+.div-user-info-panel {
+  flex-direction: column;
+  align-items: center;
+}
+
+.Seta {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  transition: 150ms;
+  position: relative;
+  width: auto;
+}
+@media only screen and (max-width: 400px) {
+  .main-div-user {
+    position: absolute;
+    left: 35%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .Header {
+    justify-content: space-between;
+  }
+  .main-div-user {
+    padding-left: 15%;
+    justify-content: center;
+    align-self: center;
+    width: auto;
+  }
+  .main-div-user::after {
+    width: auto;
+    display: flex;
+    position: relative;
+  }
+  .div-user-info {
+    display: none;
+  }
+  .div-sair {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1024px) {
+}

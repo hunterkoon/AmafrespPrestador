@@ -1,0 +1,20 @@
+import React from 'react';
+import Maintenance from '../Components/MainComponents/Maintenance'
+import Titledecorated from '../Components/SubComponents/Titledecorated';
+import './GerenciarUsuarios.css';
+import '../../App.css';
+
+const GerenciarUsuarios = () => {
+  return (
+    <>
+      <div className="div-main-gerenciarUsuarios pageView">
+        <div className="div-title-pages">
+          <Titledecorated text="Gerênciar Usuários" />
+        </div>
+        <Maintenance />
+      </div>
+    </>
+  );
+};
+
+export default GerenciarUsuarios;
