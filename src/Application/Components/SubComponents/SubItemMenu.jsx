@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { GlobalContext } from '../../Pages/MainPages/GlobalContext';
-import { handleWindow } from '../../Shared/Commons/Helpers/handler-menu';
+import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
 import './SubItemMenu.css';
 
 const SubItemMenu = ({ ...props }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
-import { handleWindow } from '../../Shared/Commons/Helpers/handler-menu';
+import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
 
 import Home from '../../Pages/AccountPages/Home';
 import Gerenciar from '../../Pages/AccountPages/GerenciarUsuarios';

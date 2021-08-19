@@ -60,8 +60,6 @@ const GeneralForms = (loginData) => {
         loginAdm: loginAdm,
         recoverFiedsAdm : recoverFiedsAdm,
         recoverFiedsCommon: recoverFiedsCommon
-
-
     }
 }
 

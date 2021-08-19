@@ -3,7 +3,7 @@ import './ItemMenu.css';
 const ItemMenu = ({ ...props }) => {
   return (
     <li className="li-item-menu">
-      <a style={{ cursor: 'pointer' }} onClick={props.clicked}>
+      <a href style={{ cursor: 'pointer' }} onClick={props.clicked}>
         <img src={props.srcItem} alt={props.alt} />
         {props.item}
         <img
