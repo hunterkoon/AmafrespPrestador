@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import Title from '../../Components/SubComponents/Title';
-import Titledecorated from '../../Components/SubComponents/Titledecorated';
-import Button from '../../Components/SubComponents/Button';
+import Title from '../../Components/Sub/Title';
+import Titledecorated from '../../Components/Sub/Titledecorated';
+import Button from '../../Components/Sub/Button';
 import Error from '../../../Assets/error.svg'
 import './NotFound.css';
 import '../../../App.css';

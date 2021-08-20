@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Titledecorated from '../../Components/SubComponents/Titledecorated';
-import Title from '../../Components/SubComponents/Title';
-import Button from '../../Components/SubComponents/Button';
+import Titledecorated from '../../Components/Sub/Titledecorated';
+import Title from '../../Components/Sub/Title';
+import Button from '../../Components/Sub/Button';
 import Email from '../../../Assets/Email.gif';
 import './RecuperacaoSucessfull.css';
 import '../../../App.css';

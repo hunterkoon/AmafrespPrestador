@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlobalContext } from '../../Pages/MainPages/GlobalContext';
+import { GlobalContext } from '../../Pages/Main/GlobalContext';
 import './Hamburguer.css';
 
 const Hamburguer = () => {

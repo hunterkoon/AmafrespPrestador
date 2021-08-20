@@ -4,11 +4,11 @@ import { useNavigate } from "react-router";
 import { GlobalContext } from "./GlobalContext";
 import { UrlRecuperarSenha } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
-import Titledecorated from "../../Components/SubComponents/Titledecorated";
-import Title from "../../Components/SubComponents/Title";
-import Input from "../../Components/SubComponents/Input";
-import Button from "../../Components/SubComponents/Button";
-import SwitchButton from "../../Components/SubComponents/SwitchButton";
+import Titledecorated from "../../Components/Sub/Titledecorated";
+import Title from "../../Components/Sub/Title";
+import Input from "../../Components/Sub/Input";
+import Button from "../../Components/Sub/Button";
+import SwitchButton from "../../Components/Sub/SwitchButton";
 import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from '../../../Assets/IconDoubt.svg'
 import './Login.css'

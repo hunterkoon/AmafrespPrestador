@@ -1,6 +1,6 @@
 import React from 'react';
-import Titledecorated from '../../Components/SubComponents/Titledecorated';
-import Maintenance from '../../Components/MainComponents/Maintenance';
+import Titledecorated from '../../Components/Sub/Titledecorated';
+import Maintenance from '../../Components/Main/Maintenance';
 import './AdicionarUsuarios.css';
 import '../../../App.css';
 

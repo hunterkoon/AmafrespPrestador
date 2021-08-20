@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../SubComponents/Title';
+import Title from '../Sub/Title';
 import Manutencao from '../../../Assets/Manutencao.svg';
 import './Maintenance.css';
 

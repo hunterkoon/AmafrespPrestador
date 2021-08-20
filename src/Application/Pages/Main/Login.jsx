@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../MainPages/GlobalContext";
+import { GlobalContext } from "../Main/GlobalContext";
 import { UrlImgLogin } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import useFetch from "../../Hooks/useFetch";
-import Input from "../../Components/SubComponents/Input";
-import Button from "../../Components/SubComponents/Button";
-import Title from "../../Components/SubComponents/Title";
-import Titledecorated from "../../Components/SubComponents/Titledecorated";
-import SwitchButton from "../../Components/SubComponents/SwitchButton";
+import Input from "../../Components/Sub/Input";
+import Button from "../../Components/Sub/Button";
+import Title from "../../Components/Sub/Title";
+import Titledecorated from "../../Components/Sub/Titledecorated";
+import SwitchButton from "../../Components/Sub/SwitchButton";
 import LoginImg from "../../../Assets/Login_2.svg";
 import UsuarioLogin from "../../../Assets/UsuarioLogin.svg";
 import IconDoubt from '../../../Assets/IconDoubt.svg'
