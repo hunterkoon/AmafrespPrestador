@@ -5,7 +5,7 @@ const Title = ({ ...props }) => {
   return (
     <h1
       className="title-h1"
-      style={{ color: props.color, fontSize: props.size }}
+      style={{ color: props.color, fontSize: props.size, margin:'0', }}
       id={props.id}
     >
       {props.text}

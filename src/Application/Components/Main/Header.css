@@ -8,6 +8,7 @@
   height: 10%;
   position: fixed;
   align-items: center;
+  box-shadow: #dcdcdc  0px 0px  5px  1px  ;
 }
 
 .div-img-logotipo img {

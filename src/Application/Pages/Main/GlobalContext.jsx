@@ -1,5 +1,5 @@
 import React from "react";
-import useWindowDimensions from "../../Hooks/getDimensionScreen";
+import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import { useNavigate } from "react-router";
 import useFetch from "../../Hooks/useFetch";
 
@@ -61,6 +61,7 @@ export const GlobalStorage = ({ children }) => {
       return navigate("/conta");
     } else return navigate("/");
   };
+  
   return (
     <GlobalContext.Provider
       value={{

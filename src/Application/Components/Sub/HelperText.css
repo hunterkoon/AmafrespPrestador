@@ -1,0 +1,31 @@
+.div-helper-component-main {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.active-help {
+    transition: 300ms;
+    height: 100%;
+    opacity: 1;
+}
+
+.deactived-help {
+    transition: 300ms;
+    height: 0;
+    opacity: 0;
+}
+
+.img-helpText {
+    transition: 300ms;
+    cursor: pointer;
+    width: 20px;
+    transform: rotate(90deg);
+    margin-left: 20px;
+}
+
+.div-main-text-img-helperText {
+    display: flex;
+    flex-direction: row;
+}
+

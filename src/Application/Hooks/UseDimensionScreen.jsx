@@ -1,6 +1,6 @@
 import React from 'react';
 
-function getDimensionScreen() {
+function UseDimensionScreen() {
   const { innerWidth: width, innerHeight: height } = window;
 
   return {
@@ -11,12 +11,12 @@ function getDimensionScreen() {
 
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = React.useState(
-    getDimensionScreen(),
+    UseDimensionScreen(),
   );
 
   React.useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getDimensionScreen());
+      setWindowDimensions(UseDimensionScreen());
     }
 
     window.addEventListener('resize', handleResize);

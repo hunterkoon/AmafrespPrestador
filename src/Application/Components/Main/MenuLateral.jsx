@@ -1,57 +1,62 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
-import { GlobalContext } from '../../Pages/Main/GlobalContext';
-import ItemMenu from '../Sub/ItemMenu';
-import SubItemMenu from '../Sub/SubItemMenu';
-import iconFaleConosco from '../../../Assets/iconFaleConoscoBackgroundGreen.svg';
-import iconHome from '../../../Assets/iconHomeBackgroundGreen.svg';
-import iconUser from '../../../Assets/iconUsersBackgroundGreen.svg';
-import iconRecadastro from '../../../Assets/iconRecadastramentoBackgroundGreen.svg';
-import More from '../../../Assets/More.svg';
-import Seta from '../../../Assets/Seta.svg';
-import Sair from '../../../Assets/Sair.svg';
-import './MenuLateral.css';
-import '../../../App.css';
+import React from "react";
+import { useNavigate } from "react-router";
+import { GlobalContext } from "../../Pages/Main/GlobalContext";
+import ItemMenu from "../Sub/ItemMenu";
+import SubItemMenu from "../Sub/SubItemMenu";
+import iconFaleConosco from "../../../Assets/iconFaleConoscoBackgroundGreen.svg";
+import iconHome from "../../../Assets/iconHomeBackgroundGreen.svg";
+import iconUser from "../../../Assets/iconUsersBackgroundGreen.svg";
+import iconRecadastro from "../../../Assets/iconRecadastramentoBackgroundGreen.svg";
+import More from "../../../Assets/More.svg";
+import Seta from "../../../Assets/Seta.svg";
+import Sair from "../../../Assets/Sair.svg";
+import "./MenuLateral.css";
+import "../../../App.css";
 
 const MenuLateral = () => {
-  const { animateMenu, setAnimateMenu, setLogin, width, setProfile, menuItemUsuarios, setmenuItemUsuarios,
-    menuItemRecadastramento, setmenuItemRecadastramento, handle, setHandle } = React.useContext(GlobalContext);
+  const {
+    animateMenu,
+    setAnimateMenu,
+    setLogin,
+    width,
+    setProfile,
+    menuItemUsuarios,
+    setmenuItemUsuarios,
+    menuItemRecadastramento,
+    setmenuItemRecadastramento,
+    handle,
+    setHandle,
+    option,
+  } = React.useContext(GlobalContext);
   const navigate = useNavigate();
-
 
   // ADICIONA ANIMAÇÃO AO MENU DE ITENS LATERAL CASO O MOUSE PASSE POR CIMA
   const handleMouse = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
-    return tag === 'A' ? imgTag.classList.toggle('animation') : false;
+    return tag === "A" ? imgTag.classList.toggle("animation") : false;
   };
 
-  // FECHA MENU CASO ABRA OUTRO EM SEGUIDA 
+  // FECHA MENU CASO ABRA OUTRO EM SEGUIDA
   //MANIPULA FECHAMENTO DE SUBITENS DO MENU ATRÁVES DO ESTADO GLOBAL HANDLE
 
   React.useEffect(() => {
     const handleMenu = () => {
       if (!handle) {
-        return ([
-          setmenuItemRecadastramento(false),
-          setmenuItemUsuarios(false)
-        ])
+        return [setmenuItemRecadastramento(false), setmenuItemUsuarios(false)];
       }
-    }
+    };
     return handleMenu();
-
-  }, [handle, setmenuItemRecadastramento, setmenuItemUsuarios])
+  }, [handle, setmenuItemRecadastramento, setmenuItemUsuarios]);
 
   const handleToggleMenu = (state, value) => {
     state(!value);
-    return (
-      [menuItemRecadastramento ? setmenuItemRecadastramento(false) : null,
+    return [
+      menuItemRecadastramento ? setmenuItemRecadastramento(false) : null,
       menuItemUsuarios ? setmenuItemUsuarios(false) : null,
-      setHandle(true)
-      ]
-    );
+      setHandle(true),
+    ];
   };
-
 
   // MANIPULA EVENTOS E DIRECIONAMENTO NO MENU PARA ITENS PAI
 
@@ -59,16 +64,16 @@ const MenuLateral = () => {
     let location = target.innerText;
 
     function validateLocation() {
-      if (location === 'Conta') {
-        return (location = '/');
-      } else if (location === 'Sair') {
-        return (location = '../');
+      if (location === "Conta") {
+        return (location = "/");
+      } else if (location === "Sair") {
+        return (location = "../");
       }
       return location;
     }
 
     return setTimeout(() => {
-      navigate('./' + validateLocation());
+      navigate("./" + validateLocation());
       setAnimateMenu(false);
     }, 0);
   };
@@ -80,16 +85,15 @@ const MenuLateral = () => {
   };
 
   return (
-    <div id='nav-menu'>
+    <div id="nav-menu">
       <nav
         className={
-          animateMenu && width <= '1024'
-            ? 'hambuguerClick pageView'
-            : 'main-menu pageView'
+          animateMenu && width <= "1024"
+            ? "hambuguerClick pageView"
+            : "main-menu pageView"
         }
         onMouseOver={handleMouse}
         onMouseOut={handleMouse}
-
       >
         <ul>
           <span onClick={handleAnimateMenu}>
@@ -101,58 +105,65 @@ const MenuLateral = () => {
             />
           </span>
 
-          <ItemMenu
-            state={menuItemUsuarios}
-            alt="item menu usuários"
-            item="Usuários"
-            srcItem={iconUser}
-            srcSeta={Seta}
-            clicked={() =>
-              handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
-            }
-          >
-            <div>
-              <SubItemMenu
-                link="AdicionarUsuarios"
+{/* //#region Area Restrita */}
+          {!option ? (
+            <>
+              <ItemMenu
                 state={menuItemUsuarios}
-                itemSubMenu="Adicionar Usuário"
-                subMenuSrcImg={More}
-              />
-              <SubItemMenu
-                link="Gerenciar"
-                state={menuItemUsuarios}
-                itemSubMenu="Gerênciar"
-                subMenuSrcImg={More}
-              />
-            </div>
-          </ItemMenu>
+                alt="item menu usuários"
+                item="Usuários"
+                srcItem={iconUser}
+                srcSeta={Seta}
+                clicked={() =>
+                  handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
+                }
+              >
+                <div>
+                  <SubItemMenu
+                    link="AdicionarUsuarios"
+                    state={menuItemUsuarios}
+                    itemSubMenu="Adicionar Usuário"
+                    subMenuSrcImg={More}
+                  />
+                  <SubItemMenu
+                    link="Gerenciar"
+                    state={menuItemUsuarios}
+                    itemSubMenu="Gerênciar"
+                    subMenuSrcImg={More}
+                  />
+                </div>
+              </ItemMenu>
 
-          <ItemMenu
-            state={menuItemRecadastramento}
-            alt="item menu Recadastro"
-            item="Atualização Cadastral"
-            srcItem={iconRecadastro}
-            srcSeta={Seta}
-            clicked={() =>
-              handleToggleMenu(
-                setmenuItemRecadastramento,
-                menuItemRecadastramento,
-              )
-            }
-          >
-            <div>
-              <SubItemMenu
-                link="Recadastramento"
-                itemSubMenu="Realizar Atualização"
-                subMenuSrcImg={More}
-              />
-              <SubItemMenu
-                link="Status"
-                itemSubMenu="Status"
-                subMenuSrcImg={More}
-              />
-            </div>
-          </ItemMenu>
+              <ItemMenu
+                state={menuItemRecadastramento}
+                alt="item menu Recadastro"
+                item="Atualização Cadastral"
+                srcItem={iconRecadastro}
+                srcSeta={Seta}
+                clicked={() =>
+                  handleToggleMenu(
+                    setmenuItemRecadastramento,
+                    menuItemRecadastramento
+                  )
+                }
+              >
+                <div>
+                  <SubItemMenu
+                    link="Recadastramento"
+                    itemSubMenu="Realizar Atualização"
+                    subMenuSrcImg={More}
+                  />
+                  <SubItemMenu
+                    link="Status"
+                    itemSubMenu="Status"
+                    subMenuSrcImg={More}
+                  />
+                </div>
+              </ItemMenu>
+            </>
+          ) : null}
+{/* //#endregion */}
+
 
           <span onClick={handleAnimateMenu}>
             <ItemMenu
