@@ -85,7 +85,7 @@ const MenuLateral = () => {
   };
 
   return (
-    <div id="nav-menu">
+    <div id="nav-menu" >
       <nav
         className={
           animateMenu && width <= "1024"
@@ -105,7 +105,7 @@ const MenuLateral = () => {
             />
           </span>
 
-{/* //#region Area Restrita */}
+{/* Area Restrita */}
           {!option ? (
             <>
               <ItemMenu
@@ -162,8 +162,7 @@ const MenuLateral = () => {
               </ItemMenu>
             </>
           ) : null}
-{/* //#endregion */}
-
+{/*   END - Area Restrita */}
 
           <span onClick={handleAnimateMenu}>
             <ItemMenu

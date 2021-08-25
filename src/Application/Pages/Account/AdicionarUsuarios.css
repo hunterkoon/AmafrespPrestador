@@ -1,7 +1,29 @@
-.div-main-adicionarUsuarios {
+.div-main-add-new-user {
   position: relative;
   display: flex;
   flex-direction: column;
   height: auto;
   width: 100%;
+}
+/* .div-sub-add-new-user-data form{
+display: flex;
+flex-direction: column;
+
+} */
+.div-sub-add-new-user-input-area,
+.div-sub-add-new-user-functions-area{
+  width: 50%;
+  margin: 2% ;
+}
+
+.div-sub-add-new-user-input-area input {
+display: flex;
+flex-direction: column;
+
+}
+.inputsClassSpecific{
+  display: flex;
+  flex-direction: row;
+ 
+
 }

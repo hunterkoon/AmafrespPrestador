@@ -7,7 +7,7 @@ const HelperText = ({ ...props }) => {
   const [handle, setHandle] = React.useState(false);
 
   const handleClick = (e) => {
-    if (e.target.tagName === "H1") {
+    if (e.target.tagName === "H1" || e.target.tagName === "IMG"  ) {
       setHandle(!handle);
     }
   };

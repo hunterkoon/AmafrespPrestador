@@ -45,9 +45,10 @@ const RecuperarSenha = () => {
 
   const recoverFields = (list) => {
     return (
-      list.map(({ id, label, require, type, key, changeBlur, changeFocus, mask, maxLength }) => (
+      list.map(({ id, label, require, type, key, changeBlur, changeFocus, mask, maxLength, error }) => (
         <div key={key} className="menuView">
           <Input
+            error={error}
             key={id}
             id={id}
             label={label}

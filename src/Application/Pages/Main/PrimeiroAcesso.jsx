@@ -1,27 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import { GlobalContext } from './GlobalContext';
-import { UrlPrimeiroAcesso } from '../../Shared/Commons/Constants/image-url-primeiro-acesso';
-import GeneralForms from '../../Shared/Forms/GeneralForms';
-import Titledecorated from '../../Components/Sub/Titledecorated';
-import Title from '../../Components/Sub/Title';
-import Input from '../../Components/Sub/Input';
-import Button from '../../Components/Sub/Button';
-import PrimeiroAcessoImg from '../../../Assets/PrimeiroAcesso.svg';
-import './PrimeiroAcesso.css';
-import '../../../App.css';
+import { GlobalContext } from "./GlobalContext";
+import { UrlPrimeiroAcesso } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
+import GeneralForms from "../../Shared/Forms/GeneralForms";
+import Titledecorated from "../../Components/Sub/Titledecorated";
+import Title from "../../Components/Sub/Title";
+import Input from "../../Components/Sub/Input";
+import Button from "../../Components/Sub/Button";
+import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
+import "./PrimeiroAcesso.css";
+import "../../../App.css";
+import { useInputsGeneral } from "../../Hooks/useInputs";
 
 const PrimeiroAcesso = () => {
-  const { error , firtAcessData , setFirtAcessData} = React.useContext(GlobalContext);
-  const {firstAcessForm} = GeneralForms(firtAcessData)
-  
+  const { error, firtAcessData, setFirtAcessData } =
+    React.useContext(GlobalContext);
+    
+  const { firstAcessForm } = GeneralForms(firtAcessData);
+
   const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
     firstAcessForm.reduce((acc, field) => {
       return {
         ...acc,
-        [field.id]: '',
+        [field.id]: "",
       };
-    }, {}),
+    }, {})
   );
 
   const handleChange = ({ target }) => {
@@ -29,9 +32,9 @@ const PrimeiroAcesso = () => {
     setPrimeiroAcesso({ ...primeiroAcesso, [id]: value });
   };
 
-  React.useEffect(()=>{
-    setFirtAcessData(primeiroAcesso)
-  },[primeiroAcesso, setFirtAcessData])
+  React.useEffect(() => {
+    setFirtAcessData(primeiroAcesso);
+  }, [primeiroAcesso, setFirtAcessData]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,10 +48,11 @@ const PrimeiroAcesso = () => {
         <img src={PrimeiroAcessoImg} alt="Imagem menina usando celular" />
         <a
           target="_blank"
-          style={{ color: '#FDFDFD' }}
-          href={UrlPrimeiroAcesso} rel="noreferrer"
-        >s
-          Website vector created by stories - www.freepik.com
+          style={{ color: "#FDFDFD" }}
+          href={UrlPrimeiroAcesso}
+          rel="noreferrer"
+        >
+          s Website vector created by stories - www.freepik.com
         </a>
       </div>
       <div className="div-form-primeiro-acesso">
@@ -56,25 +60,7 @@ const PrimeiroAcesso = () => {
           <Titledecorated text="Primeiro Acesso" />
           <Title text="Portal Amafresp Prestador" />
 
-          {firstAcessForm.map(
-            ({ id, label, type, require, pattern, title, maxLength, mask, changeBlur, changeFocus }) => (
-              <Input
-                mask={mask}
-                key={id}
-                maxLength={maxLength}
-                title={title}
-                pattern={pattern}
-                label={label}
-                type={type}
-                id={id}
-                require={require}
-                value={primeiroAcesso[id]}
-                changeBlur={changeBlur}
-                changeFocus={changeFocus}
-                onChange={handleChange}
-              />
-            ),
-          )}
+          {useInputsGeneral(firstAcessForm, primeiroAcesso, handleChange)}
 
           <div className="div-button-form-primeiro-acesso">
             <Button value="Registrar" />

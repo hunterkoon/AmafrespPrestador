@@ -1,15 +1,14 @@
 import React from 'react';
-import './Input.css';
 import InputMask from 'react-input-mask'
+import './Input.css';
 const Input = ({ ...props }) => {
 
   return (
     <div key={props.key} className="input-div">
-      <p className="p-input">{props.error}</p>
       <label htmlFor={props.id}>{props.label}</label>
+     <h1 className={  props.error ? "p-input" : 'p-error-null'}>{props.error}</h1>
       <InputMask
         mask={props.mask}
-        className="input"
         maxLength={props.maxLength}
         title={props.title}
         pattern={props.pattern}
@@ -23,6 +22,9 @@ const Input = ({ ...props }) => {
         id={props.id}
         onBlur={props.changeBlur}
         onFocus={props.changeFocus}
+        placeholder={props.placeholder}
+        className={[' input ' + props.className]}
+        
       />
     </div>
   );

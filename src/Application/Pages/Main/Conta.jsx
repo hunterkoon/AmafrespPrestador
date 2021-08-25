@@ -26,7 +26,7 @@ const Conta = () => {
   
   return (
     <div className="main-conta" >
-      <div className="div-menu">{<Menu />}</div>
+      <div  className="div-menu">{<Menu />}</div>
       <div className="div-context" name='app-context' onClick={(e) => handleMenuHide(e) }>
         <Routes>
           <Route path="/" element={<Home />} />

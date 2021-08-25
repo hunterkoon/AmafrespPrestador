@@ -41,9 +41,10 @@ const Login = () => {
 
   const handlerMapping = (type) => {
     return type.map(
-      ({ key, id, label, type, require, pattern, title, maxLength, mask , changeBlur, changeFocus }) => (
-        <div className="menuView" key={key}>
+      ({ key, id, label, type, require, pattern, title, maxLength, mask , changeBlur, changeFocus, error }) => (
+
           <Input
+           className='menuView'
             key={key}
             maxLength={maxLength}
             title={title}
@@ -56,9 +57,10 @@ const Login = () => {
             mask={mask}
             changeBlur={changeBlur}
             changeFocus={changeFocus}
-            // require={require}
+            error = {error}
+           require={require}
           />
-        </div>
+      
       )
     );
   };
@@ -93,6 +95,7 @@ const Login = () => {
               <Link to='/Help/'><img src={IconDoubt} alt="" /></Link>
             </div>
             <form onSubmit={handleSubmit}>
+              
               {handlerMapping(option ? loginCommon : loginAdm)}
 
               <div className={!option ? 'div-button-login' : 'div-button-login-user'}>
