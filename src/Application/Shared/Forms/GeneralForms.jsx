@@ -62,6 +62,7 @@ const GeneralForms = (loginData) => {
 
   // FORMULARIOS DE LOGIN
   const loginCommon = [CpfCnpj, USER(), password];
+
   const loginAdm = [CpfCnpj, password];
 
   // FORMULARIOS DE RECUPERAÇÃO DE PASSWORD

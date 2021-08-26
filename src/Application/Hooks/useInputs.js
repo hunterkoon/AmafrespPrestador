@@ -1,9 +1,10 @@
 import Input from "../Components/Sub/Input"
 
-export const useInputsGeneral = (form , value , handleChange, className) => 
+export const useInputsGeneral = (form , value , handleChange, classMain) => 
 {
  return form.map(
-        ({ id, label, type, require, pattern, title, maxLength, mask, changeBlur, changeFocus, error, key }) => (
+        ({ id, label, type, require, pattern, title, maxLength, mask, changeBlur, changeFocus, error, key, className }) => (
+          
           <Input
             error = {error}
             mask={mask}
@@ -19,7 +20,8 @@ export const useInputsGeneral = (form , value , handleChange, className) =>
             changeBlur={changeBlur}
             changeFocus={changeFocus}
             onChange={handleChange}
-            className={className}
+            className={classMain ? classMain : className }
+          
           />
         ),
       )

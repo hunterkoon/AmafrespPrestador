@@ -4,26 +4,33 @@
   flex-direction: column;
   height: auto;
   width: 100%;
+  overflow-x: hidden;
 }
-/* .div-sub-add-new-user-data form{
-display: flex;
-flex-direction: column;
 
-} */
-.div-sub-add-new-user-input-area,
+.form-add-new-user{
+  width: 96%;
+  margin: 0 auto;
+  padding-top: 3%;
+}
+
+.div-sub-add-new-user-input-area{
+
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr 1fr;
+  gap: 2%;
+  margin: 0 auto;
+
+}
+
 .div-sub-add-new-user-functions-area{
-  width: 50%;
-  margin: 2% ;
+  margin-top: 5%;
 }
 
-.div-sub-add-new-user-input-area input {
-display: flex;
-flex-direction: column;
+.NAME-FIELD-CLASS {grid-area: 1/1/1/4;}
+.USER-FIELD-CLASS{grid-area: 1/4/1/5;}
+.CONFIRMEMAIL-FIELD-CLASS{grid-area: 2/3/2/5;}
+.EMAIL-FIELD-CLASS{  grid-area: 2/1/2/3;}
+.PASSWORD-FIELD-CLASS{grid-area: 3/1/3/3;}
+.CONFIRMPASSWORD-FIELD-CLASS {grid-area: 3/3/3/5;}
+.DEPARTMENT-FIELD-CLASS {grid-area: 4/1/4/3;}
 
-}
-.inputsClassSpecific{
-  display: flex;
-  flex-direction: row;
- 
-
-}

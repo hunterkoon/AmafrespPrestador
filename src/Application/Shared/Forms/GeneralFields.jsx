@@ -11,6 +11,7 @@ export const CPF_CNPJ = (handleMaskonBlur, handleMaskonFocus, mask, error) => {
     changeBlur: handleMaskonBlur,
     changeFocus: handleMaskonFocus,
     require: require,
+    className:'CPF-FIELD-CLASS'
   };
 };
 
@@ -21,6 +22,7 @@ export const EMAIL = () => {
     type: "email",
     label: "E-mail",
     require: require,
+    className:'EMAIL-FIELD-CLASS'
   };
 };
 
@@ -34,6 +36,7 @@ export const EMAIL_CONFIRM = (handleMaskonBlur , handleMaskonFocus, error) => {
     type: "email",
     label: "Confirme seu E-mail",
     require: require,
+    className:'CONFIRMEMAIL-FIELD-CLASS'
   };
 };
 
@@ -44,6 +47,8 @@ export const PASSWORD = () => {
     type: "password",
     label: "Senha",
     require: require,
+    className:'PASSWORD-FIELD-CLASS'
+
   };
 };
 
@@ -57,6 +62,7 @@ export const PASSWORD_CONFIRM = (handleMaskonBlur , handleMaskonFocus, error) =>
     type: "password",
     label: "Confirme sua Senha",
     require: require,
+    className:'CONFIRMPASSWORD-FIELD-CLASS'
   };
 };
 
@@ -67,6 +73,7 @@ export const USER = () => {
     type: "text",
     require: require,
     label: "Usuário",
+    className:'USER-FIELD-CLASS'
   };
 };
 
@@ -78,6 +85,8 @@ export const NAME = () => {
     require: require,
     label: "Nome Completo",
     mask: "",
+    className:'NAME-FIELD-CLASS'
+    
   };
 };
 export const DEPARTMENT = () => {
@@ -87,6 +96,7 @@ export const DEPARTMENT = () => {
     type: "text",
     require: require,
     label: "Departamento",
+    className:'DEPARTMENT-FIELD-CLASS'
   };
 };
 
@@ -99,6 +109,7 @@ export const CEL_TELPHONE = () => {
     pattern: "[0-9]{2}-[0-9]{9}",
     mask: "99-999999999",
     require: require,
+    className:'CELPHONE-FIELD-CLASS'
   };
 };
 
@@ -111,5 +122,6 @@ export const TELPHONE = () => {
     pattern: "[0-9]{2}-[0-9]{8}",
     mask: "99-99999999",
     require: require,
+    className:'TELPHONE-FIELD-CLASS'
   };
 };

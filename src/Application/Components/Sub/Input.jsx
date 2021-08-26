@@ -4,7 +4,7 @@ import './Input.css';
 const Input = ({ ...props }) => {
 
   return (
-    <div key={props.key} className="input-div">
+    <div key={props.key} className={[' input-div ' + props.className]}>
       <label htmlFor={props.id}>{props.label}</label>
      <h1 className={  props.error ? "p-input" : 'p-error-null'}>{props.error}</h1>
       <InputMask
@@ -23,8 +23,7 @@ const Input = ({ ...props }) => {
         onBlur={props.changeBlur}
         onFocus={props.changeFocus}
         placeholder={props.placeholder}
-        className={[' input ' + props.className]}
-        
+        className= 'input'        
       />
     </div>
   );

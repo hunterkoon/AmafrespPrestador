@@ -27,7 +27,7 @@ const Conta = () => {
   return (
     <div className="main-conta" >
       <div  className="div-menu">{<Menu />}</div>
-      <div className="div-context" name='app-context' onClick={(e) => handleMenuHide(e) }>
+      <aside className="div-context" name='app-context' onClick={(e) => handleMenuHide(e) }>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Gerenciar" element={<Gerenciar />} />
@@ -36,7 +36,7 @@ const Conta = () => {
           <Route path="Recadastramento" element={<Recadastramento />} />
           <Route path="Status" element={<Status />} />
         </Routes>
-      </div>
+      </aside>
     </div>
   );
 };

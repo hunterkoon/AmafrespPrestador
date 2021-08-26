@@ -43,10 +43,6 @@ export const GlobalStorage = ({ children }) => {
   // };
 
 
-  React.useEffect(() => {
-    handleLogoDirection();
-  }, [login]);
-
   // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
   const handleWindowHamburguer = () => {
     if (width <= 1024 && login === true) {
@@ -58,11 +54,18 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
 
-  const handleLogoDirection = () => {
-    if (login) {
-      return navigate("/conta");
-    } else return navigate("/");
-  };
+
+  
+  
+const  handleLogoDirection = React.useEffect(() => {
+    const handleLogoDirection = () => {
+      if (login) {
+        return navigate("/conta");
+      } else return navigate("/");
+    };
+   handleLogoDirection();
+  }, [login, navigate]);
+
   
   return (
     <GlobalContext.Provider

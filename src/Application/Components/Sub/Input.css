@@ -63,4 +63,14 @@
     width: 80%;
     z-index: 99;
   }
+
 }
+@media only screen and (min-width:1280px) {
+  .p-input{
+    width: 300px;
+    margin: 0 auto;
+    transform: translateY(-20px);
+   
+  }
+}
+

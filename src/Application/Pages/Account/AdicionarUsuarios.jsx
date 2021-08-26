@@ -45,10 +45,10 @@ const Usuarios = () => {
         </div>
 
         <div className="div-sub-add-new-user-data">
-          <form onSubmit={handleSubmit}>
+          <form className="form-add-new-user" onSubmit={handleSubmit}>
+            <h1> Preencha os dados</h1>
             <div className="div-sub-add-new-user-input-area">
-              <h1> Preencha os dados</h1>
-              {useInputsGeneral(addUserForm, newUser, handleChange, "inputsClassSpecific")}            
+              {useInputsGeneral(addUserForm, newUser, handleChange)}
             </div>
             <div className="div-sub-add-new-user-functions-area">
               <h1> Marque as funcões a serem liberadas</h1>
