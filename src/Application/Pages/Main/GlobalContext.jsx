@@ -8,13 +8,12 @@ import useFetch from "../../Hooks/useFetch";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-
   // estado da aplicação que diz qual nivel de acesso do usuário.
-  const [newUserData , setNewUserData] = React.useState([0]);
-  const [firtAcessData , setFirtAcessData] = React.useState([0]);
-  const [recoverData , setRecoverData] = React.useState([0]);
-  const [loginData , setLoginData ] = React.useState([0]);
-  const [permitionsOptions , setPermitionsOptions ] = React.useState([]);
+  const [newUserData, setNewUserData] = React.useState([0]);
+  const [firtAcessData, setFirtAcessData] = React.useState([0]);
+  const [recoverData, setRecoverData] = React.useState([0]);
+  const [loginData, setLoginData] = React.useState([0]);
+  const [permitionsOptions, setPermitionsOptions] = React.useState([]);
   const [option, setOption] = React.useState(false);
   const { data, setData, loading, error } = useFetch();
   const [profile, setProfile] = React.useState(false);
@@ -22,7 +21,8 @@ export const GlobalStorage = ({ children }) => {
   const [animateMenu, setAnimateMenu] = React.useState(false);
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [handle, setHandle] = React.useState(null);
-  const [menuItemRecadastramento, setmenuItemRecadastramento] = React.useState(false);
+  const [menuItemRecadastramento, setmenuItemRecadastramento] =
+    React.useState(false);
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -42,7 +42,6 @@ export const GlobalStorage = ({ children }) => {
   //   }
   // };
 
-
   // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
   const handleWindowHamburguer = () => {
     if (width <= 1024 && login === true) {
@@ -54,19 +53,15 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
 
-
-  
-  
-const  handleLogoDirection = React.useEffect(() => {
+  const handleLogoDirection = React.useEffect(() => {
     const handleLogoDirection = () => {
       if (login) {
         return navigate("/conta");
       } else return navigate("/");
     };
-   handleLogoDirection();
+     handleLogoDirection();
   }, [login, navigate]);
 
-  
   return (
     <GlobalContext.Provider
       value={{
@@ -80,6 +75,12 @@ const  handleLogoDirection = React.useEffect(() => {
         setOption,
         setmenuItemUsuarios,
         setmenuItemRecadastramento,
+        setHandle,
+        setLoginData,
+        setRecoverData,
+        setPermitionsOptions,
+        setFirtAcessData,
+        setNewUserData,
         option,
         profile,
         login,
@@ -91,13 +92,12 @@ const  handleLogoDirection = React.useEffect(() => {
         error,
         menuItemUsuarios,
         menuItemRecadastramento,
-        handle, setHandle,
-        loginData , setLoginData,
-        recoverData , setRecoverData,
-        firtAcessData , setFirtAcessData,
-        permitionsOptions , setPermitionsOptions,
-        newUserData , setNewUserData
-
+        handle,
+        loginData,
+        recoverData,
+        firtAcessData,
+        permitionsOptions,
+        newUserData,
       }}
     >
       {children}
