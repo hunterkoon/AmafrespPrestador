@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Main/GlobalContext";
 import { UrlImgLogin } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
-import useFetch from "../../Hooks/useFetch";
+// import useFetch from "../../Hooks/useFetch";
 import Input from "../../Components/Sub/Input";
 import Button from "../../Components/Sub/Button";
 import Title from "../../Components/Sub/Title";
@@ -17,7 +17,6 @@ import "../../../App.css";
 
 const Login = () => {
   const { setLogin, option, setLoginData, loginData } = React.useContext(GlobalContext);
-  const { data } = useFetch();
   const {loginCommon , loginAdm} = GeneralForms(loginData)
 
   const [fieldsLogin, setFieldsLogin] = React.useState(

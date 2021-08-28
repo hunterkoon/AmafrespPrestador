@@ -5,7 +5,6 @@ import { UrlPrimeiroAcesso } from "../../Shared/Commons/Constants/image-url-prim
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
-import Input from "../../Components/Sub/Input";
 import Button from "../../Components/Sub/Button";
 import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
 import "./PrimeiroAcesso.css";
@@ -13,7 +12,7 @@ import "../../../App.css";
 import { useInputsGeneral } from "../../Hooks/useInputs";
 
 const PrimeiroAcesso = () => {
-  const { error, firtAcessData, setFirtAcessData } =
+  const { firtAcessData, setFirtAcessData } =
     React.useContext(GlobalContext);
     
   const { firstAcessForm } = GeneralForms(firtAcessData);
@@ -60,7 +59,7 @@ const PrimeiroAcesso = () => {
           <Titledecorated text="Primeiro Acesso" />
           <Title text="Portal Amafresp Prestador" />
 
-          {useInputsGeneral(firstAcessForm, primeiroAcesso, handleChange)}
+          {useInputsGeneral(firstAcessForm, handleChange, primeiroAcesso)}
 
           <div className="div-button-form-primeiro-acesso">
             <Button value="Registrar" />

@@ -3,16 +3,17 @@ import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import { useNavigate } from "react-router";
 import useFetch from "../../Hooks/useFetch";
 
+
 // import { GETDADOS } from "./Api";
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
   // estado da aplicação que diz qual nivel de acesso do usuário.
-  const [newUserData, setNewUserData] = React.useState([0]);
-  const [firtAcessData, setFirtAcessData] = React.useState([0]);
-  const [recoverData, setRecoverData] = React.useState([0]);
-  const [loginData, setLoginData] = React.useState([0]);
+  const [newUserData, setNewUserData] = React.useState([]);
+  const [firtAcessData, setFirtAcessData] = React.useState([]);
+  const [recoverData, setRecoverData] = React.useState([]);
+  const [loginData, setLoginData] = React.useState([]);
   const [permitionsOptions, setPermitionsOptions] = React.useState([]);
   const [option, setOption] = React.useState(false);
   const { data, setData, loading, error } = useFetch();
@@ -22,9 +23,10 @@ export const GlobalStorage = ({ children }) => {
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
   const [handle, setHandle] = React.useState(null);
   const [menuItemRecadastramento, setmenuItemRecadastramento] =
-    React.useState(false);
+  React.useState(false);
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
+
 
   // async function LoginValidate() {
   //   const { url, options } = GETDADOS();
@@ -54,12 +56,12 @@ export const GlobalStorage = ({ children }) => {
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
 
   const handleLogoDirection = React.useEffect(() => {
-    const handleLogoDirection = () => {
-      if (login) {
-        return navigate("/conta");
-      } else return navigate("/");
-    };
-     handleLogoDirection();
+    // const handleLogoDirection = () => {
+    //   if (login) {
+    //     return navigate("/conta");
+    //   } else return navigate("/");
+    // };
+    //  handleLogoDirection();
   }, [login, navigate]);
 
   return (
@@ -98,6 +100,7 @@ export const GlobalStorage = ({ children }) => {
         firtAcessData,
         permitionsOptions,
         newUserData,
+
       }}
     >
       {children}

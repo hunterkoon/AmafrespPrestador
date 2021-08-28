@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom';
 import { GlobalStorage } from './Application/Pages/Main/GlobalContext';
 

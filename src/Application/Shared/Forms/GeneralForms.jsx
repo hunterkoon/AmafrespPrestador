@@ -1,4 +1,5 @@
 import React from "react";
+import functionalitiesConsts from "./GeneralFunctionalities";
 import {
   CPF_CNPJ,
   EMAIL,
@@ -24,20 +25,22 @@ const GeneralForms = (loginData) => {
   const [passwordState, setPasswordState] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
 
-  const handleMaskonBlur = (event) => [
+  const handleMaskonBlur = () => [
     setError(handleErrorCpfCnpf(loginData)),
     setMask(handleMask(loginData)),
     setPasswordState(handleErrorPassword(loginData)),
     setEmailError(handleErroEmail(loginData)),
   ];
 
-  const handleMaskonFocus = (event) => {
+  const handleMaskonFocus = () => {
     setMask("");
     setError("");
     setPasswordState("");
   };
+
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
   const CpfCnpj = CPF_CNPJ(handleMaskonBlur, handleMaskonFocus, mask, error);
+
   const password = PASSWORD();
   const passwordConfirm = PASSWORD_CONFIRM(
     handleMaskonBlur,
@@ -82,6 +85,17 @@ const GeneralForms = (loginData) => {
     DEPARTMENT(),
   ];
 
+  //FUNCIONALIDADES A SEREM LIBERADAS
+
+  const { UpdadeRegister, SendXML, RegisterNewUser } = functionalitiesConsts();
+
+  const addFunctionalitiesCheckbox = [
+    UpdadeRegister,
+    SendXML,
+    RegisterNewUser,
+    // ModifyUsers,
+  ];
+
   return {
     firstAcessForm: firstAcessForm,
     loginCommon: loginCommon,
@@ -89,6 +103,7 @@ const GeneralForms = (loginData) => {
     recoverFiedsAdm: recoverFiedsAdm,
     recoverFiedsCommon: recoverFiedsCommon,
     addUserForm: addUserForm,
+    addFunctionalitiesCheckbox: addFunctionalitiesCheckbox,
   };
 };
 

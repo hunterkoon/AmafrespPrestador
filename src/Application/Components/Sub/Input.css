@@ -55,6 +55,9 @@
   margin-top: 1em;
   text-align: left;
 }
+.inputClick{
+  background-color: #38C6AE;
+}
 
 @media only screen and (max-width:1024px) {
   .p-input {
@@ -63,14 +66,12 @@
     width: 80%;
     z-index: 99;
   }
-
 }
+
 @media only screen and (min-width:1280px) {
-  .p-input{
+  .p-input {
     width: 300px;
     margin: 0 auto;
     transform: translateY(-20px);
-   
   }
 }
-

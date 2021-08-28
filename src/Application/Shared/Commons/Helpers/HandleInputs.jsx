@@ -51,3 +51,4 @@ export const handleErroEmail = (loginData) => {
     return "Emails não conferem, verifique a digitação!.";
   }
 };
+
