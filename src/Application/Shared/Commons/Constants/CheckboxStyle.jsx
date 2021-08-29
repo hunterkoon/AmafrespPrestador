@@ -1,26 +1,22 @@
-import React from "react";
-import { GlobalContext } from "../../../Pages/Main/GlobalContext";
-import GeneralForms from "../../Forms/GeneralForms";
+// import React from "react";
+// import { GlobalContext } from "../../../Pages/Main/GlobalContext";
 
 const CheckboxStyle = (event) => {
-  const { newUserData } = React.useContext(GlobalContext);
+  // const { newUserData } = React.useContext(GlobalContext);
 
-  const obj = newUserData;
+  // const obj = newUserData;
 
-  const ObjEntries = Object.entries(obj);
+  // const ObjEntries = Object.entries(obj);
+  // const filtred = ObjEntries.map((item) => ({
+  //   key: item[0],
+  //   value: item[1],
+  // }));
 
-  const filtred = ObjEntries.map((item) => ({
-    key: item[0],
-    value: item[1],
-  }));
-
-  const finish = () =>{
-    for(let i  in filtred){
-        return filtred[0] && filtred[i]
-    }
-
-  }
-
+  // const finish = () =>{
+  //   for(let i  in filtred){
+  //       return filtred[0] && filtred[i]
+  //   }
+  // }
 
 
   const checkboxStyleChildren = {

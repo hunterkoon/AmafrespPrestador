@@ -48,14 +48,16 @@
   justify-content: center;
 }
 
-.GENERAL-CHECKBOX-CLASS:hover {
+.GENERAL-CHECKBOX-CLASS:hover,
+.GENERAL-CHECKBOX-CLASS-actived:hover {
   cursor: pointer;
   color: #ffff;
   transition: 200ms;
   background-color: #25b099;
 }
 
-.GENERAL-CHECKBOX-CLASS input {
+.GENERAL-CHECKBOX-CLASS input,
+.GENERAL-CHECKBOX-CLASS-actived input {
   cursor: pointer;
   opacity: 0;
   position: relative;
@@ -65,10 +67,25 @@
   z-index: 0;
 }
 
-.GENERAL-CHECKBOX-CLASS label {
+.GENERAL-CHECKBOX-CLASS label,
+.GENERAL-CHECKBOX-CLASS-actived label {
   cursor: pointer;
   margin: 0;
   position: absolute;
+}
+
+/* CONTAINER PERSONALIZADO  CHECKBOX */
+
+.GENERAL-CHECKBOX-CLASS-actived {
+  cursor: pointer;
+  transition: 200ms;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #25b099;
+  color: #f1f1f1;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1024px) {

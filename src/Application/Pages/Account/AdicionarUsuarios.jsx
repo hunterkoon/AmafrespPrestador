@@ -45,7 +45,7 @@ const Usuarios = () => {
     } else{
       setFunctions({
         ...functions,
-        [target.id]: false}
+        [target.id]: (false)}
         );
     }
   };

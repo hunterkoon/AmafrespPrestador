@@ -18,6 +18,7 @@ import {
   handleErrorPassword,
   handleErroEmail,
 } from "../Commons/Helpers/HandleInputs";
+import GeneralFunctionalities from "./GeneralFunctionalities";
 
 const GeneralForms = (loginData) => {
   const [mask, setMask] = React.useState("");
@@ -87,7 +88,7 @@ const GeneralForms = (loginData) => {
 
   //FUNCIONALIDADES A SEREM LIBERADAS
 
-  const { UpdadeRegister, SendXML, RegisterNewUser } = functionalitiesConsts();
+  const { UpdadeRegister, SendXML, RegisterNewUser } = GeneralFunctionalities();
 
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,
