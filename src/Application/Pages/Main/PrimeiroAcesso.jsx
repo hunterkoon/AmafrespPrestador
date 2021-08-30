@@ -3,13 +3,13 @@ import React from "react";
 import { GlobalContext } from "./GlobalContext";
 import { UrlPrimeiroAcesso } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
+import { useInputsGeneral } from "../../Hooks/useInputs";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
 import Button from "../../Components/Sub/Button";
 import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
 import "./PrimeiroAcesso.css";
 import "../../../App.css";
-import { useInputsGeneral } from "../../Hooks/useInputs";
 
 const PrimeiroAcesso = () => {
   const { firtAcessData, setFirtAcessData } =

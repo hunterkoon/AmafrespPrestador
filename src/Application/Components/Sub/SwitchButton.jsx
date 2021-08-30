@@ -15,7 +15,7 @@ const SwitchButton = ({ rounded = false, ...props }) => {
 
     return (
         <div style={{
-            width: props.width,
+            width: '80%',
         }}> 
             <h3 style={{
 
@@ -26,6 +26,7 @@ const SwitchButton = ({ rounded = false, ...props }) => {
                 color:'#474747',
                 fontSize:'1rem',
                 fontWeight:'lighter',
+                
 
             }}>Escolha uma categoria!</h3>
             <div className='div-switch-main'>
@@ -44,3 +45,4 @@ const SwitchButton = ({ rounded = false, ...props }) => {
 }
 
 export default SwitchButton
+

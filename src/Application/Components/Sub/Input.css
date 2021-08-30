@@ -2,6 +2,8 @@
   color: #474747;
   font-size: 1em;
   font-family: NotoSans-Regular;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .p-error-null {
@@ -45,50 +47,14 @@
   margin-top: 1em;
   color: #474747;
   width: 100%;
+  padding: 0;
 }
 
 .input-div {
   display: flex;
   flex-direction: column;
 }
-
-.info-img{
-  position: absolute;
-  width: 20px;
-  transform: translateX(100px);
-}
-.info-check{
-  position: absolute;
-  width: 20px;
-  transform: translateY(-30px) translateX(-32px);
-}
-.info-img:hover~.info-label , 
-.info-check:hover~.info-label{
-  transition: 200ms;
-  opacity: 1;
-  z-index: 1;
-}
-.info-label{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  color: #c1c1c1;
-  font-size: 1em;
-  background-color: #474747;
-  position: absolute;
-  opacity: 0;
-  width: 300px;
-  height: 90px;
-  border-radius: 10px 10px 10px 0px;
-  transform: translateY(-95px);
-  margin-left: 120px;
-  z-index: -999;
-}
-.info-label h5{
-margin: 5% ;
-}
-
-label {
+.input-div{
   margin-top: 1em;
   text-align: left;
 }

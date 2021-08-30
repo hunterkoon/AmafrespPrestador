@@ -8,8 +8,7 @@ export const handleMask = (loginData) => {
   }
   if (replaced && replaced.length > 18) {
     return "";
-  } else 
-    return "";
+  } else return "";
 };
 export const handleErrorCpfCnpf = (loginData) => {
   const replaced = loginData.CNPJCPF && loginData.CNPJCPF.replace(/\W/g, "");
@@ -35,7 +34,6 @@ export const handleErrorPassword = (loginData) => {
   }
 };
 export const handleErroEmail = (loginData) => {
- 
   const email = loginData.email;
   const confirmEmail = loginData.CONFIRMEemail;
   const regex = /\W/g;
@@ -47,3 +45,23 @@ export const handleErroEmail = (loginData) => {
     return "Por favor digite um e-mail válido!.";
   }
 };
+
+export const handleUpperCase = (arr) => {
+  let strings = [];
+  let passwords = [];
+  
+  Object.entries(arr).map((item) => {
+    if (
+      item[0] !== "senha" &&
+      item[0] !== "CONFIRMEsenha" &&
+      item[0] !== "plogin"
+    ) {
+     return strings.push( [item[0], item[1].toUpperCase()] );
+    } else return passwords.push( [item[0], item[1]] );
+  });
+
+  strings =  Object.fromEntries(strings);
+  passwords = Object.fromEntries(passwords);
+
+  return Object.assign(strings , passwords )
+}

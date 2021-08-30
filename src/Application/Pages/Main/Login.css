@@ -78,7 +78,6 @@
 }
 
 @media only screen and (max-width: 1024px) {
-
     .div-img-login img {
         display: flex;
         position: relative;
@@ -94,15 +93,15 @@
         margin-top: 10vh;
     }
     .div-form-login {
+        padding: 0;
+        margin: 0 auto;
         width: 90%;
     }
+
 }
 
-@media only screen and (min-width:1600px){
-
+@media only screen and (min-width:1600px) {
     .div-switch-login img {
         width: 68%;
     }
-    
-
 }

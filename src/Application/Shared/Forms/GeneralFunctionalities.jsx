@@ -1,4 +1,4 @@
-import { addUserInfo, modUserInfo, updateInfo } from "../Commons/Constants/Info";
+import { addUserInfo, modUserInfo, updateInfo } from "../Commons/Constants/info-strings";
 
 const GeneralFunctionalities = () => {
   function Functionalities(key, label,info, img) {

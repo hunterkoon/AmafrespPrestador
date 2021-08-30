@@ -27,7 +27,6 @@ export const GlobalStorage = ({ children }) => {
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
 
-
   // async function LoginValidate() {
   //   const { url, options } = GETDADOS();
   //   const { response, json } = await request(url, options);

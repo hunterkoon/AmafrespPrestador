@@ -5,6 +5,7 @@ import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import Button from "../../Components/Sub/Button";
+import { handleUpperCase } from "../../Shared/Commons/Helpers/HandleInputs";
 import "./AdicionarUsuarios.css";
 import "../../../App.css";
 
@@ -47,10 +48,9 @@ const Usuarios = () => {
       });
   };
   // POPULA ARRAY NO GLOBAL CONTEXT;
-  React.useEffect(() => {
-    setNewUserData({...newUser, ...functions});
-  }, [functions, newUser, setNewUserData]);
-
+  React.useEffect(() => { 
+    setNewUserData({...functions , ...handleUpperCase(newUser)});    
+  }, [functions, newUser, setNewUserData]);  
   //  FETCH;
   const handleSubmit = (e) => {
     e.preventDefault();

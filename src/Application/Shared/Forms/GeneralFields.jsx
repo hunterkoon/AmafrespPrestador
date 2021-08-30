@@ -80,6 +80,7 @@ export const USER = () => {
     require: require,
     label: "Usuário",
     className: "USER-FIELD-CLASS",
+    placeholder: "ex : Joao.F",
     info:"Usuário de acesso, cadastrado pelo administrador de usuários. portador do CNPJ / CPF"
   };
 };

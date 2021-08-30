@@ -66,7 +66,7 @@ const Login = () => {
               <Title text="Portal Amafresp Prestador" />
             </div>
             <div className="div-switch-login">
-              <SwitchButton width={"85%"} rounded={true} />
+              <SwitchButton rounded={true} />
               <Link to="/Help/">
                 <img src={IconDoubt} alt="" />
               </Link>
