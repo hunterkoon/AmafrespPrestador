@@ -9,7 +9,7 @@ import useFetch from "../../Hooks/useFetch";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  // estado da aplicação que diz qual nivel de acesso do usuário.
+
   const [newUserData, setNewUserData] = React.useState([]);
   const [firtAcessData, setFirtAcessData] = React.useState([]);
   const [recoverData, setRecoverData] = React.useState([]);
@@ -56,12 +56,12 @@ export const GlobalStorage = ({ children }) => {
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
 
   const handleLogoDirection = React.useEffect(() => {
-    // const handleLogoDirection = () => {
-    //   if (login) {
-    //     return navigate("/conta");
-    //   } else return navigate("/");
-    // };
-    //  handleLogoDirection();
+    const handleLogoDirection = () => {
+      if (login) {
+        return navigate("/conta");
+      } else return navigate("/");
+    };
+     handleLogoDirection();
   }, [login, navigate]);
 
   return (

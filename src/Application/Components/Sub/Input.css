@@ -44,6 +44,7 @@
   background-color: #ebebeb;
   margin-top: 1em;
   color: #474747;
+  width: 100%;
 }
 
 .input-div {
@@ -51,11 +52,12 @@
   flex-direction: column;
 }
 
-.input-div label {
+label {
   margin-top: 1em;
   text-align: left;
 }
-.inputClick{
+
+.inputClick {
   background-color: #38C6AE;
 }
 
@@ -66,6 +68,13 @@
     width: 80%;
     z-index: 99;
   }
+  .input-img {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    margin-top: 15%;
+    width: 25px
+  }
 }
 
 @media only screen and (min-width:1280px) {
@@ -74,4 +83,5 @@
     margin: 0 auto;
     transform: translateY(-20px);
   }
+
 }

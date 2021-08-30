@@ -16,7 +16,7 @@
 .main-div-menu {
   font-family: NotoSans-Regular;
   z-index: 999;
-  position: absolute;
+  position: fixed;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 20% 1fr;

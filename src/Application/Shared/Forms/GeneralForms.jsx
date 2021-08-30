@@ -1,5 +1,5 @@
 import React from "react";
-import functionalitiesConsts from "./GeneralFunctionalities";
+
 import {
   CPF_CNPJ,
   EMAIL,
@@ -88,13 +88,13 @@ const GeneralForms = (loginData) => {
 
   //FUNCIONALIDADES A SEREM LIBERADAS
 
-  const { UpdadeRegister, SendXML, RegisterNewUser } = GeneralFunctionalities();
+  const { UpdadeRegister, SendXML, RegisterNewUser, ModifyUsers } = GeneralFunctionalities();
 
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,
     SendXML,
     RegisterNewUser,
-    // ModifyUsers,
+    ModifyUsers,
   ];
 
   return {
