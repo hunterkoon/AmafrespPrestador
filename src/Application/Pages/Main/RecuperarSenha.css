@@ -8,12 +8,14 @@
   width: 100%;
   align-items: center;
 }
+
 .div-form-recuperar-senha {
   display: flex;
   width: auto;
   height: auto;
   justify-content: center;
 }
+
 .div-form-recuperar-senha form {
   width: 70%;
   height: auto;
@@ -24,10 +26,12 @@
   flex-direction: column;
   align-self: center;
 }
+
 .div-img-recuperar-senha img {
   width: 75%;
   align-self: center;
 }
+
 .div-button-recuperar-senha {
   display: flex;
   flex-direction: row;
@@ -50,7 +54,6 @@
     width: 100%;
     align-items: center;
   }
-
   .div-button-recuperar-senha a {
     justify-content: flex-end;
   }

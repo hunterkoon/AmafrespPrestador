@@ -1,11 +1,11 @@
 import React from "react";
 import { useInputsGeneral } from "../../Hooks/useInputs";
 import { GlobalContext } from "../Main/GlobalContext";
+import { handleUpperCase } from "../../Shared/Commons/Helpers/HandleInputs";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import Button from "../../Components/Sub/Button";
-import { handleUpperCase } from "../../Shared/Commons/Helpers/HandleInputs";
 import "./AdicionarUsuarios.css";
 import "../../../App.css";
 
@@ -51,7 +51,7 @@ const Usuarios = () => {
   React.useEffect(() => { 
     setNewUserData({...functions , ...handleUpperCase(newUser)});    
   }, [functions, newUser, setNewUserData]);  
-  //  FETCH;
+  // TODO FETCH;
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newUserData);

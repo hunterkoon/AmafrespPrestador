@@ -12,11 +12,8 @@ import "./PrimeiroAcesso.css";
 import "../../../App.css";
 
 const PrimeiroAcesso = () => {
-  const { firtAcessData, setFirtAcessData } =
-    React.useContext(GlobalContext);
-    
+  const { firtAcessData, setFirtAcessData } = React.useContext(GlobalContext);
   const { firstAcessForm } = GeneralForms(firtAcessData);
-
   const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
     firstAcessForm.reduce((acc, field) => {
       return {
@@ -25,22 +22,17 @@ const PrimeiroAcesso = () => {
       };
     }, {})
   );
-
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setPrimeiroAcesso({ ...primeiroAcesso, [id]: value });
   };
-
   React.useEffect(() => {
     setFirtAcessData(primeiroAcesso);
   }, [primeiroAcesso, setFirtAcessData]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     //TODO GERAR FUNÇÃO DE FETCH POST
   };
-
   return (
     <div className="div-main-primeiro-acesso pageView">
       <div className="div-img-primeiro-acesso">
