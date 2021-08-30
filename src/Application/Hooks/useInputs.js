@@ -25,6 +25,7 @@ export const useInputsGeneral = (
       placeholder,
       onClick,
       img,
+      info
     }) => (
       <Input
         type={type}
@@ -45,6 +46,7 @@ export const useInputsGeneral = (
         changeFocus={changeFocus}
         placeholder={placeholder}
         onClick={onClick}
+        info={info}
         className={classMain ? classMain : className}
       />
     )

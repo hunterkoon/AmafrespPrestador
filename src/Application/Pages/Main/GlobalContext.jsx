@@ -56,12 +56,12 @@ export const GlobalStorage = ({ children }) => {
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
 
   const handleLogoDirection = React.useEffect(() => {
-    // const handleLogoDirection = () => {
-    //   if (login) {
-    //     return navigate("/conta");
-    //   } else return navigate("/");
-    // };
-    //  handleLogoDirection();
+    const handleLogoDirection = () => {
+      if (login) {
+        return navigate("/conta");
+      } else return navigate("/");
+    };
+     handleLogoDirection();
   }, [login, navigate]);
 
   return (

@@ -1,10 +1,23 @@
 import React from "react";
 import InputMask from "react-input-mask";
+import infoIcon from "../../../Assets/infoIcon.svg";
 import "./Input.css";
 const Input = ({ ...props }) => {
   return (
     <>
       <label className={[" input-div " + props.className]}>
+        {props.info ? (
+          <>
+            <img
+              src={infoIcon}
+              alt="Imagem de Icone"
+              className={props.type === "checkbox" ? "info-check" : "info-img"}
+            />
+            <label className="info-label">
+              <h5>{props.info}</h5>
+            </label>
+          </>
+        ) : null}
         {props.label}
         <div key={props.key}>
           <h1 className={props.error ? "p-input" : "p-error-null"}>

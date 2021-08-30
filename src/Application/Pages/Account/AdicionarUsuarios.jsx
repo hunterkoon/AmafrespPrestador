@@ -75,7 +75,9 @@ const Usuarios = () => {
             <div className="div-sub-add-new-user-checkbox-area">
               {useInputsGeneral(addFunctionalitiesCheckbox, handleChangeFunctions, functions )}
             </div>
+            <div className="div-sub-add-new-user-button-area" > 
             <Button value="Cadastrar" />
+            </div>
           </form>
         </div>
       </div>

@@ -35,10 +35,15 @@ export const handleErrorPassword = (loginData) => {
   }
 };
 export const handleErroEmail = (loginData) => {
+ 
   const email = loginData.email;
   const confirmEmail = loginData.CONFIRMEemail;
+  const regex = /\W/g;
 
   if (email !== confirmEmail) {
     return "Emails não conferem, verifique a digitação!.";
+  }
+  if (!regex.test(confirmEmail)) {
+    return "Por favor digite um e-mail válido!.";
   }
 };

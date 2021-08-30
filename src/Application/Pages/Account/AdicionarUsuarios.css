@@ -11,10 +11,13 @@
   width: 96%;
   margin: 0 auto;
   padding-top: 3%;
-}
 
-.form-add-new-user button {
+}
+.div-sub-add-new-user-button-area{
+  display: flex;
   width: 100%;
+}
+.form-add-new-user button {
   margin: 3% auto;
 }
 
@@ -54,7 +57,6 @@
   -ms-user-select: none;
   user-select: none;
   border-radius: 15px;
-  justify-self: center;
 }
 
 .GENERAL-CHECKBOX-CLASS input {
@@ -113,7 +115,7 @@
   .div-sub-add-new-user-checkbox-area {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: max-content;
   }
 }
 

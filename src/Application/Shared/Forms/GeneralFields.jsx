@@ -24,6 +24,7 @@ export const EMAIL = () => {
     require: require,
     className: "EMAIL-FIELD-CLASS",
     placeholder: "usuario@email.com.br",
+    info:"Não necessário para usuários não administradores, favor utilizar e-mail de cadastro principal!."
   };
 };
 
@@ -79,6 +80,7 @@ export const USER = () => {
     require: require,
     label: "Usuário",
     className: "USER-FIELD-CLASS",
+    info:"Usuário de acesso, cadastrado pelo administrador de usuários. portador do CNPJ / CPF"
   };
 };
 
