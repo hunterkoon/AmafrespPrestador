@@ -88,11 +88,11 @@ const GeneralForms = (loginData) => {
 
   //FUNCIONALIDADES A SEREM LIBERADAS
 
-  const { UpdadeRegister, SendXML, RegisterNewUser, ModifyUsers } = GeneralFunctionalities();
+  const { UpdadeRegister, /* SendXML */  RegisterNewUser, ModifyUsers } = GeneralFunctionalities();
 
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,
-    SendXML,
+    // SendXML,
     RegisterNewUser,
     ModifyUsers,
   ];

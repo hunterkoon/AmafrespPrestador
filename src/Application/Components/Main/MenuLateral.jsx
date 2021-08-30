@@ -128,7 +128,7 @@ const MenuLateral = () => {
                   <SubItemMenu
                     link="Gerenciar"
                     state={menuItemUsuarios}
-                    itemSubMenu="Gerênciar"
+                    itemSubMenu="Gerenciar"
                     subMenuSrcImg={More}
                   />
                 </div>

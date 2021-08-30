@@ -16,7 +16,7 @@ const Usuarios = () => {
     addFunctionalitiesCheckbox.reduce((acc, field) => {
       return {
         ...acc,
-        [field.id]: false,
+        [field.id]: field.value,
       };
     }, {})
   );
@@ -29,25 +29,28 @@ const Usuarios = () => {
     }, {})
   );
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
-  const handleChange = ({ target }) => {
+  const handleChangeUser = ({ target }) => {
     const { id, value } = target;
     setNewUser({ ...newUser, [id]: value });
+  };
+  const handleChangeFunctions = ({ target }) => {
+    target.value = target.checked;
     if (target.checked) {
       setFunctions({
         ...functions,
-        [target.id]: target.checked,
+        [target.id]: Boolean(target.value),
       });
-    } else {
+    } else
       setFunctions({
         ...functions,
-        [target.id]: false,
+        [target.id]: Boolean(!target.value),
       });
-    }
   };
   // POPULA ARRAY NO GLOBAL CONTEXT;
   React.useEffect(() => {
-    setNewUserData({ ...newUser, ...functions });
-  }, [newUser, functions, setNewUserData]);
+    setNewUserData({...newUser, ...functions});
+  }, [functions, newUser, setNewUserData]);
+
   //  FETCH;
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,13 +67,13 @@ const Usuarios = () => {
           <form className="form-add-new-user" onSubmit={handleSubmit}>
             <h1> Preencha os dados</h1>
             <div className="div-sub-add-new-user-input-area">
-              {useInputsGeneral(addUserForm, handleChange, newUser)}
+              {useInputsGeneral(addUserForm, handleChangeUser, newUser)}
             </div>
             <div className="div-sub-add-new-user-functions-area">
               <h1> Marque as funcões a serem liberadas</h1>
             </div>
             <div className="div-sub-add-new-user-checkbox-area">
-              {useInputsGeneral(addFunctionalitiesCheckbox, handleChange)}
+              {useInputsGeneral(addFunctionalitiesCheckbox, handleChangeFunctions, functions )}
             </div>
             <Button value="Cadastrar" />
           </form>

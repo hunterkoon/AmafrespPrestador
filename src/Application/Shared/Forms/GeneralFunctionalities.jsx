@@ -5,6 +5,7 @@ const GeneralFunctionalities = () => {
     this.key = key;
     this.id = key;
     this.label = label;
+    this.value = false;
     this.className = className;
     //this.img receive image in just case
   }
