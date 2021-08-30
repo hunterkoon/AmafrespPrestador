@@ -1,12 +1,10 @@
 import React from 'react';
-
 import { GlobalContext } from '../../Pages/Main/GlobalContext';
 import { Link } from 'react-router-dom';
 import Button_Back from '../../../Assets/Button_Back.svg';
 import User_Profile from '../../../Assets/UserProfille.svg';
 import Button from '../Sub/Button';
 import './MenuSuperior.css';
-
 const MenuSuperior = () => {
   const { profile, setProfile, data, login } = React.useContext(GlobalContext);
   return (
