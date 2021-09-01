@@ -7,7 +7,6 @@ import "./Perfil.css";
 import "../../../App.css";
 import Button from "../../Components/Sub/Button";
 import { GlobalContext } from "../Main/GlobalContext";
-import { handleUpperCase } from "../../Shared/Commons/Helpers/HandleInputs";
 
 const Perfil = () => {
   const { alterRegisterData, setAlterRegisterData, newUserData } =
