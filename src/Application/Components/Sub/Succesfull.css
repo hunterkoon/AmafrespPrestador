@@ -1,0 +1,120 @@
+.div-main-successfull-deactived {
+    position: fixed;
+    width: 30vw;
+    height: 40vh;
+    z-index: -1;
+    left: 45%;
+    top: 35%;
+    border-radius: 15px;
+    opacity: 0;
+    transition: 100ms;
+}
+
+.div-main-successfull-deactived h1 {
+    font-size: 1.6em;
+}
+
+.div-main-successfull {
+    transition: 300ms;
+    position: fixed;
+    width: 30vw;
+    height: 40vh;
+    background-color: #f1f1f1;
+    box-shadow: 5px 5px 10px #999999;
+    z-index: 99999999;
+    left: 45%;
+    top: 35%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-titles-successfull {
+    margin-top: 15%;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.div-button-successfull {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10% auto;
+}
+
+.div-button-successfull button {
+    margin: 3%;
+}
+
+.div-main-successfull h1 {
+    font-size: 1.6em;
+}
+
+@media only screen and (max-width:1500px) {
+    .div-main-successfull h1 {
+        font-size: 1.3em;
+    }
+    .div-main-successfull {
+        width: 40vw;
+        height: 40vh;
+        left: 35%;
+        top: 35%;
+    }
+    .div-titles-successfull {
+        margin-top: 5%;
+    }
+}
+@media only screen and (min-width:1700px) {
+    .div-main-successfull h1 {
+        font-size: 1.3em;
+    }
+    .div-main-successfull {
+        width: 40vw;
+        height: 40vh;
+        left: 35%;
+        top: 35%;
+    }
+    .div-titles-successfull {
+        margin-top: 12%;
+    }
+}
+
+@media only screen and (max-width:1024px) {
+    .div-main-successfull h1 {
+        font-size: 1.3em;
+    }
+    .div-titles-successfull {
+        margin-top: 20%;
+    }
+    .div-main-successfull {
+        width: 40vw;
+        height: 40vh;
+        left: 30%;
+        top: 35%;
+    }
+    .div-button-successfull {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .div-main-successfull h1 {
+        font-size: 1.3em;
+    }
+    .div-titles-successfull {
+        margin-top: 35%;
+    }
+    .div-main-successfull {
+        width: 80vw;
+        height: 60vh;
+        left: 10%;
+        top: 35%;
+    }
+}

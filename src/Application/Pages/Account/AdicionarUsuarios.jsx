@@ -6,12 +6,16 @@ import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import Button from "../../Components/Sub/Button";
+import Succesfull from "../../Components/Sub/Succesfull";
+import useErrorForm from "../../Hooks/useErrorForm";
 import "./AdicionarUsuarios.css";
 import "../../../App.css";
 
 const Usuarios = () => {
   const { newUserData, setNewUserData } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
+  // VERIFICA EXISTENCIA DE ERRO PARA EXIBIR MENSAGENS DE CADASTRO DE USUÁRIO
+  const [err, setErr] = React.useState(false);
   // ADICIONA ITENS ANTERIORES AO ARRAY;
   const [functions, setFunctions] = React.useState(
     addFunctionalitiesCheckbox.reduce((acc, field) => {
@@ -29,6 +33,7 @@ const Usuarios = () => {
       };
     }, {})
   );
+
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
   const handleChangeUser = ({ target }) => {
     const { id, value } = target;
@@ -48,13 +53,19 @@ const Usuarios = () => {
       });
   };
   // POPULA ARRAY NO GLOBAL CONTEXT;
-  React.useEffect(() => { 
-    setNewUserData({...functions , ...handleUpperCase(newUser)});    
-  }, [functions, newUser, setNewUserData]);  
+
+  React.useEffect(() => {
+    setNewUserData({ ...functions, ...handleUpperCase(newUser) });
+  }, [functions, newUser, setNewUserData]);
   // TODO FETCH;
+  const erroForm = useErrorForm(addUserForm);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (erroForm === true) {
+      setErr(true);
+    }
     console.log(newUserData);
+    console.log(erroForm);
   };
   return (
     <>
@@ -73,13 +84,31 @@ const Usuarios = () => {
               <h1> Marque as funcões a serem liberadas</h1>
             </div>
             <div className="div-sub-add-new-user-checkbox-area">
-              {useInputsGeneral(addFunctionalitiesCheckbox, handleChangeFunctions, functions )}
+              {useInputsGeneral(
+                addFunctionalitiesCheckbox,
+                handleChangeFunctions,
+                functions
+              )}
             </div>
-            <div className="div-sub-add-new-user-button-area" > 
-            <Button value="Cadastrar" />
+            <div className="div-sub-add-new-user-button-area">
+              <Button value="Cadastrar" />
             </div>
           </form>
         </div>
+        <Succesfull
+          alert={err}
+          newUser={() => [
+            setErr(!err),
+            setNewUser(
+              addUserForm.reduce((acc, field) => {
+                return {
+                  ...acc,
+                  [field.id]: "",
+                };
+              }, {})
+            ),
+          ]}
+        />
       </div>
     </>
   );

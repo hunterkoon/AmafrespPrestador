@@ -1,4 +1,4 @@
-const require = false;
+const require = 'require';
 export const CPF_CNPJ = (handleMaskonBlur, handleMaskonFocus, mask, error) => {
   return {
     error: error,
@@ -9,9 +9,9 @@ export const CPF_CNPJ = (handleMaskonBlur, handleMaskonFocus, mask, error) => {
     mask: mask,
     changeBlur: handleMaskonBlur,
     changeFocus: handleMaskonFocus,
-    require: require,
     className: "CPF-FIELD-CLASS",
-    value:''
+    value:'',
+    require: require,
   };
 };
 

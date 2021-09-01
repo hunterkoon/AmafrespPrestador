@@ -8,6 +8,7 @@ import "../../../App.css";
 import Button from "../../Components/Sub/Button";
 import { GlobalContext } from "../Main/GlobalContext";
 
+
 const Perfil = () => {
   const { alterRegisterData, setAlterRegisterData, newUserData } =
     React.useContext(GlobalContext);
@@ -56,6 +57,7 @@ const Perfil = () => {
           </div>
           <div className="div-sub-adjusts-user-button-area">
             <Button value="Alterar" />
+         
           </div>
         </form>
       </div>

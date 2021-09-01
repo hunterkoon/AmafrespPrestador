@@ -25,7 +25,7 @@ export const handleErrorCpfCnpf = (loginData) => {
           return "Digite um CNPJ válido ex: 99.999.999/0001-99";
         }
       }
-    : null;
+    : "";
 };
 export const handleErrorPassword = (loginData) => {
   return loginData.senha
@@ -43,7 +43,7 @@ export const handleErrorPassword = (loginData) => {
           return "Senhas não conferem, digite a mesma senha em ambos os campos!";
         }
       }
-    : null;
+    : "";
 };
 export const handleErroEmail = (loginData) => {
   return loginData.email && loginData.CONFIRMEemail
@@ -62,7 +62,7 @@ export const handleErroEmail = (loginData) => {
           return "Por favor digite um e-mail válido!.";
         }
       }
-    : null;
+    : "";
 };
 
 export const handleUpperCase = (arr) => {
