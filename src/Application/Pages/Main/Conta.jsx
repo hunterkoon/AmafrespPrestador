@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
 import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
-
 import Home from '../../Pages/Account/Home';
 import Gerenciar from '../../Pages/Account/GerenciarUsuarios';
 import FaleConosco from '../../Pages/Account/FaleConosco';
@@ -10,15 +9,16 @@ import AdicionarUsuarios from '../../Pages/Account/AdicionarUsuarios';
 import Recadastramento from '../../Pages/Account/Recadastramento';
 import Status from '../../Pages/Account/Status';
 import Menu from '../../Components/Main/MenuLateral';
+import Perfil from '../Account/Perfil'
 import './Conta.css';
 
 
 
 const Conta = () => {
-  const { setAnimateMenu, setHandle } = React.useContext(GlobalContext);
+  const { setAnimateMenu, setHandle , setProfile } = React.useContext(GlobalContext);
   
   const handleMenuHide = (e) =>{
-    const collectionStates = [setAnimateMenu,setHandle];
+    const collectionStates = [setAnimateMenu,setHandle , setProfile];
     collectionStates.forEach((states)=>{
       handleWindow(e ,states)
     })
@@ -35,6 +35,7 @@ const Conta = () => {
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
           <Route path="Recadastramento" element={<Recadastramento />} />
           <Route path="Status" element={<Status />} />
+          <Route path="Perfil" element={<Perfil/>} />
         </Routes>
       </aside>
     </div>

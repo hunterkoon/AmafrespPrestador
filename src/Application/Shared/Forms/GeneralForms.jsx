@@ -1,5 +1,5 @@
 import React from "react";
-
+import GeneralFunctionalities from "./GeneralFunctionalities";
 import {
   CPF_CNPJ,
   EMAIL,
@@ -11,6 +11,8 @@ import {
   CEL_TELPHONE,
   TELPHONE,
   DEPARTMENT,
+  NEW_PASSWORD,
+  NEW_PASSWORD_CONFIRM,
 } from "./GeneralFields";
 import {
   handleMask,
@@ -18,42 +20,38 @@ import {
   handleErrorPassword,
   handleErroEmail,
 } from "../Commons/Helpers/HandleInputs";
-import GeneralFunctionalities from "./GeneralFunctionalities";
 
 const GeneralForms = (loginData) => {
   const [mask, setMask] = React.useState("");
-  const [error, setError] = React.useState("");
+  const [cpfcnpjError, setCpfcnpjError] = React.useState("");
   const [passwordState, setPasswordState] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
 
-  const handleMaskonBlur = () => [
-    setError(handleErrorCpfCnpf(loginData)),
+  const handleMaskonBlur = () => ([
+    setCpfcnpjError(handleErrorCpfCnpf(loginData)),
     setMask(handleMask(loginData)),
     setPasswordState(handleErrorPassword(loginData)),
     setEmailError(handleErroEmail(loginData)),
-  ];
-
+  ]);
   const handleMaskonFocus = () => {
     setMask("");
-    setError("");
+    setCpfcnpjError("");  
     setPasswordState("");
   };
 
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
-  const CpfCnpj = CPF_CNPJ(handleMaskonBlur, handleMaskonFocus, mask, error);
-
+  const CpfCnpj = CPF_CNPJ(handleMaskonBlur, handleMaskonFocus, mask, cpfcnpjError);
+  const passwordConfirm = PASSWORD_CONFIRM(handleMaskonBlur, handleMaskonFocus, passwordState);
+  const emailConfirm = EMAIL_CONFIRM(handleMaskonBlur ,handleMaskonFocus, emailError);
+  const newPasswordConfirm = NEW_PASSWORD_CONFIRM(handleMaskonBlur, handleMaskonFocus, passwordState);
   const password = PASSWORD();
-  const passwordConfirm = PASSWORD_CONFIRM(
-    handleMaskonBlur,
-    handleMaskonFocus,
-    passwordState
-  );
+  const newPassword = NEW_PASSWORD();
   const email = EMAIL();
-  const emailConfirm = EMAIL_CONFIRM(
-    handleMaskonBlur,
-    handleMaskonFocus,
-    emailError
-  );
+  const name = NAME();
+  const user = USER();
+  const telphone = TELPHONE()
+  const celphone = CEL_TELPHONE()
+  const department = DEPARTMENT()
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [
@@ -63,41 +61,51 @@ const GeneralForms = (loginData) => {
     password,
     passwordConfirm,
   ];
-
   // FORMULARIOS DE LOGIN
-  const loginCommon = [CpfCnpj, USER(), password];
-
+  const loginCommon = [CpfCnpj, user, password];
   const loginAdm = [CpfCnpj, password];
 
   // FORMULARIOS DE RECUPERAÇÃO DE PASSWORD
   const recoverFiedsAdm = [CpfCnpj, email];
-  const recoverFiedsCommon = [CpfCnpj, USER()];
+  const recoverFiedsCommon = [CpfCnpj, user];
 
   //FORMULARIO DE INSERÇÃO DE USUARIOS
   const addUserForm = [
-    NAME(),
-    USER(),
+    name,
+    user,
     email,
     emailConfirm,
     password,
     passwordConfirm,
-    TELPHONE(),
-    CEL_TELPHONE(),
-    DEPARTMENT(),
+    telphone,
+    celphone,
+    department,
   ];
 
+    //FORMULARIO DE INSERÇÃO DE USUARIOS
+    const adjustsUserForm = [
+      name,
+      user,
+      email,
+      emailConfirm,
+      telphone,
+      celphone,
+      department,
+      newPassword,
+      newPasswordConfirm,
+    ];
   //FUNCIONALIDADES A SEREM LIBERADAS
 
-  const { UpdadeRegister, /* SendXML */  RegisterNewUser, ModifyUsers } = GeneralFunctionalities();
-
+  const { UpdadeRegister,RegisterNewUser, ModifyUsers } =
+    GeneralFunctionalities();
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,
-    // SendXML,
     RegisterNewUser,
     ModifyUsers,
   ];
 
   return {
+    adjustsUserForm: adjustsUserForm,
     firstAcessForm: firstAcessForm,
     loginCommon: loginCommon,
     loginAdm: loginAdm,

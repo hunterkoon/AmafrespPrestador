@@ -61,10 +61,10 @@ export default function Header() {
             </div>
             <div onClick={handleClick} className="div-user-info">
               <span className="span-user">
-                {data ? data[0].NOME : 'NOME USER'}
+                {data ? data[0].NOME : 'Lorem Ipsum Zupoi'}
               </span>
               <span className="span-employ">
-                {data ? data[0].EMPRESA : 'NOME USER'}
+                {data ? data[0].EMPRESA : 'Lorem Ipsum Gumoi'}
               </span>
             </div>
           </div>

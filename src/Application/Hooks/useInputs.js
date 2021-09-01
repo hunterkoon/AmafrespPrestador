@@ -25,7 +25,8 @@ export const useInputsGeneral = (
       placeholder,
       onClick,
       img,
-      info
+      info,
+      value
     }) => (
       <Input
         type={type}
@@ -40,7 +41,7 @@ export const useInputsGeneral = (
         title={title}
         pattern={pattern}
         require={require}
-        value={state && state[id]}
+        value={state[id]} 
         checked={checked}
         changeBlur={changeBlur}
         changeFocus={changeFocus}

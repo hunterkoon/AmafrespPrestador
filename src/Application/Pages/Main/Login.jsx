@@ -42,7 +42,8 @@ const Login = () => {
   // FUNÇÃO ATUALIZADORA
   React.useEffect(() => {
     setLoginData(fieldsLogin);
-  }, [fieldsLogin, setLoginData]);
+    // setLogin(true)
+  }, [fieldsLogin, setLogin, setLoginData]);
   
   return (
     <>

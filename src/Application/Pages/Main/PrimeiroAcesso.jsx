@@ -31,6 +31,7 @@ const PrimeiroAcesso = () => {
   }, [primeiroAcesso, setFirtAcessData]);
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(firtAcessData)
     //TODO GERAR FUNÇÃO DE FETCH POST
   };
   return (
