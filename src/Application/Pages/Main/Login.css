@@ -103,4 +103,7 @@
     .div-switch-login img {
         width: 68%;
     }
+    .div-form-login {
+        align-self: center;
+    }
 }

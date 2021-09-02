@@ -32,7 +32,7 @@ const PrimeiroAcesso = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(firtAcessData)
-    //TODO GERAR FUNÇÃO DE FETCH POST
+    //TODO  FETCH POST
   };
   return (
     <div className="div-main-primeiro-acesso pageView">

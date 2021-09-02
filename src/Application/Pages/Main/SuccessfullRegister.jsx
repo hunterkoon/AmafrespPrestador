@@ -3,7 +3,7 @@ import React from 'react'
 const SuccessfullRegister = () => {
     return (
         <div>
-            
+            TODO
         </div>
     )
 }
