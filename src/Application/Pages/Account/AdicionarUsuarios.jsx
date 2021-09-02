@@ -14,7 +14,6 @@ import "../../../App.css";
 const Usuarios = () => {
   const { newUserData, setNewUserData } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
-  // VERIFICA EXISTENCIA DE ERRO PARA EXIBIR MENSAGENS DE CADASTRO DE USUÁRIO
   const [err, setErr] = React.useState(false);
   // ADICIONA ITENS ANTERIORES AO ARRAY;
   const [functions, setFunctions] = React.useState(
@@ -96,8 +95,9 @@ const Usuarios = () => {
           </form>
         </div>
         <Succesfull
+        text={"Usuário Registrado"}
           alert={err}
-          newUser={() => [
+          onClick={() => [
             setErr(!err),
             setNewUser(
               addUserForm.reduce((acc, field) => {

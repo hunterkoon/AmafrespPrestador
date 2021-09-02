@@ -8,10 +8,11 @@ import Footer from "./Application/Components/Main/Footer";
 import Login from "./Application/Pages/Main/Login";
 import Conta from "./Application/Pages/Main/Conta";
 import RecuperarSenha from "./Application/Pages/Main/RecuperarSenha";
-import RecuperacaoSucessfull from "./Application/Pages/Main/RecuperacaoSucessfull";
 import NotFound from "./Application/Pages/Main/NotFound";
 import PrimeiroAcesso from "./Application/Pages/Main/PrimeiroAcesso";
 import Help from "./Application/Pages/Main/Help";
+import RegisterSucessful from "./Application/Pages/Main/RegisterSuccessful";
+import RecoverSucessful from "./Application/Pages/Main/RecoverSucessful";
 import "./App.css";
 
 function App() {
@@ -27,10 +28,8 @@ function App() {
               <Route path="/PrimeiroAcesso" element={<PrimeiroAcesso />} />
               <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
               <Route path="/Help" element={<Help />} />
-              <Route
-                path="/RecuperacaoSucessfull"
-                element={<RecuperacaoSucessfull />}
-              />
+              <Route path="/RecoverSuccessful" element={<RecoverSucessful />} />
+              <Route path="/RegisterSucessful" element={<RegisterSucessful />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

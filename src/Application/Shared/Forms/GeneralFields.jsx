@@ -1,4 +1,4 @@
-const require = true;
+const require = 'require';
 export const CPF_CNPJ = (handleMaskonBlur, handleMaskonFocus, mask, error) => {
   return {
     error: error,

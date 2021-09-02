@@ -7,12 +7,15 @@ import "./Perfil.css";
 import "../../../App.css";
 import Button from "../../Components/Sub/Button";
 import { GlobalContext } from "../Main/GlobalContext";
+import Succesfull from "../../Components/Sub/Succesfull";
+import useErrorForm from "../../Hooks/useErrorForm";
 
 
 const Perfil = () => {
   const { alterRegisterData, setAlterRegisterData, newUserData } =
     React.useContext(GlobalContext);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
+  const [err, setErr] = React.useState(false);
 
   const returnFilter = (newUserData, field) => {
     const idFilter = Object.entries(newUserData).filter((item) => {
@@ -38,9 +41,14 @@ const Perfil = () => {
   React.useEffect(() => {
     setAlterRegisterData({...adjustsByUser });
   }, [adjustsByUser, setAlterRegisterData]);
+  const erroForm = useErrorForm(adjustsUserForm);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (erroForm === true) {
+      setErr(true);
+    }
+    //TODO FETCH FUNCTION
     console.log(adjustsByUser);
   };
   return (
@@ -61,6 +69,10 @@ const Perfil = () => {
           </div>
         </form>
       </div>
+      <Succesfull 
+          onClick={()=>setErr(!err)}
+          alert={err}
+         text='Infomações pessoais alteradas!.'/>
     </div>
   );
 };

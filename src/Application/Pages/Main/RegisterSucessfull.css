@@ -1,46 +1,47 @@
-.div-main-recuperacao-sucessfull {
+.div-main-register-successful {
   font-family: NotoSans-Regular;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 90vh;
 }
-#title-recuperacao-sucessfull {
+#title-register-successful {
   display: flex;
   text-align: center;
   width: 50%;
   justify-content: center;
   align-self: center;
 }
-.div-img-recuperacao-sucessfull {
+.div-img-register-successful {
   display: flex;
   width: 100%;
   justify-content: center;
   align-self: center;
 }
-.div-img-recuperacao-sucessfull img {
+.div-img-register-successful img {
   width: 25%;
 }
-.div-sub-recuperacao-sucessfull {
+.div-sub-register-successful {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
-.div-sub-recuperacao-sucessfull h1 {
+.div-sub-register-successful h1 {
+  line-height: 1.6em;
   padding: 0.8rem;
 }
-.div-main-recuperacao-sucessfull button {
+.div-main-register-successful button {
   align-self: center;
 }
 @media only screen and (max-width: 1024px) {
-  #title-recuperacao-sucessfull {
+  #title-register-successful {
     line-height: 1.8rem;
     width: 95%;
     text-align: center;
   }
-  .div-img-recuperacao-sucessfull img {
+  .div-img-register-successful img {
     width: 80%;
   }
 }

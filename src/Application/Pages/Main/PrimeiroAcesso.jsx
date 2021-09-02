@@ -4,16 +4,20 @@ import { GlobalContext } from "./GlobalContext";
 import { UrlPrimeiroAcesso } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import { useInputsGeneral } from "../../Hooks/useInputs";
+import { useNavigate } from "react-router-dom";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
 import Button from "../../Components/Sub/Button";
 import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
+import useErrorForm from "../../Hooks/useErrorForm";
 import "./PrimeiroAcesso.css";
 import "../../../App.css";
 
 const PrimeiroAcesso = () => {
+  const navigate = useNavigate()
   const { firtAcessData, setFirtAcessData } = React.useContext(GlobalContext);
   const { firstAcessForm } = GeneralForms(firtAcessData);
+  // const [err, setErr] = React.useState(false);
   const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
     firstAcessForm.reduce((acc, field) => {
       return {
@@ -29,9 +33,14 @@ const PrimeiroAcesso = () => {
   React.useEffect(() => {
     setFirtAcessData(primeiroAcesso);
   }, [primeiroAcesso, setFirtAcessData]);
+
+  const erroForm = useErrorForm(firstAcessForm);
   const handleSubmit = (event) => {
+    if (erroForm === true) {
+      navigate('/RegisterSucessful');
+    }
     event.preventDefault();
-    console.log(firtAcessData)
+    console.log(firtAcessData);
     //TODO  FETCH POST
   };
   return (

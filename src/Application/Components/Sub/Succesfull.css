@@ -17,20 +17,20 @@
 .div-main-successfull {
     transition: 300ms;
     position: fixed;
-    width: 30vw;
-    height: 40vh;
+    width: 80vw;
+    height: 60vh;
     background-color: #f1f1f1;
     box-shadow: 5px 5px 10px #999999;
     z-index: 99999999;
-    left: 45%;
-    top: 35%;
+    left: 10%;
+    top: 15%;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
 }
 
 .div-titles-successfull {
-    margin-top: 15%;
+    margin-top: 8%;
     justify-content: center;
     width: 100%;
     display: flex;
@@ -43,31 +43,21 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 10% auto;
+    margin: 5% auto;
 }
 
 .div-button-successfull button {
-    margin: 3%;
+    margin: 1%;
 }
 
 .div-main-successfull h1 {
     font-size: 1.6em;
+    line-height: 1.4em;
+    
 }
 
-@media only screen and (max-width:1500px) {
-    .div-main-successfull h1 {
-        font-size: 1.3em;
-    }
-    .div-main-successfull {
-        width: 40vw;
-        height: 40vh;
-        left: 35%;
-        top: 35%;
-    }
-    .div-titles-successfull {
-        margin-top: 5%;
-    }
-}
+
+
 @media only screen and (min-width:1700px) {
     .div-main-successfull h1 {
         font-size: 1.3em;
@@ -75,7 +65,7 @@
     .div-main-successfull {
         width: 40vw;
         height: 40vh;
-        left: 35%;
+        left: 28%;
         top: 35%;
     }
     .div-titles-successfull {
@@ -88,12 +78,12 @@
         font-size: 1.3em;
     }
     .div-titles-successfull {
-        margin-top: 20%;
+        margin-top: 10%;
     }
     .div-main-successfull {
-        width: 40vw;
-        height: 40vh;
-        left: 30%;
+        width: 80vw;
+        height: 60vh;
+        left: 10%;
         top: 35%;
     }
     .div-button-successfull {
@@ -104,17 +94,34 @@
     }
 }
 
-@media only screen and (max-width:600px) {
+@media only screen and (max-width:400px) {
     .div-main-successfull h1 {
         font-size: 1.3em;
     }
     .div-titles-successfull {
-        margin-top: 35%;
+        margin-top: 15%;
     }
     .div-main-successfull {
         width: 80vw;
         height: 60vh;
-        left: 10%;
-        top: 35%;
+        left: 5%;
+        top: 15%;
+        padding: 5%;
+    }
+}
+
+@media only screen and (min-width:400px ) and (max-width:600px){
+    .div-main-successfull h1 {
+        font-size: 1.3em;
+    }
+    .div-titles-successfull {
+        margin-top: 30%;
+    }
+    .div-main-successfull {
+        width: 80vw;
+        height: 60vh;
+        left: 5%;
+        top: 15%;
+        padding: 5%;
     }
 }

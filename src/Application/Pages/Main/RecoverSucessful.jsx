@@ -4,23 +4,23 @@ import Titledecorated from '../../Components/Sub/Titledecorated';
 import Title from '../../Components/Sub/Title';
 import Button from '../../Components/Sub/Button';
 import Email from '../../../Assets/Email.gif';
-import './RecuperacaoSucessfull.css';
+import './RecoverSucessful.css';
 import '../../../App.css';
 
 
-const RecuperacaoSucessfull = () => {
+const RecoverSucessful = () => {
   return (
-    <div className="div-main-recuperacao-sucessfull pageView ">
-      <div className="div-sub-recuperacao-sucessfull">
+    <div className="div-main-recover-sucessfull pageView ">
+      <div className="div-sub-recover-sucessfull">
         <Titledecorated color="#474747" text="Recuperação de Senha Concluida" />
         <Title
-          id="title-recuperacao-sucessfull"
+          id="title-recover-sucessfull"
           size="1.3rem"
           text="
         Sucesso!!! uma senha temporária foi encaminhada para o
-        email de cadastro ****ds@med.com.br"
+        email de cadastro"
         />
-        <div className="div-img-recuperacao-sucessfull">
+        <div className="div-img-recover-sucessfull">
           <img src={Email} alt="" />
         </div>
         <Link to="/">
@@ -31,4 +31,4 @@ const RecuperacaoSucessfull = () => {
   );
 };
 
-export default RecuperacaoSucessfull;
+export default RecoverSucessful;

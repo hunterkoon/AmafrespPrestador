@@ -1,0 +1,46 @@
+.div-main-recover-sucessfull {
+  font-family: NotoSans-Regular;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90vh;
+}
+#title-recover-sucessfull {
+  display: flex;
+  text-align: center;
+  width: 50%;
+  justify-content: center;
+  align-self: center;
+}
+.div-img-recover-sucessfull {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-self: center;
+}
+.div-img-recover-sucessfull img {
+  width: 25%;
+}
+.div-sub-recover-sucessfull {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.div-sub-recover-sucessfull h1 {
+  padding: 0.8rem;
+}
+.div-main-recover-sucessfull button {
+  align-self: center;
+}
+@media only screen and (max-width: 1024px) {
+  #title-recover-sucessfull {
+    line-height: 1.8rem;
+    width: 95%;
+    text-align: center;
+  }
+  .div-img-recover-sucessfull img {
+    width: 80%;
+  }
+}

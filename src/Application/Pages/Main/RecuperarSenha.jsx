@@ -11,29 +11,32 @@ import SwitchButton from "../../Components/Sub/SwitchButton";
 import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import { useInputsGeneral } from "../../Hooks/useInputs";
+import useErrorForm from "../../Hooks/useErrorForm";
 import "./Login.css";
 import "./RecuperarSenha.css";
 import "../../../App.css";
 
 const RecuperarSenha = () => {
+  const navigate = useNavigate();
   const { option, recoverData, setRecoverData } =
     React.useContext(GlobalContext);
   const { recoverFiedsAdm, recoverFiedsCommon } = GeneralForms(recoverData);
-
-  const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // TODO - Adicionar Validação através de fetch com retorno 200
-    navigate("/RecuperacaoSucessfull");
-  };
+  
   const [recover, setRecover] = React.useState(
-    recoverFiedsAdm.reduce((acc, item) => {
+    ! option ? recoverFiedsAdm.reduce((acc, item) => {
       return {
         ...acc,
         [item.id]: "",
       };
     }, {})
-  );
+  : recoverFiedsCommon.reduce((acc, item) => {
+    return {
+      ...acc,
+      [item.id]: "",
+    };
+  }, {}));
+
+  
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setRecover({ ...recover, [id]: value });
@@ -41,6 +44,19 @@ const RecuperarSenha = () => {
   React.useEffect(() => {
     setRecoverData(recover);
   }, [recover, setRecoverData]);
+
+  const erroFormADM = useErrorForm(recoverFiedsAdm);
+  const erroFormCommon = useErrorForm(recoverFiedsCommon);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(erroFormADM === true  && erroFormCommon === true ){
+      
+      navigate("/RecoverSuccessful");
+      console.log(recover)
+    }
+    // TODO - Adicionar Validação através de fetch com retorno 200
+  };
 
   return (
     <>

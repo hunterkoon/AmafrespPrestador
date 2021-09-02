@@ -121,6 +121,10 @@
     height: max-content;
     width: 90%;
   }
+  .div-sub-add-new-user-data{
+    display: flex;
+    align-self: center;
+  }
 }
 
 /* CONTAINER PERSONALIZADO  */
