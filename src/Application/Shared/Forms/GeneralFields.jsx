@@ -1,4 +1,4 @@
-const require = 'require';
+const require = true;
 export const CPF_CNPJ = (handleMaskonBlur, handleMaskonFocus, mask, error) => {
   return {
     error: error,
@@ -98,7 +98,6 @@ export const NAME = (value) => {
     value: value && value.pnome,
     require: require,
     label: "Nome Completo",
-    mask: "",
     className: "NAME-FIELD-CLASS",
   };
 };
@@ -124,7 +123,7 @@ export const CEL_TELPHONE = (value) => {
     value: value && value.pcelfone ,
     pattern: "[0-9]{2}-[0-9]{9}",
     mask: "99-999999999",
-    require: require,
+    require: '',
     className: "CELPHONE-FIELD-CLASS",
   };
 };
@@ -143,31 +142,31 @@ export const TELPHONE = (value) => {
   };
 };
 
-export const NEW_PASSWORD = () => {
+export const ACTUAL_PASSWORD = () => {
   return {
     key: 11,
-    id: "novasenha",
+    id: "ATUALsenha",
     type: "password",
-    label: "Nova Senha",
+    label: "Senha Atual",
     require: require,
     className: "PASSWORD-FIELD-CLASS",
   };
 };
 
 
-export const NEW_PASSWORD_CONFIRM = (
+export const NEW_PASSWORD = (
   handleMaskonBlur,
   handleMaskonFocus,
   error
 ) => {
   return {
     key: 12,
-    id: "CONFIRMEnovasenha",
+    id: "NOVAsenha",
     error: error,
     changeBlur: handleMaskonBlur,
     changeFocus: handleMaskonFocus,
     type: "password",
-    label: "Confirme sua Nova Senha",
+    label: "Nova Senha",
     require: require,
     className: "CONFIRMPASSWORD-FIELD-CLASS",
   

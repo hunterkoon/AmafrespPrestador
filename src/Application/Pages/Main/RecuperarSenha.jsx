@@ -69,13 +69,13 @@ const RecuperarSenha = () => {
 
             {useInputsGeneral(
               !option ? recoverFiedsAdm : recoverFiedsCommon, // list of inputs
-              handleChange, // functions the atualization
+              handleChange, // actualization function
               recover, // values
               "menuView" // class
             )}
             <div className="div-button-recuperar-senha">
               <Button value="Recuperar" />
-              <Link to="/RecuperarEmail">Esqueci meu e-mail</Link>
+              {/* <Link to="/RecuperarEmail">Esqueci meu e-mail</Link> */}
             </div>
           </form>
         </div>

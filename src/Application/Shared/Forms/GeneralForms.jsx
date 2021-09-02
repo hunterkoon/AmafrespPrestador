@@ -11,20 +11,23 @@ import {
   CEL_TELPHONE,
   TELPHONE,
   DEPARTMENT,
+  ACTUAL_PASSWORD,
   NEW_PASSWORD,
-  NEW_PASSWORD_CONFIRM,
 } from "./GeneralFields";
 import {
   handleMask,
   handleErrorCpfCnpf,
   handleErrorPassword,
   handleErroEmail,
+  handleErrorNewPassword,
 } from "../Commons/Helpers/HandleInputs";
 
 const GeneralForms = (loginData) => {
+
   const [mask, setMask] = React.useState("");
   const [cpfcnpjError, setCpfcnpjError] = React.useState("");
   const [passwordState, setPasswordState] = React.useState("");
+  const [newPasswordState, setNewpasswordState] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
 
   const handleMaskonBlur = () => ([
@@ -32,20 +35,23 @@ const GeneralForms = (loginData) => {
     setMask(handleMask(loginData)),
     setPasswordState(handleErrorPassword(loginData)),
     setEmailError(handleErroEmail(loginData)),
+    setNewpasswordState(handleErrorNewPassword(loginData))
   ]);
   const handleMaskonFocus = () => {
     setMask("");
     setCpfcnpjError("");  
     setPasswordState("");
+    setEmailError('');
+    setNewpasswordState('');
   };
 
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
   const CpfCnpj = CPF_CNPJ(handleMaskonBlur, handleMaskonFocus, mask, cpfcnpjError);
   const passwordConfirm = PASSWORD_CONFIRM(handleMaskonBlur, handleMaskonFocus, passwordState);
   const emailConfirm = EMAIL_CONFIRM(handleMaskonBlur ,handleMaskonFocus, emailError);
-  const newPasswordConfirm = NEW_PASSWORD_CONFIRM(handleMaskonBlur, handleMaskonFocus, passwordState);
+  const newPassword = NEW_PASSWORD(handleMaskonBlur ,handleMaskonFocus,newPasswordState);
+  const ActualPassword = ACTUAL_PASSWORD();
   const password = PASSWORD();
-  const newPassword = NEW_PASSWORD();
   const email = EMAIL();
   const name = NAME();
   const user = USER();
@@ -91,8 +97,8 @@ const GeneralForms = (loginData) => {
       telphone,
       celphone,
       department,
+      ActualPassword,
       newPassword,
-      newPasswordConfirm,
     ];
   //FUNCIONALIDADES A SEREM LIBERADAS
 

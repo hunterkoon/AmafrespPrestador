@@ -15,7 +15,7 @@ export const GlobalStorage = ({ children }) => {
   const [recoverData, setRecoverData] = React.useState([]);
   const [loginData, setLoginData] = React.useState([]);
   const [option, setOption] = React.useState(false);
-  const {data, setData, loading, error } = useFetch();
+  const { data, setData, loading, error } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
@@ -33,14 +33,6 @@ export const GlobalStorage = ({ children }) => {
   //   FreeAcess(json);
   // }
 
-  //LIBERAÇÃO SIMPLES LOGIN
-
-  // const FreeAcess = (datas) => {
-  //   if (datas) {
-  //     setLogin(true);
-  //   }
-  // };
-
   // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
   const handleWindowHamburguer = () => {
     if (width <= 1024 && login === true) {
@@ -51,13 +43,10 @@ export const GlobalStorage = ({ children }) => {
   };
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
-  const handleLogoDirection = React.useEffect(() => {
-    const handleLogoDirection = () => {
-      if (login) {
-        return navigate("/conta");
-      } else return navigate("/");
-    };
-    handleLogoDirection();
+  React.useEffect(() => {
+    if (login) {
+      return navigate("/conta");
+    } else return navigate("/");
   }, [login, navigate]);
 
   return (
@@ -67,8 +56,6 @@ export const GlobalStorage = ({ children }) => {
         setLogin,
         setAnimateMenu,
         handleWindowHamburguer,
-        handleLogoDirection,
-        // LoginValidate,
         setData,
         setOption,
         setmenuItemUsuarios,
@@ -78,6 +65,7 @@ export const GlobalStorage = ({ children }) => {
         setRecoverData,
         setFirtAcessData,
         setNewUserData,
+        setAlterRegisterData,
         option,
         profile,
         login,
@@ -94,7 +82,7 @@ export const GlobalStorage = ({ children }) => {
         recoverData,
         firtAcessData,
         newUserData,
-        alterRegisterData, setAlterRegisterData,
+        alterRegisterData,
       }}
     >
       {children}

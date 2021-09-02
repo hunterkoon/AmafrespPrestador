@@ -45,6 +45,20 @@ export const handleErrorPassword = (loginData) => {
       }
     : "";
 };
+export const handleErrorNewPassword = (loginData) => {
+  return loginData.NOVAsenha
+    ? function passwordCheck() {
+        const pass = loginData.NOVAsenha;
+        const regex = /\W/g;
+        if (pass === "") {
+          return "";
+        }
+        if (!regex.test(pass) || pass.length < 8) {
+          return " A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
+        }
+      }
+    : "";
+};
 export const handleErroEmail = (loginData) => {
   return loginData.email && loginData.CONFIRMEemail
     ? function emailCheck() {

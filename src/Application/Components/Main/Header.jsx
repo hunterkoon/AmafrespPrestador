@@ -16,7 +16,6 @@ export default function Header() {
     profile,
     login,
     handleWindowHamburguer,
-    handleLogoDirection,
     setAnimateMenu,
     width,
   } = React.useContext(GlobalContext);
@@ -32,13 +31,20 @@ export default function Header() {
     setAnimateMenu(false);
     setData(null);
   };
+  const handleLogo = () =>{
+    if(login){
+      navigate('/conta');
+    }else{
+      navigate('/');
+    }
+  }
   return (
     <React.Fragment>
       <MenuSuperior />
       <header className="Header">
         <div className="div-img-logotipo">
           <img
-            onClick={handleLogoDirection}
+            onClick={handleLogo}
             src={Logotipo}
             alt="Logotipo Amafresp"
           />
