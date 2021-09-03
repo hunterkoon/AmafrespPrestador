@@ -133,7 +133,9 @@ const MenuLateral = () => {
                   />
                 </div>
               </ItemMenu>
-
+              </>
+          ) : null}
+{/*   END - Area Restrita */}
               <ItemMenu
                 state={menuItemRecadastramento}
                 alt="item menu Recadastro"
@@ -160,9 +162,7 @@ const MenuLateral = () => {
                   />
                 </div>
               </ItemMenu>
-            </>
-          ) : null}
-{/*   END - Area Restrita */}
+
 
           <span onClick={handleAnimateMenu}>
             <ItemMenu

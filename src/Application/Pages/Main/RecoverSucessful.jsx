@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Titledecorated from '../../Components/Sub/Titledecorated';
-import Title from '../../Components/Sub/Title';
-import Button from '../../Components/Sub/Button';
-import Email from '../../../Assets/Email.gif';
-import './RecoverSucessful.css';
-import '../../../App.css';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import Titledecorated from "../../Components/Sub/Titledecorated";
+import Title from "../../Components/Sub/Title";
+import Button from "../../Components/Sub/Button";
+import Email from "../../../Assets/Email.gif";
+import "./RecoverSucessful.css";
+import "../../../App.css";
 
 const RecoverSucessful = () => {
   return (
@@ -16,8 +15,7 @@ const RecoverSucessful = () => {
         <Title
           id="title-recover-sucessfull"
           size="1.3rem"
-          text="
-        Sucesso!!! uma senha temporária foi encaminhada para o
+          text="Uma senha temporária foi encaminhada para o
         email de cadastro"
         />
         <div className="div-img-recover-sucessfull">
