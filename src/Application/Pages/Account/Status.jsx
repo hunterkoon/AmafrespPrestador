@@ -4,36 +4,34 @@ import { Link } from "react-router-dom";
 //import { GlobalContext } from "../Main/GlobalContext";
 import Title from "../../Components/Sub/Title";
 import Button from "../../Components/Sub/Button";
-import Check from '../../../Assets/Check.gif'
-import Wait from '../../../Assets/Wait.gif'
-import Down from '../../../Assets/Down.gif'
+import Check from "../../../Assets/Check.gif";
+import Wait from "../../../Assets/Wait.gif";
+import Down from "../../../Assets/Down.gif";
 import "./Status.css";
 import "../../../App.css";
 
 const Status = () => {
+  const [boo, setBoo] = React.useState("");
   const [status, setStatus] = React.useState("");
   const [statusIMG, setStatusIMG] = React.useState();
   //const { option } = React.useContext(GlobalContext); // estado recebe do banco status de aprovação
 
-  const boo = "2";
+  // TODO ALERTAR SOBRE EXISTENCIA DE CAMPO NA TABELA
 
   React.useEffect(() => {
-    const handleChange = () => {
-      switch (boo) {
-        case "1":
-          setStatus("Aguardando");
-          setStatusIMG(Wait);
-          break;
-        case "2":
-          setStatus("Concluido");
-          setStatusIMG(Check);
-          break;
-          default:
-            setStatus("Realize");
-            setStatusIMG(Down);
-          }
-    };
-    handleChange();
+    switch (boo) {
+      case "1":
+        setStatus("Aguardando");
+        setStatusIMG(Wait);
+        break;
+      case "2":
+        setStatus("Concluido");
+        setStatusIMG(Check);
+        break;
+      default:
+        setStatus("Realize");
+        setStatusIMG(Down);
+    }
   }, [boo]);
 
   return (
@@ -43,12 +41,11 @@ const Status = () => {
       </div>
 
       <div className="div-sub-status">
-        <div className='div-sub-box-color-status-main'>
-        <img className='img-status' src={statusIMG} alt=''/>
-        {/* <div className={`div-sub-box-color-status ${status}`} /> */}
-        <label>Status: {status}</label>
+        <div className="div-sub-box-color-status-main">
+          <img className="img-status" src={statusIMG} alt="" />
+          {/* <div className={`div-sub-box-color-status ${status}`} /> */}
+          <label>Status: {status}</label>
         </div>
-
         {status === "Realize" ? (
           <div>
             <Title
@@ -81,7 +78,9 @@ const Status = () => {
           </>
         ) : null}
       </div>
+      <input type="text" onChange={({ target }) => setBoo(target.value)} />
     </div>
+    
   );
 };
 
