@@ -17,7 +17,7 @@ const PrimeiroAcesso = () => {
   const navigate = useNavigate()
   const { firtAcessData, setFirtAcessData } = React.useContext(GlobalContext);
   const { firstAcessForm } = GeneralForms(firtAcessData);
-  // const [err, setErr] = React.useState(false);
+
   const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
     firstAcessForm.reduce((acc, field) => {
       return {
@@ -30,19 +30,27 @@ const PrimeiroAcesso = () => {
     const { id, value } = target;
     setPrimeiroAcesso({ ...primeiroAcesso, [id]: value });
   };
+
   React.useEffect(() => {
     setFirtAcessData(primeiroAcesso);
   }, [primeiroAcesso, setFirtAcessData]);
 
-  const erroForm = useErrorForm(firstAcessForm);
+
+  
+  const erroForm = useErrorForm(firstAcessForm); 
+ 
+
   const handleSubmit = (event) => {
+    event.preventDefault();
+    
     if (erroForm === true) {
       navigate('/RegisterSucessful');
+      console.log(firtAcessData);
     }
-    event.preventDefault();
-    console.log(firtAcessData);
+    
     //TODO  FETCH POST
   };
+
   return (
     <div className="div-main-primeiro-acesso pageView">
       <div className="div-img-primeiro-acesso">

@@ -20,7 +20,7 @@ export const GlobalStorage = ({ children }) => {
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
-  const [menuItemRecadastramento, setmenuItemRecadastramento] =
+  const [menuItemRegisterUpdate, setmenuItemRegisterUpdate] =
     React.useState(false);
   const { width, height } = useWindowDimensions();
   const navigate = useNavigate();
@@ -44,9 +44,9 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
-    // if (login) {
-    //   return navigate("/conta");
-    // } else return navigate("/");
+    if (login) {
+      return navigate("/conta");
+    } else return navigate("/");
   }, [login, navigate]);
 
   return (
@@ -59,7 +59,7 @@ export const GlobalStorage = ({ children }) => {
         setData,
         setOption,
         setmenuItemUsuarios,
-        setmenuItemRecadastramento,
+        setmenuItemRegisterUpdate,
         setHandle,
         setLoginData,
         setRecoverData,
@@ -76,7 +76,7 @@ export const GlobalStorage = ({ children }) => {
         loading,
         error,
         menuItemUsuarios,
-        menuItemRecadastramento,
+        menuItemRegisterUpdate,
         handle,
         loginData,
         recoverData,

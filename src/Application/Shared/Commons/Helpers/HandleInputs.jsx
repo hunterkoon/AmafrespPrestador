@@ -3,7 +3,7 @@ export const handleMask = (loginData) => {
     ? function mask() {
         const replaced = loginData.CNPJCPF.replace(/\W/g, "");
         if (replaced.length <= 11) {
-          return "999.999.999-99";
+          return "999.999.999-999999";
         }
         if (replaced.length === 14) {
           return "99.999.999/9999-99";
@@ -12,7 +12,7 @@ export const handleMask = (loginData) => {
           return "";
         } else return "";
       }
-    : null;
+    : "";
 };
 export const handleErrorCpfCnpf = (loginData) => {
   return loginData.CNPJCPF
@@ -23,7 +23,7 @@ export const handleErrorCpfCnpf = (loginData) => {
         }
         if (replaced.length > 11 && replaced.length < 14) {
           return "Digite um CNPJ válido ex: 99.999.999/0001-99";
-        }
+        }else return "";
       }
     : "";
 };
@@ -37,11 +37,11 @@ export const handleErrorPassword = (loginData) => {
           return "";
         }
         if (!regex.test(pass) || pass.length < 8) {
-          return " A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
+          return "A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
         }
         if (pass !== confirmPass) {
           return "Senhas não conferem, digite a mesma senha em ambos os campos!";
-        }
+        } else return "";
       }
     : "";
 };
@@ -54,8 +54,8 @@ export const handleErrorNewPassword = (loginData) => {
           return "";
         }
         if (!regex.test(pass) || pass.length < 8) {
-          return " A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
-        }
+          return "A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
+        }  else return "";
       }
     : "";
 };
@@ -74,7 +74,7 @@ export const handleErroEmail = (loginData) => {
         }
         if (!regex.test(confirmEmail)) {
           return "Por favor digite um e-mail válido!.";
-        }
+        } else return "";
       }
     : "";
 };

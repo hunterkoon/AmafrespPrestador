@@ -1,14 +1,15 @@
 const require = 'require';
-export const CPF_CNPJ = (handleMaskonBlur, handleMaskonFocus, mask, error) => {
+
+export const CPF_CNPJ = (mask, error, funBlu ,funFoc) => {
   return {
+    changeFocus: funFoc,
+    changeBlur: funBlu ,
     error: error,
     key: 1,
     id: "CNPJCPF",
     type: "text",
     label: "CNPJ / CPF",
     mask: mask,
-    changeBlur: handleMaskonBlur,
-    changeFocus: handleMaskonFocus,
     className: "CPF-FIELD-CLASS",
     value:'',
     require: require,
@@ -29,12 +30,12 @@ export const EMAIL = (value) => {
   };
 };
 
-export const EMAIL_CONFIRM = (handleMaskonBlur, handleMaskonFocus, error ) => {
+export const EMAIL_CONFIRM = (error , funBlu ,funFoc  ) => {
   return {
-    key: 3,
+    key: 3, 
     error: error,
-    changeBlur: handleMaskonBlur,
-    changeFocus: handleMaskonFocus,
+    changeBlur: funBlu,
+    changeFocus: funFoc,
     id: "CONFIRMEemail",
     type: "email",
     label: "Confirme seu E-mail",
@@ -57,20 +58,16 @@ export const PASSWORD = () => {
 
 
 export const PASSWORD_CONFIRM = (
-  handleMaskonBlur,
-  handleMaskonFocus,
   error
-  
 ) => {
   return {
     key: 5,
-    id: "CONFIRMEsenha",
     error: error,
-    changeBlur: handleMaskonBlur,
-    changeFocus: handleMaskonFocus,
+    id: "CONFIRMEsenha",
     type: "password",
     label: "Confirme sua Senha",
     require: require,
+    value:'',
     className: "CONFIRMPASSWORD-FIELD-CLASS",
   
   };
@@ -142,9 +139,12 @@ export const TELPHONE = (value) => {
   };
 };
 
-export const ACTUAL_PASSWORD = () => {
+export const ACTUAL_PASSWORD = (error,  funBlu ,funFoc) => {
   return {
     key: 11,
+    error: error,
+    changeBlur: funBlu,
+    changeFocus: funFoc,
     id: "ATUALsenha",
     type: "password",
     label: "Senha Atual",
@@ -154,17 +154,13 @@ export const ACTUAL_PASSWORD = () => {
 };
 
 
-export const NEW_PASSWORD = (
-  handleMaskonBlur,
-  handleMaskonFocus,
-  error
-) => {
+export const NEW_PASSWORD = (error,  funBlu ,funFoc) => {
   return {
     key: 12,
     id: "NOVAsenha",
     error: error,
-    changeBlur: handleMaskonBlur,
-    changeFocus: handleMaskonFocus,
+    changeBlur: funBlu,
+    changeFocus: funFoc,
     type: "password",
     label: "Nova Senha",
     require: require,

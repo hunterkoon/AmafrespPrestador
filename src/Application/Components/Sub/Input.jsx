@@ -27,10 +27,8 @@ const Input = ({ ...props }) => {
             onFocus={props.changeFocus}
             placeholder={props.placeholder}
             className="input"
+            maskChar={null}
           />
-          {/* {props.img ? (
-            <img className="input-img" src={props.img} alt="Imagem de Icone" />
-          ) : null} */}
           {props.type === "checkbox" ? (
             <span className="checkmark"></span>
           ) : null}

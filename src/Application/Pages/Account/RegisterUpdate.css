@@ -1,0 +1,53 @@
+.div-main-RegisterUpdate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-family: NotoSans-Regular;
+}
+
+.div-sub-field-register-update {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.div-sub-into-field {
+  cursor: pointer;
+  display: flex;
+  margin: 1% auto;
+  width: 60px;
+  height: 60px;
+  background-color: #e1e1e1;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  color: #ffff;
+  transition: 300ms;
+}
+
+.activeSphere{
+  transition: 300ms;
+  display: flex;
+  margin: 1% auto;
+  width: 80px;
+  height: 80px;
+  background-color: #38C6AE;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+
+}
+.border-division {
+  position: absolute;
+  width: 80%;
+  background-color: #f1f1f1;
+  height: 2px;
+  /* margin: 0 auto; */
+  display: flex;
+  /* margin: 0 auto; */
+  left: 10%;
+  top: 26vh;
+  z-index: -1;
+}

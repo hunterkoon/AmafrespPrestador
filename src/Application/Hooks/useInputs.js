@@ -19,6 +19,7 @@ export const useInputsGeneral = (
       checked,
       changeBlur,
       changeFocus,
+      onChange,
       error,
       key,
       className,
@@ -32,7 +33,7 @@ export const useInputsGeneral = (
         type={type}
         key={key}
         id={id}
-        onChange={handleChange}
+        onChange={handleChange ? handleChange: onChange}
         error={error}
         label={label}
         img={img}

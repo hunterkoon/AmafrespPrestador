@@ -38,7 +38,7 @@ const Home = () => {
           </p>
         </div>
         <div className="button-recadastrar">
-          <Link to="Recadastramento">
+          <Link to="RegisterUpdate">
             <Button value="Recadastrar" />
           </Link>
         </div>

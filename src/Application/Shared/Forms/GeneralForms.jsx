@@ -23,41 +23,42 @@ import {
 } from "../Commons/Helpers/HandleInputs";
 
 const GeneralForms = (loginData) => {
+  const [mask, setMask] = React.useState('');
+  const [cpfcnpjError, setCpfcnpjError] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState('');
+  const [newPasswordError, setNewpasswordError] = React.useState('');
+  const [emailError, setEmailError] = React.useState('');
 
-  const [mask, setMask] = React.useState("");
-  const [cpfcnpjError, setCpfcnpjError] = React.useState("");
-  const [passwordState, setPasswordState] = React.useState("");
-  const [newPasswordState, setNewpasswordState] = React.useState("");
-  const [emailError, setEmailError] = React.useState("");
 
-  const handleMaskonBlur = () => ([
-    setCpfcnpjError(handleErrorCpfCnpf(loginData)),
-    setMask(handleMask(loginData)),
-    setPasswordState(handleErrorPassword(loginData)),
-    setEmailError(handleErroEmail(loginData)),
-    setNewpasswordState(handleErrorNewPassword(loginData))
-  ]);
-  const handleMaskonFocus = () => {
-    setMask("");
-    setCpfcnpjError("");  
-    setPasswordState("");
-    setEmailError('');
-    setNewpasswordState('');
-  };
+  React.useEffect(() => {
+
+    const handleFunction = (setstate, fun) => {
+      setstate(fun(loginData));
+    };
+
+    handleFunction( setMask, handleMask );
+    handleFunction( setPasswordError, handleErrorPassword ); 
+    handleFunction( setCpfcnpjError, handleErrorCpfCnpf ); 
+    handleFunction( setEmailError, handleErroEmail ); 
+    handleFunction( setNewpasswordError, handleErrorNewPassword ); 
+
+  }, [loginData]);
 
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
-  const CpfCnpj = CPF_CNPJ(handleMaskonBlur, handleMaskonFocus, mask, cpfcnpjError);
-  const passwordConfirm = PASSWORD_CONFIRM(handleMaskonBlur, handleMaskonFocus, passwordState);
-  const emailConfirm = EMAIL_CONFIRM(handleMaskonBlur ,handleMaskonFocus, emailError);
-  const newPassword = NEW_PASSWORD(handleMaskonBlur ,handleMaskonFocus,newPasswordState);
+  
+  const CpfCnpj = CPF_CNPJ(mask, cpfcnpjError);
+  const passwordConfirm = PASSWORD_CONFIRM(passwordError);
+  const emailConfirm = EMAIL_CONFIRM(emailError);
+  const newPassword = NEW_PASSWORD(newPasswordError);
+
   const ActualPassword = ACTUAL_PASSWORD();
   const password = PASSWORD();
   const email = EMAIL();
   const name = NAME();
   const user = USER();
-  const telphone = TELPHONE()
-  const celphone = CEL_TELPHONE()
-  const department = DEPARTMENT()
+  const telphone = TELPHONE();
+  const celphone = CEL_TELPHONE();
+  const department = DEPARTMENT();
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [
@@ -88,21 +89,21 @@ const GeneralForms = (loginData) => {
     department,
   ];
 
-    //FORMULARIO DE INSERÇÃO DE USUARIOS
-    const adjustsUserForm = [
-      name,
-      user,
-      email,
-      emailConfirm,
-      telphone,
-      celphone,
-      department,
-      ActualPassword,
-      newPassword,
-    ];
+  //FORMULARIO DE INSERÇÃO DE USUARIOS
+  const adjustsUserForm = [
+    name,
+    user,
+    email,
+    emailConfirm,
+    telphone,
+    celphone,
+    department,
+    ActualPassword,
+    newPassword,
+  ];
   //FUNCIONALIDADES A SEREM LIBERADAS
 
-  const { UpdadeRegister,RegisterNewUser, ModifyUsers } =
+  const { UpdadeRegister, RegisterNewUser, ModifyUsers } =
     GeneralFunctionalities();
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,

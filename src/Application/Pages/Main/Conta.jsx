@@ -6,7 +6,7 @@ import Home from '../../Pages/Account/Home';
 import Gerenciar from '../../Pages/Account/GerenciarUsuarios';
 import FaleConosco from '../../Pages/Account/FaleConosco';
 import AdicionarUsuarios from '../../Pages/Account/AdicionarUsuarios';
-import Recadastramento from '../../Pages/Account/Recadastramento';
+import RegisterUpdate from '../../Pages/Account/RegisterUpdate';
 import Status from '../../Pages/Account/Status';
 import Menu from '../../Components/Main/MenuLateral';
 import Perfil from '../Account/Perfil'
@@ -33,7 +33,7 @@ const Conta = () => {
           <Route path="Gerenciar" element={<Gerenciar />} />
           <Route path="Contatos" element={<FaleConosco />} />
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
-          <Route path="Recadastramento" element={<Recadastramento />} />
+          <Route path="RegisterUpdate" element={<RegisterUpdate />} />
           <Route path="Status" element={<Status />} />
           <Route path="Perfil" element={<Perfil/>} />
         </Routes>

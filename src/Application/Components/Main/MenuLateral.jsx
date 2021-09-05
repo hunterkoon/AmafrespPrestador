@@ -22,8 +22,8 @@ const MenuLateral = () => {
     setProfile,
     menuItemUsuarios,
     setmenuItemUsuarios,
-    menuItemRecadastramento,
-    setmenuItemRecadastramento,
+    menuItemRegisterUpdate,
+    setmenuItemRegisterUpdate,
     handle,
     setHandle,
     option,
@@ -43,16 +43,16 @@ const MenuLateral = () => {
   React.useEffect(() => {
     const handleMenu = () => {
       if (!handle) {
-        return [setmenuItemRecadastramento(false), setmenuItemUsuarios(false)];
+        return [setmenuItemRegisterUpdate(false), setmenuItemUsuarios(false)];
       }
     };
     return handleMenu();
-  }, [handle, setmenuItemRecadastramento, setmenuItemUsuarios]);
+  }, [handle, setmenuItemRegisterUpdate, setmenuItemUsuarios]);
 
   const handleToggleMenu = (state, value) => {
     state(!value);
     return [
-      menuItemRecadastramento ? setmenuItemRecadastramento(false) : null,
+      menuItemRegisterUpdate ? setmenuItemRegisterUpdate(false) : null,
       menuItemUsuarios ? setmenuItemUsuarios(false) : null,
       setHandle(true),
     ];
@@ -137,21 +137,21 @@ const MenuLateral = () => {
           ) : null}
 {/*   END - Area Restrita */}
               <ItemMenu
-                state={menuItemRecadastramento}
+                state={menuItemRegisterUpdate}
                 alt="item menu Recadastro"
                 item="Atualização Cadastral"
                 srcItem={iconRecadastro}
                 srcSeta={Seta}
                 clicked={() =>
                   handleToggleMenu(
-                    setmenuItemRecadastramento,
-                    menuItemRecadastramento
+                    setmenuItemRegisterUpdate,
+                    menuItemRegisterUpdate
                   )
                 }
               >
                 <div>
                   <SubItemMenu
-                    link="Recadastramento"
+                    link="RegisterUpdate"
                     itemSubMenu="Realizar Atualização"
                     subMenuSrcImg={More}
                   />

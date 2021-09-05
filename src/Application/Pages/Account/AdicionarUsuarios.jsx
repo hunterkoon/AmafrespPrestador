@@ -60,11 +60,12 @@ const Usuarios = () => {
   const erroForm = useErrorForm(addUserForm);
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (erroForm === true) {
       setErr(true);
     }
     console.log(newUserData);
-    console.log(erroForm);
+
   };
   return (
     <>

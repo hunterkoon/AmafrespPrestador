@@ -8,20 +8,17 @@ const useErrorForm = (form) => {
   const filtered = forms
     .map((item) => item.error)
     .filter((i) => typeof i === "string");
+  let capture = filtered.filter((item) => item !== "");
 
-  function handleState(items, setState) {
-    if (items === "") {
-      return setState(true);
-    } else {
-      return setState(false);
-    }
-  }
   React.useEffect(() => {
-    for (let item of filtered) {
-     return handleState(item, setBoo);
+    if (capture.length === 0) {
+      setBoo(true);
+    } else {
+      setBoo(false);
     }
-  }, [filtered]);
+  }, [capture.length, filtered]);
 
   return boo;
 };
+
 export default useErrorForm;

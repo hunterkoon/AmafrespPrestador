@@ -52,7 +52,7 @@ const Status = () => {
               className={"menuView"}
               text="Por gentileza realize a Atualização Cadastral!"
             />
-            <Link to="/conta/Recadastramento">
+            <Link to="/conta/RegisterUpdate">
               <Button value="Atualização" />
             </Link>
           </div>
