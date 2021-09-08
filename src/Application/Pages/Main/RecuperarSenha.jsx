@@ -84,7 +84,7 @@ const RecuperarSenha = () => {
             </div>
 
             {useInputsGeneral(
-              !option ? recoverFiedsAdm : recoverFiedsCommon, // list of inputs
+              option ?  recoverFiedsCommon : recoverFiedsAdm, // list of inputs
               handleChange, // actualization function
               recover, // values
               "menuView" // class

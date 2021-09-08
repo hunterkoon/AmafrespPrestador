@@ -30,7 +30,7 @@ const Input = ({ ...props }) => {
             maskChar={null}
             name={props.name}
           />
-          {props.type === "checkbox" || "radio" ? (
+          {props.type === 'checkbox' || props.type === 'radio'? (
             <span className="checkmark"></span>
           ) : null}
         </div>

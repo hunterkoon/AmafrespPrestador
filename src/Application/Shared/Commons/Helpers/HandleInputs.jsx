@@ -1,32 +1,46 @@
-export const handleMask = (loginData) => {
-  return loginData.CNPJCPF && loginData.CNPJCPF
+export const handleMaskCPF = (loginData) => {
+  return loginData.cpf && loginData.cpf
     ? function mask() {
-        const replaced = loginData.CNPJCPF.replace(/\W/g, "");
+        const replaced = loginData.cpf.replace(/\W/g, "");
         if (replaced.length <= 11) {
-          return "999.999.999-999999";
-        }
-        if (replaced.length === 14) {
-          return "99.999.999/9999-99";
-        }
-        if (replaced.length > 18) {
-          return "";
+          return "999.999.999-99";
         } else return "";
       }
     : "";
 };
-export const handleErrorCpfCnpf = (loginData) => {
-  return loginData.CNPJCPF
+export const handleMaskCNPJ = (loginData) => {
+  return loginData.cnpj && loginData.cnpj
+    ? function mask() {
+        const replaced = loginData.cnpj.replace(/\W/g, "");
+        if (replaced.length <= 14) {
+          return "99.999.999/9999-99";
+        } else return "";
+      }
+    : "";
+};
+
+export const handleErrorCPF = (loginData) => {
+  return loginData.cpf
     ? function error() {
-        const replaced = loginData.CNPJCPF.replace(/\W/g, "");
-        if (replaced.length < 11 || replaced.length > 14) {
-          return "Digite um CPF ou CNPJ válido ex: 999.999.999-99 ou 99.999.999/0001-99";
-        }
-        if (replaced.length > 11 && replaced.length < 14) {
+        const replaced = loginData.cpf.replace(/\W/g,"");
+        if (replaced.length < 11) {
+          return "Digite um CPF válido ex: 999.999.999-99 apenas números";
+        } else return "";
+      }
+    : "";
+};
+
+export const handleErrorCNPJ = (loginData) => {
+  return loginData.cnpj
+    ? function error() {
+        const replaced = loginData.cnpj.replace(/\W/g, "");
+        if (replaced.length < 14) {
           return "Digite um CNPJ válido ex: 99.999.999/0001-99";
         } else return "";
       }
     : "";
 };
+
 export const handleErrorPassword = (loginData) => {
   return loginData.senha
     ? function passwordCheck() {
@@ -45,6 +59,7 @@ export const handleErrorPassword = (loginData) => {
       }
     : "";
 };
+
 export const handleErrorNewPassword = (loginData) => {
   return loginData.NOVAsenha
     ? function passwordCheck() {
@@ -59,6 +74,7 @@ export const handleErrorNewPassword = (loginData) => {
       }
     : "";
 };
+
 export const handleErroEmail = (loginData) => {
   return loginData.email && loginData.CONFIRMEemail
     ? function emailCheck() {
@@ -102,7 +118,7 @@ export const handleUpperCase = (arr) => {
 
 // export const handleCepReplaced = (loginData) => {
 //   let replacedCEP = loginData.cep
- 
+
 //   if(replacedCEP.length > 8){
 //   //  replacedCEP = loginData.cep.replace(/\D/g, "");
 //     console.log(replacedCEP)

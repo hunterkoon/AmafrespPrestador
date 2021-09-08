@@ -210,3 +210,34 @@ export const CEP = (onChange) => {
     require: require,
   };
 };
+
+export const CPF = (mask, error, funBlu ,funFoc) => {
+  return {
+    changeFocus: funFoc,
+    changeBlur: funBlu ,
+    error: error,
+    key: 16,
+    id: "cpf",
+    type: "text",
+    label: "CPF",
+    mask: mask,
+    className: "CPF-FIELD-CLASS",
+    value:'',
+    require: require,
+  };
+};
+export const CNPJ = (mask, error, funBlu ,funFoc) => {
+  return {
+    changeFocus: funFoc,
+    changeBlur: funBlu ,
+    error: error,
+    key: 17,
+    id: "cnpj",
+    type: "text",
+    label: "CNPJ",
+    mask: mask,
+    className: "CNPJ-FIELD-CLASS",
+    value:'',
+    require: require,
+  };
+};

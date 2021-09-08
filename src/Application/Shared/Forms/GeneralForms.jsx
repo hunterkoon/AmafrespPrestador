@@ -1,7 +1,6 @@
 import React from "react";
 import GeneralFunctionalities from "./GeneralFunctionalities";
 import {
-  CPF_CNPJ,
   EMAIL,
   EMAIL_CONFIRM,
   PASSWORD,
@@ -16,19 +15,24 @@ import {
   SOCIAL,
   FANTASY_NAME,
   CEP,
+  CPF,
+  CNPJ,
 } from "./GeneralFields";
 import {
-  handleMask,
-  handleErrorCpfCnpf,
+  handleMaskCPF,
   handleErrorPassword,
   handleErroEmail,
   handleErrorNewPassword,
-  // handleCepReplaced,
+  handleErrorCPF,
+  handleErrorCNPJ,
+  handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
 
 const GeneralForms = (loginData) => {
-  const [mask, setMask] = React.useState("");
-  const [cpfcnpjError, setCpfcnpjError] = React.useState("");
+  const [CNPJmask, setCNPJMask] = React.useState("");
+  const [CPFmask, setCPFMask] = React.useState("");
+  const [CPFError, setCPFError] = React.useState("");
+  const [CNPJError, setCNPJError] = React.useState("");
   const [passwordError, setPasswordError] = React.useState("");
   const [newPasswordError, setNewpasswordError] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
@@ -39,9 +43,11 @@ const GeneralForms = (loginData) => {
       return loginData ? setstate(fun(loginData)): null
     };
 
-    handleFunction(setMask, handleMask);
+    handleFunction(setCNPJMask, handleMaskCNPJ);
+    handleFunction(setCPFMask, handleMaskCPF);
     handleFunction(setPasswordError, handleErrorPassword);
-    handleFunction(setCpfcnpjError, handleErrorCpfCnpf);
+    handleFunction(setCNPJError, handleErrorCNPJ );
+    handleFunction(setCPFError, handleErrorCPF );
     handleFunction(setEmailError, handleErroEmail);
     handleFunction(setNewpasswordError, handleErrorNewPassword);
     // handleFunction(setCepReplace, handleCepReplaced);
@@ -49,7 +55,9 @@ const GeneralForms = (loginData) => {
 
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
 
-  const CpfCnpj = CPF_CNPJ(mask, cpfcnpjError);
+  // const CpfCnpj = CPF_CNPJ(mask, cpfcnpjError);
+  const cnpj = CNPJ(CNPJmask, CNPJError);
+  const cpf = CPF(CPFmask, CPFError);
   const passwordConfirm = PASSWORD_CONFIRM(passwordError);
   const emailConfirm = EMAIL_CONFIRM(emailError);
   const newPassword = NEW_PASSWORD(newPasswordError);
@@ -68,24 +76,24 @@ const GeneralForms = (loginData) => {
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [
-    CpfCnpj,
+    cnpj,
     email,
     emailConfirm,
     password,
     passwordConfirm,
   ];
   // FORMULARIOS DE LOGIN
-  const loginCommon = [CpfCnpj, user, password];
-  const loginAdm = [CpfCnpj, password];
+  const loginCommon = [cpf, password];
+  const loginAdm = [cnpj, password];
 
   // FORMULARIOS DE RECUPERAÇÃO DE PASSWORD
-  const recoverFiedsAdm = [CpfCnpj, email];
-  const recoverFiedsCommon = [CpfCnpj, user];
+  const recoverFiedsAdm = [cnpj, email];
+  const recoverFiedsCommon = [cpf, email];
 
   //FORMULARIO DE INSERÇÃO DE USUARIOS
   const addUserForm = [
     name,
-    user,
+    // user,
     email,
     emailConfirm,
     password,
@@ -98,7 +106,7 @@ const GeneralForms = (loginData) => {
   //FORMULARIO DE INSERÇÃO DE USUARIOS
   const adjustsUserForm = [
     name,
-    user,
+    // user,
     email,
     emailConfirm,
     telphone,
