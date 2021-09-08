@@ -43,69 +43,7 @@
   gap: 20px;
 }
 
-/* CONTAINER PERSONALIZADO  CHECKBOX */
 
-.GENERAL-CHECKBOX-CLASS {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 20px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  border-radius: 15px;
-}
-
-.GENERAL-CHECKBOX-CLASS input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  border-radius: 7px;
-  background-color: #eee;
-}
-
-.GENERAL-CHECKBOX-CLASS:hover input~.checkmark {
-  background-color: #ccc;
-}
-
-.GENERAL-CHECKBOX-CLASS input:checked~.checkmark {
-  background-color: #25b099;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.GENERAL-CHECKBOX-CLASS input:checked~.checkmark:after {
-  display: block;
-}
-
-.GENERAL-CHECKBOX-CLASS .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 
 @media only screen and (max-width: 1024px) {
   .div-sub-add-new-user-input-area label {

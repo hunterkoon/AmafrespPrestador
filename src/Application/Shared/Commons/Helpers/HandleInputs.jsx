@@ -23,7 +23,7 @@ export const handleErrorCpfCnpf = (loginData) => {
         }
         if (replaced.length > 11 && replaced.length < 14) {
           return "Digite um CNPJ válido ex: 99.999.999/0001-99";
-        }else return "";
+        } else return "";
       }
     : "";
 };
@@ -55,7 +55,7 @@ export const handleErrorNewPassword = (loginData) => {
         }
         if (!regex.test(pass) || pass.length < 8) {
           return "A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
-        }  else return "";
+        } else return "";
       }
     : "";
 };
@@ -80,23 +80,32 @@ export const handleErroEmail = (loginData) => {
 };
 
 export const handleUpperCase = (arr) => {
-if(arr.pnome !== undefined){
+  if (arr.pnome !== undefined) {
+    let strings = [];
+    let passwords = [];
 
-  let strings = [];
-  let passwords = [];
-  
-  Object.entries(arr).map((item) => {
-    if (
-      item[0] !== "senha" &&
-      item[0] !== "CONFIRMEsenha" &&
-      item[0] !== "plogin"
-    ) {
-      return strings.push([item[0], item[1].toUpperCase()]);
-    } else return passwords.push([item[0], item[1]]);
-  });
-  
-  strings = Object.fromEntries(strings);
-  passwords = Object.fromEntries(passwords);
-  return Object.assign(strings, passwords);
-} else return ''
+    Object.entries(arr).map((item) => {
+      if (
+        item[0] !== "senha" &&
+        item[0] !== "CONFIRMEsenha" &&
+        item[0] !== "plogin"
+      ) {
+        return strings.push([item[0], item[1].toUpperCase()]);
+      } else return passwords.push([item[0], item[1]]);
+    });
+
+    strings = Object.fromEntries(strings);
+    passwords = Object.fromEntries(passwords);
+    return Object.assign(strings, passwords);
+  } else return "";
 };
+
+// export const handleCepReplaced = (loginData) => {
+//   let replacedCEP = loginData.cep
+ 
+//   if(replacedCEP.length > 8){
+//   //  replacedCEP = loginData.cep.replace(/\D/g, "");
+//     console.log(replacedCEP)
+//   }
+//   return replacedCEP;
+// };

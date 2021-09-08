@@ -1,4 +1,4 @@
-const require = 'require';
+const require = '';
 
 export const CPF_CNPJ = (mask, error, funBlu ,funFoc) => {
   return {
@@ -166,5 +166,47 @@ export const NEW_PASSWORD = (error,  funBlu ,funFoc) => {
     require: require,
     className: "CONFIRMPASSWORD-FIELD-CLASS",
   
+  };
+};
+
+export const SOCIAL = (value) => {
+  return {
+    key: 13,
+    id: "razaoSocial",
+    type: "text",
+    value: value && value.razaoSOCIAL,
+    label: "Razão Social",
+    className: "",
+    placeholder: "ex :  Fernando Labets Medicina LTDA.",
+    info:"" ,
+    require: require,
+  };
+};
+export const FANTASY_NAME = (value) => {
+  return {
+    key: 14,
+    id: "nomeFantasia",
+    type: "text",
+    value: value && value.nomeFantasia,
+    label: "Nome Fantasia",
+    className: "",
+    placeholder: "ex: Clinica Labets",
+    info:"",
+    require: require,
+  };
+};
+export const CEP = (onChange) => {
+  return {
+    key: 15,
+    id: "cep",
+    type: "text",
+    label: "CEP",
+    className: "",
+    placeholder: "",
+    info:"",
+    mask:'99999-999',
+    value : '',
+    onChange : onChange,
+    require: require,
   };
 };

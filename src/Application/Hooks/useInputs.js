@@ -27,10 +27,12 @@ export const useInputsGeneral = (
       onClick,
       img,
       info,
-      value
+      value,
+      name
     }) => (
       <Input
         type={type}
+        name={name}
         key={key}
         id={id}
         onChange={handleChange ? handleChange: onChange}
@@ -42,7 +44,7 @@ export const useInputsGeneral = (
         title={title}
         pattern={pattern}
         require={require}
-        value={state[id]} 
+        value={state[id] ? state[id] : value } 
         checked={checked}
         changeBlur={changeBlur}
         changeFocus={changeFocus}

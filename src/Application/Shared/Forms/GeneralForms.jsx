@@ -13,6 +13,9 @@ import {
   DEPARTMENT,
   ACTUAL_PASSWORD,
   NEW_PASSWORD,
+  SOCIAL,
+  FANTASY_NAME,
+  CEP,
 } from "./GeneralFields";
 import {
   handleMask,
@@ -20,32 +23,32 @@ import {
   handleErrorPassword,
   handleErroEmail,
   handleErrorNewPassword,
+  // handleCepReplaced,
 } from "../Commons/Helpers/HandleInputs";
 
 const GeneralForms = (loginData) => {
-  const [mask, setMask] = React.useState('');
-  const [cpfcnpjError, setCpfcnpjError] = React.useState('');
-  const [passwordError, setPasswordError] = React.useState('');
-  const [newPasswordError, setNewpasswordError] = React.useState('');
-  const [emailError, setEmailError] = React.useState('');
-
-
+  const [mask, setMask] = React.useState("");
+  const [cpfcnpjError, setCpfcnpjError] = React.useState("");
+  const [passwordError, setPasswordError] = React.useState("");
+  const [newPasswordError, setNewpasswordError] = React.useState("");
+  const [emailError, setEmailError] = React.useState("");
+  const[cepReplace, setCepReplace ] = React.useState("");
+  
   React.useEffect(() => {
-
     const handleFunction = (setstate, fun) => {
-      setstate(fun(loginData));
+      return loginData ? setstate(fun(loginData)): null
     };
 
-    handleFunction( setMask, handleMask );
-    handleFunction( setPasswordError, handleErrorPassword ); 
-    handleFunction( setCpfcnpjError, handleErrorCpfCnpf ); 
-    handleFunction( setEmailError, handleErroEmail ); 
-    handleFunction( setNewpasswordError, handleErrorNewPassword ); 
-
+    handleFunction(setMask, handleMask);
+    handleFunction(setPasswordError, handleErrorPassword);
+    handleFunction(setCpfcnpjError, handleErrorCpfCnpf);
+    handleFunction(setEmailError, handleErroEmail);
+    handleFunction(setNewpasswordError, handleErrorNewPassword);
+    // handleFunction(setCepReplace, handleCepReplaced);
   }, [loginData]);
 
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
-  
+
   const CpfCnpj = CPF_CNPJ(mask, cpfcnpjError);
   const passwordConfirm = PASSWORD_CONFIRM(passwordError);
   const emailConfirm = EMAIL_CONFIRM(emailError);
@@ -59,6 +62,9 @@ const GeneralForms = (loginData) => {
   const telphone = TELPHONE();
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
+  const socialReason = SOCIAL();
+  const fantasyName = FANTASY_NAME();
+  const cep = CEP();
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [
@@ -101,15 +107,32 @@ const GeneralForms = (loginData) => {
     ActualPassword,
     newPassword,
   ];
+
   //FUNCIONALIDADES A SEREM LIBERADAS
 
-  const { UpdadeRegister, RegisterNewUser, ModifyUsers } =
-    GeneralFunctionalities();
+  const {
+    UpdadeRegister,
+    RegisterNewUser,
+    ModifyUsers,
+    addressTypeMain,
+    addressTypePostal,
+  } = GeneralFunctionalities();
+
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,
     RegisterNewUser,
     ModifyUsers,
   ];
+
+  const updateRegisterForm = [
+    socialReason,
+    fantasyName,
+    cep,
+  ]
+  const updateRegisterCheckbox = [
+    addressTypeMain,
+    addressTypePostal,
+  ]
 
   return {
     adjustsUserForm: adjustsUserForm,
@@ -120,6 +143,8 @@ const GeneralForms = (loginData) => {
     recoverFiedsCommon: recoverFiedsCommon,
     addUserForm: addUserForm,
     addFunctionalitiesCheckbox: addFunctionalitiesCheckbox,
+    updateRegisterForm:updateRegisterForm,
+    updateRegisterCheckbox : updateRegisterCheckbox,
   };
 };
 

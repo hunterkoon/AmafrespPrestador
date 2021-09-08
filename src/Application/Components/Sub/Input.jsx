@@ -28,8 +28,9 @@ const Input = ({ ...props }) => {
             placeholder={props.placeholder}
             className="input"
             maskChar={null}
+            name={props.name}
           />
-          {props.type === "checkbox" ? (
+          {props.type === "checkbox" || "radio" ? (
             <span className="checkmark"></span>
           ) : null}
         </div>

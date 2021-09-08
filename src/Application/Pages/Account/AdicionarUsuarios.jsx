@@ -15,7 +15,9 @@ const Usuarios = () => {
   const { newUserData, setNewUserData } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);
+  
   // ADICIONA ITENS ANTERIORES AO ARRAY;
+  
   const [functions, setFunctions] = React.useState(
     addFunctionalitiesCheckbox.reduce((acc, field) => {
       return {
@@ -34,6 +36,7 @@ const Usuarios = () => {
   );
 
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
+  
   const handleChangeUser = ({ target }) => {
     const { id, value } = target;
     setNewUser({ ...newUser, [id]: value });
@@ -56,16 +59,16 @@ const Usuarios = () => {
   React.useEffect(() => {
     setNewUserData({ ...functions, ...handleUpperCase(newUser) });
   }, [functions, newUser, setNewUserData]);
+  
   // TODO FETCH;
+
   const erroForm = useErrorForm(addUserForm);
   const handleSubmit = (e) => {
-    e.preventDefault();
-    
+    e.preventDefault();    
     if (erroForm === true) {
       setErr(true);
     }
     console.log(newUserData);
-
   };
   return (
     <>

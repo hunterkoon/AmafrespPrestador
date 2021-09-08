@@ -1,17 +1,19 @@
-.div-main-RegisterUpdate {
+.div-main-update-register {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 80vh;
   width: 100%;
   font-family: NotoSans-Regular;
 }
 
-.div-sub-field-register-update {
+/* .div-sub-field-register-update {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
-}
+  margin-top: 5%;
+} */
 
 .div-sub-into-field {
   cursor: pointer;
@@ -44,10 +46,31 @@
   width: 80%;
   background-color: #f1f1f1;
   height: 2px;
-  /* margin: 0 auto; */
   display: flex;
-  /* margin: 0 auto; */
   left: 10%;
-  top: 26vh;
   z-index: -1;
+  align-items: center;
+  margin-top: 18%;
+  
+}
+.div-main-field{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4% auto;
+}
+.label-sub-field{
+  display: flex;
+  color: #414141;
+  position: relative;
+  top: 3vh;
+  
+}
+.form-update-register{
+  width: 96%;
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
