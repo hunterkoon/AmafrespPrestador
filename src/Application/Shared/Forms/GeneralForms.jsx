@@ -5,7 +5,7 @@ import {
   EMAIL_CONFIRM,
   PASSWORD,
   PASSWORD_CONFIRM,
-  USER,
+  // USER,
   NAME,
   CEL_TELPHONE,
   TELPHONE,
@@ -36,20 +36,21 @@ const GeneralForms = (loginData) => {
   const [passwordError, setPasswordError] = React.useState("");
   const [newPasswordError, setNewpasswordError] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
-  const[cepReplace, setCepReplace ] = React.useState("");
-  
+  const [cepReplace, setCepReplace] = React.useState("");
+
   React.useEffect(() => {
     const handleFunction = (setstate, fun) => {
-      return loginData ? setstate(fun(loginData)): null
+      return loginData ? setstate(fun(loginData)) : null;
     };
 
     handleFunction(setCNPJMask, handleMaskCNPJ);
     handleFunction(setCPFMask, handleMaskCPF);
     handleFunction(setPasswordError, handleErrorPassword);
-    handleFunction(setCNPJError, handleErrorCNPJ );
-    handleFunction(setCPFError, handleErrorCPF );
+    handleFunction(setCNPJError, handleErrorCNPJ);
+    handleFunction(setCPFError, handleErrorCPF);
     handleFunction(setEmailError, handleErroEmail);
     handleFunction(setNewpasswordError, handleErrorNewPassword);
+
     // handleFunction(setCepReplace, handleCepReplaced);
   }, [loginData]);
 
@@ -58,15 +59,15 @@ const GeneralForms = (loginData) => {
   // const CpfCnpj = CPF_CNPJ(mask, cpfcnpjError);
   const cnpj = CNPJ(CNPJmask, CNPJError);
   const cpf = CPF(CPFmask, CPFError);
-  const passwordConfirm = PASSWORD_CONFIRM(passwordError);
   const emailConfirm = EMAIL_CONFIRM(emailError);
-  const newPassword = NEW_PASSWORD(newPasswordError);
-
-  const ActualPassword = ACTUAL_PASSWORD();
   const password = PASSWORD();
+  const passwordConfirm = PASSWORD_CONFIRM(passwordError);
+
+  const newPassword = NEW_PASSWORD(newPasswordError);
+  const ActualPassword = ACTUAL_PASSWORD();
   const email = EMAIL();
   const name = NAME();
-  const user = USER();
+  // const user = USER();
   const telphone = TELPHONE();
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
@@ -75,13 +76,7 @@ const GeneralForms = (loginData) => {
   const cep = CEP();
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
-  const firstAcessForm = [
-    cnpj,
-    email,
-    emailConfirm,
-    password,
-    passwordConfirm,
-  ];
+  const firstAcessForm = [cnpj, email, emailConfirm, password, passwordConfirm];
   // FORMULARIOS DE LOGIN
   const loginCommon = [cpf, password];
   const loginAdm = [cnpj, password];
@@ -93,7 +88,7 @@ const GeneralForms = (loginData) => {
   //FORMULARIO DE INSERÇÃO DE USUARIOS
   const addUserForm = [
     name,
-    // user,
+    cpf,
     email,
     emailConfirm,
     password,
@@ -106,7 +101,7 @@ const GeneralForms = (loginData) => {
   //FORMULARIO DE INSERÇÃO DE USUARIOS
   const adjustsUserForm = [
     name,
-    // user,
+    cpf,
     email,
     emailConfirm,
     telphone,
@@ -132,15 +127,8 @@ const GeneralForms = (loginData) => {
     ModifyUsers,
   ];
 
-  const updateRegisterForm = [
-    socialReason,
-    fantasyName,
-    cep,
-  ]
-  const updateRegisterCheckbox = [
-    addressTypeMain,
-    addressTypePostal,
-  ]
+  const updateRegisterForm = [socialReason, fantasyName, cep];
+  const updateRegisterCheckbox = [addressTypeMain, addressTypePostal];
 
   return {
     adjustsUserForm: adjustsUserForm,
@@ -151,8 +139,8 @@ const GeneralForms = (loginData) => {
     recoverFiedsCommon: recoverFiedsCommon,
     addUserForm: addUserForm,
     addFunctionalitiesCheckbox: addFunctionalitiesCheckbox,
-    updateRegisterForm:updateRegisterForm,
-    updateRegisterCheckbox : updateRegisterCheckbox,
+    updateRegisterForm: updateRegisterForm,
+    updateRegisterCheckbox: updateRegisterCheckbox,
   };
 };
 

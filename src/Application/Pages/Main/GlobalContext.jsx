@@ -8,6 +8,7 @@ import useFetch from "../../Hooks/useFetch";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+  const navigate = useNavigate();
   const [handle, setHandle] = React.useState(null);
   const [alterRegisterData, setAlterRegisterData] = React.useState([]);
   const [newUserData, setNewUserData] = React.useState([]);
@@ -15,15 +16,13 @@ export const GlobalStorage = ({ children }) => {
   const [recoverData, setRecoverData] = React.useState([]);
   const [loginData, setLoginData] = React.useState([]);
   const [option, setOption] = React.useState(false);
-  const { data, setData, loading, error } = useFetch();
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
-  const [menuItemRegisterUpdate, setmenuItemRegisterUpdate] =
-    React.useState(false);
+  const [menuItemRegisterUpdate, setmenuItemRegisterUpdate] = React.useState(false);
   const { width, height } = useWindowDimensions();
-  const navigate = useNavigate();
+  const { data, setData, loading, error } = useFetch();
 
   // async function LoginValidate() {
   //   const { url, options } = GETDADOS();
@@ -44,10 +43,18 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
-    if (login) {
-      return navigate("/conta");
-    } else return navigate("/");
+    // if (login) {
+    //   return navigate("/conta");
+    // } else return navigate("/");
   }, [login, navigate]);
+
+  const handleLogout = () => {
+    navigate("/");
+    setLogin(false);
+    setProfile(false);
+    setAnimateMenu(false);
+    setData(null);
+  };
 
   return (
     <GlobalContext.Provider
@@ -66,6 +73,7 @@ export const GlobalStorage = ({ children }) => {
         setFirtAcessData,
         setNewUserData,
         setAlterRegisterData,
+        handleLogout,
         option,
         profile,
         login,

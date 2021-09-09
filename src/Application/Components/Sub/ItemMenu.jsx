@@ -4,7 +4,7 @@ import './ItemMenu.css';
 const ItemMenu = ({ ...props }) => {
   return (
     <li className="li-item-menu">
-      <a href={undefined} style={{ cursor: 'pointer' }} onClick={props.clicked}>
+      <a rel={props.rel} href={props.href} style={{ cursor: 'pointer' }} onClick={props.clicked}>
         <img src={props.srcItem} alt={props.alt} />
         {props.item}
         <img

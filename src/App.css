@@ -71,6 +71,9 @@ label {
   text-decoration: unset;
   font-size: 1rem;
 }
+input{
+  width: 100%;
+}
 /* CONTAINER PERSONALIZADO  CHECKBOX */
 
 .GENERAL-CHECKBOX-CLASS {

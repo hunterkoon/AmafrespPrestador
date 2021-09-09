@@ -9,28 +9,21 @@ import './Header.css';
 
 export default function Header() {
   const {
-    setLogin,
     data,
-    setData,
     setProfile,
     profile,
     login,
     handleWindowHamburguer,
     setAnimateMenu,
     width,
+    handleLogout,
   } = React.useContext(GlobalContext);
   const navigate = useNavigate();
   const handleClick = () => {
     setProfile(!profile);
     setAnimateMenu(false);
   };
-  const handleLogout = () => {
-    navigate('/');
-    setLogin(false);
-    setProfile(false);
-    setAnimateMenu(false);
-    setData(null);
-  };
+
   const handleLogo = () =>{
     if(login){
       navigate('/conta');

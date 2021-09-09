@@ -50,6 +50,7 @@
     width: 90%; 
   }
   .div-sub-add-new-user-input-area {
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
@@ -60,6 +61,7 @@
     width: 90%;
   }
   .div-sub-add-new-user-data{
+    width: 96%;
     display: flex;
     align-self: center;
   }
@@ -71,7 +73,7 @@
   grid-area: 1/1/1/5;
 }
 
-.USER-FIELD-CLASS {
+.CPF-FIELD-CLASS {
   grid-area: 1/5/1/7;
 }
 

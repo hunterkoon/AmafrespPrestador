@@ -11,6 +11,10 @@ import SwitchButton from "../../Components/Sub/SwitchButton";
 import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import { useInputsGeneral } from "../../Hooks/useInputs";
+import {
+  recoverAdmPassword,
+  recoverCommonPassword,
+} from "../../Hooks/useSubmitDada";
 import useErrorForm from "../../Hooks/useErrorForm";
 import "./Login.css";
 import "./RecuperarSenha.css";
@@ -21,22 +25,23 @@ const RecuperarSenha = () => {
   const { option, recoverData, setRecoverData } =
     React.useContext(GlobalContext);
   const { recoverFiedsAdm, recoverFiedsCommon } = GeneralForms(recoverData);
-  
-  const [recover, setRecover] = React.useState(
-    ! option ? recoverFiedsAdm.reduce((acc, item) => {
-      return {
-        ...acc,
-        [item.id]: "",
-      };
-    }, {})
-  : recoverFiedsCommon.reduce((acc, item) => {
-    return {
-      ...acc,
-      [item.id]: "",
-    };
-  }, {}));
 
-  
+  const [recover, setRecover] = React.useState(
+    !option
+      ? recoverFiedsAdm.reduce((acc, item) => {
+          return {
+            ...acc,
+            [item.id]: "",
+          };
+        }, {})
+      : recoverFiedsCommon.reduce((acc, item) => {
+          return {
+            ...acc,
+            [item.id]: "",
+          };
+        }, {})
+  );
+
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setRecover({ ...recover, [id]: value });
@@ -50,10 +55,16 @@ const RecuperarSenha = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(erroFormADM === true  && erroFormCommon === true ){
-      
+
+    if (erroFormADM === true && erroFormCommon === true) {
       navigate("/RecoverSuccessful");
-      console.log(recover)
+      console.log(recover);
+    }
+
+    if (option) {
+      recoverCommonPassword(recover);
+    } else {
+      recoverAdmPassword(recover);
     }
     // TODO - Adicionar Validação através de fetch com retorno 200
   };
@@ -84,7 +95,7 @@ const RecuperarSenha = () => {
             </div>
 
             {useInputsGeneral(
-              option ?  recoverFiedsCommon : recoverFiedsAdm, // list of inputs
+              option ? recoverFiedsCommon : recoverFiedsAdm, // list of inputs
               handleChange, // actualization function
               recover, // values
               "menuView" // class

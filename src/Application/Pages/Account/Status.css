@@ -61,3 +61,8 @@ text-align: center;
 .img-status{
   width: 100px;
 }
+
+.div-main-status input{
+  width: 50%;
+  margin: 0 auto;
+}

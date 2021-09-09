@@ -1,3 +1,5 @@
+import MD5 from "crypto-js/md5";
+
 export const handleMaskCPF = (loginData) => {
   return loginData.cpf && loginData.cpf
     ? function mask() {
@@ -22,7 +24,7 @@ export const handleMaskCNPJ = (loginData) => {
 export const handleErrorCPF = (loginData) => {
   return loginData.cpf
     ? function error() {
-        const replaced = loginData.cpf.replace(/\W/g,"");
+        const replaced = loginData.cpf.replace(/\W/g, "");
         if (replaced.length < 11) {
           return "Digite um CPF válido ex: 999.999.999-99 apenas números";
         } else return "";
@@ -42,9 +44,9 @@ export const handleErrorCNPJ = (loginData) => {
 };
 
 export const handleErrorPassword = (loginData) => {
-  return loginData.senha
+  return loginData.password
     ? function passwordCheck() {
-        const pass = loginData.senha;
+        const pass = loginData.password;
         const confirmPass = loginData.CONFIRMEsenha;
         const regex = /\W/g;
         if (pass === "") {
@@ -102,7 +104,7 @@ export const handleUpperCase = (arr) => {
 
     Object.entries(arr).map((item) => {
       if (
-        item[0] !== "senha" &&
+        item[0] !== "password" &&
         item[0] !== "CONFIRMEsenha" &&
         item[0] !== "plogin"
       ) {
@@ -116,6 +118,14 @@ export const handleUpperCase = (arr) => {
   } else return "";
 };
 
+export const handlePasswordHash = (loginData) => {
+  const pass = loginData.password;
+  if (pass) {
+    return MD5(pass).toString().toUpperCase();
+  } else {
+    return null;
+  }
+};
 // export const handleCepReplaced = (loginData) => {
 //   let replacedCEP = loginData.cep
 

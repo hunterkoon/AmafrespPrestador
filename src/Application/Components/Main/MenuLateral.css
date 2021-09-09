@@ -13,10 +13,9 @@
   padding: 0;
   margin-top: 2vh;
   width: 100%;
- 
 }
 
-#nav-menu{
+#nav-menu {
   height: 100%;
 }
 
@@ -31,7 +30,6 @@
   .main-menu {
     display: none;
   }
-
   .hambuguerClick ul {
     width: 100%;
     padding-inline-start: 0px;

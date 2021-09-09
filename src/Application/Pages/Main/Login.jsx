@@ -12,6 +12,7 @@ import LoginImg from "../../../Assets/Login_2.svg";
 import UsuarioLogin from "../../../Assets/UsuarioLogin.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
+import { loginCommonSubmit, loginAdmSubmit } from "../../Hooks/useSubmitDada";
 import "./Login.css";
 import "../../../App.css";
 
@@ -20,7 +21,9 @@ const Login = () => {
   const { setLogin, option, setLoginData, loginData } =
     React.useContext(GlobalContext);
   const { loginCommon, loginAdm } = GeneralForms(loginData);
-// ATUALIZA LISTA ATUAL DE ARRAYS COM ITENS ANTERIORES
+
+  // ATUALIZA LISTA ATUAL DE ARRAYS COM ITENS ANTERIORES
+
   const [fieldsLogin, setFieldsLogin] = React.useState(
     loginCommon.reduce((acc, field) => {
       return {
@@ -29,22 +32,28 @@ const Login = () => {
       };
     }, {})
   );
+
   // FUNÇÃO ATUALIZADORA, PASSA PARA ESTADO GLOBAL ARRAY ATUALIZADO
+
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setFieldsLogin({ ...fieldsLogin, [id]: value });
   };
-  // FUNÇÃO DE FETCH
+
+  // TODO FUNÇÃO DE FETCH
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setLogin(true);
+    if (option) {
+      loginCommonSubmit(loginData);
+    } else loginAdmSubmit(loginData);
   };
   // FUNÇÃO ATUALIZADORA
   React.useEffect(() => {
     setLoginData(fieldsLogin);
-    // setLogin(true)
   }, [fieldsLogin, setLogin, setLoginData]);
-  
+
   return (
     <>
       <div className="div-main-login pageView">

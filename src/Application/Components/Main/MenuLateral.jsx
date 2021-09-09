@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router";
 import { GlobalContext } from "../../Pages/Main/GlobalContext";
 import ItemMenu from "../Sub/ItemMenu";
 import SubItemMenu from "../Sub/SubItemMenu";
@@ -16,10 +15,8 @@ import "../../../App.css";
 const MenuLateral = () => {
   const {
     animateMenu,
-    setAnimateMenu,
-    setLogin,
     width,
-    setProfile,
+    handleLogout,
     menuItemUsuarios,
     setmenuItemUsuarios,
     menuItemRegisterUpdate,
@@ -28,7 +25,6 @@ const MenuLateral = () => {
     setHandle,
     option,
   } = React.useContext(GlobalContext);
-  const navigate = useNavigate();
 
   // ADICIONA ANIMAÇÃO AO MENU DE ITENS LATERAL CASO O MOUSE PASSE POR CIMA
   const handleMouse = (event) => {
@@ -40,15 +36,6 @@ const MenuLateral = () => {
   // FECHA MENU CASO ABRA OUTRO EM SEGUIDA
   //MANIPULA FECHAMENTO DE SUBITENS DO MENU ATRÁVES DO ESTADO GLOBAL HANDLE
 
-  React.useEffect(() => {
-    const handleMenu = () => {
-      if (!handle) {
-        return [setmenuItemRegisterUpdate(false), setmenuItemUsuarios(false)];
-      }
-    };
-    return handleMenu();
-  }, [handle, setmenuItemRegisterUpdate, setmenuItemUsuarios]);
-
   const handleToggleMenu = (state, value) => {
     state(!value);
     return [
@@ -58,34 +45,17 @@ const MenuLateral = () => {
     ];
   };
 
-  // MANIPULA EVENTOS E DIRECIONAMENTO NO MENU PARA ITENS PAI
-
-  const handleAnimateMenu = ({ target }) => {
-    let location = target.innerText;
-
-    function validateLocation() {
-      if (location === "Conta") {
-        return (location = "/");
-      } else if (location === "Sair") {
-        return (location = "../");
+  React.useEffect(() => {
+    const handleMenu = () => {
+      if (!handle) {
+        return [setmenuItemRegisterUpdate(false), setmenuItemUsuarios(false)];
       }
-      return location;
-    }
-
-    return setTimeout(() => {
-      navigate("./" + validateLocation());
-      setAnimateMenu(false);
-    }, 0);
-  };
-
-  const handleLogout = () => {
-    setLogin(false);
-    setProfile(false);
-    setAnimateMenu(false);
-  };
+    };
+    return handleMenu();
+  }, [handle, setmenuItemRegisterUpdate, setmenuItemUsuarios]);
 
   return (
-    <div id="nav-menu" >
+    <div id="nav-menu">
       <nav
         className={
           animateMenu && width <= "1024"
@@ -96,19 +66,19 @@ const MenuLateral = () => {
         onMouseOut={handleMouse}
       >
         <ul>
-          <span onClick={handleAnimateMenu}>
-            <ItemMenu
-              alt="item menu home page"
-              item="Conta"
-              srcItem={iconHome}
-              srcSeta=""
-            />
-          </span>
+          <ItemMenu
+            href={"/#/conta/"}
+            alt="item menu home page"
+            item="Conta"
+            srcItem={iconHome}
+            srcSeta=""
+          />
 
-{/* Area Restrita */}
+          {/* Area Restrita */}
+
           {!option ? (
             <>
-              <ItemMenu
+              <ItemMenu 
                 state={menuItemUsuarios}
                 alt="item menu usuários"
                 item="Usuários"
@@ -118,72 +88,67 @@ const MenuLateral = () => {
                   handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
                 }
               >
-                <div>
-                  <SubItemMenu
-                    link="AdicionarUsuarios"
-                    state={menuItemUsuarios}
-                    itemSubMenu="Adicionar Usuário"
-                    subMenuSrcImg={More}
-                  />
-                  <SubItemMenu
-                    link="Gerenciar"
-                    state={menuItemUsuarios}
-                    itemSubMenu="Gerenciar"
-                    subMenuSrcImg={More}
-                  />
-                </div>
+                <SubItemMenu
+                  link="AdicionarUsuarios"
+                  state={menuItemUsuarios}
+                  itemSubMenu="Adicionar Usuário"
+                  subMenuSrcImg={More}
+                />
+                <SubItemMenu
+                  link="Gerenciar"
+                  state={menuItemUsuarios}
+                  itemSubMenu="Gerenciar"
+                  subMenuSrcImg={More}
+                />
               </ItemMenu>
-              </>
+            </>
           ) : null}
-{/*   END - Area Restrita */}
-              <ItemMenu
-                state={menuItemRegisterUpdate}
-                alt="item menu Recadastro"
-                item="Atualização Cadastral"
-                srcItem={iconRecadastro}
-                srcSeta={Seta}
-                clicked={() =>
-                  handleToggleMenu(
-                    setmenuItemRegisterUpdate,
-                    menuItemRegisterUpdate
-                  )
-                }
-              >
-                <div>
-                  <SubItemMenu
-                    link="RegisterUpdate"
-                    itemSubMenu="Realizar Atualização"
-                    subMenuSrcImg={More}
-                  />
-                  <SubItemMenu
-                    link="Status"
-                    itemSubMenu="Status"
-                    subMenuSrcImg={More}
-                  />
-                </div>
-              </ItemMenu>
 
+          {/*   END - Area Restrita */}
 
-          <span onClick={handleAnimateMenu}>
-            <ItemMenu
-              alt="item menu fale conosco"
-              item="Contatos"
-              srcItem={iconFaleConosco}
+          <ItemMenu 
+            state={menuItemRegisterUpdate}
+            alt="item menu Recadastro"
+            item="Atualização Cadastral"
+            srcItem={iconRecadastro}
+            srcSeta={Seta}
+            clicked={() =>
+              handleToggleMenu(
+                setmenuItemRegisterUpdate,
+                menuItemRegisterUpdate
+              )
+            }
+          >
+            <SubItemMenu
+              link="RegisterUpdate"
+              itemSubMenu="Realizar Atualização"
+              subMenuSrcImg={More}
             />
-          </span>
+            <SubItemMenu
+              link="Status"
+              itemSubMenu="Status"
+              subMenuSrcImg={More}
+            />
+          </ItemMenu>
 
-          {/* // TODO - VERIFICAR PORQUE ITEM NAO DESAPARECE QUANDO MENU É ESTENDIDO */}
+          <ItemMenu
+            href={"/#/conta/Contatos"}
+            rel={null}
+            alt="item menu fale conosco"
+            item="Contatos"
+            srcItem={iconFaleConosco}
+          />
 
-          {animateMenu ? (
-            <span className="div-menu-sair">
-              <ItemMenu
-                clicked={handleLogout}
-                alt="item menu fale conosco"
-                item="Sair"
-                srcItem={Sair}
-              />
-            </span>
-          ) : null}
+          {animateMenu && (
+            <ItemMenu
+              href={"../"}
+              rel={null}
+              clicked={handleLogout}
+              alt="item menu fale conosco"
+              item="Sair"
+              srcItem={Sair}
+            />
+          )}
         </ul>
       </nav>
     </div>
