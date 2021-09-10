@@ -18,6 +18,7 @@ class InputConstants {
     this.Celphone = data.pcelfone;
     this.Cep = data.cep && data.cep.replace(regex,"");
     this.Street = data.logradouro
+    this.Neighborhood = data.bairro
   }
 }
 export const loginCommonDataSubmit = (data) => {
@@ -89,6 +90,7 @@ export const upRegAddressSubmit = (data) => {
     return {
       cep: upRegAddress.Cep,
       logradouro : upRegAddress.Street,
+      bairro : upRegAddress.Neighborhood,
     };
   };
 

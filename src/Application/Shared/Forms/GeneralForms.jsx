@@ -17,6 +17,7 @@ import {
   CPF,
   CNPJ,
   STREET,
+  NEIGHBORHOOD,
 } from "./GeneralFields";
 import {
   handleMaskCPF,
@@ -29,17 +30,15 @@ import {
 } from "../Commons/Helpers/HandleInputs";
 import { GlobalContext } from "../../Pages/Main/GlobalContext";
 
-
 const GeneralForms = (loginData) => {
-  const {address} = React.useContext(GlobalContext)
-  const [ CNPJmask, setCNPJMask ] = React.useState("");
-  const [ CPFmask, setCPFMask ] = React.useState("");
-  const [ CPFError, setCPFError ] = React.useState("");
-  const [ CNPJError, setCNPJError ] = React.useState("");
-  const [ passwordError, setPasswordError ] = React.useState("");
-  const [ newPasswordError, setNewpasswordError ] = React.useState("");
-  const [ emailError, setEmailError ] = React.useState("");
-
+  const { address } = React.useContext(GlobalContext);
+  const [CNPJmask, setCNPJMask] = React.useState("");
+  const [CPFmask, setCPFMask] = React.useState("");
+  const [CPFError, setCPFError] = React.useState("");
+  const [CNPJError, setCNPJError] = React.useState("");
+  const [passwordError, setPasswordError] = React.useState("");
+  const [newPasswordError, setNewpasswordError] = React.useState("");
+  const [emailError, setEmailError] = React.useState("");
 
   React.useEffect(() => {
     const handleFunction = (setstate, fun) => {
@@ -76,6 +75,7 @@ const GeneralForms = (loginData) => {
   const fantasyName = FANTASY_NAME();
   const cep = CEP();
   const logradouro = STREET(address);
+  const bairro = NEIGHBORHOOD(address);
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [cnpj, email, emailConfirm, password, passwordConfirm];
@@ -129,7 +129,7 @@ const GeneralForms = (loginData) => {
     ModifyUsers,
   ];
 
-  const upRegFormAddress = [socialReason, fantasyName, cep , logradouro ];
+  const upRegFormAddress = [cnpj , socialReason, fantasyName, cep, logradouro, bairro];
   const upRegCBXAddress = [addressTypeMain, addressTypePostal];
 
   return {

@@ -15,9 +15,10 @@ const RegisterUpdate = () => {
     "Dados dos serviços contratados",
     "Equipe médica",
   ];
-  const { upRegFormAddress, upRegCBXAddress } = GeneralForms();
-
-  const [formInputs, setFormInputs] = React.useState(
+  const [regUp , setRegUp ] = React.useState([])
+  const { upRegFormAddress, upRegCBXAddress } = GeneralForms(regUp);
+  
+ const [formInputs, setFormInputs] = React.useState(
     upRegFormAddress.reduce((acc, field) => {
       return {
         ...acc,
@@ -47,7 +48,7 @@ const RegisterUpdate = () => {
 
   const handleChange = ({ target }) => {
     const { id, value } = target;
-    setFormInputs({ ...formInputs, [id]: value });
+    setRegUp({ ...formInputs, [id]: value });
   };
 
   const handleChangeCheckBox = ({ target }) => {
@@ -63,8 +64,8 @@ const RegisterUpdate = () => {
   };
 
   React.useEffect(() => {
-    setRegUpData(upRegAddressSubmit(formInputs));
-  }, [formInputs, setRegUpData]);
+    setRegUpData(upRegAddressSubmit(regUp));
+  }, [formInputs, regUp, setRegUpData]);
 
   return (
     <>
@@ -77,7 +78,7 @@ const RegisterUpdate = () => {
         <form className="form-update-register" onSubmit={handleSubmit}>
           <h1> Preencha os dados</h1>
           <div>
-            {useInputsGeneral(upRegFormAddress, handleChange, formInputs)}
+            {useInputsGeneral(upRegFormAddress, handleChange, regUp)}
             {useInputsGeneral(upRegCBXAddress, handleChangeCheckBox, checkbox)}
           </div>
           <div>

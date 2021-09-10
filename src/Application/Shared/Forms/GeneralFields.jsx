@@ -212,7 +212,6 @@ export const CPF = (mask, error, funBlu, funFoc) => {
     label: "CPF",
     mask: mask,
     className: "CPF-FIELD-CLASS",
-    value: "",
     require: require,
   };
 };
@@ -227,7 +226,6 @@ export const CNPJ = (mask, error, funBlu, funFoc) => {
     label: "CNPJ",
     mask: mask,
     className: "CNPJ-FIELD-CLASS",
-    value: "",
     require: require,
   };
 };
@@ -240,6 +238,18 @@ export const STREET = (value,  error ) => {
     label: "Logradouro",
     className: "STREET-FIELD-CLASS",
     value: value && value.logradouro,
+    require: require,
+  };
+};
+export const NEIGHBORHOOD = (value,  error ) => {
+  return {
+    error: error,
+    key: 19,
+    id: "bairro",
+    type: "text",
+    label: "Bairro",
+    className: "STREET-FIELD-CLASS",
+    value: value && value.bairro,
     require: require,
   };
 };
