@@ -23,8 +23,8 @@ const RecuperarSenha = () => {
   const { recoverFiedsAdm, recoverFiedsCommon } = GeneralForms(recoverData);
   const erroFormADM = useErrorForm(recoverFiedsAdm);
   const erroFormCommon = useErrorForm(recoverFiedsCommon);
-  const recoverAdm = recoverAdmPasswordSubmit(recoverData);
-  const recoverCommon = recoverCommonPasswordSubmit(recoverData);
+  const recoverAdmSubmit = recoverAdmPasswordSubmit(recoverData);
+  const recoverCommonSubmit = recoverCommonPasswordSubmit(recoverData);
   const navigate = useNavigate();
 
   // REALIZA REDUCE DO FORMULARIO
@@ -64,8 +64,8 @@ const RecuperarSenha = () => {
       navigate("/RecoverSuccessful");
     }
     if (option) {
-      return recoverCommon;
-    } else return recoverAdm;
+      return recoverCommonSubmit;
+    } else return recoverAdmSubmit;
   };
 
   return (

@@ -186,18 +186,17 @@ export const FANTASY_NAME = (value) => {
     require: require,
   };
 };
-export const CEP = (onChange) => {
+export const CEP = () => {
   return {
     key: 15,
     id: "cep",
     type: "text",
     label: "CEP",
     className: "",
-    placeholder: "",
-    info: "",
+    placeholder: "0123-000",
+    info: "Digite o CEP para preencher os demais campos!.",
     mask: "99999-999",
     value: "",
-    onChange: onChange,
     require: require,
   };
 };
@@ -229,6 +228,18 @@ export const CNPJ = (mask, error, funBlu, funFoc) => {
     mask: mask,
     className: "CNPJ-FIELD-CLASS",
     value: "",
+    require: require,
+  };
+};
+export const STREET = (value,  error ) => {
+  return {
+    error: error,
+    key: 18,
+    id: "logradouro",
+    type: "text",
+    label: "Logradouro",
+    className: "STREET-FIELD-CLASS",
+    value: value && value.logradouro,
     require: require,
   };
 };

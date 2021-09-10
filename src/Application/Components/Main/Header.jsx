@@ -9,7 +9,7 @@ import './Header.css';
 
 export default function Header() {
   const {
-    data,
+    // data,
     setProfile,
     profile,
     login,
@@ -60,10 +60,10 @@ export default function Header() {
             </div>
             <div onClick={handleClick} className="div-user-info">
               <span className="span-user">
-                {data ? data[0].NOME : 'Lorem Ipsum Zupoi'}
+                { 'Lorem Ipsum Zupoi'}
               </span>
               <span className="span-employ">
-                {data ? data[0].EMPRESA : 'Lorem Ipsum Gumoi'}
+                {'Lorem Ipsum Gumoi'}
               </span>
             </div>
           </div>

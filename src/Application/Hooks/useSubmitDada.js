@@ -16,10 +16,10 @@ class InputConstants {
     this.Name = data.pnome && data.pnome.toUpperCase();
     this.Telphone = data.ptelphone;
     this.Celphone = data.pcelfone;
-    this.Cep = data.cep;
+    this.Cep = data.cep && data.cep.replace(regex,"");
+    this.Street = data.logradouro
   }
 }
-
 export const loginCommonDataSubmit = (data) => {
   const loginCommon = new InputConstants(data);
   return {
@@ -81,6 +81,14 @@ export const adjustsUserSubmit = (data) => {
       departamento: adjustsUser.Department,
       senha: adjustsUser.ActualPassword,
       novaSenha: adjustsUser.NewPassword,
+    };
+  };
+
+export const upRegAddressSubmit = (data) => {
+    const upRegAddress = new InputConstants(data);
+    return {
+      cep: upRegAddress.Cep,
+      logradouro : upRegAddress.Street,
     };
   };
 

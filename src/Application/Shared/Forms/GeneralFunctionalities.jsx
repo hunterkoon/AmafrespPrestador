@@ -24,6 +24,7 @@ const GeneralFunctionalities = () => {
     "Atualização Cadastral", // label
     updateInfo ,// info
     false, // require
+    '' , // name
   );
   //FUNCIONALIDADES DE USUARIOS
   const RegisterNewUser = new Functionalities(

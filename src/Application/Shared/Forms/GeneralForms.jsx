@@ -5,7 +5,6 @@ import {
   EMAIL_CONFIRM,
   PASSWORD,
   PASSWORD_CONFIRM,
-  // USER,
   NAME,
   CEL_TELPHONE,
   TELPHONE,
@@ -17,6 +16,7 @@ import {
   CEP,
   CPF,
   CNPJ,
+  STREET,
 } from "./GeneralFields";
 import {
   handleMaskCPF,
@@ -27,16 +27,19 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
+import { GlobalContext } from "../../Pages/Main/GlobalContext";
+
 
 const GeneralForms = (loginData) => {
-  const [CNPJmask, setCNPJMask] = React.useState("");
-  const [CPFmask, setCPFMask] = React.useState("");
-  const [CPFError, setCPFError] = React.useState("");
-  const [CNPJError, setCNPJError] = React.useState("");
-  const [passwordError, setPasswordError] = React.useState("");
-  const [newPasswordError, setNewpasswordError] = React.useState("");
-  const [emailError, setEmailError] = React.useState("");
-  // const [cepReplace, setCepReplace] = React.useState("");
+  const {address} = React.useContext(GlobalContext)
+  const [ CNPJmask, setCNPJMask ] = React.useState("");
+  const [ CPFmask, setCPFMask ] = React.useState("");
+  const [ CPFError, setCPFError ] = React.useState("");
+  const [ CNPJError, setCNPJError ] = React.useState("");
+  const [ passwordError, setPasswordError ] = React.useState("");
+  const [ newPasswordError, setNewpasswordError ] = React.useState("");
+  const [ emailError, setEmailError ] = React.useState("");
+
 
   React.useEffect(() => {
     const handleFunction = (setstate, fun) => {
@@ -62,18 +65,17 @@ const GeneralForms = (loginData) => {
   const emailConfirm = EMAIL_CONFIRM(emailError);
   const password = PASSWORD();
   const passwordConfirm = PASSWORD_CONFIRM(passwordError);
-
   const newPassword = NEW_PASSWORD(newPasswordError);
-  const ActualPassword = ACTUAL_PASSWORD();
+  const atualPassword = ACTUAL_PASSWORD();
   const email = EMAIL();
   const name = NAME();
-  // const user = USER();
   const telphone = TELPHONE();
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
   const socialReason = SOCIAL();
   const fantasyName = FANTASY_NAME();
   const cep = CEP();
+  const logradouro = STREET(address);
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [cnpj, email, emailConfirm, password, passwordConfirm];
@@ -107,7 +109,7 @@ const GeneralForms = (loginData) => {
     telphone,
     celphone,
     department,
-    ActualPassword,
+    atualPassword,
     newPassword,
   ];
 
@@ -127,8 +129,8 @@ const GeneralForms = (loginData) => {
     ModifyUsers,
   ];
 
-  const updateRegisterForm = [socialReason, fantasyName, cep];
-  const updateRegisterCheckbox = [addressTypeMain, addressTypePostal];
+  const upRegFormAddress = [socialReason, fantasyName, cep , logradouro ];
+  const upRegCBXAddress = [addressTypeMain, addressTypePostal];
 
   return {
     adjustsUserForm: adjustsUserForm,
@@ -139,8 +141,8 @@ const GeneralForms = (loginData) => {
     recoverFiedsCommon: recoverFiedsCommon,
     addUserForm: addUserForm,
     addFunctionalitiesCheckbox: addFunctionalitiesCheckbox,
-    updateRegisterForm: updateRegisterForm,
-    updateRegisterCheckbox: updateRegisterCheckbox,
+    upRegFormAddress: upRegFormAddress,
+    upRegCBXAddress: upRegCBXAddress,
   };
 };
 

@@ -130,12 +130,3 @@ export const handlePasswordHash = (loginData) => {
     return null;
   }
 };
-// export const handleCepReplaced = (loginData) => {
-//   let replacedCEP = loginData.cep
-
-//   if(replacedCEP.length > 8){
-//   //  replacedCEP = loginData.cep.replace(/\D/g, "");
-//     console.log(replacedCEP)
-//   }
-//   return replacedCEP;
-// };

@@ -3,19 +3,22 @@ import Titledecorated from "../../Components/Sub/Titledecorated";
 import { useInputsGeneral } from "../../Hooks/useInputs";
 import Button from "../../Components/Sub/Button";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
+import { upRegAddressSubmit } from "../../Hooks/useSubmitDada";
+import { GlobalContext } from "../Main/GlobalContext";
 import "./RegisterUpdate.css";
 import "../../../App.css";
 
 const RegisterUpdate = () => {
+  const { setRegUpData } = React.useContext(GlobalContext);
   const formAreas = [
     "Dados cadastrais",
     "Dados dos serviços contratados",
     "Equipe médica",
   ];
-  const { updateRegisterForm, updateRegisterCheckbox } = GeneralForms();
+  const { upRegFormAddress, upRegCBXAddress } = GeneralForms();
 
   const [formInputs, setFormInputs] = React.useState(
-    updateRegisterForm.reduce((acc, field) => {
+    upRegFormAddress.reduce((acc, field) => {
       return {
         ...acc,
         [field.id]: field.value,
@@ -23,7 +26,7 @@ const RegisterUpdate = () => {
     }, {})
   );
   const [checkbox, setCheckBox] = React.useState(
-    updateRegisterCheckbox.reduce((acc, field) => {
+    upRegCBXAddress.reduce((acc, field) => {
       return {
         ...acc,
         [field.id]: field.value,
@@ -50,7 +53,7 @@ const RegisterUpdate = () => {
   const handleChangeCheckBox = ({ target }) => {
     const { id, checked } = target;
     if (checked) {
-   console.log(id)
+      console.log(id, checked);
     }
   };
 
@@ -58,6 +61,10 @@ const RegisterUpdate = () => {
     event.preventDefault();
     console.log(checkbox);
   };
+
+  React.useEffect(() => {
+    setRegUpData(upRegAddressSubmit(formInputs));
+  }, [formInputs, setRegUpData]);
 
   return (
     <>
@@ -70,12 +77,8 @@ const RegisterUpdate = () => {
         <form className="form-update-register" onSubmit={handleSubmit}>
           <h1> Preencha os dados</h1>
           <div>
-            {useInputsGeneral(updateRegisterForm, handleChange, formInputs)}
-            {useInputsGeneral(
-              updateRegisterCheckbox,
-              handleChangeCheckBox,
-              checkbox
-            )}
+            {useInputsGeneral(upRegFormAddress, handleChange, formInputs)}
+            {useInputsGeneral(upRegCBXAddress, handleChangeCheckBox, checkbox)}
           </div>
           <div>
             <Button value="Proximo" />

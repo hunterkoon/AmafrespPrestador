@@ -39,29 +39,29 @@ const MenuSuperior = () => {
           <div className="div-prestador-menu-superior">
             <div>
               <h2>Empresa:</h2>
-              <h4>{data ? data[0].EMPRESA : "Lorem Ipsum"}</h4>
+              <h4>{/* data ? data[0].EMPRESA : */ "Lorem Ipsum"}</h4>
             </div>
             <div>
               <h2>CNPJ:</h2>
-              <h4>{data ? data[0].CNPJ : "Lorem Ipsum"}</h4>
+              <h4>{/* data ? data[0].CNPJ : */ "Lorem Ipsum"}</h4>
             </div>
             <div>
               <h2>Segmento:</h2>
-              <h4>{data ? data[0].SEGMENTO : "Lorem Ipsum"}</h4>
+              <h4>{/*data ? data[0].SEGMENTO : */"Lorem Ipsum"}</h4>
             </div>
             <div>
               <h2>Tipo Credenciado: </h2>
-              <h4>{data ? data[0].TIPO_CREDENCIADO : "Lorem Ipsum"}</h4>
+              <h4>{/*data ? data[0].TIPO_CREDENCIADO : */"Lorem Ipsum"}</h4>
             </div>
           </div>
           <div className="div-colaborador-menu-superior">
             <div>
               <h2>Nome:</h2>
-              <h4>{data ? data[0].NOME : "Lorem Ipsum"}</h4>
+              <h4>{/*data ? data[0].NOME : */"Lorem Ipsum"}</h4>
             </div>
             <div>
               <h2>Departamento:</h2>
-              <h4>{data ? data[0].DEPARTAMENTO : "Lorem Ipsum"}</h4>
+              <h4>{/*data ? data[0].DEPARTAMENTO : */"Lorem Ipsum"}</h4>
             </div>
             <div
               onClick={() => setProfile(!profile)}
