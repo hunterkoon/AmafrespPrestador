@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { GlobalContext } from "./GlobalContext";
 import { UrlRecuperarSenha } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
+import { recoverAdmPasswordSubmit, recoverCommonPasswordSubmit} from "../../Hooks/useSubmitDada";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
@@ -11,20 +12,22 @@ import SwitchButton from "../../Components/Sub/SwitchButton";
 import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import { useInputsGeneral } from "../../Hooks/useInputs";
-import {
-  recoverAdmPassword,
-  recoverCommonPassword,
-} from "../../Hooks/useSubmitDada";
 import useErrorForm from "../../Hooks/useErrorForm";
+import "../../../App.css";
 import "./Login.css";
 import "./RecuperarSenha.css";
-import "../../../App.css";
 
 const RecuperarSenha = () => {
-  const navigate = useNavigate();
-  const { option, recoverData, setRecoverData } =
-    React.useContext(GlobalContext);
+
+  const { option, recoverData, setRecoverData } =  React.useContext(GlobalContext);
   const { recoverFiedsAdm, recoverFiedsCommon } = GeneralForms(recoverData);
+  const erroFormADM = useErrorForm(recoverFiedsAdm);
+  const erroFormCommon = useErrorForm(recoverFiedsCommon);
+  const recoverAdm = recoverAdmPasswordSubmit(recoverData);
+  const recoverCommon = recoverCommonPasswordSubmit(recoverData);
+  const navigate = useNavigate();
+
+  // REALIZA REDUCE DO FORMULARIO
 
   const [recover, setRecover] = React.useState(
     !option
@@ -42,31 +45,27 @@ const RecuperarSenha = () => {
         }, {})
   );
 
+  // FUNCAO ATUALIZADORA 
+
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setRecover({ ...recover, [id]: value });
   };
+
   React.useEffect(() => {
     setRecoverData(recover);
   }, [recover, setRecoverData]);
 
-  const erroFormADM = useErrorForm(recoverFiedsAdm);
-  const erroFormCommon = useErrorForm(recoverFiedsCommon);
+  // SUBMIT TODO FETCH
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     if (erroFormADM === true && erroFormCommon === true) {
       navigate("/RecoverSuccessful");
-      console.log(recover);
     }
-
     if (option) {
-      recoverCommonPassword(recover);
-    } else {
-      recoverAdmPassword(recover);
-    }
-    // TODO - Adicionar Validação através de fetch com retorno 200
+      return recoverCommon;
+    } else return recoverAdm;
   };
 
   return (
@@ -76,7 +75,6 @@ const RecuperarSenha = () => {
           <img src={RecuperarSenhaImg} alt="" />
           <a href={UrlRecuperarSenha}>www.freepik.com</a>
         </div>
-
         <div className="div-form-recuperar-senha">
           <form onSubmit={handleSubmit}>
             <Titledecorated
@@ -100,6 +98,7 @@ const RecuperarSenha = () => {
               recover, // values
               "menuView" // class
             )}
+            
             <div className="div-button-recuperar-senha">
               <Button value="Recuperar" />
               {/* <Link to="/RecuperarEmail">Esqueci meu e-mail</Link> */}

@@ -3,19 +3,20 @@ import Title from "../../Components/Sub/Title";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import { useInputsGeneral } from "../../Hooks/useInputs";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
-import "./Perfil.css";
-import "../../../App.css";
 import Button from "../../Components/Sub/Button";
 import { GlobalContext } from "../Main/GlobalContext";
 import Succesfull from "../../Components/Sub/Succesfull";
 import useErrorForm from "../../Hooks/useErrorForm";
+import { adjustsUserSubmit } from "../../Hooks/useSubmitDada";
+import "./Perfil.css";
+import "../../../App.css";
 
 
 const Perfil = () => {
-  const { alterRegisterData, setAlterRegisterData, newUserData } =
-    React.useContext(GlobalContext);
+  const { alterRegisterData, setAlterRegisterData, newUserData } =  React.useContext(GlobalContext);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
   const [err, setErr] = React.useState(false);
+  const  UserSubmit = adjustsUserSubmit(alterRegisterData)
 
   const returnFilter = (newUserData, field) => {
     const idFilter = Object.entries(newUserData).filter((item) => {
@@ -45,11 +46,11 @@ const Perfil = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (erroForm === true) {
+    if (erroForm) {
       setErr(true);
+      console.log(UserSubmit);
     }
     //TODO FETCH FUNCTION
-    console.log(adjustsByUser);
   };
   return (
     <div className="div-main-perfil pageView">

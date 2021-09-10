@@ -66,12 +66,16 @@ export const handleErrorNewPassword = (loginData) => {
   return loginData.NOVAsenha
     ? function passwordCheck() {
         const pass = loginData.NOVAsenha;
+        const actualPass = loginData.ATUALsenha;
         const regex = /\W/g;
         if (pass === "") {
           return "";
         }
         if (!regex.test(pass) || pass.length < 8) {
           return "A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, um número e um caracter especial : @#$&";
+        } 
+        if( pass === actualPass){
+          return "Digite uma senha diferente da atual!."
         } else return "";
       }
     : "";
@@ -119,7 +123,7 @@ export const handleUpperCase = (arr) => {
 };
 
 export const handlePasswordHash = (loginData) => {
-  const pass = loginData.password;
+  const pass = loginData;
   if (pass) {
     return MD5(pass).toString().toUpperCase();
   } else {

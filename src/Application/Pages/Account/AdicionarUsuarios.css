@@ -15,10 +15,17 @@
 }
 .div-sub-add-new-user-button-area{
   display: flex;
+  flex-direction: row-reverse;
   width: 100%;
-}
-.form-add-new-user button {
   margin: 3% auto;
+  justify-content: center;
+  align-items: center;
+  
+}
+.div-sub-add-new-user-button-area button{
+
+  margin: 3% ;
+ 
 }
 
 .div-sub-add-new-user-input-area {

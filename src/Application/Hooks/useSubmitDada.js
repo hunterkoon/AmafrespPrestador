@@ -1,50 +1,86 @@
 import { handlePasswordHash } from "../Shared/Commons/Helpers/HandleInputs";
 
-const handleReplaced = (data) => {
-  const regex = /\W/g;
-  const cpf = data.cpf && data.cpf.replace(regex, "");
-  const cnpj = data.cnpj && data.cnpj.replace(regex, "");
-  const email = data.email && data.email.toUpperCase();
+const regex = /\W/g;
 
-  return {
-    email:email,
-    cpf: cpf,
-    cnpj: cnpj,
-    senha: handlePasswordHash(data),
-  };
-};
-export const loginCommonSubmit = (data) => {
-  const { cpf, senha } = handleReplaced(data);
-  localStorage.setItem("cpf", cpf);
-  localStorage.setItem("token", senha);
-  return {
-    cpf: cpf,
-    senha: senha,
-  };
-};
-export const loginAdmSubmit = (data) => {
-  const { cnpj, senha } = handleReplaced(data);
-  localStorage.setItem("cnpj", cnpj);
-  localStorage.setItem("token", senha);
-  return {
-    cnpj: cnpj,
-    senha: senha,
-  };
-};
-
-export const recoverCommonPassword = (data) =>{
-    const { email, cpf } = handleReplaced(data);
-    return {
-        email: email,
-        cpf: cpf,
-      };
-
+class InputConstants {
+  constructor(data) {
+    this.NewPassword = handlePasswordHash(data.NOVAsenha);
+    this.ActualPassword = handlePasswordHash(data.ATUALsenha);
+    this.Password = handlePasswordHash(data.password);
+    this.Cpf = data.cpf && data.cpf.replace(regex, "");
+    this.Cnpj = data.cnpj && data.cnpj.replace(regex, "");
+    this.Email = data.email && data.email.toUpperCase();
+    this.Department = data.pdepartamento && data.pdepartamento.toUpperCase();
+    this.SocialReason = data.razaoSocial && data.razaoSocial.toUpperCase();
+    this.FantasyName = data.nomeFantasia && data.nomeFantasia.toUpperCase();
+    this.Name = data.pnome && data.pnome.toUpperCase();
+    this.Telphone = data.ptelphone;
+    this.Celphone = data.pcelfone;
+    this.Cep = data.cep;
+  }
 }
-export const recoverAdmPassword = (data) =>{
-    const { email, cnpj } = handleReplaced(data);
-    return {
-        email: email,
-        cnpj: cnpj,
-      };
 
-}
+export const loginCommonDataSubmit = (data) => {
+  const loginCommon = new InputConstants(data);
+  return {
+    cpf: loginCommon.Cpf,
+    senha: loginCommon.Password,
+  };
+};
+export const loginAdmDataSubmit = (data) => {
+  const loginAdm = new InputConstants(data);
+  localStorage.setItem('token', loginAdm.Password)
+  return {
+    cnpj: loginAdm.Cnpj,
+    senha: loginAdm.Password,
+  };
+};
+
+export const recoverAdmPasswordSubmit = (data) => {
+  const recoverAdm = new InputConstants(data);
+  return {
+    email: recoverAdm.Email,
+    cnpj: recoverAdm.Cnpj,
+  };
+};
+export const recoverCommonPasswordSubmit = (data) => {
+  const recoverAdm = new InputConstants(data);
+  return {
+    email: recoverAdm.Email,
+    cpf: recoverAdm.Cpf,
+  };
+};
+export const addUserSubmit = (data) => {
+  const addUser = new InputConstants(data);
+  return {
+    nome: addUser.Name,
+    cpf: addUser.Cpf,
+    email: addUser.Email,
+    senha: addUser.Password,
+    telefoneFixo: addUser.Telphone,
+    telefoneCelular: addUser.Celphone,
+    departamento: addUser.Department,
+  };
+};
+export const firstAcessSubmit = (data) => {
+  const firtAcess = new InputConstants(data);
+  return {
+    cnpj: firtAcess.Cnpj,
+    email: firtAcess.Email,
+    senha: firtAcess.Password,
+  };
+};
+export const adjustsUserSubmit = (data) => {
+    const adjustsUser = new InputConstants(data);
+    return {
+      nome: adjustsUser.Name,
+      cpf: adjustsUser.Cpf,
+      telefoneFixo: adjustsUser.Telphone,
+      telefoneCelular: adjustsUser.Celphone,
+      email: adjustsUser.Email,
+      departamento: adjustsUser.Department,
+      senha: adjustsUser.ActualPassword,
+      novaSenha: adjustsUser.NewPassword,
+    };
+  };
+

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../Main/GlobalContext";
 import { UrlImgLogin } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import { useInputsGeneral } from "../../Hooks/useInputs";
-// import useFetch from "../../Hooks/useFetch";
 import Button from "../../Components/Sub/Button";
 import Title from "../../Components/Sub/Title";
 import Titledecorated from "../../Components/Sub/Titledecorated";
@@ -12,15 +11,21 @@ import LoginImg from "../../../Assets/Login_2.svg";
 import UsuarioLogin from "../../../Assets/UsuarioLogin.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
-import { loginCommonSubmit, loginAdmSubmit } from "../../Hooks/useSubmitDada";
+import { loginAdmDataSubmit, loginCommonDataSubmit } from "../../Hooks/useSubmitDada";
 import "./Login.css";
 import "../../../App.css";
 
 const Login = () => {
+
   // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
-  const { setLogin, option, setLoginData, loginData } =
-    React.useContext(GlobalContext);
+
+  const { setLogin, option, setLoginData, loginData } = React.useContext(GlobalContext);
+
+  // CONSTANTES IMPORTADAS PARA GERAR FORMS 
+
   const { loginCommon, loginAdm } = GeneralForms(loginData);
+  const loginCommonSubmit = loginCommonDataSubmit(loginData);
+  const loginAdmSubmit = loginAdmDataSubmit(loginData);
 
   // ATUALIZA LISTA ATUAL DE ARRAYS COM ITENS ANTERIORES
 
@@ -40,19 +45,25 @@ const Login = () => {
     setFieldsLogin({ ...fieldsLogin, [id]: value });
   };
 
+
+  // FUNÇÃO ATUALIZADORA
+
+  React.useEffect(() => {
+    setLoginData(fieldsLogin);
+  }, [fieldsLogin, setLogin, setLoginData]);
+
+
   // TODO FUNÇÃO DE FETCH
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setLogin(true);
     if (option) {
-      loginCommonSubmit(loginData);
-    } else loginAdmSubmit(loginData);
+      return loginCommonSubmit;
+    } else return loginAdmSubmit;
   };
-  // FUNÇÃO ATUALIZADORA
-  React.useEffect(() => {
-    setLoginData(fieldsLogin);
-  }, [fieldsLogin, setLogin, setLoginData]);
+
+
 
   return (
     <>

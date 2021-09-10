@@ -36,7 +36,7 @@ const GeneralForms = (loginData) => {
   const [passwordError, setPasswordError] = React.useState("");
   const [newPasswordError, setNewpasswordError] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
-  const [cepReplace, setCepReplace] = React.useState("");
+  // const [cepReplace, setCepReplace] = React.useState("");
 
   React.useEffect(() => {
     const handleFunction = (setstate, fun) => {
@@ -98,7 +98,7 @@ const GeneralForms = (loginData) => {
     department,
   ];
 
-  //FORMULARIO DE INSERÇÃO DE USUARIOS
+  //FORMULARIO DE ALTERAÇÃO DE PERFIL
   const adjustsUserForm = [
     name,
     cpf,
