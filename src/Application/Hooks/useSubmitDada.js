@@ -24,7 +24,7 @@ class InputConstants {
 export const loginCommonDataSubmit = (data) => {
   const loginCommon = new InputConstants(data);
   return {
-    cpf: loginCommon.Cpf,
+    CPFCNPJ: loginCommon.Cpf,
     senha: loginCommon.Password,
   };
 };
@@ -32,7 +32,7 @@ export const loginAdmDataSubmit = (data) => {
   const loginAdm = new InputConstants(data);
   localStorage.setItem('token', loginAdm.Password)
   return {
-    cnpj: loginAdm.Cnpj,
+    CPFCNPJ: loginAdm.Cnpj,
     senha: loginAdm.Password,
   };
 };
@@ -41,21 +41,21 @@ export const recoverAdmPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
     email: recoverAdm.Email,
-    cnpj: recoverAdm.Cnpj,
+    CPFCNPJ: recoverAdm.Cnpj,
   };
 };
 export const recoverCommonPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
     email: recoverAdm.Email,
-    cpf: recoverAdm.Cpf,
+    CPFCNPJ: recoverAdm.Cpf,
   };
 };
 export const addUserSubmit = (data) => {
   const addUser = new InputConstants(data);
   return {
     nome: addUser.Name,
-    cpf: addUser.Cpf,
+    CPFCNPJ: addUser.Cpf,
     email: addUser.Email,
     senha: addUser.Password,
     telefoneFixo: addUser.Telphone,
@@ -66,7 +66,7 @@ export const addUserSubmit = (data) => {
 export const firstAcessSubmit = (data) => {
   const firtAcess = new InputConstants(data);
   return {
-    cnpj: firtAcess.Cnpj,
+    CPFCNPJ: firtAcess.Cnpj,
     email: firtAcess.Email,
     senha: firtAcess.Password,
   };
@@ -75,7 +75,7 @@ export const adjustsUserSubmit = (data) => {
     const adjustsUser = new InputConstants(data);
     return {
       nome: adjustsUser.Name,
-      cpf: adjustsUser.Cpf,
+      CPFCNPJ: adjustsUser.Cpf,
       telefoneFixo: adjustsUser.Telphone,
       telefoneCelular: adjustsUser.Celphone,
       email: adjustsUser.Email,
@@ -85,12 +85,12 @@ export const adjustsUserSubmit = (data) => {
     };
   };
 
-export const upRegAddressSubmit = (data) => {
+export const upRegRegistrationSubmit = (data) => {
     const upRegAddress = new InputConstants(data);
     return {
-      cep: upRegAddress.Cep,
-      logradouro : upRegAddress.Street,
-      bairro : upRegAddress.Neighborhood,
+      CPFCNPJ: upRegAddress.Cnpj,
+      razaoSocial : upRegAddress.SocialReason,
+      fantasia : upRegAddress.Neighborhood,
     };
   };
 

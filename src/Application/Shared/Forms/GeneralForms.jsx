@@ -13,11 +13,12 @@ import {
   NEW_PASSWORD,
   SOCIAL,
   FANTASY_NAME,
-  CEP,
   CPF,
   CNPJ,
+  CEP,
   STREET,
   NEIGHBORHOOD,
+  CITY,
 } from "./GeneralFields";
 import {
   handleMaskCPF,
@@ -28,10 +29,18 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
-import { GlobalContext } from "../../Pages/Main/GlobalContext";
+ import { GlobalContext } from "../../Pages/Main/GlobalContext";
+
+const {
+  UpdadeRegister,
+  RegisterNewUser,
+  ModifyUsers,
+  addressTypeMain,
+  addressTypePostal,
+} = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
-  const { address } = React.useContext(GlobalContext);
+   const { address  } = React.useContext(GlobalContext);
   const [CNPJmask, setCNPJMask] = React.useState("");
   const [CPFmask, setCPFMask] = React.useState("");
   const [CPFError, setCPFError] = React.useState("");
@@ -72,10 +81,11 @@ const GeneralForms = (loginData) => {
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
   const socialReason = SOCIAL();
-  const fantasyName = FANTASY_NAME();
-  const cep = CEP();
-  const logradouro = STREET(address);
-  const bairro = NEIGHBORHOOD(address);
+  const fantasy = FANTASY_NAME();
+  //  const cep = CEP();
+  //  const logradouro = STREET(address );
+  //  const bairro = NEIGHBORHOOD(address);
+  //  const location = CITY(address);
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
   const firstAcessForm = [cnpj, email, emailConfirm, password, passwordConfirm];
@@ -113,15 +123,17 @@ const GeneralForms = (loginData) => {
     newPassword,
   ];
 
-  //FUNCIONALIDADES A SEREM LIBERADAS
+// FORMULARIO ALTERAÇÃO DE USUARIOS
+const adjustsManangerUser = [
+name,
+cpf,
+email,
+department,
 
-  const {
-    UpdadeRegister,
-    RegisterNewUser,
-    ModifyUsers,
-    addressTypeMain,
-    addressTypePostal,
-  } = GeneralFunctionalities();
+]
+
+
+  //FUNCIONALIDADES A SEREM LIBERADAS
 
   const addFunctionalitiesCheckbox = [
     UpdadeRegister,
@@ -129,7 +141,11 @@ const GeneralForms = (loginData) => {
     ModifyUsers,
   ];
 
-  const upRegFormAddress = [cnpj , socialReason, fantasyName, cep, logradouro, bairro];
+  const upRegFormRegisterData = [
+    cnpj,
+    socialReason,
+    fantasy,
+  ];
   const upRegCBXAddress = [addressTypeMain, addressTypePostal];
 
   return {
@@ -140,8 +156,9 @@ const GeneralForms = (loginData) => {
     recoverFiedsAdm: recoverFiedsAdm,
     recoverFiedsCommon: recoverFiedsCommon,
     addUserForm: addUserForm,
+    adjustsManangerUser:adjustsManangerUser,
     addFunctionalitiesCheckbox: addFunctionalitiesCheckbox,
-    upRegFormAddress: upRegFormAddress,
+    upRegFormRegisterData: upRegFormRegisterData,
     upRegCBXAddress: upRegCBXAddress,
   };
 };

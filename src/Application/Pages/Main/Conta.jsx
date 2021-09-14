@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
 import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
 import Home from '../../Pages/Account/Home';
-import Gerenciar from '../../Pages/Account/GerenciarUsuarios';
+import Gerenciar from '../Account/User Mananger/GerenciarUsuarios';
 import FaleConosco from '../../Pages/Account/FaleConosco';
 import AdicionarUsuarios from '../../Pages/Account/AdicionarUsuarios';
-import RegisterUpdate from '../../Pages/Account/RegisterUpdate';
+import RegisterUpdate from '../../Pages/Account/Registration Update/RegisterUpdate';
 import Status from '../../Pages/Account/Status';
 import Menu from '../../Components/Main/MenuLateral';
 import Perfil from '../Account/Perfil'

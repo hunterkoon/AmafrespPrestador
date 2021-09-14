@@ -1,0 +1,31 @@
+.div-main-gerenciarUsuarios {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.table-list-users-mananger div {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.table-list-users-mananger {
+  margin: 0% auto;
+  width: 90%;
+  margin-top: 3%;
+}
+
+
+.table-list-users-mananger td , th  {
+  border: 1px solid #e1e1e1;
+  padding: 8px;
+  color: #414141;
+  border-radius: 5px;
+  
+}
+
+.table-list-users-mananger tr:nth-child(even) {
+  background-color: #f2f2f2;  
+}

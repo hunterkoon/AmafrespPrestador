@@ -1,7 +1,7 @@
 import React from 'react';
 
 const useFetch = () => {
-  const [data, setData] = React.useState(null);
+  // const [data, setData] = React.useState(null);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
 
@@ -18,13 +18,13 @@ const useFetch = () => {
       json = null;
       setError(err.message);
     } finally {
-      setData(json);
+      // setData(json);
       setLoading(false);
       return { response, json };
     }
   }, []);
 
-  return { data, loading, error, request, setData, setError };
+  return { /*data , setData,*/ loading, error, request, setError };
 };
 
 //TODO Iniciar JSON com indice 0

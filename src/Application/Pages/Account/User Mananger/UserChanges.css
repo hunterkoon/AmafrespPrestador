@@ -1,0 +1,19 @@
+.div-main-user-changes{
+    position: absolute;
+    display: flex;
+    width: auto;
+    height: auto;
+    background-color: #a6a6a6;
+    border-radius: 10px;
+    z-index: 9;
+    margin-top: 20%;
+    opacity: 1;
+
+}
+
+
+.div-sub-user-changes,
+.div-sub-user-changes input{
+    width: 95%;
+    margin: 0 auto;
+}

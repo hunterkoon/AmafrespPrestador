@@ -28,7 +28,8 @@ export const useInputsGeneral = (
       img,
       info,
       value,
-      name
+      name,
+ 
     }) => (
       <Input
         type={type}
@@ -52,6 +53,7 @@ export const useInputsGeneral = (
         onClick={onClick}
         info={info}
         className={classMain ? classMain : className}
+    
       />
     )
   );

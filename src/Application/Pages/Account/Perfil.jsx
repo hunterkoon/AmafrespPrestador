@@ -8,6 +8,7 @@ import { GlobalContext } from "../Main/GlobalContext";
 import Succesfull from "../../Components/Sub/Succesfull";
 import useErrorForm from "../../Hooks/useErrorForm";
 import { adjustsUserSubmit } from "../../Hooks/useSubmitDada";
+import { returnFilter } from "../../Shared/Commons/Helpers/HandleFilter";
 import "./Perfil.css";
 import "../../../App.css";
 
@@ -18,12 +19,6 @@ const Perfil = () => {
   const [err, setErr] = React.useState(false);
   const  UserSubmit = adjustsUserSubmit(alterRegisterData)
 
-  const returnFilter = (newUserData, field) => {
-    const idFilter = Object.entries(newUserData).filter((item) => {
-      return item[0] === field.id ? item[0]?.[1] : null;
-    });
-    return idFilter[0]?.[1];
-  };
 
   const [adjustsByUser, setAdjustsByUser] = React.useState(
     adjustsUserForm.reduce((acc, field) => {

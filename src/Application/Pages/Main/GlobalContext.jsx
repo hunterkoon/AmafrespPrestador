@@ -2,7 +2,7 @@ import React from "react";
 import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import { useNavigate } from "react-router";
 import useFetch from "../../Hooks/useFetch";
-import { ApiCep } from "../../Shared/Commons/Constants/Apis";
+import { ApiCep } from "../../Shared/Commons/Constants/RoutesApis";
 
 // import { GETDADOS } from "./Api";
 
@@ -15,29 +15,35 @@ export const GlobalStorage = ({ children }) => {
   const [newUserData, setNewUserData] = React.useState([]);
   const [firtAcessData, setFirtAcessData] = React.useState([]);
   const [recoverData, setRecoverData] = React.useState([]);
-  const [regUpData, setRegUpData] = React.useState([]);
-  const [address, setAdress] = React.useState([]);
   const [loginData, setLoginData] = React.useState([]);
   const [option, setOption] = React.useState(false);
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
   const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
-  const [menuItemRegisterUpdate, setmenuItemRegisterUpdate] =
-    React.useState(false);
+  const [menuItemRegisterUpdate, setmenuItemRegisterUpdate] = React.useState(false);
   const { width, height } = useWindowDimensions();
-  const { data, setData, loading, error, request } = useFetch();
+  const { loading, error, request } = useFetch();
+  const [address, setAdress] = React.useState([]);
+
+// ATUALIZAÇÃO CADASTRAL 
+
+  const [regUpData, setRegUpData] = React.useState([]);
+
+
+  // FETCH EDNE CEP
 
   React.useEffect(() => {
     async function GetCep() {
       const cep = ApiCep(regUpData.cep);
       if (regUpData.cep && regUpData.cep.length === 8) {
-        const { json } = await request(cep);
+        const { json, response } = await request(cep);
         setAdress(json);
       }
     }
     GetCep();
   }, [regUpData.cep, request]);
+
 
   // async function LoginValidate() {
   //   const { url, options } = GETDADOS();
@@ -58,9 +64,9 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
-    if (login) {
-      return navigate("/conta");
-    } else return navigate("/");
+    // if (login) {
+    //   return navigate("/conta");
+    // } else return navigate("/");
   }, [login, navigate]);
 
   const handleLogout = () => {
@@ -68,7 +74,6 @@ export const GlobalStorage = ({ children }) => {
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
-    setData(null);
   };
 
   return (
@@ -78,7 +83,6 @@ export const GlobalStorage = ({ children }) => {
         setLogin,
         setAnimateMenu,
         handleWindowHamburguer,
-        setData,
         setOption,
         setmenuItemUsuarios,
         setmenuItemRegisterUpdate,
@@ -96,7 +100,6 @@ export const GlobalStorage = ({ children }) => {
         animateMenu,
         height,
         width,
-        data,
         loading,
         error,
         menuItemUsuarios,
@@ -109,6 +112,7 @@ export const GlobalStorage = ({ children }) => {
         alterRegisterData,
         regUpData,
         address,
+      
       }}
     >
       {children}

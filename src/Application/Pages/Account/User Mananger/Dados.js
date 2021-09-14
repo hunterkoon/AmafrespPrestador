@@ -1,0 +1,125 @@
+export const json = {
+  colaboradores: [
+    { id: '1',
+      pnome: "GABRIEL PINHEIRO CAMPOS",
+      pdepartamento: "TI",
+      cpf: "41343494869",
+      email: "gabrielcampos@afresp.org.br",
+      privilegios: {
+        atualizar: "1",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '2',
+      pnome: "ADEBAIOR MENDES JR.",
+      pdepartamento: "APROVAÇÕES",
+      cpf: "3124111",
+      email: "adebaior@absd.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '3',
+      pnome: "LUIZ ALBERTO DA VOTSA.",
+      pdepartamento: "CONTABILIDADE",
+      cpf: "0000012346",
+      email: "luiz@asluiz.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '4',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '5',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '6',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '7',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '8',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '9',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+    { id: '10',
+      pnome: "NOME TESTE.",
+      pdepartamento: "DEPARTAMENTO",
+      cpf: "99999999999",
+      email: "email@email.com",
+      privilegios: {
+        atualizar: "null",
+        gerenciar: "null",
+        adicionar: "1",
+      },
+    },
+
+
+  ],
+};

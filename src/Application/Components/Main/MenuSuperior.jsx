@@ -7,7 +7,7 @@ import User_Profile from "../../../Assets/UserProfille.svg";
 import Button from "../Sub/Button";
 import "./MenuSuperior.css";
 const MenuSuperior = () => {
-  const { profile, setProfile, data, login } = React.useContext(GlobalContext);
+  const { profile, setProfile, login } = React.useContext(GlobalContext);
   const navigate = useNavigate();
   return (
     <>

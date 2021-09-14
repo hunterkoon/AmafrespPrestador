@@ -6,14 +6,14 @@ const Input = ({ ...props }) => {
   return (
     <>
       <label className={["input-div " + props.className]}>
-      <Info info={props.info} type={props.type}/>     
+        <Info info={props.info} type={props.type} />
         {props.label}
         <div key={props.key}>
           <h1 className={props.error ? "p-input" : "p-error-null"}>
             {props.error}
           </h1>
           <InputMask
-            type={props.type}
+            type={props.type ? props.type : "text"}
             onChange={props.onChange}
             onClick={props.onClick}
             mask={props.mask}
@@ -30,7 +30,7 @@ const Input = ({ ...props }) => {
             maskChar={null}
             name={props.name}
           />
-          {props.type === 'checkbox' || props.type === 'radio'? (
+          {props.type === "checkbox" || props.type === "radio" ? (
             <span className="checkmark"></span>
           ) : null}
         </div>
