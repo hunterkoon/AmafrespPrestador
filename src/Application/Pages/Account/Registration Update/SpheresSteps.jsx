@@ -3,7 +3,7 @@ import "./SpheresSteps.css";
 
 const SpheresSteps = ({ ...props }) => {
   const formAreas = ["Dados cadastrais", "Endereços", "Contatos"];
-  const [className, setClassName] = React.useState("div-sub-into-field");
+  // const [className, setClassName] = React.useState("div-sub-into-field");
 
   const MapCircles = formAreas.map((field, index) => (
 

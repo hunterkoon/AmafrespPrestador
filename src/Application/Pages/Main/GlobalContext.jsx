@@ -37,7 +37,7 @@ export const GlobalStorage = ({ children }) => {
     async function GetCep() {
       const cep = ApiCep(regUpData.cep);
       if (regUpData.cep && regUpData.cep.length === 8) {
-        const { json, response } = await request(cep);
+        const { json, /*response */} = await request(cep);
         setAdress(json);
       }
     }

@@ -15,10 +15,10 @@ import {
   FANTASY_NAME,
   CPF,
   CNPJ,
-  CEP,
-  STREET,
-  NEIGHBORHOOD,
-  CITY,
+  // CEP,
+  // STREET,
+  // NEIGHBORHOOD,
+  // CITY,
 } from "./GeneralFields";
 import {
   handleMaskCPF,
@@ -29,7 +29,7 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
- import { GlobalContext } from "../../Pages/Main/GlobalContext";
+//  import { GlobalContext } from "../../Pages/Main/GlobalContext";
 
 const {
   UpdadeRegister,
@@ -40,7 +40,7 @@ const {
 } = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
-   const { address  } = React.useContext(GlobalContext);
+  //  const { address  } = React.useContext(GlobalContext);
   const [CNPJmask, setCNPJMask] = React.useState("");
   const [CPFmask, setCPFMask] = React.useState("");
   const [CPFError, setCPFError] = React.useState("");
@@ -127,6 +127,7 @@ const GeneralForms = (loginData) => {
 const adjustsManangerUser = [
 name,
 cpf,
+newPassword,
 email,
 department,
 

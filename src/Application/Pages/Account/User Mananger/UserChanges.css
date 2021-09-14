@@ -1,19 +1,41 @@
-.div-main-user-changes{
+.div-main-user-mananger {
     position: absolute;
     display: flex;
-    width: auto;
+    width: 85%;
     height: auto;
-    background-color: #a6a6a6;
-    border-radius: 10px;
-    z-index: 9;
-    margin-top: 20%;
     opacity: 1;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    margin-top: 5%;
+}
+
+.div-sub-user-mananger {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    width: 50%;
+    height: 70%;
+    padding: 3%;
+    z-index: 99;
+    box-shadow: 5px 5px 10px #999999;
+}
+.div-sub-functions-user-mananger span  {
+   background-color: #e3e3e3;
+}
+
+.div-sub-form-user-mananger-button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
 
 }
 
-
-.div-sub-user-changes,
-.div-sub-user-changes input{
-    width: 95%;
-    margin: 0 auto;
+.div-sub-functions-user-mananger {
+    display: flex;
+    flex-direction: row;
+    margin: 3% auto;
 }

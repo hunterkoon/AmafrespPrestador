@@ -18,8 +18,8 @@ export const json = {
       cpf: "3124111",
       email: "adebaior@absd.com",
       privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
+        atualizar: "1",
+        gerenciar: "1",
         adicionar: "1",
       },
     },

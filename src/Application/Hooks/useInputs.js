@@ -15,8 +15,7 @@ export const useInputsGeneral = (
       pattern,
       title,
       maxLength,
-      mask,
-      checked,
+      mask,    
       changeBlur,
       changeFocus,
       onChange,
@@ -46,14 +45,13 @@ export const useInputsGeneral = (
         pattern={pattern}
         require={require}
         value={state[id] ? state[id] : value } 
-        checked={checked}
+        checked={state}
         changeBlur={changeBlur}
         changeFocus={changeFocus}
         placeholder={placeholder}
         onClick={onClick}
         info={info}
-        className={classMain ? classMain : className}
-    
+        className={classMain ? classMain : className}    
       />
     )
   );
