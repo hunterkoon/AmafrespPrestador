@@ -7,14 +7,6 @@
   overflow-x: hidden;
 }
 
-.div-adjusts-user-inputs-area {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 2%;
-  margin: 0 auto;
-}
-
 .form-adjusts-use {
   width: 96%;
   margin: 0 auto;
@@ -28,11 +20,4 @@
 
 .form-adjusts-use button {
   margin: 10% auto;
-}
-
-@media only screen and (max-width: 1024px) {
-  .div-adjusts-user-inputs-area {
-    display: flex;
-    flex-direction: column;
-  }
 }

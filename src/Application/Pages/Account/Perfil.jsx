@@ -9,8 +9,9 @@ import Succesfull from "../../Components/Sub/Succesfull";
 import useErrorForm from "../../Hooks/useErrorForm";
 import { adjustsUserSubmit } from "../../Hooks/useSubmitDada";
 import { returnFilter } from "../../Shared/Commons/Helpers/HandleFilter";
+import Style from '../Account/Add User/Forms.module.css'
 import "./Perfil.css";
-import "../../../App.css";
+
 
 
 const Perfil = () => {
@@ -56,7 +57,7 @@ const Perfil = () => {
       <div className="div-sub-adjusts-user-data">
         <form className="form-adjusts-use" onSubmit={handleSubmit}>
           <h1> Alteração de dados.</h1>
-          <div className="div-adjusts-user-inputs-area">
+          <div className={Style.form}>
             {useInputsGeneral(adjustsUserForm, handleChange, adjustsByUser)}
           </div>
           <div className="div-sub-adjusts-user-button-area">
