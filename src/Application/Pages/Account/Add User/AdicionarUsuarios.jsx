@@ -1,15 +1,15 @@
 import React from "react";
-import { useInputsGeneral } from "../../Hooks/useInputs";
-import { GlobalContext } from "../Main/GlobalContext";
-import Titledecorated from "../../Components/Sub/Titledecorated";
-import Title from "../../Components/Sub/Title";
-import GeneralForms from "../../Shared/Forms/GeneralForms";
-import Button from "../../Components/Sub/Button";
-import Succesfull from "../../Components/Sub/Succesfull";
-import useErrorForm from "../../Hooks/useErrorForm";
-import { addUserSubmit } from "../../Hooks/useSubmitDada";
+import { useInputsGeneral } from "../../../Hooks/useInputs";
+import { GlobalContext } from "../../Main/GlobalContext";
+import Titledecorated from "../../../Components/Sub/Titledecorated";
+import Title from "../../../Components/Sub/Title";
+import GeneralForms from "../../../Shared/Forms/GeneralForms";
+import Button from "../../../Components/Sub/Button";
+import Succesfull from "../../../Components/Sub/Succesfull";
+import useErrorForm from "../../../Hooks/useErrorForm";
+import { addUserSubmit } from "../../../Hooks/useSubmitDada";
 import "./AdicionarUsuarios.css";
-import "../../../App.css";
+import Style from "./Forms.module.css";
 
 const Usuarios = () => {
   const { newUserData, setNewUserData } = React.useContext(GlobalContext);
@@ -70,32 +70,32 @@ const Usuarios = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (erroForm) {
       setErr(true);
       console.log(addUserOBJ);
     } else setErr(false);
   };
 
-  // LIMPAR FORMULARIO 
-  
+  // LIMPAR FORMULARIO
+
   const handleCleanInputs = () => {
     const inputs = document.querySelectorAll("input");
     inputs.forEach((item) => {
       if (item.value) {
         item.value = "";
-      } 
-       if  (item.type === "checkbox"){
+      }
+      if (item.type === "checkbox") {
         item.checked = false;
       }
     });
-    setNewUser( addUserForm.reduce((acc, field) => {
-      return {
-        ...acc,
-        [field.id]: "",
-      };
-    }, {}
-  ))
+    setNewUser(
+      addUserForm.reduce((acc, field) => {
+        return {
+          ...acc,
+          [field.id]: "",
+        };
+      }, {})
+    );
   };
 
   return (
@@ -108,8 +108,14 @@ const Usuarios = () => {
         <div className="div-sub-add-new-user-data">
           <form id="form" className="form-add-new-user" onSubmit={handleSubmit}>
             <h1> Preencha os dados</h1>
-            <div className="div-sub-add-new-user-input-area">
-              {useInputsGeneral(addUserForm, handleChangeUser, newUser)}
+
+            <div className={Style.form}>
+              {useInputsGeneral(
+                addUserForm,
+                handleChangeUser,
+                newUser,
+              )}
+
             </div>
             <div className="div-sub-add-new-user-functions-area">
               <h1> Marque as funcões a serem liberadas</h1>

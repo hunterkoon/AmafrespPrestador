@@ -15,7 +15,7 @@
   opacity: 0;
 }
 
-.p-input {
+.error-input {
   padding: 1%;
   font-size: 13px;
   position: absolute;
@@ -67,7 +67,7 @@
 }
 
 @media only screen and (max-width:1024px) {
-  .p-input   {
+  .error-input   {
     position: absolute;
     right: 0%;
     width: 80%;
@@ -84,9 +84,9 @@
 }
 
 @media only screen and (min-width:1280px) {
-  .p-input {
+  .error-input {
     width: 300px;
     margin: 0 auto;
-    transform: translate(150px , -50px);
+    transform: translate(0px , -80px);
   }
 }

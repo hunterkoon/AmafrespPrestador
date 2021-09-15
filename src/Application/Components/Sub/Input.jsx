@@ -9,7 +9,7 @@ const Input = ({ ...props }) => {
         <Info info={props.info} type={props.type} />
         {props.label}
         <div key={props.key}>
-          <h1 className={props.error ? "p-input" : "p-error-null"}>
+          <h1 className={props.error ? "error-input" : "p-error-null"}>
             {props.error}
           </h1>
           <InputMask

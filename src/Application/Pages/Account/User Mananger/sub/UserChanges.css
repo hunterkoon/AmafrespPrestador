@@ -1,29 +1,30 @@
 .div-main-user-mananger {
     position: absolute;
     display: flex;
-    width: 85%;
-    height: auto;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 8%;
     opacity: 1;
     align-items: center;
     justify-content: center;
     z-index: 99;
-    margin-top: 5%;
 }
 
 .div-sub-user-mananger {
-    display: flex;
-    flex-direction: column;
     position: relative;
     background-color: #f1f1f1;
     border-radius: 10px;
-    width: 50%;
-    height: 70%;
+    width: 100%;
     padding: 3%;
-    z-index: 99;
     box-shadow: 5px 5px 10px #999999;
 }
-.div-sub-functions-user-mananger span  {
-   background-color: #e3e3e3;
+
+.div-sub-user-mananger input {
+    height: 45px;
+}
+
+.div-sub-functions-user-mananger span {
+    background-color: #e3e3e3;
 }
 
 .div-sub-form-user-mananger-button {
@@ -31,7 +32,6 @@
     width: 100%;
     align-items: center;
     justify-content: space-around;
-
 }
 
 .div-sub-functions-user-mananger {

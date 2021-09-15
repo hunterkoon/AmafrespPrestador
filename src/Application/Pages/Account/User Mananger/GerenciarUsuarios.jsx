@@ -2,8 +2,8 @@ import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
 import "./GerenciarUsuarios.css";
 import "../../../../App.css";
-import { json } from "./Dados";
-import UserChanges from "./UserChanges";
+import { json } from "./sub/Dados";
+import UserChanges from "./sub/UserChanges";
 
 const GerenciarUsuarios = () => {
   const [selectecUser, setSelectedUser] = React.useState(null);
@@ -32,12 +32,11 @@ const GerenciarUsuarios = () => {
   
   return (
     <>
-    <UserChanges props={selectecUser}/>
-      <div className="div-main-gerenciarUsuarios pageView">
+    <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
           <Titledecorated text="Gerênciar Usuários" />
         </div>
-
+      <UserChanges props={selectecUser}/>
         <table className="table-list-users-mananger">
           <h1>Lista de Usúarios</h1>
           <tr>

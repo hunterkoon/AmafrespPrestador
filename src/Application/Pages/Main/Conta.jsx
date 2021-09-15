@@ -5,7 +5,7 @@ import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
 import Home from '../../Pages/Account/Home';
 import Gerenciar from '../Account/User Mananger/GerenciarUsuarios';
 import FaleConosco from '../../Pages/Account/FaleConosco';
-import AdicionarUsuarios from '../../Pages/Account/AdicionarUsuarios';
+import AdicionarUsuarios from '../../Pages/Account/Add User/AdicionarUsuarios';
 import RegisterUpdate from '../../Pages/Account/Registration Update/RegisterUpdate';
 import Status from '../../Pages/Account/Status';
 import Menu from '../../Components/Main/MenuLateral';

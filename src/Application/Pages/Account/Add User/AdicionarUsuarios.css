@@ -23,17 +23,7 @@
   
 }
 .div-sub-add-new-user-button-area button{
-
   margin: 3% ;
- 
-}
-
-.div-sub-add-new-user-input-area {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 2%;
-  margin: 0 auto;
 }
 
 .div-sub-add-new-user-functions-area {
@@ -51,16 +41,7 @@
 }
 
 
-
 @media only screen and (max-width: 1024px) {
-  .div-sub-add-new-user-input-area label {
-    width: 90%; 
-  }
-  .div-sub-add-new-user-input-area {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
   .div-sub-add-new-user-checkbox-area {
     display: flex;
     flex-direction: column;
@@ -76,40 +57,5 @@
 
 /* CONTAINER PERSONALIZADO  */
 
-.NAME-FIELD-CLASS {
-  grid-area: 1/1/1/5;
-}
-
-.CPF-FIELD-CLASS {
-  grid-area: 1/5/1/7;
-}
-
-.DEPARTMENT-FIELD-CLASS {
-  grid-area: 2/5/2/7;
-}
-
-.TELPHONE-FIELD-CLASS {
-  grid-area: 2/1/2/3;
-}
-
-.CELPHONE-FIELD-CLASS {
-  grid-area: 2/3/2/5;
-}
-
-.PASSWORD-FIELD-CLASS {
-  grid-area: 3/1/3/4;
-}
-
-.CONFIRMPASSWORD-FIELD-CLASS {
-  grid-area: 3/4/3/7;
-}
-
-.EMAIL-FIELD-CLASS {
-  grid-area: 4/1/4/4;
-}
-
-.CONFIRMEMAIL-FIELD-CLASS {
-  grid-area: 4/4/4/7;
-}
 
 

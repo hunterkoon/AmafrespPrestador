@@ -5,6 +5,8 @@ export const json = {
       pdepartamento: "TI",
       cpf: "41343494869",
       email: "gabrielcampos@afresp.org.br",
+      ptelphone:'1155273533',
+      pcelfone:'11939213367',
       privilegios: {
         atualizar: "1",
         gerenciar: "null",
@@ -17,6 +19,8 @@ export const json = {
       pdepartamento: "APROVAÇÕES",
       cpf: "3124111",
       email: "adebaior@absd.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "1",
         gerenciar: "1",
@@ -29,6 +33,8 @@ export const json = {
       pdepartamento: "CONTABILIDADE",
       cpf: "0000012346",
       email: "luiz@asluiz.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -37,10 +43,12 @@ export const json = {
     },
 
     { id: '4',
-      pnome: "NOME TESTE.",
+      pnome: "NOME DE TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -49,10 +57,12 @@ export const json = {
     },
 
     { id: '5',
-      pnome: "NOME TESTE.",
+      pnome: "NOME DE TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -61,10 +71,12 @@ export const json = {
     },
 
     { id: '6',
-      pnome: "NOME TESTE.",
+      pnome: "NOME TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -73,10 +85,12 @@ export const json = {
     },
 
     { id: '7',
-      pnome: "NOME TESTE.",
+      pnome: "NOME DE TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -85,10 +99,12 @@ export const json = {
     },
 
     { id: '8',
-      pnome: "NOME TESTE.",
+      pnome: "NOME DE TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -97,10 +113,12 @@ export const json = {
     },
 
     { id: '9',
-      pnome: "NOME TESTE.",
+      pnome: "NOME DE TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",
@@ -109,10 +127,12 @@ export const json = {
     },
 
     { id: '10',
-      pnome: "NOME TESTE.",
+      pnome: "NOME DE TESTE",
       pdepartamento: "DEPARTAMENTO",
       cpf: "99999999999",
       email: "email@email.com",
+      ptelphone:'1100000000',
+      pcelfone:'110000000000',
       privilegios: {
         atualizar: "null",
         gerenciar: "null",

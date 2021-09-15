@@ -1,0 +1,50 @@
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 2%;
+    margin: 0 auto;
+}
+
+.form label[class~="NAME-FIELD-CLASS"] {
+    grid-area: 1/1/1/5;
+}
+
+.form label[class~="CPF-FIELD-CLASS"] {
+    grid-area: 1/5/1/7;
+}
+
+.form label[class~="DEPARTMENT-FIELD-CLASS"] {
+    grid-area: 2/5/2/7;
+}
+
+.form label[class~="TELPHONE-FIELD-CLASS"] {
+    grid-area: 2/1/2/3;
+}
+
+.form label[class~="CELPHONE-FIELD-CLASS"] {
+    grid-area: 2/3/2/5;
+}
+
+.form label[class~="PASSWORD-FIELD-CLASS"] {
+    grid-area: 3/1/3/4;
+}
+
+.form label[class~="CONFIRMPASSWORD-FIELD-CLASS"] {
+    grid-area: 3/4/3/7;
+}
+
+.form label[class~="EMAIL-FIELD-CLASS"] {
+    grid-area: 4/1/4/4;
+}
+
+.form label[class~="CONFIRMEMAIL-FIELD-CLASS"] {
+    grid-area: 4/4/4/7;
+}
+
+@media only screen  and (max-width:1024px){
+    .form{
+        display: flex;
+        flex-direction: column;
+    }
+}

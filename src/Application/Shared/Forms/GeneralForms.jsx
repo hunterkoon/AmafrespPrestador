@@ -123,16 +123,16 @@ const GeneralForms = (loginData) => {
     newPassword,
   ];
 
-// FORMULARIO ALTERAÇÃO DE USUARIOS
-const adjustsManangerUser = [
-name,
-cpf,
-newPassword,
-email,
-department,
-
-]
-
+  // FORMULARIO ALTERAÇÃO DE USUARIOS
+  const adjustsManangerUser = [
+    name,
+    cpf,
+    telphone,
+    celphone,
+    newPassword,
+    email,
+    department,
+  ];
 
   //FUNCIONALIDADES A SEREM LIBERADAS
 
@@ -142,11 +142,7 @@ department,
     ModifyUsers,
   ];
 
-  const upRegFormRegisterData = [
-    cnpj,
-    socialReason,
-    fantasy,
-  ];
+  const upRegFormRegisterData = [cnpj, socialReason, fantasy];
   const upRegCBXAddress = [addressTypeMain, addressTypePostal];
 
   return {
@@ -157,7 +153,7 @@ department,
     recoverFiedsAdm: recoverFiedsAdm,
     recoverFiedsCommon: recoverFiedsCommon,
     addUserForm: addUserForm,
-    adjustsManangerUser:adjustsManangerUser,
+    adjustsManangerUser: adjustsManangerUser,
     addFunctionalitiesCheckbox: addFunctionalitiesCheckbox,
     upRegFormRegisterData: upRegFormRegisterData,
     upRegCBXAddress: upRegCBXAddress,

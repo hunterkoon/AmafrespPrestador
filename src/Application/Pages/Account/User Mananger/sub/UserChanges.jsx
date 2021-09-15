@@ -1,16 +1,16 @@
 /* eslint-disable eqeqeq */
 import React from "react";
-import { useInputsGeneral } from "../../../Hooks/useInputs";
-import GeneralForms from "../../../Shared/Forms/GeneralForms";
-import Button from "../../../Components/Sub/Button";
+import { useInputsGeneral } from "../../../../Hooks/useInputs";
+import GeneralForms from "../../../../Shared/Forms/GeneralForms";
+import Button from "../../../../Components/Sub/Button";
+import Style from "./Forms.module.css";
 import "./UserChanges.css";
 
 const UserChanges = ({ ...props }) => {
   const [objProps, setObjProps] = React.useState(null);
   const [userSelectedForm, setUserSelectedForm] = React.useState([]);
   const [functions, setFunctions] = React.useState([]);
-  const { adjustsManangerUser, addFunctionalitiesCheckbox } =
-    GeneralForms(userSelectedForm);
+  const { adjustsManangerUser, addFunctionalitiesCheckbox } =   GeneralForms(userSelectedForm);
 
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
@@ -40,6 +40,30 @@ const UserChanges = ({ ...props }) => {
     }
   };
 
+  const InputForm = () => {
+    return (
+      <div className={Style.form}>
+        {useInputsGeneral(
+          adjustsManangerUser,
+          handleChangeInputs,
+          userSelectedForm
+        )}
+      </div>
+    );
+  };
+
+  const CheckboxForm = () => {
+    return (
+      <div className="menuView div-sub-functions-user-mananger">
+        {useInputsGeneral(
+          addFunctionalitiesCheckbox,
+          handleChangeFunctions,
+          functions
+        )}
+      </div>
+    );
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(functions);
@@ -74,34 +98,29 @@ const UserChanges = ({ ...props }) => {
     setObjProps(props.props);
   }, [props.props]);
 
+
   return (
-    <div className="pageView div-main-user-mananger">
-      <div className="div-sub-user-mananger">
-        <form onSubmit={handleSubmit}>
-            <h1>Guia de Alteração de usuário</h1>
-          {useInputsGeneral(
-            adjustsManangerUser,
-            handleChangeInputs,
-            userSelectedForm
-          )}
-          <div className="menuView div-sub-functions-user-mananger">
-            {useInputsGeneral(
-              addFunctionalitiesCheckbox,
-              handleChangeFunctions,
-              functions
-            )}
+    <>
+      {objProps ? (
+        <div className="pageView div-main-user-mananger">
+          <div className="div-sub-user-mananger">
+            <form onSubmit={handleSubmit}>
+              <h1>Guia de Alteração de usuário</h1>
+              <InputForm />
+              <CheckboxForm />
+              <div className="div-sub-form-user-mananger-button">
+                <Button value="Alterar" />
+                <Button
+                  onClick={(e) => [e.preventDefault() , setObjProps(null)]}
+                  color="#E20000"
+                  value="Fechar"
+                />
+              </div>
+            </form>
           </div>
-          <div className='div-sub-form-user-mananger-button'>
-          <Button value="Alterar" />
-          <Button
-                onClick={(e) => e.preventDefault()}
-                color="#E20000"
-                value="Fechar"
-              />
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 

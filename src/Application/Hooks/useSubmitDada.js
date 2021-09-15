@@ -16,9 +16,9 @@ class InputConstants {
     this.Name = data.pnome && data.pnome.toUpperCase();
     this.Telphone = data.ptelphone;
     this.Celphone = data.pcelfone;
-    this.Cep = data.cep && data.cep.replace(regex,"");
-    this.Street = data.logradouro
-    this.Neighborhood = data.bairro
+    this.Cep = data.cep && data.cep.replace(regex, "");
+    this.Street = data.logradouro;
+    this.Neighborhood = data.bairro;
   }
 }
 export const loginCommonDataSubmit = (data) => {
@@ -30,7 +30,7 @@ export const loginCommonDataSubmit = (data) => {
 };
 export const loginAdmDataSubmit = (data) => {
   const loginAdm = new InputConstants(data);
-  localStorage.setItem('token', loginAdm.Password)
+  localStorage.setItem("token", loginAdm.Password);
   return {
     CPFCNPJ: loginAdm.Cnpj,
     senha: loginAdm.Password,
@@ -72,25 +72,24 @@ export const firstAcessSubmit = (data) => {
   };
 };
 export const adjustsUserSubmit = (data) => {
-    const adjustsUser = new InputConstants(data);
-    return {
-      nome: adjustsUser.Name,
-      CPFCNPJ: adjustsUser.Cpf,
-      telefoneFixo: adjustsUser.Telphone,
-      telefoneCelular: adjustsUser.Celphone,
-      email: adjustsUser.Email,
-      departamento: adjustsUser.Department,
-      senha: adjustsUser.ActualPassword,
-      novaSenha: adjustsUser.NewPassword,
-    };
+  const adjustsUser = new InputConstants(data);
+  return {
+    nome: adjustsUser.Name,
+    CPFCNPJ: adjustsUser.Cpf,
+    telefoneFixo: adjustsUser.Telphone,
+    telefoneCelular: adjustsUser.Celphone,
+    email: adjustsUser.Email,
+    departamento: adjustsUser.Department,
+    senha: adjustsUser.ActualPassword,
+    novaSenha: adjustsUser.NewPassword,
   };
+};
 
 export const upRegRegistrationSubmit = (data) => {
-    const upRegAddress = new InputConstants(data);
-    return {
-      CPFCNPJ: upRegAddress.Cnpj,
-      razaoSocial : upRegAddress.SocialReason,
-      fantasia : upRegAddress.Neighborhood,
-    };
+  const upRegAddress = new InputConstants(data);
+  return {
+    CPFCNPJ: upRegAddress.Cnpj,
+    razaoSocial: upRegAddress.SocialReason,
+    fantasia: upRegAddress.Neighborhood,
   };
-
+};
