@@ -2,14 +2,14 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
 import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
-import Home from '../../Pages/Account/Home';
+import Home from '../Account/Home/Home';
 import Gerenciar from '../Account/User Mananger/GerenciarUsuarios';
-import FaleConosco from '../../Pages/Account/FaleConosco';
+import FaleConosco from '../../Pages/Account/Contact/FaleConosco';
 import AdicionarUsuarios from '../../Pages/Account/Add User/AdicionarUsuarios';
 import RegisterUpdate from '../../Pages/Account/Registration Update/RegisterUpdate';
-import Status from '../../Pages/Account/Status';
+import Status from '../../Pages/Account/Status/Status';
 import Menu from '../../Components/Main/MenuLateral';
-import Perfil from '../Account/Perfil'
+import Perfil from '../Account/Profile/Perfil'
 import './Conta.css';
 
 

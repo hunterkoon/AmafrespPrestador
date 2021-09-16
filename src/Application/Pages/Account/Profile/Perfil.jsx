@@ -1,15 +1,15 @@
 import React from "react";
-import Title from "../../Components/Sub/Title";
-import Titledecorated from "../../Components/Sub/Titledecorated";
-import { useInputsGeneral } from "../../Hooks/useInputs";
-import GeneralForms from "../../Shared/Forms/GeneralForms";
-import Button from "../../Components/Sub/Button";
-import { GlobalContext } from "../Main/GlobalContext";
-import Succesfull from "../../Components/Sub/Succesfull";
-import useErrorForm from "../../Hooks/useErrorForm";
-import { adjustsUserSubmit } from "../../Hooks/useSubmitDada";
-import { returnFilter } from "../../Shared/Commons/Helpers/HandleFilter";
-import Style from '../Account/Add User/Forms.module.css'
+import Title from "../../../Components/Sub/Title";
+import Titledecorated from "../../../Components/Sub/Titledecorated";
+import { useInputsGeneral } from "../../../Hooks/useInputs";
+import GeneralForms from "../../../Shared/Forms/GeneralForms";
+import Button from "../../../Components/Sub/Button";
+import { GlobalContext } from "../../Main/GlobalContext";
+import Succesfull from "../../../Components/Sub/Succesfull";
+import useErrorForm from "../../../Hooks/useErrorForm";
+import { adjustsUserSubmit } from "../../../Hooks/useSubmitDada";
+import { returnFilter } from "../../../Shared/Commons/Helpers/HandleFilter";
+import Style from '../../Account/Add User/Forms.module.css'
 import "./Perfil.css";
 
 

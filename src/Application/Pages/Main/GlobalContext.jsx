@@ -10,6 +10,7 @@ export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
   const navigate = useNavigate();
+  const [toggleModal, setToggleModal] = React.useState(false);
   const [handle, setHandle] = React.useState(null);
   const [alterRegisterData, setAlterRegisterData] = React.useState([]);
   const [newUserData, setNewUserData] = React.useState([]);
@@ -94,6 +95,7 @@ export const GlobalStorage = ({ children }) => {
         setAlterRegisterData,
         handleLogout,
         setRegUpData,
+        setToggleModal,
         option,
         profile,
         login,
@@ -112,6 +114,7 @@ export const GlobalStorage = ({ children }) => {
         alterRegisterData,
         regUpData,
         address,
+        toggleModal, 
       
       }}
     >

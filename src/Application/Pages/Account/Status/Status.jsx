@@ -1,14 +1,13 @@
 import React from "react";
-import Titledecorated from "../../Components/Sub/Titledecorated";
+import Titledecorated from "../../../Components/Sub/Titledecorated";
 import { Link } from "react-router-dom";
 //import { GlobalContext } from "../Main/GlobalContext";
-import Title from "../../Components/Sub/Title";
-import Button from "../../Components/Sub/Button";
-import Check from "../../../Assets/Check.gif";
-import Wait from "../../../Assets/Wait.gif";
-import Down from "../../../Assets/Down.gif";
+import Title from "../../../Components/Sub/Title";
+import Button from "../../../Components/Sub/Button";
+import Check from "../../../../Assets/Check.gif";
+import Wait from "../../../../Assets/Wait.gif";
+import Down from "../../../../Assets/Down.gif";
 import "./Status.css";
-import "../../../App.css";
 
 const Status = () => {
   const [boo, setBoo] = React.useState("");

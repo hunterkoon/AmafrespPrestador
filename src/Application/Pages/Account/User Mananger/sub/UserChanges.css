@@ -15,12 +15,21 @@
     background-color: #f1f1f1;
     border-radius: 10px;
     width: 100%;
-    padding: 3%;
+    padding: 1%;
     box-shadow: 5px 5px 10px #999999;
+}
+.div-sub-user-mananger-delete {
+    position: relative;
+    background-color: #474747;
+    border-radius: 10px;
+    width: 100%;
+    padding: 1%;
+    box-shadow: 5px 5px 10px #999999;
+    color: white;
 }
 
 .div-sub-user-mananger input {
-    height: 45px;
+    height: 40px;
 }
 
 .div-sub-functions-user-mananger span {
@@ -31,11 +40,36 @@
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin: 1%;
 }
 
 .div-sub-functions-user-mananger {
     display: flex;
     flex-direction: row;
-    margin: 3% auto;
+    margin: 2%;
+}
+
+
+.div-table-delete-user{
+   
+    display: flex;
+    width: 96%;
+    justify-content: inherit;
+    
+}
+.table-delete-user{
+    color: white;
+    width: 75%;
+    
+}
+.table-delete-user th{
+    color: white;    
+}
+.div-button-delete-user button{
+    margin: 5%;
+}
+.div-button-delete-user{
+    display: flex;
+    flex-direction: column;
 }

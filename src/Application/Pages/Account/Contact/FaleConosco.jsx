@@ -1,8 +1,7 @@
 import React from 'react';
-import Titledecorated from '../../Components/Sub/Titledecorated';
-import Maintenance from '../../Components/Main/Maintenance';
+import Titledecorated from '../../../Components/Sub/Titledecorated';
+import Maintenance from '../../../Components/Main/Maintenance';
 import './FaleConosco.css';
-import '../../../App.css';
 
 const FaleConosco = () => {
   return (

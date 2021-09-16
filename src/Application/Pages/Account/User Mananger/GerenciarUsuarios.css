@@ -29,3 +29,21 @@
 .table-list-users-mananger tr:nth-child(even) {
   background-color: #f2f2f2;  
 }
+
+.table-td-edit{
+  cursor: pointer;  
+}
+.table-td-edit:hover{
+  color: #ffff;
+  background-color: #25b099 ;
+  box-shadow: 5px 5px 10px #999999;
+}
+
+.table-td-delete{
+  cursor: pointer;  
+}
+.table-td-delete:hover{
+  color: #ffff;
+  background-color: #E20000 ;
+  box-shadow: 5px 5px 10px #999999;
+}
