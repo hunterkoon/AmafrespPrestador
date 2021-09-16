@@ -6,16 +6,30 @@ import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import "./UserChanges.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
+import Title from "../../../../Components/Sub/Title";
 
 const UserChanges = ({ ...props }) => {
+  // RECEBE DADOS DO USUÁRIO A SER EXCLUIDO
   const [userDeleteProps, setUserDeleteProps] = React.useState(null);
+
+  // RECEBE DADOS DO USUÁRIO A SER EDITADO
   const [userEditProps, setUserEditProps] = React.useState(null);
+
+  // RECEBE ATUALIZAÇÕES DO HANDLECHANGE
   const [userSelectedForm, setUserSelectedForm] = React.useState([]);
+
+  // RECEBE ATUALIZAÇOES DO HANDLECHANGFE
   const [functions, setFunctions] = React.useState([]);
+
+  // TOGGLE MODAIS
+  const [toggleExclude, setToggleExclude] = React.useState(false);
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
+
+  // RECEBE FORMULARIOS
   const { adjustsManangerUser, addFunctionalitiesCheckbox } =
     GeneralForms(userSelectedForm);
 
+  // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
     setUserSelectedForm({ ...userSelectedForm, [id]: value });
@@ -26,6 +40,7 @@ const UserChanges = ({ ...props }) => {
     setFunctions({ ...functions, [target.id]: checked });
   };
 
+  // VALIDAÇÃO DE DADOS RECEBIDOS
   const validateFunctions = (field, state) => {
     if (field === "modifyUser") {
       if (state.privilegios.gerenciar == "null") {
@@ -44,6 +59,7 @@ const UserChanges = ({ ...props }) => {
     }
   };
 
+  // COMPONENTE DE EXLUSAO DE FORMULARIO
   const DeleteForm = () => {
     return (
       <div className="div-table-delete-user">
@@ -63,9 +79,9 @@ const UserChanges = ({ ...props }) => {
             </tr>
           </tbody>
         </table>
-        <div className='div-button-delete-user'>
+        <div className="div-button-delete-user">
           <Button
-            onClick={(e) => [e.preventDefault(), setUserDeleteProps(null)]}
+            onClick={(e) => [e.preventDefault(), setToggleExclude(true)]}
             color="#E20000"
             value="Excluir"
           />
@@ -78,6 +94,7 @@ const UserChanges = ({ ...props }) => {
     );
   };
 
+  // COMPONENTE COM FORMULARIOS
   const InputsForms = () => {
     return (
       <>
@@ -99,14 +116,15 @@ const UserChanges = ({ ...props }) => {
     );
   };
 
-  const [ inputs , setInputs] = React.useState(InputsForms())
-
+  //
+  const [inputs, setInputs] = React.useState(InputsForms());
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(functions);
   };
 
+  // CICLO DE VIDA DOS COMPONENTES
   React.useEffect(() => {
     if (userEditProps || userDeleteProps) {
       setUserSelectedForm(
@@ -137,16 +155,17 @@ const UserChanges = ({ ...props }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEditProps, userDeleteProps]);
 
+  // ATUALIZA ESTADOS DA APLICAÇÃO PARA EVENTOS EXTERIORES
   React.useEffect(() => {
     setUserDeleteProps(props.deleteUser);
     setUserEditProps(props.user);
   }, [props.deleteUser, props.user]);
 
-  React.useEffect(()=>{
-    setInputs(InputsForms())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[userSelectedForm, functions])
-
+  // ATUALIZA EXIBIÇÃO DE VALORES EM FORMULÁRIOS.
+  React.useEffect(() => {
+    setInputs(InputsForms());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSelectedForm, functions]);
 
   return (
     <>
@@ -172,9 +191,35 @@ const UserChanges = ({ ...props }) => {
       {userDeleteProps ? (
         <div className="pageView div-main-user-mananger">
           <div className="div-sub-user-mananger-delete">
+            <Title color={"#E20000"} text={"Exclusão de Usuário"} />
             <h1>Guia de Exclusão de usuário</h1>
             <div className="div-sub-form-user-mananger-button">
               {<DeleteForm />}
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {toggleExclude ? (
+        <div className="pageView div-main-user-mananger">
+          <div className="div-sub-user-mananger">
+            <h1>Guia de Exclusão de usuário</h1>
+            <span>Tem Certeza ? o usuário </span>
+            <span style={{ color: "#f20000", fontWeight: "bold" }}>
+              {userDeleteProps && userDeleteProps.pnome}
+            </span>
+            <span> será excluido permanentemente!</span>
+            <div className="div-sub-form-user-mananger-button">
+              <Button value="Sim" />
+              <Button
+                onClick={(e) => [
+                  e.preventDefault(),
+                  setToggleModal(false),
+                  setToggleExclude(false),
+                ]}
+                color="#E20000"
+                value="Não"
+              />
             </div>
           </div>
         </div>

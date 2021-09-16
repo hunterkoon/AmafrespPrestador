@@ -30,6 +30,7 @@ const GerenciarUsuarios = () => {
     return json.colaboradores.map((lista) => (
       <tr key={lista.id}>
         <td>{lista.pnome}</td>
+        <td>{lista.cpf}</td>
         <td>{lista.pdepartamento}</td>
         <td>{lista.email}</td>
         <td>
@@ -56,10 +57,16 @@ const GerenciarUsuarios = () => {
           <Titledecorated text="Gerênciar Usuários" />
         </div>
         <UserChanges user={editUser} deleteUser={deleteUser} />
+
+      <div>
+        Adicionar novo usuário
+      </div>
+
         <table className="table-list-users-mananger">
           <thead>
             <tr>
               <th>Nome</th>
+              <th>CPF</th>
               <th>Setor</th>
               <th>Email</th>
               <th>Privilégios</th>
