@@ -202,10 +202,10 @@ const UserChanges = ({ ...props }) => {
 
       {toggleExclude ? (
         <div className="pageView div-main-user-mananger">
-          <div className="div-sub-user-mananger">
+          <div className="div-sub-user-mananger-confirm">
             <h1>Guia de Exclusão de usuário</h1>
-            <span>Tem Certeza ? o usuário </span>
-            <span style={{ color: "#f20000", fontWeight: "bold" }}>
+            <span>Tem Certeza ?</span>
+            <span style={{backgroundColor:"#ffff", color: "#f20000", fontWeight: "bold" }}>
               {userDeleteProps && userDeleteProps.pnome}
             </span>
             <span> será excluido permanentemente!</span>

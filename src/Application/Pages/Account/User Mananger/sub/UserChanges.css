@@ -18,6 +18,23 @@
     padding: 1%;
     box-shadow: 5px 5px 10px #999999;
 }
+
+.div-sub-user-mananger-confirm {
+    position: fixed;
+    top: 30vh;
+    display: flex;
+    background-color: #414141;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 5px 5px 10px #999999;
+    color: #ffff;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
 .div-sub-user-mananger-delete {
     position: relative;
     background-color: #f1f1f1;
@@ -50,28 +67,69 @@
     margin: 2%;
 }
 
-
-.div-table-delete-user{
-   
+.div-table-delete-user {
     display: flex;
     width: 96%;
     justify-content: inherit;
-    
 }
-.table-delete-user{
+
+.table-delete-user {
     color: #414141;
     width: 75%;
-    
 }
-.table-delete-user th{
+
+.table-delete-user th {
     border: #414141 solid 1px;
-    color: #414141;    
+    color: #414141;
 }
-.div-button-delete-user button{
+
+.div-button-delete-user button {
     margin: 5%;
 }
-.div-button-delete-user{
+
+.div-button-delete-user {
     display: flex;
     flex-direction: column;
-    
+}
+
+@media only screen and (max-width:1024px) {
+    .div-sub-user-mananger {
+        display: flex;
+        flex-direction: column;
+    }
+    .div-sub-functions-user-mananger {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        margin: 5% auto;
+    }
+    .div-sub-user-mananger-delete {
+        margin-top: 25%;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+    .div-table-delete-user {
+        display: flex;
+        width: 96%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    .table-delete-user {
+        display: inline-table;
+        margin: 3%;
+        width: 100%;
+    }
+    .div-sub-user-mananger-delete h1 {
+        padding: 5%;
+        margin: 5%;
+    }
+    .div-sub-user-mananger-confirm {
+        position: fixed;
+        top: 25vh;
+        width: 90%;
+    }
 }

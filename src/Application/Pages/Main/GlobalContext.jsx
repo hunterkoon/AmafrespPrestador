@@ -65,9 +65,9 @@ export const GlobalStorage = ({ children }) => {
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
-    // if (login) {
-    //   return navigate("/conta");
-    // } else return navigate("/");
+    if (login) {
+      return navigate("/conta");
+    } else return navigate("/");
   }, [login, navigate]);
 
   const handleLogout = () => {

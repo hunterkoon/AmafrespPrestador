@@ -1,19 +1,23 @@
 import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
+import { GlobalContext } from "../../Main/GlobalContext";
 import { json } from "./sub/Dados";
 import UserChanges from "./sub/UserChanges";
-import { GlobalContext } from "../../Main/GlobalContext";
+import Title from "../../../Components/Sub/Title";
+import user from "../../../../Assets/UserProfille.svg";
+import { useNavigate } from "react-router";
 import "./GerenciarUsuarios.css";
 
 const GerenciarUsuarios = () => {
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState(null);
   const [deleteUser, setDeleteUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleEdit = (profile) => {
     setToggleModal(!toggleModal);
-    if(deleteUser !== null){
-      setDeleteUser(null)
+    if (deleteUser !== null) {
+      setDeleteUser(null);
     }
     setEditUser(profile);
   };
@@ -54,14 +58,17 @@ const GerenciarUsuarios = () => {
     <>
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
-          <Titledecorated text="Gerênciar Usuários" />
+          <Titledecorated text="Usuários" />
+          <Title text={"Gerenciar usuários"} />
         </div>
         <UserChanges user={editUser} deleteUser={deleteUser} />
-
-      <div>
-        Adicionar novo usuário
-      </div>
-
+        <div
+          onClick={() => navigate("../AdicionarUsuarios")}
+          className="div-add-new-user-mananger-users"
+        >
+          <img src={user} alt={"imagem usuário"} />
+          Adicionar novo usuário...
+        </div>
         <table className="table-list-users-mananger">
           <thead>
             <tr>

@@ -1,4 +1,5 @@
 .div-main-gerenciarUsuarios {
+  font-family: NotoSans-Regular;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -46,4 +47,50 @@
   color: #ffff;
   background-color: #E20000 ;
   box-shadow: 5px 5px 10px #999999;
+}
+
+.div-add-new-user-mananger-users{
+  cursor: pointer;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 3%;
+  background-color:#25b099 ;
+  width: 60%;
+  height: 60px;
+  align-items: center;
+  border-radius: 10px;  
+  color: #ffff;
+  justify-content: center;
+
+}
+.div-add-new-user-mananger-users img{
+margin: 3%;
+}
+.div-add-new-user-mananger-users:hover{
+  transition: 200ms;
+  box-shadow: 5px 5px 10px #999999;
+  border: 2px solid #38C6AE;
+  height: 56px;
+
+}
+
+@media only screen and (max-width:766px){
+  .table-list-users-mananger{
+    display: initial;
+    flex-direction: column;
+    width: 96%;
+  }
+  .div-add-new-user-mananger-users{
+    width: 96%;
+  }
+  th:nth-child(3) ,
+  td:nth-child(3),  
+  th:nth-child(4) ,
+  td:nth-child(4),  
+  th:nth-child(5) ,
+  td:nth-child(5){
+
+    display: none;
+  }
+
 }
