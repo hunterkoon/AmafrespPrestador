@@ -20,12 +20,12 @@
 }
 .div-sub-user-mananger-delete {
     position: relative;
-    background-color: #474747;
+    background-color: #f1f1f1;
     border-radius: 10px;
     width: 100%;
     padding: 1%;
     box-shadow: 5px 5px 10px #999999;
-    color: white;
+    color: #414141;
 }
 
 .div-sub-user-mananger input {
@@ -59,12 +59,13 @@
     
 }
 .table-delete-user{
-    color: white;
+    color: #414141;
     width: 75%;
     
 }
 .table-delete-user th{
-    color: white;    
+    border: #414141 solid 1px;
+    color: #414141;    
 }
 .div-button-delete-user button{
     margin: 5%;
@@ -72,4 +73,5 @@
 .div-button-delete-user{
     display: flex;
     flex-direction: column;
+    
 }
