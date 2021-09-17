@@ -11,10 +11,10 @@ import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import More from "../../../Assets/More.svg";
 import Seta from "../../../Assets/Seta.svg";
 import Sair from "../../../Assets/Sair.svg";
-import "./MenuLateral.css";
+import "./MainMenu.css";
 import "../../../App.css";
 
-const MenuLateral = () => {
+const MainMenu = () => {
   const { animateMenu, handleLogout, globalHandle, setGlobalHandle, option } = React.useContext(GlobalContext);
   const [menuItemFuncs, setMenuItemFuncs] =  React.useState(false);
   const [menuItemRegUp, setMenuItemRegUp] =   React.useState(false);
@@ -138,7 +138,7 @@ const MenuLateral = () => {
             ]}
           >
             <SubItemMenu
-              link="Status"
+              link="Tabela"
               itemSubMenu="Tabela de Preços"
               subMenuSrcImg={More}
             />
@@ -168,4 +168,4 @@ const MenuLateral = () => {
   );
 };
 
-export default MenuLateral;
+export default MainMenu;

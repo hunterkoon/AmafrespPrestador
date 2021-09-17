@@ -10,11 +10,11 @@ import useErrorForm from "../../../Hooks/useErrorForm";
 import { adjustsUserSubmit } from "../../../Hooks/useSubmitDada";
 import { returnFilter } from "../../../Shared/Commons/Helpers/HandleFilter";
 import Style from '../../Account/Add User/Forms.module.css'
-import "./Perfil.css";
+import "./Profile.css";
 
 
 
-const Perfil = () => {
+const Profile = () => {
     
   const {useInputsGeneral } = useInputs()
   const { alterRegisterData, setAlterRegisterData, newUserData } =  React.useContext(GlobalContext);
@@ -76,4 +76,4 @@ const Perfil = () => {
   );
 };
 
-export default Perfil;
+export default Profile;

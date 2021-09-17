@@ -6,13 +6,13 @@ import { GlobalStorage } from "./Application/Pages/Main/GlobalContext";
 import Header from "./Application/Components/Main/Header";
 import Footer from "./Application/Components/Main/Footer";
 import Login from "./Application/Pages/Main/Login";
-import Conta from "./Application/Pages/Main/Conta";
-import RecuperarSenha from "./Application/Pages/Main/RecuperarSenha";
+import Account from "./Application/Pages/Main/Account";
 import NotFound from "./Application/Pages/Main/NotFound";
-import PrimeiroAcesso from "./Application/Pages/Main/PrimeiroAcesso";
-import Help from "./Application/Pages/Main/Help";
+import FirstAccess from "./Application/Pages/Main/FirstAccess";
+import RecoverPassword from "./Application/Pages/Main/RecoverPassword";
 import RegisterSucessful from "./Application/Pages/Main/RegisterSuccessful";
 import RecoverSucessful from "./Application/Pages/Main/RecoverSucessful";
+import Help from "./Application/Pages/Main/Help";
 import "./App.css";
 
 function App() {
@@ -24,9 +24,9 @@ function App() {
           <div className="App">
             <Routes>
               <Route exact path="/" element={<Login />} />
-              <Route path="/conta/*" element={<Conta />} />
-              <Route path="/PrimeiroAcesso" element={<PrimeiroAcesso />} />
-              <Route path="/RecuperarSenha" element={<RecuperarSenha />} />
+              <Route path="/conta/*" element={<Account />} />
+              <Route path="/PrimeiroAcesso" element={<FirstAccess />} />
+              <Route path="/RecuperarSenha" element={<RecoverPassword />} />
               <Route path="/Help" element={<Help />} />
               <Route path="/RecoverSuccessful" element={<RecoverSucessful />} />
               <Route path="/RegisterSucessful" element={<RegisterSucessful />} />

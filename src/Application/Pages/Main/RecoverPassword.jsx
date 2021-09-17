@@ -13,11 +13,10 @@ import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import useInputs from "../../Hooks/useInputs";
 import useErrorForm from "../../Hooks/useErrorForm";
-import "../../../App.css";
 import "./Login.css";
-import "./RecuperarSenha.css";
+import "./RecoverPassword.css";
 
-const RecuperarSenha = () => {
+const RecoverPassword = () => {
   
   const {useInputsGeneral } = useInputs()
   const { option, recoverData, setRecoverData } =  React.useContext(GlobalContext);
@@ -111,4 +110,4 @@ const RecuperarSenha = () => {
   );
 };
 
-export default RecuperarSenha;
+export default RecoverPassword;

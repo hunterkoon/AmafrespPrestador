@@ -8,9 +8,9 @@ import user from "../../../../Assets/UserProfille.svg";
 import { useNavigate } from "react-router";
 import Trash from '../../../../Assets/Trash.svg'
 import Tool from '../../../../Assets/Tool_yellow.svg'
-import "./GerenciarUsuarios.css";
+import "./UsersMananger.css";
 
-const GerenciarUsuarios = () => {
+const UsersMananger = () => {
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
@@ -90,4 +90,4 @@ const GerenciarUsuarios = () => {
   );
 };
 
-export default GerenciarUsuarios;
+export default UsersMananger;

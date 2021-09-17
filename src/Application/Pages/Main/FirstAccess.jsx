@@ -11,10 +11,9 @@ import Title from "../../Components/Sub/Title";
 import Button from "../../Components/Sub/Button";
 import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
 import useErrorForm from "../../Hooks/useErrorForm";
-import "./PrimeiroAcesso.css";
-import "../../../App.css";
+import "./FirstAccess.css";
 
-const PrimeiroAcesso = () => {
+const FirstAccess = () => {
   
   const { firtAcessData, setFirtAcessData } = React.useContext(GlobalContext);
   const firstAcessSubmitData = firstAcessSubmit(firtAcessData);
@@ -77,4 +76,4 @@ const PrimeiroAcesso = () => {
   );
 };
 
-export default PrimeiroAcesso;
+export default FirstAccess;
