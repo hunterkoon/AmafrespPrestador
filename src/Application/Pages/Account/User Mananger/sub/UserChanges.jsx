@@ -6,6 +6,7 @@ import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
 import "./UserChanges.css";
+import Succesfull from "../../../../Components/Sub/Succesfull";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
@@ -18,6 +19,8 @@ const UserChanges = ({ ...props }) => {
   // RECEBE ATUALIZAÇOES DO HANDLECHANGFE
   const [functions, setFunctions] = React.useState([]);
   // TOGGLE MODAIS
+  const [alertSuccesful, setAlertSuccesful ] = React.useState(false)
+  const [alertExclude, setAlertExclude ] = React.useState(false)
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
@@ -81,7 +84,7 @@ const UserChanges = ({ ...props }) => {
             functions
           )}
           <div className="div-sub-form-user-mananger-button">
-            <Button value="Alterar" />
+            <Button onClick={()=> setAlertSuccesful(!alertSuccesful)} value="Alterar" />
             <Button
               onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
               color="#E20000"
@@ -126,6 +129,9 @@ const UserChanges = ({ ...props }) => {
 
   return (
     <>
+    <Succesfull alert={alertSuccesful} onClick={ ()=> setAlertSuccesful(!alertSuccesful)} text={"Usuário Alterado!"}/>
+    <Succesfull alert={alertExclude} onClick={ ()=>setAlertExclude(!alertExclude)} text={"Usuário Excluído!"}/>
+
       {props.user?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger">
@@ -144,7 +150,6 @@ const UserChanges = ({ ...props }) => {
             <span>Tem Certeza ?</span>
             <span
               style={{
-                backgroundColor: "#ffff",
                 color: "#f20000",
                 fontWeight: "bold",
               }}
@@ -153,7 +158,7 @@ const UserChanges = ({ ...props }) => {
             </span>
             <span> será excluido permanentemente!</span>
             <div className="div-sub-form-user-mananger-button">
-              <Button value="Sim" />
+              <Button value="Sim" onClick={()=>[ setAlertExclude(!alertExclude) , setToggleModal(false)] }/>
               <Button
                 onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
                 color="#E20000"
