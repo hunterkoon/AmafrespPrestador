@@ -17,3 +17,7 @@
   box-shadow: 0 0 0 3px #3bc3a7;
   transition: 200ms;
 }
+.button-limpar:hover {
+  border-color: #FDAB15 !important;
+  box-shadow: 0 0 0 3px #FDBA15 !important;
+}

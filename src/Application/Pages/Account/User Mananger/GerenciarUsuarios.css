@@ -23,8 +23,7 @@
   border: 1px solid #e1e1e1;
   padding: 8px;
   color: #414141;
-  border-radius: 5px;
-  
+  font-size: 0.9em;
 }
 
 .table-list-users-mananger tr:nth-child(even) {
@@ -34,32 +33,30 @@
 .table-td-edit{
   cursor: pointer;  
 }
-.table-td-edit:hover{
-  color: #ffff;
-  background-color: #25b099 ;
-  box-shadow: 5px 5px 10px #999999;
+
+.table-td-edit p {
+  color: #be7b0e;
 }
 
 .table-td-delete{
   cursor: pointer;  
 }
-.table-td-delete:hover{
-  color: #ffff;
-  background-color: #E20000 ;
-  box-shadow: 5px 5px 10px #999999;
+.table-td-delete p{
+  color: #E20000
 }
 
 .div-add-new-user-mananger-users{
   cursor: pointer;
   display: flex;
-  margin: 0 auto;
-  margin-top: 3%;
+  margin-left: auto;
+  margin-right: 5%;
+  margin-top: 0.1%;
   background-color:#25b099 ;
-  width: 60%;
+  width: 25%;
   height: 60px;
-  align-items: center;
   border-radius: 10px;  
   color: #ffff;
+  align-items: center;
   justify-content: center;
 
 }

@@ -126,24 +126,30 @@ const Usuarios = () => {
                 handleChangeFunctions,
                 functions
               )}
-            </div>
             <div className="div-sub-add-new-user-button-area">
               <Button value="Cadastrar" />
               <Button
                 onClick={(e) => [e.preventDefault(), handleCleanInputs()]}
-                color="#E20000"
+                color="#FDAB15"
                 value="Limpar"
+                class="button-limpar"
               />
             </div>
+
+            </div>
+
           </form>
         </div>
 
-        <Succesfull
+
+      </div>
+      <>
+      <Succesfull
           text={"Usuário Registrado"}
           alert={err}
           onClick={() => setErr(!err)}
         />
-      </div>
+      </>
     </>
   );
 };

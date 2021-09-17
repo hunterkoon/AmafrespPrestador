@@ -6,28 +6,26 @@ import UserChanges from "./sub/UserChanges";
 import Title from "../../../Components/Sub/Title";
 import user from "../../../../Assets/UserProfille.svg";
 import { useNavigate } from "react-router";
+import Trash from '../../../../Assets/Trash.svg'
+import Tool from '../../../../Assets/Tool_yellow.svg'
 import "./GerenciarUsuarios.css";
 
 const GerenciarUsuarios = () => {
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
-  const [editUser, setEditUser] = React.useState(null);
-  const [deleteUser, setDeleteUser] = React.useState(null);
+  const [editUser, setEditUser] = React.useState();
+  const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
 
   const handleEdit = (profile) => {
-    setToggleModal(!toggleModal);
-    if (deleteUser !== null) {
-      setDeleteUser(null);
-    }
-    setEditUser(profile);
+    setToggleModal(!toggleModal)
+    setEditUser({ profile: profile, open: true});
+    setDeleteUser({ profile: profile, open: false});
   };
 
   const handleDelete = (profile) => {
-    setToggleModal(!toggleModal);
-    if (editUser !== null) {
-      setEditUser(null);
-    }
-    setDeleteUser(profile);
+    setToggleModal(!toggleModal)
+    setDeleteUser({ profile: profile, open: true});
+    setEditUser({ profile: profile, open: false});
   };
 
   const Employee = () => {
@@ -45,10 +43,10 @@ const GerenciarUsuarios = () => {
           ))}
         </td>
         <td className="table-td-edit" onClick={() => handleEdit(lista)}>
-          Editar
+        <img src={Tool} width='35px' />
         </td>
         <td onClick={() => handleDelete(lista)} className="table-td-delete">
-          Excluir
+            <img src={Trash} width='25px' />
         </td>
       </tr>
     ));
@@ -56,18 +54,19 @@ const GerenciarUsuarios = () => {
 
   return (
     <>
+      <UserChanges user={editUser} deleteUser={deleteUser} />
+      
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
           <Titledecorated text="Usuários" />
           <Title text={"Gerenciar usuários"} />
         </div>
-        <UserChanges user={editUser} deleteUser={deleteUser} />
         <div
           onClick={() => navigate("../AdicionarUsuarios")}
           className="div-add-new-user-mananger-users"
         >
           <img src={user} alt={"imagem usuário"} />
-          Adicionar novo usuário...
+          Novo Usuário
         </div>
         <table className="table-list-users-mananger">
           <thead>
@@ -85,6 +84,7 @@ const GerenciarUsuarios = () => {
             <Employee />
           </tbody>
         </table>
+
       </div>
     </>
   );

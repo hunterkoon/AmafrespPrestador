@@ -1,20 +1,23 @@
 .div-main-user-mananger {
-    position: absolute;
     display: flex;
-    width: 95%;
-    margin-left: 2.5%;
-    margin-top: 8%;
-    opacity: 1;
-    align-items: center;
     justify-content: center;
-    z-index: 99;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.329);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
 }
 
 .div-sub-user-mananger {
     position: relative;
     background-color: #f1f1f1;
     border-radius: 10px;
-    width: 100%;
+    width: 60%;
     padding: 1%;
     box-shadow: 5px 5px 10px #999999;
 }
@@ -23,11 +26,10 @@
     position: fixed;
     top: 30vh;
     display: flex;
-    background-color: #414141;
+    background-color:white;
     border-radius: 10px;
     width: 50%;
     box-shadow: 5px 5px 10px #999999;
-    color: #ffff;
     flex-direction: column;
     /* flex-wrap: wrap; */
     align-content: center;
@@ -39,10 +41,13 @@
     position: relative;
     background-color: #f1f1f1;
     border-radius: 10px;
-    width: 100%;
+    width: 40%;
     padding: 1%;
     box-shadow: 5px 5px 10px #999999;
     color: #414141;
+}
+.div-sub-user-mananger-delete h1 {
+    color: #E20000;
 }
 
 .div-sub-user-mananger input {
@@ -57,8 +62,11 @@
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-evenly;
-    margin: 1%;
+    justify-content: center;
+}
+
+.div-sub-form-user-mananger-button button {
+    margin: 10px;
 }
 
 .div-sub-functions-user-mananger {
@@ -79,7 +87,6 @@
 }
 
 .table-delete-user th {
-    border: #414141 solid 1px;
     color: #414141;
 }
 
@@ -124,6 +131,7 @@
         width: 100%;
     }
     .div-sub-user-mananger-delete h1 {
+        color: #E20000;
         padding: 5%;
         margin: 5%;
     }

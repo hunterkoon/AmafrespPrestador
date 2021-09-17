@@ -4,16 +4,23 @@ import Title from "./Title";
 import Titledecorated from "./Titledecorated";
 import "./Succesfull.css";
 const Succesfull = ({ ...props }) => {
+
+
   return (
-    <div  className={ props.alert ? "div-main-successfull" : 'div-main-successfull-deactived'}>
-      <div className="div-titles-successfull">
-        <Titledecorated text="Sucesso!!!" />
-        <Title text={props.text} />
+    <>
+      {props.alert ? <div className="main-modal"  >
+        <div className="div-main-successfull">
+        <div className="div-titles-successfull">
+            <Titledecorated text="Sucesso!!!" />
+            <Title text={props.text} />
+          </div>
+          <div className="div-close-modal" onClick={props.onClick}>
+            <span>x</span>
+          </div>
+        </div>
       </div>
-      <div className="div-button-successfull">
-        <Button onClick={props.onClick}  value="Fechar" />
-      </div>
-    </div>
+        : null}
+    </>
   );
 };
 

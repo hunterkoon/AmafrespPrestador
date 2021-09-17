@@ -40,8 +40,28 @@ const UserChanges = ({ ...props }) => {
     setFunctions({ ...functions, [target.id]: checked });
   };
 
+  // ATUALIZA ESTADOS DA APLICAÇÃO PARA EVENTOS EXTERIORES
+  React.useEffect(() => {
+    console.log(props)
+    setUserDeleteProps(props.deleteUser?.profile);
+    setUserEditProps(props.user?.profile);
+  }, [props.deleteUser?.profile, props.user?.profile]);
+
+  // ATUALIZA EXIBIÇÃO DE VALORES EM FORMULÁRIOS.
+  React.useEffect(() => {
+    setInputs(InputsForms());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userSelectedForm, functions]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(functions);
+  };
+
   // VALIDAÇÃO DE DADOS RECEBIDOS
   const validateFunctions = (field, state) => {
+
+
     if (field === "modifyUser") {
       if (state.privilegios.gerenciar == "null") {
         return false;
@@ -58,42 +78,6 @@ const UserChanges = ({ ...props }) => {
       } else return true;
     }
   };
-
-  // COMPONENTE DE EXLUSAO DE FORMULARIO
-  const DeleteForm = () => {
-    return (
-      <div className="div-table-delete-user">
-        <table className="table-delete-user">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Departamento</th>
-              <th>CPF</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{userDeleteProps.pnome}</td>
-              <td>{userDeleteProps.pdepartamento}</td>
-              <td>{userDeleteProps.cpf}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div className="div-button-delete-user">
-          <Button
-            onClick={(e) => [e.preventDefault(), setToggleExclude(true)]}
-            color="#E20000"
-            value="Excluir"
-          />
-          <Button
-            onClick={(e) => [e.preventDefault(), setUserDeleteProps(null)]}
-            value="Voltar"
-          />
-        </div>
-      </div>
-    );
-  };
-
   // COMPONENTE COM FORMULARIOS
   const InputsForms = () => {
     return (
@@ -111,6 +95,14 @@ const UserChanges = ({ ...props }) => {
             handleChangeFunctions,
             functions
           )}
+          <div className="div-sub-form-user-mananger-button">
+            <Button value="Alterar" />
+            <Button
+              onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
+              color="#E20000"
+              value="Fechar"
+            />
+          </div>
         </div>
       </>
     );
@@ -119,10 +111,7 @@ const UserChanges = ({ ...props }) => {
   //
   const [inputs, setInputs] = React.useState(InputsForms());
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(functions);
-  };
+
 
   // CICLO DE VIDA DOS COMPONENTES
   React.useEffect(() => {
@@ -155,58 +144,28 @@ const UserChanges = ({ ...props }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEditProps, userDeleteProps]);
 
-  // ATUALIZA ESTADOS DA APLICAÇÃO PARA EVENTOS EXTERIORES
-  React.useEffect(() => {
-    setUserDeleteProps(props.deleteUser);
-    setUserEditProps(props.user);
-  }, [props.deleteUser, props.user]);
 
-  // ATUALIZA EXIBIÇÃO DE VALORES EM FORMULÁRIOS.
-  React.useEffect(() => {
-    setInputs(InputsForms());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userSelectedForm, functions]);
 
   return (
     <>
-      {toggleModal && userEditProps !== null ? (
+      {props.user?.open && toggleModal ? (
         <div className="pageView div-main-user-mananger">
           <div className="div-sub-user-mananger">
             <form onSubmit={handleSubmit}>
               <h1>Guia de Alteração de usuário</h1>
               {inputs}
-              <div className="div-sub-form-user-mananger-button">
-                <Button value="Alterar" />
-                <Button
-                  onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
-                  color="#E20000"
-                  value="Fechar"
-                />
-              </div>
             </form>
           </div>
         </div>
       ) : null}
 
-      {userDeleteProps ? (
-        <div className="pageView div-main-user-mananger">
-          <div className="div-sub-user-mananger-delete">
-            <Title color={"#E20000"} text={"Exclusão de Usuário"} />
-            <h1>Guia de Exclusão de usuário</h1>
-            <div className="div-sub-form-user-mananger-button">
-              {<DeleteForm />}
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {toggleExclude ? (
+      {props.deleteUser?.open && toggleModal ? (
         <div className="pageView div-main-user-mananger">
           <div className="div-sub-user-mananger-confirm">
             <h1>Guia de Exclusão de usuário</h1>
             <span>Tem Certeza ?</span>
-            <span style={{backgroundColor:"#ffff", color: "#f20000", fontWeight: "bold" }}>
-              {userDeleteProps && userDeleteProps.pnome}
+            <span style={{ backgroundColor: "#ffff", color: "#f20000", fontWeight: "bold" }}>
+              {userDeleteProps && userDeleteProps?.pnome}
             </span>
             <span> será excluido permanentemente!</span>
             <div className="div-sub-form-user-mananger-button">
@@ -214,8 +173,7 @@ const UserChanges = ({ ...props }) => {
               <Button
                 onClick={(e) => [
                   e.preventDefault(),
-                  setToggleModal(false),
-                  setToggleExclude(false),
+                  setToggleModal(false)
                 ]}
                 color="#E20000"
                 value="Não"

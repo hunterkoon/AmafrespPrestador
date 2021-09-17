@@ -7,7 +7,7 @@ const Button = ({ ...props }) => {
   return (
     <button
       type={props.type}
-      className="button-shared"
+      className={`button-shared ${props.class}`}
       style={{
         backgroundColor: props.color,
         color: props.textColor,
