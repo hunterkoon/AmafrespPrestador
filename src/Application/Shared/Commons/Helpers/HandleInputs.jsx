@@ -25,7 +25,7 @@ export const handleErrorCPF = (loginData) => {
   return loginData.cpf
     ? function error() {
         const replaced = loginData.cpf.replace(/\W/g, "");
-        if (replaced.length < 11) {
+        if (replaced.length <= 10) {
           return "Digite um CPF válido ex: 999.999.999-99 apenas números";
         } else return "";
       }

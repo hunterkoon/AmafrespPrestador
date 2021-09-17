@@ -6,8 +6,8 @@ const Input = ({ ...props }) => {
   return (
     <>
       <label className={["input-div " + props.className]}>
-        <Info info={props.info} type={props.type} />
         {props.label}
+        <Info info={props.info} type={props.type} />
         <div key={props.key}>
           <h1 className={props.error ? "error-input" : "p-error-null"}>
             {props.error}

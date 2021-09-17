@@ -1,5 +1,5 @@
 import React from "react";
-import { useInputsGeneral } from "../../../Hooks/useInputs";
+import useInputs from "../../../Hooks/useInputs";
 import { GlobalContext } from "../../Main/GlobalContext";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
 import Title from "../../../Components/Sub/Title";
@@ -12,6 +12,8 @@ import "./AdicionarUsuarios.css";
 import Style from "./Forms.module.css";
 
 const Usuarios = () => {
+  
+  const {useInputsGeneral } = useInputs()
   const { newUserData, setNewUserData } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);

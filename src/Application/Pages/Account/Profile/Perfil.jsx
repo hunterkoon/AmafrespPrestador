@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../../../Components/Sub/Title";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
-import { useInputsGeneral } from "../../../Hooks/useInputs";
+import useInputs from "../../../Hooks/useInputs";
 import GeneralForms from "../../../Shared/Forms/GeneralForms";
 import Button from "../../../Components/Sub/Button";
 import { GlobalContext } from "../../Main/GlobalContext";
@@ -15,6 +15,8 @@ import "./Perfil.css";
 
 
 const Perfil = () => {
+    
+  const {useInputsGeneral } = useInputs()
   const { alterRegisterData, setAlterRegisterData, newUserData } =  React.useContext(GlobalContext);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
   const [err, setErr] = React.useState(false);

@@ -11,14 +11,15 @@ import Button from "../../Components/Sub/Button";
 import SwitchButton from "../../Components/Sub/SwitchButton";
 import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
-import { useInputsGeneral } from "../../Hooks/useInputs";
+import useInputs from "../../Hooks/useInputs";
 import useErrorForm from "../../Hooks/useErrorForm";
 import "../../../App.css";
 import "./Login.css";
 import "./RecuperarSenha.css";
 
 const RecuperarSenha = () => {
-
+  
+  const {useInputsGeneral } = useInputs()
   const { option, recoverData, setRecoverData } =  React.useContext(GlobalContext);
   const { recoverFiedsAdm, recoverFiedsCommon } = GeneralForms(recoverData);
   const erroFormADM = useErrorForm(recoverFiedsAdm);

@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "./Button";
 import Title from "./Title";
 import Titledecorated from "./Titledecorated";
 import "./Succesfull.css";

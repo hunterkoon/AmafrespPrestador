@@ -1,12 +1,12 @@
 .info-img{
     position: absolute;
-    width: 22px;
+    width: 18px;
     transform: translateX(100px);
   }
   .info-check{
-    position: absolute;
-    width: 22px;
-    transform: translateY(-25px) translateX(200px);
+    position: relative;
+    width: 18px;
+    margin-left: 5% ;
   }
   .info-img:hover~.info-label , 
   .info-check:hover~.info-label{

@@ -3,7 +3,7 @@ import React from "react";
 import { GlobalContext } from "./GlobalContext";
 import { UrlPrimeiroAcesso } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
-import { useInputsGeneral } from "../../Hooks/useInputs";
+import useInputs from "../../Hooks/useInputs";
 import { useNavigate } from "react-router-dom";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
@@ -15,6 +15,8 @@ import "./PrimeiroAcesso.css";
 import "../../../App.css";
 
 const PrimeiroAcesso = () => {
+  
+  const {useInputsGeneral } = useInputs()
   const navigate = useNavigate();
   const { firtAcessData, setFirtAcessData } = React.useContext(GlobalContext);
   const { firstAcessForm } = GeneralForms(firtAcessData);

@@ -5,7 +5,7 @@ import './Maintenance.css';
 
 const Maintenance = () => {
   return (
-    <div className="div-main-maintenance">
+    <div className="pageView div-main-maintenance">
       <Title text="Em Manutenção" />
       <img className="img-maintenance" src={Manutencao} alt="Gear" />
     </div>

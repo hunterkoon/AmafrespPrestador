@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Main/GlobalContext";
 import { UrlImgLogin } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
-import { useInputsGeneral } from "../../Hooks/useInputs";
+import useInputs from "../../Hooks/useInputs";
 import Button from "../../Components/Sub/Button";
 import Title from "../../Components/Sub/Title";
 import Titledecorated from "../../Components/Sub/Titledecorated";
@@ -18,7 +18,8 @@ import "../../../App.css";
 const Login = () => {
 
   // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
-
+    
+  const {useInputsGeneral } = useInputs()
   const { setLogin, option, setLoginData, loginData } = React.useContext(GlobalContext);
 
   // CONSTANTES IMPORTADAS PARA GERAR FORMS 

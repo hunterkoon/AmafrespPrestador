@@ -11,15 +11,25 @@
     left: 0;
     right: 0;
     z-index: 9999;
+    opacity: 0;
+    animation: opacityAnimation forwards 600ms;
+}
+
+@keyframes opacityAnimation {
+    to{
+        opacity: 1;
+    }
+    
 }
 
 .div-sub-user-mananger {
-    position: relative;
-    background-color: #f1f1f1;
+    position: fixed;
+    background-color: white;
     border-radius: 10px;
     width: 60%;
     padding: 1%;
-    box-shadow: 5px 5px 10px #999999;
+    box-shadow: 5px 5px 10px #999999;  
+    top: 12%;
 }
 
 .div-sub-user-mananger-confirm {
@@ -31,24 +41,13 @@
     width: 50%;
     box-shadow: 5px 5px 10px #999999;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     align-content: center;
     justify-content: center;
     align-items: center;
 }
 
-.div-sub-user-mananger-delete {
-    position: relative;
-    background-color: #f1f1f1;
-    border-radius: 10px;
-    width: 40%;
-    padding: 1%;
-    box-shadow: 5px 5px 10px #999999;
-    color: #414141;
-}
-.div-sub-user-mananger-delete h1 {
-    color: #E20000;
-}
+
+
 
 .div-sub-user-mananger input {
     height: 40px;
@@ -74,33 +73,12 @@
     flex-direction: row;
     margin: 2%;
 }
-
-.div-table-delete-user {
-    display: flex;
-    width: 96%;
-    justify-content: inherit;
-}
-
-.table-delete-user {
-    color: #414141;
-    width: 75%;
-}
-
-.table-delete-user th {
-    color: #414141;
-}
-
-.div-button-delete-user button {
-    margin: 5%;
-}
-
-.div-button-delete-user {
-    display: flex;
-    flex-direction: column;
-}
-
+                                          
 @media only screen and (max-width:1024px) {
     .div-sub-user-mananger {
+        position: relative;
+        width: 90%;
+        height: auto;
         display: flex;
         flex-direction: column;
     }

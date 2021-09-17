@@ -43,10 +43,10 @@ const GerenciarUsuarios = () => {
           ))}
         </td>
         <td className="table-td-edit" onClick={() => handleEdit(lista)}>
-        <img src={Tool} width='35px' />
+        <img src={Tool} width='35px'  alt='ferramenta'/>
         </td>
         <td onClick={() => handleDelete(lista)} className="table-td-delete">
-            <img src={Trash} width='25px' />
+            <img src={Trash} width='25px' alt='lixeirinha'/>
         </td>
       </tr>
     ));
