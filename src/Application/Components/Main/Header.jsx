@@ -24,7 +24,7 @@ export default function Header() {
       <header className="Header">
         <div className="div-img-logotipo">
           <img
-            onClick={() => (login ? navigate("/conta") : navigate("/"))}
+            onClick={() => ( login ? navigate("/conta") : navigate("/"))}
             src={Logotipo}
             alt="Logotipo Amafresp"
           />

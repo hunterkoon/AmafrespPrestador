@@ -17,7 +17,7 @@ const ItemMenu = ({ ...props }) => {
         />
       </a>
       {props.state ? (
-        <div style={{ height: '6em' }}> {props.children} </div>
+        <div style={{ height: 'auto' }}> {props.children} </div>
       ) : null}
     </li>
   );

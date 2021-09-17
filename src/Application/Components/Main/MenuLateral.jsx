@@ -6,6 +6,7 @@ import iconFaleConosco from "../../../Assets/iconFaleConoscoBackgroundGreen.svg"
 import iconHome from "../../../Assets/iconHomeBackgroundGreen.svg";
 import iconUser from "../../../Assets/iconUsersBackgroundGreen.svg";
 import iconRecadastro from "../../../Assets/iconRecadastramentoBackgroundGreen.svg";
+import iconFunctionalities from "../../../Assets/Gear.svg";
 import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import More from "../../../Assets/More.svg";
 import Seta from "../../../Assets/Seta.svg";
@@ -20,11 +21,6 @@ const MenuLateral = () => {
   const [menuItemUsers, setMenuItemUsers] = React.useState(false);
   const { width } = useWindowDimensions();
   
-  const menuItens = [
-    menuItemFuncs,
-    menuItemRegUp,
-    menuItemUsers,
-  ];
   const setMenuItens = React.useMemo(
     () => [
       setMenuItemFuncs,
@@ -33,6 +29,12 @@ const MenuLateral = () => {
     ],
     []
   );
+
+  const menuItens = [
+    menuItemFuncs,
+    menuItemRegUp,
+    menuItemUsers,
+  ];
 
   const handleMenuAnimation = (event) => {
     const tag = event.target.tagName;
@@ -128,7 +130,7 @@ const MenuLateral = () => {
             state={menuItemFuncs}
             alt="item menu Recadastro"
             item="Funcionalidades"
-            srcItem={iconRecadastro}
+            srcItem={iconFunctionalities}
             srcSeta={Seta}
             onClick={() => [
               handleToggleMenu(),
