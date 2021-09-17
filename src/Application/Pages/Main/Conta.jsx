@@ -15,10 +15,10 @@ import './Conta.css';
 
 
 const Conta = () => {
-  const { setAnimateMenu, setHandle , setProfile } = React.useContext(GlobalContext);
+  const { setAnimateMenu, setGlobalHandle , setProfile } = React.useContext(GlobalContext);
   
   const handleMenuHide = (e) =>{
-    const collectionStates = [setAnimateMenu,setHandle , setProfile];
+    const collectionStates = [setAnimateMenu, setGlobalHandle , setProfile];
     collectionStates.forEach((states)=>{
       handleWindow(e ,states)
     })

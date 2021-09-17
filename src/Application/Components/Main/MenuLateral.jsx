@@ -6,6 +6,7 @@ import iconFaleConosco from "../../../Assets/iconFaleConoscoBackgroundGreen.svg"
 import iconHome from "../../../Assets/iconHomeBackgroundGreen.svg";
 import iconUser from "../../../Assets/iconUsersBackgroundGreen.svg";
 import iconRecadastro from "../../../Assets/iconRecadastramentoBackgroundGreen.svg";
+import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import More from "../../../Assets/More.svg";
 import Seta from "../../../Assets/Seta.svg";
 import Sair from "../../../Assets/Sair.svg";
@@ -13,46 +14,41 @@ import "./MenuLateral.css";
 import "../../../App.css";
 
 const MenuLateral = () => {
-  const {
-    animateMenu,
-    width,
-    handleLogout,
-    menuItemUsuarios,
-    setmenuItemUsuarios,
-    menuItemRegisterUpdate,
-    setmenuItemRegisterUpdate,
-    handle,
-    setHandle,
-    option,
-  } = React.useContext(GlobalContext);
+  const { animateMenu, handleLogout, globalHandle, setGlobalHandle, option } = React.useContext(GlobalContext);
+  const [menuItemFuncs, setMenuItemFuncs] =  React.useState(false);
+  const [menuItemRegUp, setMenuItemRegUp] =   React.useState(false);
+  const [menuItemUsers, setMenuItemUsers] = React.useState(false);
+  const { width } = useWindowDimensions();
+  
+  const menuItens = [
+    menuItemFuncs,
+    menuItemRegUp,
+    menuItemUsers,
+  ];
+  const setMenuItens = React.useMemo(
+    () => [
+      setMenuItemFuncs,
+      setMenuItemRegUp,
+      setMenuItemUsers,
+    ],
+    []
+  );
 
-  // ADICIONA ANIMAÇÃO AO MENU DE ITENS LATERAL CASO O MOUSE PASSE POR CIMA
-  const handleMouse = (event) => {
+  const handleMenuAnimation = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
     return tag === "A" ? imgTag.classList.toggle("animation") : false;
   };
 
-  // FECHA MENU CASO ABRA OUTRO EM SEGUIDA
-  //MANIPULA FECHAMENTO DE SUBITENS DO MENU ATRÁVES DO ESTADO GLOBAL HANDLE
-
-  const handleToggleMenu = (state, value) => {
-    state(!value);
-    return [
-      menuItemRegisterUpdate ? setmenuItemRegisterUpdate(false) : null,
-      menuItemUsuarios ? setmenuItemUsuarios(false) : null,
-      setHandle(true),
-    ];
+  const handleToggleMenu = () => {
+    const menuFilter = menuItens.filter((str) => str === true);
+    menuFilter && setMenuItens.forEach((set) => set(false));
+    setGlobalHandle(true);
   };
 
   React.useEffect(() => {
-    const handleMenu = () => {
-      if (!handle) {
-        return [setmenuItemRegisterUpdate(false), setmenuItemUsuarios(false)];
-      }
-    };
-    return handleMenu();
-  }, [handle, setmenuItemRegisterUpdate, setmenuItemUsuarios]);
+    !globalHandle && setMenuItens.forEach((set) => set(false));
+  }, [globalHandle, setMenuItens]);
 
   return (
     <div id="nav-menu">
@@ -62,8 +58,8 @@ const MenuLateral = () => {
             ? "hambuguerClick pageView"
             : "main-menu pageView"
         }
-        onMouseOver={handleMouse}
-        onMouseOut={handleMouse}
+        onMouseOver={handleMenuAnimation}
+        onMouseOut={handleMenuAnimation}
       >
         <ul>
           <ItemMenu
@@ -75,49 +71,46 @@ const MenuLateral = () => {
           />
 
           {/* Area Restrita */}
-
           {!option ? (
             <>
-              <ItemMenu 
-                state={menuItemUsuarios}
+              <ItemMenu
+                state={menuItemUsers}
                 alt="item menu usuários"
                 item="Usuários"
                 srcItem={iconUser}
                 srcSeta={Seta}
-                clicked={() =>
-                  handleToggleMenu(setmenuItemUsuarios, menuItemUsuarios)
-                }
+                onClick={() => [
+                  handleToggleMenu(),
+                  setMenuItemUsers(!menuItemUsers),
+                ]}
               >
                 <SubItemMenu
                   link="AdicionarUsuarios"
-                  state={menuItemUsuarios}
+                  state={menuItemUsers}
                   itemSubMenu="Adicionar Usuário"
                   subMenuSrcImg={More}
                 />
                 <SubItemMenu
                   link="Gerenciar"
-                  state={menuItemUsuarios}
+                  state={menuItemUsers}
                   itemSubMenu="Gerenciar"
                   subMenuSrcImg={More}
                 />
               </ItemMenu>
             </>
           ) : null}
-
           {/*   END - Area Restrita */}
 
-          <ItemMenu 
-            state={menuItemRegisterUpdate}
+          <ItemMenu
+            state={menuItemRegUp}
             alt="item menu Recadastro"
             item="Atualização Cadastral"
             srcItem={iconRecadastro}
             srcSeta={Seta}
-            clicked={() =>
-              handleToggleMenu(
-                setmenuItemRegisterUpdate,
-                menuItemRegisterUpdate
-              )
-            }
+            onClick={() => [
+              handleToggleMenu(),
+              setMenuItemRegUp(!menuItemRegUp),
+            ]}
           >
             <SubItemMenu
               link="RegisterUpdate"
@@ -127,6 +120,24 @@ const MenuLateral = () => {
             <SubItemMenu
               link="Status"
               itemSubMenu="Status"
+              subMenuSrcImg={More}
+            />
+          </ItemMenu>
+
+          <ItemMenu
+            state={menuItemFuncs}
+            alt="item menu Recadastro"
+            item="Funcionalidades"
+            srcItem={iconRecadastro}
+            srcSeta={Seta}
+            onClick={() => [
+              handleToggleMenu(),
+              setMenuItemFuncs(!menuItemFuncs),
+            ]}
+          >
+            <SubItemMenu
+              link="Status"
+              itemSubMenu="Tabela de Preços"
               subMenuSrcImg={More}
             />
           </ItemMenu>
@@ -143,7 +154,7 @@ const MenuLateral = () => {
             <ItemMenu
               href={"../"}
               rel={null}
-              clicked={handleLogout}
+              onClick={handleLogout}
               alt="item menu fale conosco"
               item="Sair"
               srcItem={Sair}

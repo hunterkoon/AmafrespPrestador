@@ -11,7 +11,7 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({ children }) => {
   const navigate = useNavigate();
   const [toggleModal, setToggleModal] = React.useState(false);
-  const [handle, setHandle] = React.useState(null);
+  const [globalHandle, setGlobalHandle] = React.useState(null);
   const [alterRegisterData, setAlterRegisterData] = React.useState([]);
   const [newUserData, setNewUserData] = React.useState([]);
   const [firtAcessData, setFirtAcessData] = React.useState([]);
@@ -21,11 +21,9 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
-  const [menuItemUsuarios, setmenuItemUsuarios] = React.useState(false);
-  const [menuItemRegisterUpdate, setmenuItemRegisterUpdate] = React.useState(false);
-  const { width, height } = useWindowDimensions();
   const { loading, error, request } = useFetch();
   const [address, setAdress] = React.useState([]);
+  const { width, height } = useWindowDimensions();
 
 // ATUALIZAÇÃO CADASTRAL 
 
@@ -54,20 +52,13 @@ export const GlobalStorage = ({ children }) => {
   //   FreeAcess(json);
   // }
 
-  // EXIBE MENU HAMBURGUER CASO WIDTH ESTIVER MENOR QUE 1024PX E LOGIN = TRUE
-  const handleWindowHamburguer = () => {
-    if (width <= 1024 && login === true) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
-    if (login) {
-      return navigate("/conta");
-    } else return navigate("/");
+    // if (login) {
+    //   return navigate("/conta");
+    // } else return navigate("/");
   }, [login, navigate]);
 
   const handleLogout = () => {
@@ -83,11 +74,7 @@ export const GlobalStorage = ({ children }) => {
         setProfile,
         setLogin,
         setAnimateMenu,
-        handleWindowHamburguer,
         setOption,
-        setmenuItemUsuarios,
-        setmenuItemRegisterUpdate,
-        setHandle,
         setLoginData,
         setRecoverData,
         setFirtAcessData,
@@ -96,6 +83,8 @@ export const GlobalStorage = ({ children }) => {
         handleLogout,
         setRegUpData,
         setToggleModal,
+        setGlobalHandle,
+        globalHandle,
         option,
         profile,
         login,
@@ -104,9 +93,6 @@ export const GlobalStorage = ({ children }) => {
         width,
         loading,
         error,
-        menuItemUsuarios,
-        menuItemRegisterUpdate,
-        handle,
         loginData,
         recoverData,
         firtAcessData,
@@ -115,7 +101,6 @@ export const GlobalStorage = ({ children }) => {
         regUpData,
         address,
         toggleModal, 
-      
       }}
     >
       {children}
