@@ -29,15 +29,7 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
-//  import { GlobalContext } from "../../Pages/Main/GlobalContext";
-
-const {
-  UpdadeRegister,
-  RegisterNewUser,
-  ModifyUsers,
-  addressTypeMain,
-  addressTypePostal,
-} = GeneralFunctionalities();
+const { UpdadeRegister,RegisterNewUser,ModifyUsers,PriceTable,addressTypeMain,addressTypePostal} = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
   //  const { address  } = React.useContext(GlobalContext);
@@ -140,6 +132,7 @@ const GeneralForms = (loginData) => {
     UpdadeRegister,
     RegisterNewUser,
     ModifyUsers,
+    PriceTable,
   ];
 
   const upRegFormRegisterData = [cnpj, socialReason, fantasy];

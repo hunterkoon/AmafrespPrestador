@@ -16,10 +16,9 @@
 }
 
 @keyframes opacityAnimation {
-    to{
+    to {
         opacity: 1;
     }
-    
 }
 
 .div-sub-user-mananger {
@@ -28,7 +27,7 @@
     border-radius: 10px;
     width: 60%;
     padding: 1%;
-    box-shadow: 5px 5px 10px #999999;  
+    box-shadow: 5px 5px 10px #999999;
     top: 12%;
 }
 
@@ -36,7 +35,7 @@
     position: fixed;
     top: 30vh;
     display: flex;
-    background-color:white;
+    background-color: white;
     border-radius: 10px;
     width: 50%;
     box-shadow: 5px 5px 10px #999999;
@@ -45,9 +44,6 @@
     justify-content: center;
     align-items: center;
 }
-
-
-
 
 .div-sub-user-mananger input {
     height: 40px;
@@ -73,40 +69,29 @@
     flex-direction: row;
     margin: 2%;
 }
-                                          
+
 @media only screen and (max-width:1024px) {
     .div-sub-user-mananger {
-        position: relative;
-        width: 90%;
-        height: auto;
         display: flex;
         flex-direction: column;
+        top: 0;
+        position: absolute;
+        width: 90%;
+        height: max-content;
+  
     }
+
     .div-sub-functions-user-mananger {
-        display: flex;
-        width: 100%;
         flex-direction: column;
         justify-content: center;
-        margin: 5% auto;
+        display: flex;
+        width: 80%;
     }
     .div-sub-user-mananger-delete {
         margin-top: 25%;
         display: flex;
         flex-direction: column;
         width: 80%;
-    }
-    .div-table-delete-user {
-        display: flex;
-        width: 96%;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
-    .table-delete-user {
-        display: inline-table;
-        margin: 3%;
-        width: 100%;
     }
     .div-sub-user-mananger-delete h1 {
         color: #E20000;

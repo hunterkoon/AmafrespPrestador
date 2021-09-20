@@ -74,8 +74,29 @@
   height: 56px;
 }
 
-th:nth-child(1),td:nth-child(1){
+th:nth-child(1), td:nth-child(1) {
   width: 25%;
+}
+
+.trash-img {
+  display: flex;
+  margin: 0 auto;
+  width: 25px;
+}
+
+.trash-img:hover {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-image: url('../../../../Assets/Trash-g.gif');
+  background-size: contain;
+}
+
+.tool-img {
+  display: flex;
+  margin: 0 auto;
+  width: 35px;
 }
 
 @media only screen and (max-width:1024px) {
@@ -89,33 +110,9 @@ th:nth-child(1),td:nth-child(1){
     margin: 3% auto;
   }
   th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5) {
-  display: none;
+    display: none;
   }
-
-  th:nth-child(1),td:nth-child(1){
+  th:nth-child(1), td:nth-child(1) {
     width: 100%;
   }
-}
-
-
-.trash-img {
-  display: flex;
-  margin: 0 auto;
-  width: 25px;
-}
-
-.trash-img:hover  {
-  content: '';
-  display: block;
-  width: 25px;
-  height: 25px;
-  background-image: url('../../../../Assets/Trash-g.gif') ;
-  background-size: contain;
-  
-}
-
-.tool-img {
-  display: flex;
-  margin: 0 auto;
-  width: 35px;
 }

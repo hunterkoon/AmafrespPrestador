@@ -1,6 +1,7 @@
 import {
   addUserInfo,
   modUserInfo,
+  priceTableInfo,
   updateInfo,
 } from "../Commons/Constants/info-strings";
 
@@ -41,6 +42,13 @@ const GeneralFunctionalities = () => {
     modUserInfo,
     false
   );
+  const PriceTable = new Functionalities(
+    "checkbox",
+    "priceTable",
+    "Tabela de Preços",
+    priceTableInfo,
+    false
+  );
 
   //DADOS CADASTRAIS
 
@@ -67,6 +75,7 @@ const GeneralFunctionalities = () => {
     ModifyUsers: ModifyUsers,
     addressTypeMain: addressTypeMain,
     addressTypePostal: addressTypePostal,
+    PriceTable : PriceTable,
   };
 };
 export default GeneralFunctionalities;

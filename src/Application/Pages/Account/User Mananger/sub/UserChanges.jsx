@@ -5,9 +5,9 @@ import GeneralForms from "../../../../Shared/Forms/GeneralForms";
 import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
-import "./UserChanges.css";
-import Succesfull from "../../../../Components/Sub/Succesfull";
 import { adjustsUserSubmit, deleteUserSubmit } from "../../../../Hooks/useSubmitDada";
+import Succesfull from "../../../../Components/Sub/Succesfull";
+import "./UserChanges.css";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
