@@ -1,9 +1,33 @@
 .div-main-faleConosco {
+  font-family: NotoSans-Regular;
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 80vh;
   width: 100%;
   overflow-x: hidden;
+
+}
+.maps {
+  display: flex;
+  width: 350px;
+  height: 65px;
+  align-items: center;
+  
+}
+.maps img{
+  
+  width: 100px;
+  height: 100px;
+
+}
+.maps label{
+  font-family: NotoSans-Regular;
+  background-color: white;
+  width: 300px;
+  padding: 3%;
+  border-radius: 10px 10px 10px 0px;
+  color: #414141;
+  box-shadow: #818181  0px 0px  10px  1px  ;
 
 }
