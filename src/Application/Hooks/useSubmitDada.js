@@ -71,7 +71,7 @@ export const firstAcessSubmit = (data) => {
     senha: firtAcess.Password,
   };
 };
-export const adjustsUserSubmit = (data) => {
+export const adjustsProfileSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
     nome: adjustsUser.Name,
@@ -82,6 +82,25 @@ export const adjustsUserSubmit = (data) => {
     departamento: adjustsUser.Department,
     senha: adjustsUser.ActualPassword,
     novaSenha: adjustsUser.NewPassword,
+  };
+};
+export const adjustsUserSubmit = (data) => {
+  const adjustsUser = new InputConstants(data);
+  return {
+    nome: adjustsUser.Name,
+    CPFCNPJ: adjustsUser.Cpf,
+    telefoneFixo: adjustsUser.Telphone,
+    telefoneCelular: adjustsUser.Celphone,
+    email: adjustsUser.Email,
+    departamento: adjustsUser.Department,
+    novaSenha: adjustsUser.NewPassword,
+  };
+};
+export const deleteUserSubmit = (data) => {
+  const adjustsUser = new InputConstants(data);
+  return {
+    nome: adjustsUser.Name,
+    CPFCNPJ: adjustsUser.Cpf,
   };
 };
 

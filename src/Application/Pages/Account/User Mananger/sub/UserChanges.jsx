@@ -7,6 +7,7 @@ import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
 import "./UserChanges.css";
 import Succesfull from "../../../../Components/Sub/Succesfull";
+import { adjustsUserSubmit, deleteUserSubmit } from "../../../../Hooks/useSubmitDada";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
@@ -19,11 +20,14 @@ const UserChanges = ({ ...props }) => {
   // RECEBE ATUALIZAÇOES DO HANDLECHANGFE
   const [functions, setFunctions] = React.useState([]);
   // TOGGLE MODAIS
-  const [alertSuccesful, setAlertSuccesful ] = React.useState(false)
-  const [alertExclude, setAlertExclude ] = React.useState(false)
+  const [alertSuccesful, setAlertSuccesful] = React.useState(false);
+  const [alertExclude, setAlertExclude] = React.useState(false);
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
+
+  const deleteUsersSubmit = deleteUserSubmit(userSelectedForm);
+  const changesUsersSubmit = Object.assign( adjustsUserSubmit(userSelectedForm),functions);
 
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
@@ -42,9 +46,14 @@ const UserChanges = ({ ...props }) => {
     setUserEditProps(props.user?.profile);
   }, [props.deleteUser?.profile, props.user?.profile]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(functions);
+  const handleSubmit = ({ target }) => {
+    //TODO FECTH FUNCTIONS 
+
+    if (target.tagName == "FORM") {
+      console.log(changesUsersSubmit);
+    } else {
+      console.log(deleteUsersSubmit);
+    }
   };
 
   // VALIDAÇÃO DE DADOS RECEBIDOS
@@ -84,7 +93,10 @@ const UserChanges = ({ ...props }) => {
             functions
           )}
           <div className="div-sub-form-user-mananger-button">
-            <Button onClick={()=> setAlertSuccesful(!alertSuccesful)} value="Alterar" />
+            <Button
+              onClick={() => setAlertSuccesful(!alertSuccesful)}
+              value="Alterar"
+            />
             <Button
               onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
               color="#E20000"
@@ -129,13 +141,21 @@ const UserChanges = ({ ...props }) => {
 
   return (
     <>
-    <Succesfull alert={alertSuccesful} onClick={ ()=> setAlertSuccesful(!alertSuccesful)} text={"Usuário Alterado!"}/>
-    <Succesfull alert={alertExclude} onClick={ ()=>setAlertExclude(!alertExclude)} text={"Usuário Excluído!"}/>
+      <Succesfull
+        alert={alertSuccesful}
+        onClick={() => setAlertSuccesful(!alertSuccesful)}
+        text={"Usuário Alterado!"}
+      />
+      <Succesfull
+        alert={alertExclude}
+        onClick={() => setAlertExclude(!alertExclude)}
+        text={"Usuário Excluído!"}
+      />
 
       {props.user?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => [e.preventDefault(), handleSubmit(e)]}>
               <h1>Guia de Alteração de usuário</h1>
               {InputsForms()}
             </form>
@@ -158,7 +178,14 @@ const UserChanges = ({ ...props }) => {
             </span>
             <span> será excluido permanentemente!</span>
             <div className="div-sub-form-user-mananger-button">
-              <Button value="Sim" onClick={()=>[ setAlertExclude(!alertExclude) , setToggleModal(false)] }/>
+              <Button
+                value="Sim"
+                onClick={(e) => [
+                  setAlertExclude(!alertExclude),
+                  setToggleModal(false),
+                  handleSubmit(e),
+                ]}
+              />
               <Button
                 onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
                 color="#E20000"

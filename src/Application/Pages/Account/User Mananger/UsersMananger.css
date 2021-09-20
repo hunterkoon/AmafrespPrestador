@@ -18,76 +18,104 @@
   margin: 3% auto;
 }
 
-
-.table-list-users-mananger td , th  {
+.table-list-users-mananger td, th {
   border: 1px solid #e1e1e1;
   padding: 8px;
   color: #414141;
   font-size: 0.9em;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: start;
 }
 
 .table-list-users-mananger tr:nth-child(even) {
-  background-color: #f2f2f2;  
+  background-color: #f2f2f2;
 }
 
-.table-td-edit{
-  cursor: pointer;  
+.table-td-edit {
+  cursor: pointer;
 }
 
 .table-td-edit p {
   color: #be7b0e;
 }
 
-.table-td-delete{
-  cursor: pointer;  
+.table-td-delete {
+  cursor: pointer;
 }
-.table-td-delete p{
+
+.table-td-delete p {
   color: #E20000
 }
 
-.div-add-new-user-mananger-users{
+.div-add-new-user-mananger-users {
   cursor: pointer;
   display: flex;
   margin-left: auto;
   margin-right: 5%;
   margin-top: 0.1%;
-  background-color:#25b099 ;
+  background-color: #25b099;
   width: 25%;
   height: 60px;
-  border-radius: 10px;  
+  border-radius: 10px;
   color: #ffff;
   align-items: center;
   justify-content: center;
+}
 
+.div-add-new-user-mananger-users img {
+  margin: 3%;
 }
-.div-add-new-user-mananger-users img{
-margin: 3%;
-}
-.div-add-new-user-mananger-users:hover{
+
+.div-add-new-user-mananger-users:hover {
   transition: 200ms;
   box-shadow: 5px 5px 10px #999999;
   border: 2px solid #38C6AE;
   height: 56px;
-
 }
 
-@media only screen and (max-width:766px){
-  .table-list-users-mananger{
+th:nth-child(1),td:nth-child(1){
+  width: 25%;
+}
+
+@media only screen and (max-width:1024px) {
+  .table-list-users-mananger {
     display: initial;
     flex-direction: column;
     width: 96%;
   }
-  .div-add-new-user-mananger-users{
+  .div-add-new-user-mananger-users {
     width: 96%;
+    margin: 3% auto;
   }
-  th:nth-child(3) ,
-  td:nth-child(3),  
-  th:nth-child(4) ,
-  td:nth-child(4),  
-  th:nth-child(5) ,
-  td:nth-child(5){
-
-    display: none;
+  th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5) {
+  display: none;
   }
 
+  th:nth-child(1),td:nth-child(1){
+    width: 100%;
+  }
+}
+
+
+.trash-img {
+  display: flex;
+  margin: 0 auto;
+  width: 25px;
+}
+
+.trash-img:hover  {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-image: url('../../../../Assets/Trash-g.gif') ;
+  background-size: contain;
+  
+}
+
+.tool-img {
+  display: flex;
+  margin: 0 auto;
+  width: 35px;
 }

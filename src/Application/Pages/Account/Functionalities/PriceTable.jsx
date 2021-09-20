@@ -5,8 +5,8 @@ import Button from "../../../Components/Sub/Button";
 import Document from "../../../../Assets/Document.gif";
 import Wait from "../../../../Assets/Wait.gif";
 import Down from "../../../../Assets/Down.gif";
-import "./PriceTable.css";
 import Succesfull from "../../../Components/Sub/Succesfull";
+import "./PriceTable.css";
 
 const PriceTable = () => {
 

@@ -7,7 +7,7 @@ import Button from "../../../Components/Sub/Button";
 import { GlobalContext } from "../../Main/GlobalContext";
 import Succesfull from "../../../Components/Sub/Succesfull";
 import useErrorForm from "../../../Hooks/useErrorForm";
-import { adjustsUserSubmit } from "../../../Hooks/useSubmitDada";
+import { adjustsProfileSubmit } from "../../../Hooks/useSubmitDada";
 import { returnFilter } from "../../../Shared/Commons/Helpers/HandleFilter";
 import Style from '../../Account/Add User/Forms.module.css'
 import "./Profile.css";
@@ -20,7 +20,7 @@ const Profile = () => {
   const { alterRegisterData, setAlterRegisterData, newUserData } =  React.useContext(GlobalContext);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
   const [err, setErr] = React.useState(false);
-  const  UserSubmit = adjustsUserSubmit(alterRegisterData)
+  const  UserSubmit = adjustsProfileSubmit(alterRegisterData)
 
 
   const [adjustsByUser, setAdjustsByUser] = React.useState(

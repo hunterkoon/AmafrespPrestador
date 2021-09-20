@@ -77,7 +77,7 @@ const Status = () => {
           </>
         ) : null}
       </div>
-      <input type="text" onChange={({ target }) => setBoo(target.value)} />
+      {/* <input type="text" onChange={({ target }) => setBoo(target.value)} /> */}
     </div>
     
   );
