@@ -11,7 +11,7 @@ const FaleConosco = () => {
     },
     zoom: 11,
   };
-  const AnyReactComponent = ({ text }) => <div>{text}</div>;
+  // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
   return (
     <div className="div-main-faleConosco pageView">
@@ -20,11 +20,11 @@ const FaleConosco = () => {
       </div>
       <div style={{ height: "100vh", width: "100%" }}>
         <GoogleMaps
-          bootstrapURLKeys={{ key: "" }}
+          bootstrapURLKeys={{ key: "AIzaSyChYgkieCv8PxYNuIamnInUGWgQhuZp5FI" }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
         >
-          <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
+       
         </GoogleMaps>
       </div>
     </div>
