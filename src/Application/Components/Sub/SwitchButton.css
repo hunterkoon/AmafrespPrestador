@@ -3,12 +3,15 @@
     display: inline-block;
     width: 100%;
     height: 50px;
+    z-index: 0;
+
 }
 
 .label-switch input {
     opacity: 0;
     width: 0;
     height: 0;
+
 }
 
 .span-slider {
@@ -19,6 +22,7 @@
     right: 0;
     bottom: 0;
     background-color: #25b099;
+
 }
 
 input:checked+.span-slider {
@@ -59,7 +63,7 @@ input:checked+.span-slider:before {
     width: 100%;
     display: flex;
     align-items: center;
-    z-index: 1;
+
 }
 
 .spans {
@@ -90,4 +94,5 @@ input:checked+.span-slider:before {
     align-items: center;
     justify-content: center;
     color: #474747;
+    
 }

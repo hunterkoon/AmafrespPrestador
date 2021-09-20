@@ -5,11 +5,12 @@
   font-family: NotoSans-Regular;
   width: 100%;
   margin: 0 auto;
+  z-index: 999 !important;
 }
 
 .p-error-null {
   position: absolute;
-  z-index: 999999999999999;
+  z-index: -999999;
   width: 0;
   height: 0;
   opacity: 0;
@@ -23,9 +24,8 @@
   color: #ffff;
   background-color: #E20000;
   border-radius: 10px 10px 10px 0px;
-  box-shadow: 10px 10px 10px 0px #E1E1E1;
-  z-index: 999 ;
-  transform: translate(0px , -60px)
+  box-shadow: 10px 10px 10px 0px #9b9090;
+  transform: translate(0px , -80px);
 } 
 
 
@@ -135,7 +135,6 @@
     position: absolute;
     right: 0%;
     width: 80%;
-    z-index: 999999999999;
     transform: translate(0px , -60px);
   }
   .input-img {

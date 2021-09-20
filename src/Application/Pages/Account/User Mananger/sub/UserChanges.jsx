@@ -8,6 +8,7 @@ import { GlobalContext } from "../../../Main/GlobalContext";
 import { adjustsUserSubmit, deleteUserSubmit } from "../../../../Hooks/useSubmitDada";
 import Succesfull from "../../../../Components/Sub/Succesfull";
 import "./UserChanges.css";
+import useErrorForm from "../../../../Hooks/useErrorForm";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
@@ -28,7 +29,7 @@ const UserChanges = ({ ...props }) => {
 
   const deleteUsersSubmit = deleteUserSubmit(userSelectedForm);
   const changesUsersSubmit = Object.assign( adjustsUserSubmit(userSelectedForm),functions);
-
+  const err =  useErrorForm(adjustsManangerUser)
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
@@ -47,11 +48,11 @@ const UserChanges = ({ ...props }) => {
   }, [props.deleteUser?.profile, props.user?.profile]);
 
   const handleSubmit = ({ target }) => {
-    //TODO FECTH FUNCTIONS 
-
-    if (target.tagName == "FORM") {
-      console.log(changesUsersSubmit);
-    } else {
+    //TODO FECTH FUNCTIONS   
+    if (target.tagName == "FORM" && err === true) {
+      setAlertSuccesful(!alertSuccesful) 
+      console.log(changesUsersSubmit );
+    } else if  ( target.tagName !== "FORM") {
       console.log(deleteUsersSubmit);
     }
   };
@@ -94,7 +95,6 @@ const UserChanges = ({ ...props }) => {
           )}
           <div className="div-sub-form-user-mananger-button">
             <Button
-              onClick={() => setAlertSuccesful(!alertSuccesful)}
               value="Alterar"
             />
             <Button
