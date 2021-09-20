@@ -21,11 +21,11 @@ const PriceTable = () => {
  
   React.useEffect(() => {
     switch (boo) {
-      case  1  :
+      case  '1'  :
         setPriceTable("Aguardando");
         setStatusIMG(Wait);
         break;
-      case 2:
+      case '2':
         setPriceTable("Concluido");
         setStatusIMG(Document);
         break;
@@ -55,7 +55,7 @@ const PriceTable = () => {
               className={"menuView"}
               text="Por gentileza Solicite uma tabela de Preços !"
             />
-            <Button onClick={()=>[ setToggle(!toggle) , setBoo(1)]} value="Solicitar" />
+            <Button onClick={()=>[ setToggle(!toggle) , setBoo('1')]} value="Solicitar" />
           </div>
         ) : null}
 
@@ -79,8 +79,23 @@ const PriceTable = () => {
           </>
         ) : null}
       </div>
-      {/* <input type='text' value={boo} onChange={({target})=>setBoo(target.value)}/> */}
+      
+      {/* TODO = EXCLUIR */}
+      <label style={
+        {
+          display:'flex',
+          flexDirection:'column',
+          margin:'0% auto',
+          width: '500px'          
+        }
+      }>
+       Teste para status de recebimento API [0,1,2]
+      <input style={{
+              margin:'3% auto',
+      }} type='text' value={boo} onChange={({target})=>setBoo(target.value)}/>
+      </label>
     </div>
+  
     </>
   );
 };
