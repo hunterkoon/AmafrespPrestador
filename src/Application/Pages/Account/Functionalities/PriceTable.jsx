@@ -81,7 +81,7 @@ const PriceTable = () => {
       </div>
       
       {/* TODO = EXCLUIR */}
-      <label style={
+      {/* <label style={
         {
           display:'flex',
           flexDirection:'column',
@@ -93,7 +93,7 @@ const PriceTable = () => {
       <input style={{
               margin:'3% auto',
       }} type='text' value={boo} onChange={({target})=>setBoo(target.value)}/>
-      </label>
+      </label> */}
     </div>
   
     </>

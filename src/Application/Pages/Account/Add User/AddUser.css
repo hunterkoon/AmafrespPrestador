@@ -5,6 +5,7 @@
   height: auto;
   width: 100%;
   overflow-x: hidden;
+  z-index: 0;
 }
 
 .form-add-new-user {

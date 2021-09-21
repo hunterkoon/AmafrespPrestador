@@ -93,26 +93,26 @@ const GeneralForms = (loginData) => {
   const addUserForm = [
     name,
     cpf,
-    email,
-    emailConfirm,
-    password,
-    passwordConfirm,
+    department,
     telphone,
     celphone,
-    department,
+    password,
+    passwordConfirm,
+    email,
+    emailConfirm,
   ];
 
   //FORMULARIO DE ALTERAÇÃO DE PERFIL
   const adjustsUserForm = [
     name,
     cpf,
-    email,
-    emailConfirm,
+    department,
     telphone,
     celphone,
-    department,
     atualPassword,
     newPassword,
+    email,
+    emailConfirm,
   ];
 
   // FORMULARIO ALTERAÇÃO DE USUARIOS
