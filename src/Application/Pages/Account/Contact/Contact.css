@@ -6,28 +6,49 @@
   min-height: 80vh;
   width: 100%;
   overflow-x: hidden;
-
 }
+
 .maps {
   display: flex;
   width: 350px;
   height: 65px;
   align-items: center;
-  
 }
-.maps img{
-  
+
+.maps img {
   width: 100px;
   height: 100px;
-
 }
-.maps label{
+
+.maps label {
   font-family: NotoSans-Regular;
   background-color: white;
   width: 300px;
   padding: 3%;
   border-radius: 10px 10px 10px 0px;
   color: #414141;
-  box-shadow: #818181  0px 0px  10px  1px  ;
-
+  box-shadow: #818181 0px 0px 10px 1px;
 }
+
+.div-sub-contact  {
+  padding: 0;
+  width: 95%;
+  margin: 0 auto;
+}
+.div-sub-contact h1 {
+  padding: 0;
+  color: #25b099;
+ 
+}
+.div-sub-contact div {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
+
+ 
+}
+.div-sub-contact h3, h4 {
+margin: 2% ;
+ }
