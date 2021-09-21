@@ -7,10 +7,10 @@ import "./Contact.css";
 const FaleConosco = () => {
   const defaultProps = {
     center: {
-      lat: -23.582494256880434,
-      lng: -46.66797249323606,
+      lat: -23.58305873178371,
+      lng: -46.66781466013052,
     },
-    zoom: 18,
+    zoom: 19,
   };
   const AnyReactComponent = ({ img }) => (
     <div className="maps">
