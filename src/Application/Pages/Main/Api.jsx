@@ -8,7 +8,7 @@ const baseURL = 'http://192.168.0.106:3036';
 // }
 
 export function GETDADOS(user, pass, email) {
-  // const login = { USER: user, PASSWORD: pass, EMAIL: email };
+ const login = { CNPJCPF: user, PASSWORD: pass};
   return {
     url: baseURL + '/prestador/',
     options: {

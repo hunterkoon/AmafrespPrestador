@@ -24,7 +24,7 @@ class InputConstants {
 export const loginCommonDataSubmit = (data) => {
   const loginCommon = new InputConstants(data);
   return {
-    CPFCNPJ: loginCommon.Cpf,
+    CNPJCPF: loginCommon.Cpf,
     senha: loginCommon.Password,
   };
 };
@@ -32,7 +32,7 @@ export const loginAdmDataSubmit = (data) => {
   const loginAdm = new InputConstants(data);
   localStorage.setItem("token", loginAdm.Password);
   return {
-    CPFCNPJ: loginAdm.Cnpj,
+    CNPJCPF: loginAdm.Cnpj,
     senha: loginAdm.Password,
   };
 };
@@ -41,21 +41,21 @@ export const recoverAdmPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
     email: recoverAdm.Email,
-    CPFCNPJ: recoverAdm.Cnpj,
+    CNPJCPF: recoverAdm.Cnpj,
   };
 };
 export const recoverCommonPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
     email: recoverAdm.Email,
-    CPFCNPJ: recoverAdm.Cpf,
+    CNPJCPF: recoverAdm.Cpf,
   };
 };
 export const addUserSubmit = (data) => {
   const addUser = new InputConstants(data);
   return {
     nome: addUser.Name,
-    CPFCNPJ: addUser.Cpf,
+    CNPJCPF: addUser.Cpf,
     email: addUser.Email,
     senha: addUser.Password,
     telefoneFixo: addUser.Telphone,
@@ -66,7 +66,7 @@ export const addUserSubmit = (data) => {
 export const firstAcessSubmit = (data) => {
   const firtAcess = new InputConstants(data);
   return {
-    CPFCNPJ: firtAcess.Cnpj,
+    CNPJCPF: firtAcess.Cnpj,
     email: firtAcess.Email,
     senha: firtAcess.Password,
   };
@@ -75,7 +75,7 @@ export const adjustsProfileSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
     nome: adjustsUser.Name,
-    CPFCNPJ: adjustsUser.Cpf,
+    CNPJCPF: adjustsUser.Cpf,
     telefoneFixo: adjustsUser.Telphone,
     telefoneCelular: adjustsUser.Celphone,
     email: adjustsUser.Email,
@@ -88,7 +88,7 @@ export const adjustsUserSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
     nome: adjustsUser.Name,
-    CPFCNPJ: adjustsUser.Cpf,
+    CNPJCPF: adjustsUser.Cpf,
     telefoneFixo: adjustsUser.Telphone,
     telefoneCelular: adjustsUser.Celphone,
     email: adjustsUser.Email,
@@ -100,14 +100,14 @@ export const deleteUserSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
     nome: adjustsUser.Name,
-    CPFCNPJ: adjustsUser.Cpf,
+    CNPJCPF: adjustsUser.Cpf,
   };
 };
 
 export const upRegRegistrationSubmit = (data) => {
   const upRegAddress = new InputConstants(data);
   return {
-    CPFCNPJ: upRegAddress.Cnpj,
+    CNPJCPF: upRegAddress.Cnpj,
     razaoSocial: upRegAddress.SocialReason,
     fantasia: upRegAddress.Neighborhood,
   };
