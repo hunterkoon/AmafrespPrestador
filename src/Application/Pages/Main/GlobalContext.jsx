@@ -26,6 +26,8 @@ export const GlobalStorage = ({ children }) => {
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
 
+  const [data, setData] = React.useState({});
+  const [messageLogin, setMessageLogin] = React.useState([]);
   // ATUALIZAÇÃO CADASTRAL
 
   const [regUpData, setRegUpData] = React.useState([]);
@@ -47,13 +49,13 @@ export const GlobalStorage = ({ children }) => {
   async function LoginValidate(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
+
     if (json.StatusCode === 200) {
       setLogin(true);
-    }
-    console.log(json);
-    return {
-      response: response,
-      json: json,
+      setData(json.Content);
+      localStorage.setItem("token", json.Content.Token)
+    } else {
+      setMessageLogin(json.Message);
     };
   }
 
@@ -89,6 +91,8 @@ export const GlobalStorage = ({ children }) => {
         setToggleModal,
         setGlobalHandle,
         LoginValidate,
+        data,
+        messageLogin,
         globalHandle,
         option,
         profile,

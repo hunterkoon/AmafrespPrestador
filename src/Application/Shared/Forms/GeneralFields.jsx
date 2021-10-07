@@ -19,7 +19,7 @@ export const CPF_CNPJ = (mask, error, funBlu, funFoc) => {
 export const EMAIL = (value) => {
   return {
     key: 2,
-    id: 'email',
+    id: 'Email',
     type: 'email',
     label: 'E-mail',
     require: require,
@@ -87,7 +87,7 @@ export const USER = (value) => {
 export const NAME = (value) => {
   return {
     key: 7,
-    id: 'pnome',
+    id: 'Nome',
     type: 'text',
     value: value && value.pnome,
     require: require,
@@ -111,7 +111,7 @@ export const DEPARTMENT = (value) => {
 export const CEL_TELPHONE = (value) => {
   return {
     key: 9,
-    id: 'pcelfone',
+    id: 'Celular',
     type: 'text',
     label: 'Celular',
     value: value && value.pcelfone,
@@ -165,7 +165,7 @@ export const NEW_PASSWORD = (error, funBlu, funFoc) => {
 export const SOCIAL = (value) => {
   return {
     key: 13,
-    id: 'razaoSocial',
+    id: 'RazaoSocial',
     type: 'text',
     value: value && value.razaoSOCIAL,
     label: 'Razão Social',
@@ -178,7 +178,7 @@ export const SOCIAL = (value) => {
 export const FANTASY_NAME = (value) => {
   return {
     key: 14,
-    id: 'nomeFantasia',
+    id: 'Fantasia',
     type: 'text',
     value: value && value.nomeFantasia,
     label: 'Nome Fantasia',
@@ -209,7 +209,7 @@ export const CPF = (mask, error, funBlu, funFoc) => {
     changeBlur: funBlu,
     error: error,
     key: 16,
-    id: 'cpf',
+    id: 'Cpf',
     type: 'text',
     label: 'CPF',
     mask: mask,
@@ -223,7 +223,7 @@ export const CNPJ = (mask, error, value, funBlu, funFoc) => {
     changeBlur: funBlu,
     error: error,
     key: 17,
-    id: 'cnpj',
+    id: 'CNPJCPF',
     type: 'text',
     label: 'CNPJ',
     mask: mask,

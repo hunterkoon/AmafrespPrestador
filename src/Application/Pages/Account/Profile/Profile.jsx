@@ -15,19 +15,19 @@ import "./Profile.css";
 
 
 const Profile = () => {
-    
-  const {useInputsGeneral } = useInputs()
-  const { alterRegisterData, setAlterRegisterData, newUserData } =  React.useContext(GlobalContext);
+
+  const { useInputsGeneral } = useInputs()
+  const { alterRegisterData, setAlterRegisterData, data } = React.useContext(GlobalContext);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
   const [err, setErr] = React.useState(false);
-  const  UserSubmit = adjustsProfileSubmit(alterRegisterData)
+  const UserSubmit = adjustsProfileSubmit(alterRegisterData)
 
 
   const [adjustsByUser, setAdjustsByUser] = React.useState(
     adjustsUserForm.reduce((acc, field) => {
       return {
         ...acc,
-        [field.id]: returnFilter(newUserData, field),
+        [field.id]: returnFilter(data, field),
       };
     }, {})
   );
@@ -38,7 +38,7 @@ const Profile = () => {
   };
 
   React.useEffect(() => {
-    setAlterRegisterData({...adjustsByUser });
+    setAlterRegisterData({ ...adjustsByUser });
   }, [adjustsByUser, setAlterRegisterData]);
   const erroForm = useErrorForm(adjustsUserForm);
 
@@ -64,14 +64,14 @@ const Profile = () => {
           </div>
           <div className="div-sub-adjusts-user-button-area">
             <Button value="Alterar" />
-         
+
           </div>
         </form>
       </div>
-      <Succesfull 
-          onClick={()=>setErr(!err)}
-          alert={err}
-         text='Infomações pessoais alteradas!.'/>
+      <Succesfull
+        onClick={() => setErr(!err)}
+        alert={err}
+        text='Infomações pessoais alteradas!.' />
     </div>
   );
 };

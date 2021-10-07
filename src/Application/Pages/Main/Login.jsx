@@ -19,7 +19,7 @@ const Login = () => {
   // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
 
   const { useInputsGeneral } = useInputs();
-  const { option, setLoginData, loginData, LoginValidate } = React.useContext(
+  const { option, setLoginData, loginData, LoginValidate, messageLogin } = React.useContext(
     GlobalContext,
   );
 
@@ -56,7 +56,7 @@ const Login = () => {
   // TODO FUNÇÃO DE FETCH
   const handleSubmit = (event) => {
     event.preventDefault();
-    option ? ( LoginValidate(loginCOMSubmit))  : (LoginValidate(loginADMSubmit)) ;
+    option ? (LoginValidate(loginCOMSubmit)) : (LoginValidate(loginADMSubmit));
   };
 
   return (
@@ -86,6 +86,7 @@ const Login = () => {
                 <img src={IconDoubt} alt="" />
               </Link>
             </div>
+
             <form onSubmit={handleSubmit}>
               {useInputsGeneral(
                 option ? loginCommon : loginAdm, // list of inputs
@@ -93,6 +94,13 @@ const Login = () => {
                 fieldsLogin, // values
                 'menuView', // class
               )}
+              {messageLogin ? <span style={{
+                display: "flex",
+                color: "red",
+                fontSize: "1em",
+                height: "40px",
+                alignItems: "center"
+              }}>{messageLogin}</span> : null}
               <div
                 className={
                   !option ? 'div-button-login' : 'div-button-login-user'
