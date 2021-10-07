@@ -1,42 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { GlobalContext } from "../Main/GlobalContext";
-import { UrlImgLogin } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
-import useInputs from "../../Hooks/useInputs";
-import Button from "../../Components/Sub/Button";
-import Title from "../../Components/Sub/Title";
-import Titledecorated from "../../Components/Sub/Titledecorated";
-import SwitchButton from "../../Components/Sub/SwitchButton";
-import LoginImg from "../../../Assets/Login_2.svg";
-import UsuarioLogin from "../../../Assets/UsuarioLogin.svg";
-import IconDoubt from "../../../Assets/IconDoubt.svg";
-import GeneralForms from "../../Shared/Forms/GeneralForms";
-import { loginAdmDataSubmit, loginCommonDataSubmit } from "../../Hooks/useSubmitDada";
-import "./Login.css";
-import "../../../App.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { GlobalContext } from '../Main/GlobalContext';
+import { UrlImgLogin } from '../../Shared/Commons/Constants/image-url-primeiro-acesso';
+import useInputs from '../../Hooks/useInputs';
+import Button from '../../Components/Sub/Button';
+import Title from '../../Components/Sub/Title';
+import Titledecorated from '../../Components/Sub/Titledecorated';
+import SwitchButton from '../../Components/Sub/SwitchButton';
+import LoginImg from '../../../Assets/Login_2.svg';
+import UsuarioLogin from '../../../Assets/UsuarioLogin.svg';
+import IconDoubt from '../../../Assets/IconDoubt.svg';
+import GeneralForms from '../../Shared/Forms/GeneralForms';
+import { loginDataSubmit } from '../../Hooks/useSubmitDada';
+import './Login.css';
+import '../../../App.css';
 
 const Login = () => {
-
   // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
-    
-  const {useInputsGeneral } = useInputs()
-  const { setLogin, option, setLoginData, loginData } = React.useContext(GlobalContext);
 
-  // CONSTANTES IMPORTADAS PARA GERAR FORMS 
+  const { useInputsGeneral } = useInputs();
+  const { option, setLoginData, loginData, LoginValidate } = React.useContext(
+    GlobalContext,
+  );
+
+  // CONSTANTES IMPORTADAS PARA GERAR FORMS
 
   const { loginCommon, loginAdm } = GeneralForms(loginData);
-  const loginCommonSubmit = loginCommonDataSubmit(loginData);
-  const loginAdmSubmit = loginAdmDataSubmit(loginData);
+  const loginSubmit = loginDataSubmit(loginData);
 
   // ATUALIZA LISTA ATUAL DE ARRAYS COM ITENS ANTERIORES
+  const variable = option ? loginCommon : loginAdm;
 
   const [fieldsLogin, setFieldsLogin] = React.useState(
-    loginCommon.reduce((acc, field) => {
+    variable.reduce((acc, field) => {
       return {
         ...acc,
-        [field.id]: "",
+        [field.id]: '',
       };
-    }, {})
+    }, {}),
   );
 
   // FUNÇÃO ATUALIZADORA, PASSA PARA ESTADO GLOBAL ARRAY ATUALIZADO
@@ -46,25 +47,19 @@ const Login = () => {
     setFieldsLogin({ ...fieldsLogin, [id]: value });
   };
 
-
   // FUNÇÃO ATUALIZADORA
 
   React.useEffect(() => {
     setLoginData(fieldsLogin);
-  }, [fieldsLogin, setLogin, setLoginData]);
-
+  }, [fieldsLogin, setLoginData, variable]);
 
   // TODO FUNÇÃO DE FETCH
+  console.log(loginSubmit);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLogin(true);
-    if (option) {
-      return loginCommonSubmit;
-    } else return loginAdmSubmit;
+    LoginValidate(loginSubmit);
   };
-
-
 
   return (
     <>
@@ -72,7 +67,7 @@ const Login = () => {
         <div className="div-img-login">
           <div>
             <img
-              className={option ? "pageView" : "pageViewDrop"}
+              className={option ? 'pageView' : 'pageViewDrop'}
               src={option ? UsuarioLogin : LoginImg}
               alt="Imagem de Profissionais da medicina"
             />
@@ -83,7 +78,7 @@ const Login = () => {
           <div className="div-input-login">
             <div className="div-titles-login">
               <Titledecorated
-                text={option ? "Login - Usuário" : "Login - Administrador"}
+                text={option ? 'Login - Usuário' : 'Login - Administrador'}
               />
               <Title text="Portal Amafresp Prestador" />
             </div>
@@ -98,15 +93,15 @@ const Login = () => {
                 option ? loginCommon : loginAdm, // list of inputs
                 handleChange, // functions the atualization
                 fieldsLogin, // values
-                "menuView" // class
+                'menuView', // class
               )}
               <div
                 className={
-                  !option ? "div-button-login" : "div-button-login-user"
+                  !option ? 'div-button-login' : 'div-button-login-user'
                 }
               >
                 <Button value="Entrar"></Button>
-                <div className={option ? null : "div-links-login"}>
+                <div className={option ? null : 'div-links-login'}>
                   <Link to="/RecuperarSenha/">
                     <p>Recuperar senha</p>
                   </Link>

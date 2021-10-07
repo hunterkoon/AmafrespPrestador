@@ -1,19 +1,12 @@
-const baseURL = 'http://192.168.0.106:3036';
+const baseURL = 'http://localhost:54565/PortalPrestador';
 
-// export function GETDADOS() {
-//   return {
-//     url: baseURL,
-//     options: { method: 'GET' },
-//   };
-// }
-
-export function GETDADOS(user, pass, email) {
- const login = { CNPJCPF: user, PASSWORD: pass};
+export function LOGIN(user, pass) {
+  const login = { CNPJCPF: user, Senha: pass };
   return {
-    url: baseURL + '/prestador/',
+    url: baseURL + '/Login/ ',
     options: {
-      method: 'GET',
-      // body: JSON.stringify(login),
+      method: 'POST',
+      body: JSON.stringify(login),
     },
   };
 }

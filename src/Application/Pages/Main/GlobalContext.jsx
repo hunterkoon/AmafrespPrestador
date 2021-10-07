@@ -1,8 +1,9 @@
-import React from "react";
-import useWindowDimensions from "../../Hooks/UseDimensionScreen";
-import { useNavigate } from "react-router";
-import useFetch from "../../Hooks/useFetch";
-import { ApiCep } from "../../Shared/Commons/Constants/RoutesApis";
+import React from 'react';
+import useWindowDimensions from '../../Hooks/UseDimensionScreen';
+import { useNavigate } from 'react-router';
+import useFetch from '../../Hooks/useFetch';
+import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
+import { LOGIN } from './Api';
 
 // import { GETDADOS } from "./Api";
 
@@ -25,10 +26,9 @@ export const GlobalStorage = ({ children }) => {
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
 
-// ATUALIZAÇÃO CADASTRAL 
+  // ATUALIZAÇÃO CADASTRAL
 
   const [regUpData, setRegUpData] = React.useState([]);
-
 
   // FETCH EDNE CEP
 
@@ -36,33 +36,37 @@ export const GlobalStorage = ({ children }) => {
     async function GetCep() {
       const cep = ApiCep(regUpData.cep);
       if (regUpData.cep && regUpData.cep.length === 8) {
-        const { json, /*response */} = await request(cep);
+        const { json /*response */ } = await request(cep);
         setAdress(json);
       }
     }
     GetCep();
   }, [regUpData.cep, request]);
 
-
-  // async function LoginValidate() {
-  //   const { url, options } = GETDADOS();
-  //   const { response, json } = await request(url, options);
-
-  //   setData(json);
-  //   FreeAcess(json);
-  // }
-
+  //LOGIN
+  async function LoginValidate(obj) {
+    const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
+    const { response, json } = await request(url, options);
+    if (json.StatusCode === 200) {
+      setLogin(true);
+    }
+    console.log(json);
+    return {
+      response: response,
+      json: json,
+    };
+  }
 
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
     if (login) {
-      return navigate("/conta");
-    } else return navigate("/");
+      return navigate('/conta');
+    } else return navigate('/');
   }, [login, navigate]);
 
   const handleLogout = () => {
-    navigate("/");
+    navigate('/');
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
@@ -84,6 +88,7 @@ export const GlobalStorage = ({ children }) => {
         setRegUpData,
         setToggleModal,
         setGlobalHandle,
+        LoginValidate,
         globalHandle,
         option,
         profile,
@@ -100,7 +105,7 @@ export const GlobalStorage = ({ children }) => {
         alterRegisterData,
         regUpData,
         address,
-        toggleModal, 
+        toggleModal,
       }}
     >
       {children}

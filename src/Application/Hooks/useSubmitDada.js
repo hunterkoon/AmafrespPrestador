@@ -1,4 +1,4 @@
-import { handlePasswordHash } from "../Shared/Commons/Helpers/HandleInputs";
+import { handlePasswordHash } from '../Shared/Commons/Helpers/HandleInputs';
 
 const regex = /\W/g;
 
@@ -7,8 +7,8 @@ class InputConstants {
     this.NewPassword = handlePasswordHash(data.NOVAsenha);
     this.ActualPassword = handlePasswordHash(data.ATUALsenha);
     this.Password = handlePasswordHash(data.password);
-    this.Cpf = data.cpf && data.cpf.replace(regex, "");
-    this.Cnpj = data.cnpj && data.cnpj.replace(regex, "");
+    this.Cpf = data.cpf && data.cpf.replace(regex, '');
+    this.CNPJCPF = data.cnpj && data.cnpj.replace(regex, '');
     this.Email = data.email && data.email.toUpperCase();
     this.Department = data.pdepartamento && data.pdepartamento.toUpperCase();
     this.SocialReason = data.razaoSocial && data.razaoSocial.toUpperCase();
@@ -16,24 +16,16 @@ class InputConstants {
     this.Name = data.pnome && data.pnome.toUpperCase();
     this.Telphone = data.ptelphone;
     this.Celphone = data.pcelfone;
-    this.Cep = data.cep && data.cep.replace(regex, "");
+    this.Cep = data.cep && data.cep.replace(regex, '');
     this.Street = data.logradouro;
     this.Neighborhood = data.bairro;
   }
 }
-export const loginCommonDataSubmit = (data) => {
-  const loginCommon = new InputConstants(data);
+export const loginDataSubmit = (data) => {
+  const login = new InputConstants(data);
   return {
-    CNPJCPF: loginCommon.Cpf,
-    senha: loginCommon.Password,
-  };
-};
-export const loginAdmDataSubmit = (data) => {
-  const loginAdm = new InputConstants(data);
-  localStorage.setItem("token", loginAdm.Password);
-  return {
-    CNPJCPF: loginAdm.Cnpj,
-    senha: loginAdm.Password,
+    CNPJCPF: login.CNPJCPF,
+    Senha: login.Password,
   };
 };
 
