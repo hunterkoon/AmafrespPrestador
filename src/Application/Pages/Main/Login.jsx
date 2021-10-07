@@ -11,7 +11,7 @@ import LoginImg from '../../../Assets/Login_2.svg';
 import UsuarioLogin from '../../../Assets/UsuarioLogin.svg';
 import IconDoubt from '../../../Assets/IconDoubt.svg';
 import GeneralForms from '../../Shared/Forms/GeneralForms';
-import { loginDataSubmit } from '../../Hooks/useSubmitDada';
+import { loginDataCNPJSubmit, loginDataCPFSubmit } from '../../Hooks/useSubmitDada';
 import './Login.css';
 import '../../../App.css';
 
@@ -26,11 +26,11 @@ const Login = () => {
   // CONSTANTES IMPORTADAS PARA GERAR FORMS
 
   const { loginCommon, loginAdm } = GeneralForms(loginData);
-  const loginSubmit = loginDataSubmit(loginData);
+  const loginADMSubmit = loginDataCNPJSubmit(loginData);
+  const loginCOMSubmit = loginDataCPFSubmit(loginData);
 
   // ATUALIZA LISTA ATUAL DE ARRAYS COM ITENS ANTERIORES
   const variable = option ? loginCommon : loginAdm;
-
   const [fieldsLogin, setFieldsLogin] = React.useState(
     variable.reduce((acc, field) => {
       return {
@@ -54,11 +54,9 @@ const Login = () => {
   }, [fieldsLogin, setLoginData, variable]);
 
   // TODO FUNÇÃO DE FETCH
-  console.log(loginSubmit);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginValidate(loginSubmit);
+    option ? ( LoginValidate(loginCOMSubmit))  : (LoginValidate(loginADMSubmit)) ;
   };
 
   return (

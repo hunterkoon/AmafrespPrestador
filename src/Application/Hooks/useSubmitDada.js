@@ -8,7 +8,7 @@ class InputConstants {
     this.ActualPassword = handlePasswordHash(data.ATUALsenha);
     this.Password = handlePasswordHash(data.password);
     this.Cpf = data.cpf && data.cpf.replace(regex, '');
-    this.CNPJCPF = data.cnpj && data.cnpj.replace(regex, '');
+    this.Cnpj = data.cnpj && data.cnpj.replace(regex, '');
     this.Email = data.email && data.email.toUpperCase();
     this.Department = data.pdepartamento && data.pdepartamento.toUpperCase();
     this.SocialReason = data.razaoSocial && data.razaoSocial.toUpperCase();
@@ -21,13 +21,22 @@ class InputConstants {
     this.Neighborhood = data.bairro;
   }
 }
-export const loginDataSubmit = (data) => {
+export const loginDataCNPJSubmit = (data) => {
   const login = new InputConstants(data);
   return {
-    CNPJCPF: login.CNPJCPF,
+    CNPJCPF: login.Cnpj,
     Senha: login.Password,
   };
 };
+
+export const loginDataCPFSubmit = (data) => {
+  const login = new InputConstants(data);
+  return {
+    CNPJCPF: login.Cpf,
+    Senha: login.Password,
+  };
+};
+
 
 export const recoverAdmPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
@@ -37,10 +46,10 @@ export const recoverAdmPasswordSubmit = (data) => {
   };
 };
 export const recoverCommonPasswordSubmit = (data) => {
-  const recoverAdm = new InputConstants(data);
+  const recoverCommon = new InputConstants(data);
   return {
-    email: recoverAdm.Email,
-    CNPJCPF: recoverAdm.Cpf,
+    email: recoverCommon.Email,
+    CNPJCPF: recoverCommon.Cpf,
   };
 };
 export const addUserSubmit = (data) => {

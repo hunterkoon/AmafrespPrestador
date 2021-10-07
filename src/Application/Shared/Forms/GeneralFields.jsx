@@ -1,4 +1,4 @@
-const require = '';
+const require = true;
 
 export const CPF_CNPJ = (mask, error, funBlu, funFoc) => {
   return {
