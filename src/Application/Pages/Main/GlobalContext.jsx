@@ -26,6 +26,7 @@ export const GlobalStorage = ({ children }) => {
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
 
+  //FETCH DATA 
   const [data, setData] = React.useState({});
   const [messageLogin, setMessageLogin] = React.useState([]);
   // ATUALIZAÇÃO CADASTRAL
@@ -49,7 +50,6 @@ export const GlobalStorage = ({ children }) => {
   async function LoginValidate(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
-
     if (json.StatusCode === 200) {
       setLogin(true);
       setData(json.Content);
@@ -58,7 +58,6 @@ export const GlobalStorage = ({ children }) => {
       setMessageLogin(json.Message);
     };
   }
-
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
