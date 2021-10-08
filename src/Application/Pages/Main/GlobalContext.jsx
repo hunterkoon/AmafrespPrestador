@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN } from './Api';
+import { LOGIN, TOKEN, RECOVER_PASSWORDD } from './Api';
 
 // import { GETDADOS } from "./Api";
 
@@ -22,15 +22,14 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
-  const { loading, error, request } = useFetch();
+  const { loading, error, request, setError } = useFetch();
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
 
   //FETCH DATA 
   const [data, setData] = React.useState({});
-  const [messageLogin, setMessageLogin] = React.useState([]);
-  // ATUALIZAÇÃO CADASTRAL
 
+  // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
 
   // FETCH EDNE CEP
@@ -47,17 +46,24 @@ export const GlobalStorage = ({ children }) => {
   }, [regUpData.cep, request]);
 
   //LOGIN
-  async function LoginValidate(obj) {
+  async function _LoginValidate(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
-    if (json.StatusCode === 200) {
+    if (response.status === 200) {
       setLogin(true);
       setData(json.Content);
-      localStorage.setItem("token", json.Content.Token)
-    } else {
-      setMessageLogin(json.Message);
-    };
+      localStorage.setItem('token', json.Content.Token);
+    }
   }
+  // RECOVER PASSWORD
+  async function _RecoverPassword(obj) {
+    const { url, options } = RECOVER_PASSWORDD(obj.CNPJCPF, obj.Email);
+    const { response, json } = await request(url, options);
+    if (json.StatusCode === 200) {
+      navigate("/RecoverSuccessful")
+    }
+  }
+
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
   React.useEffect(() => {
@@ -66,11 +72,19 @@ export const GlobalStorage = ({ children }) => {
     } else return navigate('/');
   }, [login, navigate]);
 
+  // RESETA POSIÇÃO DE ERRO
+  React.useEffect(() => {
+    setError(null)
+  }, [window.location.href])
+
+
   const handleLogout = () => {
     navigate('/');
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
+    setData({});
+    localStorage.removeItem('token')
   };
 
   return (
@@ -89,9 +103,9 @@ export const GlobalStorage = ({ children }) => {
         setRegUpData,
         setToggleModal,
         setGlobalHandle,
-        LoginValidate,
+        _LoginValidate,
+        _RecoverPassword,
         data,
-        messageLogin,
         globalHandle,
         option,
         profile,

@@ -41,15 +41,15 @@ export const loginDataCPFSubmit = (data) => {
 export const recoverAdmPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
-    email: recoverAdm.Email,
     CNPJCPF: recoverAdm.Cnpj,
+    Email: recoverAdm.Email,
   };
 };
 export const recoverCommonPasswordSubmit = (data) => {
   const recoverCommon = new InputConstants(data);
   return {
-    email: recoverCommon.Email,
     CNPJCPF: recoverCommon.Cpf,
+    Email: recoverCommon.Email,
   };
 };
 export const addUserSubmit = (data) => {

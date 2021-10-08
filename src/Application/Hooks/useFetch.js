@@ -13,10 +13,9 @@ const useFetch = () => {
       setLoading(true);
       response = await fetch(url, options);
       json = await response.json();
-      if (response.ok === false) throw new Error(json.message);
-    } catch (err) {
-      json = null;
-      setError(err.message);
+      if (response.ok === false) throw new Error(json.Message);
+    } catch {
+      setError(json.Message);
     } finally {
       // setData(json);
       setLoading(false);
@@ -24,9 +23,8 @@ const useFetch = () => {
     }
   }, []);
 
-  return { /*data , setData,*/ loading, error, request, setError };
+  return { setError, loading, error, request };
 };
 
-//TODO Iniciar JSON com indice 0
 
 export default useFetch;

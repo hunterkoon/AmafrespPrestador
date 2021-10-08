@@ -39,19 +39,19 @@ const MenuSuperior = () => {
           <div className="div-prestador-menu-superior">
             <div>
               <h2>Empresa:</h2>
-              <h4>{data.RazaoSocial ? data.RazaoSocial : "EMPRESA"}</h4>
+              <h4>{data.RazaoSocial && data.RazaoSocial}</h4>
             </div>
             <div>
               <h2>CNPJ:</h2>
-              <h4>{data.CNPJCPF ? data.CNPJCPF : "CNPJCPF"}</h4>
+              <h4>{data.CNPJCPF && data.CNPJCPF}</h4>
             </div>
             <div>
               <h2>Segmento:</h2>
-              <h4>{data.Segmento ? data.Segmento : "CNPJCPF"}</h4>
+              <h4>{data.Segmento && data.Segmento}</h4>
             </div>
             <div>
               <h2>Tipo Credenciado: </h2>
-              <h4>{data.TipoCredenciado ? data.TipoCredenciado : "CNPJCPF"}</h4>
+              <h4>{data.TipoCredenciado && data.TipoCredenciado}</h4>
             </div>
           </div>
           <div className="div-colaborador-menu-superior">

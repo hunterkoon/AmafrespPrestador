@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
 import { GlobalContext } from "./GlobalContext";
 import { UrlRecuperarSenha } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
-import { recoverAdmPasswordSubmit, recoverCommonPasswordSubmit} from "../../Hooks/useSubmitDada";
+import { recoverAdmPasswordSubmit, recoverCommonPasswordSubmit } from "../../Hooks/useSubmitDada";
 import GeneralForms from "../../Shared/Forms/GeneralForms";
 import Titledecorated from "../../Components/Sub/Titledecorated";
 import Title from "../../Components/Sub/Title";
@@ -13,36 +12,36 @@ import RecuperarSenhaImg from "../../../Assets/RecuperacaoSenha.svg";
 import IconDoubt from "../../../Assets/IconDoubt.svg";
 import useInputs from "../../Hooks/useInputs";
 import useErrorForm from "../../Hooks/useErrorForm";
+import Error from '../../Components/Sub/Error'
 import "./Login.css";
 import "./RecoverPassword.css";
 
 const RecoverPassword = () => {
-  
-  const {useInputsGeneral } = useInputs()
-  const { option, recoverData, setRecoverData } =  React.useContext(GlobalContext);
+
+  const { useInputsGeneral } = useInputs()
+  const { option, recoverData, setRecoverData, _RecoverPassword } = React.useContext(GlobalContext);
   const { recoverFiedsAdm, recoverFiedsCommon } = GeneralForms(recoverData);
   const erroFormADM = useErrorForm(recoverFiedsAdm);
   const erroFormCommon = useErrorForm(recoverFiedsCommon);
   const recoverAdmSubmit = recoverAdmPasswordSubmit(recoverData);
   const recoverCommonSubmit = recoverCommonPasswordSubmit(recoverData);
-  const navigate = useNavigate();
 
   // REALIZA REDUCE DO FORMULARIO
 
   const [recover, setRecover] = React.useState(
     !option
       ? recoverFiedsAdm.reduce((acc, item) => {
-          return {
-            ...acc,
-            [item.id]: "",
-          };
-        }, {})
+        return {
+          ...acc,
+          [item.id]: "",
+        };
+      }, {})
       : recoverFiedsCommon.reduce((acc, item) => {
-          return {
-            ...acc,
-            [item.id]: "",
-          };
-        }, {})
+        return {
+          ...acc,
+          [item.id]: "",
+        };
+      }, {})
   );
 
   // FUNCAO ATUALIZADORA 
@@ -61,12 +60,10 @@ const RecoverPassword = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (erroFormADM === true && erroFormCommon === true) {
-      navigate("/RecoverSuccessful");
+      _RecoverPassword(option ? recoverCommonSubmit : recoverAdmSubmit)
     }
-    if (option) {
-      return recoverCommonSubmit;
-    } else return recoverAdmSubmit;
   };
+
 
   return (
     <>
@@ -98,7 +95,7 @@ const RecoverPassword = () => {
               recover, // values
               "menuView" // class
             )}
-            
+            <Error />
             <div className="div-button-recuperar-senha">
               <Button value="Recuperar" />
               {/* <Link to="/RecuperarEmail">Esqueci meu e-mail</Link> */}
