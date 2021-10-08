@@ -30,3 +30,23 @@ export function RECOVER_PASSWORDD(cnpjcpf, email) {
     },
   };
 }
+export function FIRST_ACESS(cnpjcpf, senha, email) {
+  const data = { CNPJCPF: cnpjcpf, Senha: senha, Email: email };
+  return {
+    url: baseURL + '/PrimeiroAcesso/ ',
+    options: {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  };
+}
+export function FREE_ACESS(id) {
+  const data = { IdUsuario: id };
+  return {
+    url: baseURL + '/ConfirmaSenha/ ',
+    options: {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  };
+}

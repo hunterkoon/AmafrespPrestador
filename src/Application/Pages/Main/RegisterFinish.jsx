@@ -1,14 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Titledecorated from '../../Components/Sub/Titledecorated';
 import Title from '../../Components/Sub/Title';
 import Button from '../../Components/Sub/Button';
-import Email from '../../../Assets/Email.gif';
+import Check from '../../../Assets/Check.gif';
 import './RegisterSucessfull.css';
 import '../../../App.css';
+import { GlobalContext } from './GlobalContext';
 
 
-const RegisterSucessfull = () => {
+const RegisterFinish = () => {
+
+  const { _FreeAcess } = React.useContext(GlobalContext);
+  const { id } = useParams();
+  React.useEffect(() => { _FreeAcess(id); }, [])
   return (
     <div className="div-main-register-successful pageView ">
       <div className="div-sub-register-successful">
@@ -17,14 +22,17 @@ const RegisterSucessfull = () => {
           id="title-register-successful"
           size="1.3rem"
           text="
-        Sucesso!!! uma senha temporária será encaminhada pelo nosso time de credenciamento , aguarde a liberação do seu token!"
+        Sucesso!!! Seu Acesso esta totalmente Liberado!"
         />
         <div className="div-img-register-successful">
-          <img src={Email} alt="" />
+          <img style={{ width: "220px", margin: "3%" }} src={Check} alt="" />
         </div>
+        <Link to="/">
+          <Button value="Login" />
+        </Link>
       </div>
     </div>
   );
 };
 
-export default RegisterSucessfull;
+export default RegisterFinish;

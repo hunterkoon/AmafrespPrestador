@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS } from './Api';
 
 // import { GETDADOS } from "./Api";
 
@@ -22,7 +22,7 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
-  const { loading, error, request, setError } = useFetch();
+  const { setLoading, loading, error, request, setError } = useFetch();
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
 
@@ -58,6 +58,7 @@ export const GlobalStorage = ({ children }) => {
     if (response.status === 200) {
       setLogin(true);
       setData(json.Content);
+      navigate('/conta')
       localStorage.setItem('token', json.Content.Token);
       localStorage.setItem('codigo', json.Content.CNPJCPF);
     }
@@ -76,7 +77,15 @@ export const GlobalStorage = ({ children }) => {
       _AutoLogin();
     }
   }, [])
+  // FIRST ACESS
 
+  async function _FirstAcess(obj) {
+    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Senha, obj.Email)
+    const { response } = await request(url, options);
+    if (response.status === 200) {
+      navigate("/RegisterSucessful")
+    }
+  }
 
   // RECOVER PASSWORD
   async function _RecoverPassword(obj) {
@@ -86,14 +95,21 @@ export const GlobalStorage = ({ children }) => {
       navigate("/RecoverSuccessful")
     }
   }
+  // FREE ACESS 
+
+  async function _FreeAcess(id) {
+    const { url, options } = FREE_ACESS(id);
+    await request(url, options);
+  }
+
 
   // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
   //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
-  React.useEffect(() => {
-    if (login) {
-      return navigate('/conta');
-    } else return navigate('/');
-  }, [login, navigate]);
+  // React.useEffect(() => {
+  //   if (login) {
+  //     return navigate('/conta');
+  //   } else return navigate('/');
+  // }, [login, navigate]);
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
@@ -129,6 +145,8 @@ export const GlobalStorage = ({ children }) => {
         setGlobalHandle,
         _LoginValidate,
         _RecoverPassword,
+        _FirstAcess,
+        _FreeAcess,
         data,
         globalHandle,
         option,
