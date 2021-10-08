@@ -13,9 +13,12 @@ import RecoverPassword from "./Application/Pages/Main/RecoverPassword";
 import RegisterSucessful from "./Application/Pages/Main/RegisterSuccessful";
 import RecoverSucessful from "./Application/Pages/Main/RecoverSucessful";
 import Help from "./Application/Pages/Main/Help";
+import ProtectRoute from './Application/Hooks/useProjectRoute'
 import "./App.css";
 
 function App() {
+
+
   return (
     <>
       <HashRouter>
@@ -24,7 +27,7 @@ function App() {
           <div className="App">
             <Routes>
               <Route exact path="/" element={<Login />} />
-              <Route path="/conta/*" element={<Account />} />
+              <ProtectRoute path="/conta/*" element={<Account />} />
               <Route path="/PrimeiroAcesso" element={<FirstAccess />} />
               <Route path="/RecuperarSenha" element={<RecoverPassword />} />
               <Route path="/Help" element={<Help />} />

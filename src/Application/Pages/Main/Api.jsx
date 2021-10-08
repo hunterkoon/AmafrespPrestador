@@ -10,10 +10,10 @@ export function LOGIN(user, pass) {
     },
   };
 }
-export function TOKEN(token) {
-  const data = { Token: token };
+export function AUTO_LOGIN(cnpjcpf, token) {
+  const data = { CNPJCPF: cnpjcpf, Token: token };
   return {
-    url: baseURL + '/VerificaToken/ ',
+    url: baseURL + '/GetDadosByToken/ ',
     options: {
       method: 'POST',
       body: JSON.stringify(data),

@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, TOKEN, RECOVER_PASSWORDD } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD } from './Api';
 
 // import { GETDADOS } from "./Api";
 
@@ -29,6 +29,12 @@ export const GlobalStorage = ({ children }) => {
   //FETCH DATA 
   const [data, setData] = React.useState({});
 
+  const [CNPJCPF] = React.useState
+    (localStorage.getItem("codigo" && "codigo"));
+  const [TOKEN] = React.useState
+    (localStorage.getItem("token" && "token"));
+
+
   // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
 
@@ -53,13 +59,30 @@ export const GlobalStorage = ({ children }) => {
       setLogin(true);
       setData(json.Content);
       localStorage.setItem('token', json.Content.Token);
+      localStorage.setItem('codigo', json.Content.CNPJCPF);
     }
   }
+  //AUTO LOGIN
+  React.useEffect(() => {
+    if ((CNPJCPF != null) && (TOKEN != null)) {
+      async function _AutoLogin() {
+        const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
+        const { response, json } = await request(url, options);
+        if (response.status === 200) {
+          setLogin(true);
+          setData(json.Content);
+        }
+      }
+      _AutoLogin();
+    }
+  }, [])
+
+
   // RECOVER PASSWORD
   async function _RecoverPassword(obj) {
     const { url, options } = RECOVER_PASSWORDD(obj.CNPJCPF, obj.Email);
-    const { response, json } = await request(url, options);
-    if (json.StatusCode === 200) {
+    const { response } = await request(url, options);
+    if (response.status === 200) {
       navigate("/RecoverSuccessful")
     }
   }
@@ -85,6 +108,7 @@ export const GlobalStorage = ({ children }) => {
     setAnimateMenu(false);
     setData({});
     localStorage.removeItem('token')
+    localStorage.removeItem('codigo')
   };
 
   return (
