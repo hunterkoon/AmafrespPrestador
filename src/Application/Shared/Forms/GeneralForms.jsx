@@ -29,7 +29,7 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
-const { UpdadeRegister,RegisterNewUser,ModifyUsers,PriceTable,addressTypeMain,addressTypePostal} = GeneralFunctionalities();
+const { UpdadeRegister, RegisterNewUser, ModifyUsers, PriceTable, addressTypeMain, addressTypePostal } = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
   //  const { address  } = React.useContext(GlobalContext);
@@ -94,7 +94,6 @@ const GeneralForms = (loginData) => {
     name,
     cpf,
     department,
-    telphone,
     celphone,
     password,
     passwordConfirm,
@@ -105,9 +104,8 @@ const GeneralForms = (loginData) => {
   //FORMULARIO DE ALTERAÇÃO DE PERFIL
   const adjustsUserForm = [
     name,
-    cpf,
     department,
-    telphone,
+    cpf,
     celphone,
     atualPassword,
     newPassword,
@@ -119,7 +117,6 @@ const GeneralForms = (loginData) => {
   const adjustsManangerUser = [
     name,
     cpf,
-    telphone,
     celphone,
     newPassword,
     email,

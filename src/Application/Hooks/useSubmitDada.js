@@ -15,7 +15,7 @@ class InputConstants {
     this.FantasyName = data.Fantasia && data.Fantasia.toUpperCase();
     this.Name = data.Nome && data.Nome.toUpperCase();
     this.Telphone = data.ptelphone;
-    this.Celphone = data.Celular;
+    this.Celphone = data.Celular && data.Celular.replace(regex, '');
     this.Cep = data.cep && data.cep.replace(regex, '');
     this.Street = data.logradouro;
     this.Neighborhood = data.bairro;
@@ -37,7 +37,6 @@ export const loginDataCPFSubmit = (data) => {
   };
 };
 
-
 export const recoverAdmPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
@@ -55,13 +54,12 @@ export const recoverCommonPasswordSubmit = (data) => {
 export const addUserSubmit = (data) => {
   const addUser = new InputConstants(data);
   return {
-    nome: addUser.Name,
-    CNPJCPF: addUser.Cpf,
-    email: addUser.Email,
-    senha: addUser.Password,
-    telefoneFixo: addUser.Telphone,
-    telefoneCelular: addUser.Celphone,
-    departamento: addUser.Department,
+    Nome: addUser.Name,
+    Cpf: addUser.Cpf,
+    Email: addUser.Email,
+    Senha: addUser.Password,
+    Celular: addUser.Celphone,
+    Departamento: addUser.Department,
   };
 };
 export const firstAcessSubmit = (data) => {
@@ -75,14 +73,13 @@ export const firstAcessSubmit = (data) => {
 export const adjustsProfileSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
-    nome: adjustsUser.Name,
-    CNPJCPF: adjustsUser.Cpf,
-    telefoneFixo: adjustsUser.Telphone,
-    telefoneCelular: adjustsUser.Celphone,
-    email: adjustsUser.Email,
-    departamento: adjustsUser.Department,
-    senha: adjustsUser.ActualPassword,
-    novaSenha: adjustsUser.NewPassword,
+    Nome: adjustsUser.Name,
+    Cpf: adjustsUser.Cpf,
+    Celular: adjustsUser.Celphone,
+    Email: adjustsUser.Email,
+    Departamento: adjustsUser.Department,
+    Senha: adjustsUser.ActualPassword,
+    SenhaNova: adjustsUser.NewPassword,
   };
 };
 export const adjustsUserSubmit = (data) => {

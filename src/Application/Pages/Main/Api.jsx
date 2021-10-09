@@ -50,3 +50,23 @@ export function FREE_ACESS(id) {
     },
   };
 }
+export function CHANGE_PROFILE(obj, id, cnpj) {
+  const data = {
+    CNPJCPF: cnpj,
+    SenhaNova: obj.SenhaNova,
+    Senha: obj.Senha,
+    Nome: obj.Nome,
+    Departamento: obj.Departamento,
+    Cpf: obj.Cpf,
+    Email: obj.Email,
+    Celular: obj.Celular,
+    IdUsuario: id,
+  };
+  return {
+    url: baseURL + '/AlterarDadosLogado/ ',
+    options: {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  };
+}

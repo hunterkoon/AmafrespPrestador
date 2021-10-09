@@ -98,7 +98,7 @@ export const NAME = (value) => {
 export const DEPARTMENT = (value) => {
   return {
     key: 8,
-    id: 'pdepartamento',
+    id: 'Departamento',
     type: 'text',
     require: require,
     value: value && value.pdepartamento,
@@ -143,7 +143,7 @@ export const ACTUAL_PASSWORD = (error, funBlu, funFoc) => {
     id: 'ATUALsenha',
     type: 'password',
     label: 'Senha Atual',
-    require: require,
+    require: false,
     className: 'PASSWORD-FIELD-CLASS',
   };
 };
@@ -157,7 +157,7 @@ export const NEW_PASSWORD = (error, funBlu, funFoc) => {
     changeFocus: funFoc,
     type: 'password',
     label: 'Nova Senha',
-    require: require,
+    require: false,
     className: 'CONFIRMPASSWORD-FIELD-CLASS',
   };
 };

@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE } from './Api';
 
 // import { GETDADOS } from "./Api";
 
@@ -27,6 +27,8 @@ export const GlobalStorage = ({ children }) => {
   const { width, height } = useWindowDimensions();
 
   //FETCH DATA 
+
+  const [dadosAlterados, setDadosAlterados] = React.useState(null);
   const [data, setData] = React.useState({});
 
   const [CNPJCPF] = React.useState
@@ -74,6 +76,7 @@ export const GlobalStorage = ({ children }) => {
           setData(json.Content);
           navigate('/conta');
         }
+        else return null
       }
       _AutoLogin();
     }
@@ -101,6 +104,12 @@ export const GlobalStorage = ({ children }) => {
   async function _FreeAcess(id) {
     const { url, options } = FREE_ACESS(id);
     await request(url, options);
+  }
+  // ALTERAR DADOS PERFIL
+  async function _ChangeUserData(obj) {
+    const { url, options } = CHANGE_PROFILE(obj, data.IdUsuario, data.CNPJCPF);
+    const { json } = await request(url, options);
+    setDadosAlterados(json.Message);
   }
 
 
@@ -140,6 +149,9 @@ export const GlobalStorage = ({ children }) => {
         _RecoverPassword,
         _FirstAcess,
         _FreeAcess,
+        setError,
+        _ChangeUserData,
+        dadosAlterados,
         data,
         globalHandle,
         option,

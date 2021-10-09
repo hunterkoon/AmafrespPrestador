@@ -10,6 +10,7 @@ import useErrorForm from "../../../Hooks/useErrorForm";
 import { adjustsProfileSubmit } from "../../../Hooks/useSubmitDada";
 import { returnFilter } from "../../../Shared/Commons/Helpers/HandleFilter";
 import Style from '../../Account/Add User/Forms.module.css'
+import Error from '../../../Components/Sub/Error'
 import "./Profile.css";
 
 
@@ -17,11 +18,10 @@ import "./Profile.css";
 const Profile = () => {
 
   const { useInputsGeneral } = useInputs()
-  const { alterRegisterData, setAlterRegisterData, data } = React.useContext(GlobalContext);
+  const { alterRegisterData, setAlterRegisterData, data, _ChangeUserData, error, setError } = React.useContext(GlobalContext);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
   const [err, setErr] = React.useState(false);
   const UserSubmit = adjustsProfileSubmit(alterRegisterData)
-
 
   const [adjustsByUser, setAdjustsByUser] = React.useState(
     adjustsUserForm.reduce((acc, field) => {
@@ -45,8 +45,8 @@ const Profile = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (erroForm) {
+      _ChangeUserData(UserSubmit);
       setErr(true);
-      console.log(UserSubmit);
     }
     //TODO FETCH FUNCTION
   };
@@ -64,14 +64,16 @@ const Profile = () => {
           </div>
           <div className="div-sub-adjusts-user-button-area">
             <Button value="Alterar" />
-
           </div>
         </form>
       </div>
+
       <Succesfull
-        onClick={() => setErr(!err)}
+        onClick={() => [setErr(!err), setError(null)]}
         alert={err}
-        text='Infomações pessoais alteradas!.' />
+        text={error ? error : 'Infomações pessoais alteradas!.'}
+        error={error}
+      />
     </div>
   );
 };
