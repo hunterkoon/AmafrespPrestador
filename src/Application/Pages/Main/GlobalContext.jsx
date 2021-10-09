@@ -72,6 +72,7 @@ export const GlobalStorage = ({ children }) => {
         if (response.status === 200) {
           setLogin(true);
           setData(json.Content);
+          navigate('/conta');
         }
       }
       _AutoLogin();
@@ -102,14 +103,6 @@ export const GlobalStorage = ({ children }) => {
     await request(url, options);
   }
 
-
-  // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
-  //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
-  // React.useEffect(() => {
-  //   if (login) {
-  //     return navigate('/conta');
-  //   } else return navigate('/');
-  // }, [login, navigate]);
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
