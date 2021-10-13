@@ -6,7 +6,7 @@ import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
 import { adjustsUserSubmit, deleteUserSubmit } from "../../../../Hooks/useSubmitDada";
-import Succesfull from "../../../../Components/Sub/Succesfull";
+import Succesfull from "../../../../Components/Sub/Modal";
 import "./UserChanges.css";
 import useErrorForm from "../../../../Hooks/useErrorForm";
 
@@ -28,8 +28,8 @@ const UserChanges = ({ ...props }) => {
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
 
   const deleteUsersSubmit = deleteUserSubmit(userSelectedForm);
-  const changesUsersSubmit = Object.assign( adjustsUserSubmit(userSelectedForm),functions);
-  const err =  useErrorForm(adjustsManangerUser)
+  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), functions);
+  const err = useErrorForm(adjustsManangerUser)
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
@@ -50,9 +50,9 @@ const UserChanges = ({ ...props }) => {
   const handleSubmit = ({ target }) => {
     //TODO FECTH FUNCTIONS   
     if (target.tagName == "FORM" && err === true) {
-      setAlertSuccesful(!alertSuccesful) 
-      console.log(changesUsersSubmit );
-    } else if  ( target.tagName !== "FORM") {
+      setAlertSuccesful(!alertSuccesful)
+      console.log(changesUsersSubmit);
+    } else if (target.tagName !== "FORM") {
       console.log(deleteUsersSubmit);
     }
   };

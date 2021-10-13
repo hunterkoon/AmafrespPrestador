@@ -80,7 +80,7 @@ const GeneralForms = (loginData) => {
   //  const location = CITY(address);
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
-  const firstAcessForm = [cnpj, email, emailConfirm, password, passwordConfirm];
+  const firstAcessForm = [cnpj, email, emailConfirm /*, password, passwordConfirm */];
   // FORMULARIOS DE LOGIN
   const loginCommon = [cpf, password];
   const loginAdm = [cnpj, password];

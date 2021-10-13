@@ -5,7 +5,8 @@ import useInputs from "../../../Hooks/useInputs";
 import GeneralForms from "../../../Shared/Forms/GeneralForms";
 import Button from "../../../Components/Sub/Button";
 import { GlobalContext } from "../../Main/GlobalContext";
-import Succesfull from "../../../Components/Sub/Succesfull";
+import Succesfull from "../../../Components/Sub/Modal";
+import Modal from "../../../Components/Sub/Modal";
 import useErrorForm from "../../../Hooks/useErrorForm";
 import { adjustsProfileSubmit } from "../../../Hooks/useSubmitDada";
 import { returnFilter } from "../../../Shared/Commons/Helpers/HandleFilter";
@@ -19,9 +20,10 @@ const Profile = () => {
 
   const { useInputsGeneral } = useInputs()
   const { alterRegisterData, setAlterRegisterData, data, _ChangeUserData, error, setError } = React.useContext(GlobalContext);
+  const [modal, setModal] = React.useState(data.Nome == null || data.SenhaPadrao == true ? true : false);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
-  const [err, setErr] = React.useState(false);
   const UserSubmit = adjustsProfileSubmit(alterRegisterData)
+  const [err, setErr] = React.useState(false);
 
   const [adjustsByUser, setAdjustsByUser] = React.useState(
     adjustsUserForm.reduce((acc, field) => {
@@ -67,7 +69,11 @@ const Profile = () => {
           </div>
         </form>
       </div>
-
+      <Modal
+        onClick={() => setModal(!modal)}
+        alert={modal}
+        disclaimer={"Por Gentileza, altere sua Senha e Complete seu Registro!!"}
+      />
       <Succesfull
         onClick={() => [setErr(!err), setError(null)]}
         alert={err}

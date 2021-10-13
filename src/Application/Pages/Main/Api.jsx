@@ -30,8 +30,8 @@ export function RECOVER_PASSWORDD(cnpjcpf, email) {
     },
   };
 }
-export function FIRST_ACESS(cnpjcpf, senha, email) {
-  const data = { CNPJCPF: cnpjcpf, Senha: senha, Email: email };
+export function FIRST_ACESS(cnpjcpf, email) {
+  const data = { CNPJCPF: cnpjcpf, Email: email };
   return {
     url: baseURL + '/PrimeiroAcesso/ ',
     options: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { GlobalContext } from './GlobalContext';
 import { handleWindow } from '../../Shared/Commons/Helpers/HandlerMenu';
 import Home from '../Account/Home/Home';
@@ -22,7 +22,6 @@ const Account = () => {
       handleWindow(e, states)
     })
   }
-
   return (
     <div className="main-conta" >
       <div className="div-menu">{<Menu />}</div>

@@ -66,8 +66,7 @@ export const firstAcessSubmit = (data) => {
   const firtAcess = new InputConstants(data);
   return {
     CNPJCPF: firtAcess.Cnpj,
-    Email: firtAcess.Email,
-    Senha: firtAcess.Password,
+    Email: firtAcess.Email
   };
 };
 export const adjustsProfileSubmit = (data) => {

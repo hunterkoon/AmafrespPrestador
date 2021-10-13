@@ -2,13 +2,13 @@ import React from "react";
 import Title from "./Title";
 import Titledecorated from "./Titledecorated";
 import { GlobalContext } from "../../Pages/Main/GlobalContext";
-import "./Succesfull.css";
-const Succesfull = ({ ...props }) => {
+import "./Modal.css";
+const Modal = ({ ...props }) => {
   const { dadosAlterados } = React.useContext(GlobalContext);
+
   function refreshPage() {
     window.location.reload();
   }
-
   return (
     <>
       {props.alert ? (
@@ -16,11 +16,14 @@ const Succesfull = ({ ...props }) => {
           <div className="div-main-successfull">
             <div className="div-titles-successfull">
               <Titledecorated text={props.error ? "Falha :( " : "Sucesso!!!"} />
+              <Titledecorated text={props.disclaimer} />
               <Title text={props.text} />
               <h3> {!props.error ? dadosAlterados && dadosAlterados : null} </h3>
             </div>
-            <div className="div-close-modal" onClick={props.onClick}>
-              <span onClick={() => refreshPage()}>x</span>
+            <div onClick={props.disclaimer ? null : () => refreshPage()}>
+              <div className="div-close-modal" onClick={props.onClick}>
+                <span>x</span>
+              </div>
             </div>
           </div>
         </div>
@@ -29,4 +32,4 @@ const Succesfull = ({ ...props }) => {
   );
 };
 
-export default Succesfull;
+export default Modal;

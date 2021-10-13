@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
 import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE } from './Api';
+import { serverError } from '../../Shared/Commons/Constants/Errors';
 
 // import { GETDADOS } from "./Api";
 
@@ -28,20 +29,16 @@ export const GlobalStorage = ({ children }) => {
 
   //FETCH DATA 
 
+  const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
+  const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
   const [dadosAlterados, setDadosAlterados] = React.useState(null);
   const [data, setData] = React.useState({});
-
-  const [CNPJCPF] = React.useState
-    (localStorage.getItem("codigo" && "codigo"));
-  const [TOKEN] = React.useState
-    (localStorage.getItem("token" && "token"));
 
 
   // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
 
   // FETCH EDNE CEP
-
   React.useEffect(() => {
     async function GetCep() {
       const cep = ApiCep(regUpData.cep);
@@ -58,53 +55,69 @@ export const GlobalStorage = ({ children }) => {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
     if (response.status === 200) {
+      let dados = json.Content;
       setLogin(true);
       setData(json.Content);
-      navigate('/conta')
-      localStorage.setItem('token', json.Content.Token);
-      localStorage.setItem('codigo', json.Content.CNPJCPF);
+      localStorage.setItem('token', dados.Token);
+      localStorage.setItem('codigo', dados.CNPJCPF);
+      if (dados.Nome == null || dados.SenhaPadrao == true) {
+        navigate('/conta/Perfil');
+      } else
+        navigate('/conta/');
     }
   }
-  //AUTO LOGIN
-  React.useEffect(() => {
-    if ((CNPJCPF != null) && (TOKEN != null)) {
-      async function _AutoLogin() {
-        const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
-        const { response, json } = await request(url, options);
-        if (response.status === 200) {
-          setLogin(true);
-          setData(json.Content);
-          navigate('/conta');
-        }
-        else return null
-      }
-      _AutoLogin();
-    }
-  }, [])
-  // FIRST ACESS
 
-  async function _FirstAcess(obj) {
-    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Senha, obj.Email)
-    const { response } = await request(url, options);
-    if (response.status === 200) {
-      navigate("/RegisterSucessful")
+  //AUTO LOGIN
+  async function AutoLogin() {
+    if ((CNPJCPF != null) && (TOKEN != null)) {
+      const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
+      const { response, json } = await request(url, options);
+      if (response != undefined) {
+        if (response.status === 200) {
+          let dados = json.Content;
+          setLogin(true);
+          setData(dados);
+          if (dados.Nome == null || dados.SenhaPadrao == true) {
+            navigate('/conta/Perfil');
+          } else
+            navigate('/conta/');
+        }
+        else
+          return setError(json.Message)
+      }
+      else
+        return setError(serverError);
     }
+  }
+
+  // FIRST ACESS
+  async function _FirstAcess(obj) {
+    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email)
+    const { response, json } = await request(url, options);
+    if (response != undefined) {
+      if (response.status === 200) {
+        navigate("/RegisterSucessful")
+      } else return setError(json.Message);
+    } else return setError(serverError);
   }
 
   // RECOVER PASSWORD
   async function _RecoverPassword(obj) {
     const { url, options } = RECOVER_PASSWORDD(obj.CNPJCPF, obj.Email);
-    const { response } = await request(url, options);
-    if (response.status === 200) {
-      navigate("/RecoverSuccessful")
-    }
+    const { response, json } = await request(url, options);
+    if (response != undefined) {
+      if (response.status === 200) {
+        navigate("/RecoverSuccessful")
+      } else return setError(json.Message);
+    } else return setError(serverError);
   }
-  // FREE ACESS 
 
+  // FREE ACESS 
   async function _FreeAcess(id) {
     const { url, options } = FREE_ACESS(id);
     await request(url, options);
   }
+
   // ALTERAR DADOS PERFIL
   async function _ChangeUserData(obj) {
     const { url, options } = CHANGE_PROFILE(obj, data.IdUsuario, data.CNPJCPF);
@@ -125,8 +138,10 @@ export const GlobalStorage = ({ children }) => {
     setProfile(false);
     setAnimateMenu(false);
     setData({});
-    localStorage.removeItem('token')
-    localStorage.removeItem('codigo')
+    localStorage.removeItem('token');
+    localStorage.removeItem('codigo');
+    setCNPJCPF(null);
+    setToken(null);
   };
 
   return (
@@ -145,6 +160,7 @@ export const GlobalStorage = ({ children }) => {
         setRegUpData,
         setToggleModal,
         setGlobalHandle,
+        AutoLogin,
         _LoginValidate,
         _RecoverPassword,
         _FirstAcess,

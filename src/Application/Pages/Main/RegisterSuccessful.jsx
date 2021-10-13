@@ -12,12 +12,11 @@ const RegisterSucessfull = () => {
   return (
     <div className="div-main-register-successful pageView ">
       <div className="div-sub-register-successful">
-        <Titledecorated color="#474747" text="Registro de admininistrador Concluido!" />
+        <Titledecorated color="#474747" text="Registro Concluido!" />
         <Title
           id="title-register-successful"
           size="1.3rem"
-          text="
-        Sucesso!!! uma senha temporária será encaminhada pelo nosso time de credenciamento , aguarde a liberação do seu token!"
+          text={`Sucesso!!!  Acesso o E-mail registrado no primeiro acesso e confirme seu Cadastro!`}
         />
         <div className="div-img-register-successful">
           <img src={Email} alt="" />

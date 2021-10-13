@@ -5,15 +5,15 @@ import Titledecorated from "../../../Components/Sub/Titledecorated";
 import Title from "../../../Components/Sub/Title";
 import GeneralForms from "../../../Shared/Forms/GeneralForms";
 import Button from "../../../Components/Sub/Button";
-import Succesfull from "../../../Components/Sub/Succesfull";
+import Succesfull from "../../../Components/Sub/Modal";
 import useErrorForm from "../../../Hooks/useErrorForm";
 import { addUserSubmit } from "../../../Hooks/useSubmitDada";
 import "./AddUser.css";
 import Style from "./Forms.module.css";
 
 const Usuarios = () => {
-  
-  const {useInputsGeneral } = useInputs()
+
+  const { useInputsGeneral } = useInputs()
   const { newUserData, setNewUserData } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);
@@ -128,15 +128,15 @@ const Usuarios = () => {
                 handleChangeFunctions,
                 functions
               )}
-            <div className="div-sub-add-new-user-button-area">
-              <Button value="Cadastrar" />
-              <Button
-                onClick={(e) => [e.preventDefault(), handleCleanInputs()]}
-                color="#FDAB15"
-                value="Limpar"
-                class="button-limpar"
-              />
-            </div>
+              <div className="div-sub-add-new-user-button-area">
+                <Button value="Cadastrar" />
+                <Button
+                  onClick={(e) => [e.preventDefault(), handleCleanInputs()]}
+                  color="#FDAB15"
+                  value="Limpar"
+                  class="button-limpar"
+                />
+              </div>
 
             </div>
 
@@ -146,7 +146,7 @@ const Usuarios = () => {
 
       </div>
       <>
-      <Succesfull
+        <Succesfull
           text={"Usuário Registrado"}
           alert={err}
           onClick={() => setErr(!err)}

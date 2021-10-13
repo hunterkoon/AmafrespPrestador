@@ -1,0 +1,1 @@
+export const serverError = "Houve um erro em nossos servidores, por favor tente novamente mais tarde";
