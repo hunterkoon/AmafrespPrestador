@@ -54,17 +54,19 @@ export const GlobalStorage = ({ children }) => {
   async function _LoginValidate(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
-    if (response.status === 200) {
-      let dados = json.Content;
-      setLogin(true);
-      setData(json.Content);
-      localStorage.setItem('token', dados.Token);
-      localStorage.setItem('codigo', dados.CNPJCPF);
-      if (dados.Nome == null || dados.SenhaPadrao == true) {
-        navigate('/conta/Perfil');
-      } else
-        navigate('/conta/');
-    }
+    if (response != undefined) {
+      if (response.status === 200) {
+        let dados = json.Content;
+        setLogin(true);
+        setData(json.Content);
+        localStorage.setItem('token', dados.Token);
+        localStorage.setItem('codigo', dados.CNPJCPF);
+        if (dados.Nome == null || dados.SenhaPadrao == true) {
+          navigate('/conta/Perfil');
+        } else
+          navigate('/conta/');
+      }
+    } else return setError(serverError);
   }
 
   //AUTO LOGIN

@@ -16,7 +16,7 @@ const RegisterSucessfull = () => {
         <Title
           id="title-register-successful"
           size="1.3rem"
-          text={`Sucesso!!!  Acesso o E-mail registrado no primeiro acesso e confirme seu Cadastro!`}
+          text="Sucesso, acesse seu E-mail confirme seu Cadastro!"
         />
         <div className="div-img-register-successful">
           <img src={Email} alt="" />

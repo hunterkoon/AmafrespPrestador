@@ -21,11 +21,10 @@ const RegisterFinish = () => {
         <Title
           id="title-register-successful"
           size="1.3rem"
-          text="
-        Sucesso!!! Seu Acesso esta totalmente Liberado!"
+          text=" Uma senha Provisória foi encaminhanda para seu E-mail , Seu Acesso esta totalmente Liberado!"
         />
         <div className="div-img-register-successful">
-          <img style={{ width: "220px", margin: "3%" }} src={Check} alt="" />
+          <img style={{ width: "180px", margin: "3%" }} src={Check} alt="" />
         </div>
         <Link to="/">
           <Button value="Login" />
