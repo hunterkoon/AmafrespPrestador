@@ -38,7 +38,7 @@ const PriceTable = () => {
 
   return (
     <>
-      <Succesfull text={"Foi Realizada a Solicitação da Tabela de Preços"} alert={toggle} onClick={() => setToggle(!toggle)} />
+      <Succesfull disclaimer="Foi Realizada a Solicitação da Tabela de Preços" alert={toggle} onClick={() => setToggle(!toggle)} />
       <div className="div-main-priceTable pageView">
         <div className="div-title-pages">
           <Titledecorated text="Status solicitação tabela de preços" />

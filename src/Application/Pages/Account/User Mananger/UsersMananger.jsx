@@ -11,42 +11,47 @@ import Tool from '../../../../Assets/Tool_yellow.svg'
 import "./UsersMananger.css";
 
 const UsersMananger = () => {
-  const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, _GetUserById, users } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    _GetUserById();
+  }, [])
+
+
   const handleEdit = (profile) => {
     setToggleModal(!toggleModal)
-    setEditUser({ profile: profile, open: true});
-    setDeleteUser({ profile: profile, open: false});
+    setEditUser({ profile: profile, open: true });
+    setDeleteUser({ profile: profile, open: false });
   };
 
   const handleDelete = (profile) => {
     setToggleModal(!toggleModal)
-    setDeleteUser({ profile: profile, open: true});
-    setEditUser({ profile: profile, open: false});
+    setDeleteUser({ profile: profile, open: true });
+    setEditUser({ profile: profile, open: false });
   };
 
   const Employee = () => {
-    return json.colaboradores.map((lista) => (
+    return users.map((lista) => (
       <tr key={lista.id}>
-        <td>{lista.pnome}</td>
-        <td>{lista.cpf}</td>
-        <td>{lista.pdepartamento}</td>
-        <td>{lista.email}</td>
+        <td>{lista.Nome}</td>
+        <td>{lista.Cpf}</td>
+        <td>{lista.Departamento}</td>
+        <td>{lista.Email}</td>
         <td>
-          {Object.entries(lista.privilegios).map((item) => (
-            <label key={`td${item[0]}`}>
-              {item[1] !== "null" ? ` ${item[0]} /` : null}
-            </label>
-          ))}
+          {/* {Object.entries(lista.Funcionalidades).map((item) => (
+            // <label key={`td${item[0]}`}>
+            console.log(item.IdFuncao)
+            // </label>
+          ))} */}
         </td>
         <td className="table-td-edit" onClick={() => handleEdit(lista)}>
-        <img src={Tool}  className='tool-img' alt='ferramenta'/>
+          <img src={Tool} className='tool-img' alt='ferramenta' />
         </td>
         <td onClick={() => handleDelete(lista)} className="table-td-delete">
-            <img src={Trash} className='trash-img' alt='lixeirinha'/>
+          <img src={Trash} className='trash-img' alt='lixeirinha' />
         </td>
       </tr>
     ));
@@ -55,7 +60,7 @@ const UsersMananger = () => {
   return (
     <>
       <UserChanges user={editUser} deleteUser={deleteUser} />
-      
+
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
           <Titledecorated text="Usuários" />
@@ -81,7 +86,7 @@ const UsersMananger = () => {
             </tr>
           </thead>
           <tbody>
-            <Employee />
+            {users ? <Employee /> : null}
           </tbody>
         </table>
 

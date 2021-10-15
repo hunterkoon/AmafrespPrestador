@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER } from './Api';
 import { serverError } from '../../Shared/Commons/Constants/Errors';
 
 // import { GETDADOS } from "./Api";
@@ -33,6 +33,8 @@ export const GlobalStorage = ({ children }) => {
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
   const [dadosAlterados, setDadosAlterados] = React.useState(null);
   const [data, setData] = React.useState({});
+  const [users, setUsers] = React.useState([]);
+
 
 
   // ATUALIZAÇÃO CADASTRAL
@@ -119,7 +121,6 @@ export const GlobalStorage = ({ children }) => {
     const { url, options } = FREE_ACESS(id);
     await request(url, options);
   }
-
   // ALTERAR DADOS PERFIL
   async function _ChangeUserData(obj) {
     const { url, options } = CHANGE_PROFILE(obj, data.IdUsuario, data.CNPJCPF);
@@ -127,11 +128,23 @@ export const GlobalStorage = ({ children }) => {
     setDadosAlterados(json.Message);
   }
 
+  // GET USUARIOS PORTAL
+  async function _GetUserById() {
+    const { url, options } = GET_USER(data.IdCredenciado)
+    const { json, response } = await request(url, options);
+    if (response.status === 200) {
+      setUsers(json.Content)
+    }
+  }
+
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
     setError(null)
+
   }, [window.location.href])
+
+
 
 
   const handleLogout = () => {
@@ -169,6 +182,8 @@ export const GlobalStorage = ({ children }) => {
         _FreeAcess,
         setError,
         _ChangeUserData,
+        _GetUserById,
+        users,
         dadosAlterados,
         data,
         globalHandle,

@@ -70,3 +70,13 @@ export function CHANGE_PROFILE(obj, id, cnpj) {
     },
   };
 }
+export function GET_USER(id) {
+  const data = { IdCredenciado: id };
+  return {
+    url: baseURL + '/GetUsuariosPrestadorByID/ ',
+    options: {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  };
+}

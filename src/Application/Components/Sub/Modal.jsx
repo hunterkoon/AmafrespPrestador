@@ -16,7 +16,7 @@ const Modal = ({ ...props }) => {
           <div className="div-main-successfull">
             <div className="div-titles-successfull">
               <Titledecorated text={props.error ? "Falha :( " : "Sucesso!!!"} />
-              <Titledecorated text={props.disclaimer} />
+              <Title text={props.disclaimer} />
               <Title text={props.text} />
               <h3> {!props.error ? dadosAlterados && dadosAlterados : null} </h3>
             </div>
