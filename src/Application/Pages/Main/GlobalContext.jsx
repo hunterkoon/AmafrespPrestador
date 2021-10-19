@@ -132,13 +132,13 @@ export const GlobalStorage = ({ children }) => {
 
   //GET USUARIOS PORTAL
 
-  async function _GetUserById() {
-    const { url, options } = GET_USER(data.idPrestador)
-    const { json, response } = await request(url, options);
-    if (response.status === 200) {
-      setUsers(json.Content)
-    }
-  }
+  // async function _GetUserById() {
+  //   const { url, options } = GET_USER(data.idPrestador)
+  //   const { json, response } = await request(url, options);
+  //   if (response.status === 200) {
+  //     setUsers(json.Content)
+  //   }
+  // }
 
 
   // RESETA POSIÇÃO DE ERRO
@@ -185,7 +185,7 @@ export const GlobalStorage = ({ children }) => {
         _FreeAcess,
         setError,
         _ChangeUserData,
-        _GetUserById,
+        // _GetUserById,
         users,
         dadosAlterados,
         data,

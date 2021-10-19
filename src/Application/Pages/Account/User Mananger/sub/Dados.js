@@ -23,13 +23,13 @@ export const json = {
         }
       ],
       "idUsuario": 1,
-      "idPrestador": 0,
+      "idPrestador": 205,
       "cpf": "41343494869",
       "nome": "GABRIEL PINHEIRO CAMPOS",
       "celular": "11939213367",
       "senha": null,
       "email": "gabrielcampos@afresp.org.br",
-      "setor": null,
+      "setor": "TECNOLOGIA",
       "admin": true,
       "senhaLiberada": true,
       "senhaPadrao": false,
@@ -46,13 +46,13 @@ export const json = {
         null
       ],
       "idUsuario": 3314,
-      "idPrestador": 0,
-      "cpf": null,
-      "nome": "Teste",
-      "celular": null,
+      "idPrestador": 205,
+      "cpf": "41343495830",
+      "nome": "GUSTAVO CAMPOS",
+      "celular": "11939213367",
       "senha": null,
       "email": null,
-      "setor": null,
+      "setor": "TECNOLOGIA",
       "admin": false,
       "senhaLiberada": true,
       "senhaPadrao": true,
@@ -61,6 +61,33 @@ export const json = {
       "ativo": true,
       "tbAMAPortalUsuarioFuncionalidade": [],
       "tbCCredenciado": null
-    }
+    },
+    {
+      "Token": null,
+      "DadosPrestador": null,
+      "Funcionalidades": [
+        {
+        "idFuncionalidade": 1,
+        "nome": "Gerenciar Usuários",
+        "tbAMAPortalUsuarioFuncionalidade": []
+      },
+      ],
+      "idUsuario": 3314,
+      "idPrestador": 205,
+      "cpf": "41343495830",
+      "nome": "MARIANA CAMPOS",
+      "celular": "11939213367",
+      "senha": null,
+      "email": null,
+      "setor": "ADV",
+      "admin": false,
+      "senhaLiberada": true,
+      "senhaPadrao": true,
+      "dtInclusao": "0001-01-01T00:00:00",
+      "dtCancelamento": null,
+      "ativo": true,
+      "tbAMAPortalUsuarioFuncionalidade": [],
+      "tbCCredenciado": null
+    },
   ]
 };

@@ -30,6 +30,7 @@ const UserChanges = ({ ...props }) => {
   const deleteUsersSubmit = deleteUserSubmit(userSelectedForm);
   const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), functions);
   const err = useErrorForm(adjustsManangerUser)
+
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
@@ -59,17 +60,17 @@ const UserChanges = ({ ...props }) => {
 
   // VALIDAÇÃO DE DADOS RECEBIDOS
   const validateFunctions = (field, state) => {
-    if (field === "modifyUser") {
+    if (field === "Gerenciar Usuários") {
       if (state.privilegios.gerenciar == "null") {
         return false;
       } else return true;
     }
-    if (field === "update") {
+    if (field === "Incluir Usuário") {
       if (state.privilegios.atualizar == "null") {
         return false;
       } else return true;
     }
-    if (field === "newUser") {
+    if (field === "Consulta tabela de preços") {
       if (state.privilegios.adicionar == "null") {
         return false;
       } else return true;
@@ -174,7 +175,7 @@ const UserChanges = ({ ...props }) => {
                 fontWeight: "bold",
               }}
             >
-              {userDeleteProps && userDeleteProps?.pnome}
+              {userDeleteProps && userDeleteProps?.nome}
             </span>
             <span> será excluido permanentemente!</span>
             <div className="div-sub-form-user-mananger-button">
