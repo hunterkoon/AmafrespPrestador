@@ -22,7 +22,7 @@ const Home = () => {
       <div className="div-main-home pageView">
         <div className="div-title-pages pageView">
           <Titledecorated
-            text={`Olá, ${data.Nome ? formatName(data.Nome) : 'NOME'}`}
+            text={`Olá, ${data.nome ? formatName(data.nome) : 'NOME'}`}
           />
         </div>
         <div className="div-img-home">

@@ -45,14 +45,15 @@ export default function Header() {
                 alt=""
               />
             </div>
-            <div onClick={handleClick} className="div-user-info">
-              <span className="span-user">
-                {data && data.Nome}
-              </span>
-              <span className="span-employ">
-                {data && data.Fantasia}
-              </span>
-            </div>
+            {data.DadosPrestador ?
+              <div onClick={handleClick} className="div-user-info">
+                <span className="span-user">
+                  {data.nome}
+                </span>
+                <span className="span-employ">
+                  {data.DadosPrestador.Fantasia}
+                </span>
+              </div> : null}
           </div>
         ) : null}
 

@@ -33,7 +33,7 @@ function App() {
               <Route path="/Help" element={<Help />} />
               <Route path="/RecoverSuccessful" element={<RecoverSucessful />} />
               <Route path="/RegisterSucessful" element={<RegisterSucessful />} />
-              <Route exact path="/RegisterFinish/:id" element={<RegisterFinish />} />
+              <Route exact path="/RegisterFinish/:CNPJCPF" element={<RegisterFinish />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

@@ -20,7 +20,7 @@ const Profile = () => {
 
   const { useInputsGeneral } = useInputs()
   const { alterRegisterData, setAlterRegisterData, data, _ChangeUserData, error, setError } = React.useContext(GlobalContext);
-  const [modal, setModal] = React.useState(data.Nome == null || data.SenhaPadrao == true ? true : false);
+  const [modal, setModal] = React.useState(data.nome == null || data.senhaPadrao == true ? true : false);
   const { adjustsUserForm } = GeneralForms(alterRegisterData);
   const UserSubmit = adjustsProfileSubmit(alterRegisterData)
   const [err, setErr] = React.useState(false);
@@ -48,6 +48,7 @@ const Profile = () => {
     event.preventDefault();
     if (erroForm) {
       _ChangeUserData(UserSubmit);
+      console.log(UserSubmit)
       setErr(true);
     }
     //TODO FETCH FUNCTION

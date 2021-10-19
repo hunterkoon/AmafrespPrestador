@@ -11,7 +11,7 @@ import Tool from '../../../../Assets/Tool_yellow.svg'
 import "./UsersMananger.css";
 
 const UsersMananger = () => {
-  const { toggleModal, setToggleModal, _GetUserById, users } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users, _GetUserById } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
@@ -36,10 +36,10 @@ const UsersMananger = () => {
   const Employee = () => {
     return users.map((lista) => (
       <tr key={lista.id}>
-        <td>{lista.Nome}</td>
-        <td>{lista.Cpf}</td>
-        <td>{lista.Departamento}</td>
-        <td>{lista.Email}</td>
+        <td>{lista.nome}</td>
+        <td>{lista.cpf}</td>
+        <td>{lista.setor}</td>
+        <td>{lista.email}</td>
         <td>
           {/* {Object.entries(lista.Funcionalidades).map((item) => (
             // <label key={`td${item[0]}`}>

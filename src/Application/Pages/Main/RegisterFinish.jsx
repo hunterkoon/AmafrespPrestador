@@ -12,8 +12,8 @@ import { GlobalContext } from './GlobalContext';
 const RegisterFinish = () => {
 
   const { _FreeAcess } = React.useContext(GlobalContext);
-  const { id } = useParams();
-  React.useEffect(() => { _FreeAcess(id); }, [])
+  const { CNPJCPF } = useParams();
+  React.useEffect(() => { _FreeAcess(CNPJCPF); }, [])
   return (
     <div className="div-main-register-successful pageView ">
       <div className="div-sub-register-successful">

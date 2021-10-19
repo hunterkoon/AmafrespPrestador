@@ -7,7 +7,7 @@ import {
   PASSWORD_CONFIRM,
   NAME,
   CEL_TELPHONE,
-  TELPHONE,
+  // TELPHONE,
   DEPARTMENT,
   ACTUAL_PASSWORD,
   NEW_PASSWORD,
@@ -69,7 +69,7 @@ const GeneralForms = (loginData) => {
   const atualPassword = ACTUAL_PASSWORD();
   const email = EMAIL();
   const name = NAME();
-  const telphone = TELPHONE();
+  // const telphone = TELPHONE();
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
   const socialReason = SOCIAL();

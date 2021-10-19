@@ -36,32 +36,35 @@ const MenuSuperior = () => {
               />
             </span>
           </div>
-          <div className="div-prestador-menu-superior">
-            <div>
-              <h2>Empresa:</h2>
-              <h4>{data.RazaoSocial && data.RazaoSocial}</h4>
+          {data.DadosPrestador ?
+            <div className="div-prestador-menu-superior">
+
+              <div>
+                <h2>Empresa:</h2>
+                <h4>{data.DadosPrestador.RazaoSocial}</h4>
+              </div>
+              <div>
+                <h2>CNPJ:</h2>
+                <h4>{data.DadosPrestador.CNPJCPF}</h4>
+              </div>
+              <div>
+                <h2>Segmento:</h2>
+                <h4>{data.DadosPrestador.Segmento}</h4>
+              </div>
+              <div>
+                <h2>Tipo Credenciado: </h2>
+                <h4>{data.DadosPrestador.TipoPrestador}</h4>
+              </div>
             </div>
-            <div>
-              <h2>CNPJ:</h2>
-              <h4>{data.CNPJCPF && data.CNPJCPF}</h4>
-            </div>
-            <div>
-              <h2>Segmento:</h2>
-              <h4>{data.Segmento && data.Segmento}</h4>
-            </div>
-            <div>
-              <h2>Tipo Credenciado: </h2>
-              <h4>{data.TipoCredenciado && data.TipoCredenciado}</h4>
-            </div>
-          </div>
+            : null}
           <div className="div-colaborador-menu-superior">
             <div>
               <h2>Nome:</h2>
-              <h4>{data.Nome ? data.Nome : "CNPJCPF"}</h4>
+              <h4>{data.nome ? data.nome : "Atualize seus dados"}</h4>
             </div>
             <div>
               <h2>Departamento:</h2>
-              <h4>{data.Departamento ? data.Departamento : "Departamento"}</h4>
+              <h4>{data.setor ? data.setor : "Departamento"}</h4>
             </div>
             <div
               onClick={() => setProfile(!profile)}

@@ -16,14 +16,13 @@ export const CPF_CNPJ = (mask, error, funBlu, funFoc) => {
   };
 };
 
-export const EMAIL = (value) => {
+export const EMAIL = () => {
   return {
     key: 2,
-    id: 'Email',
+    id: 'email',
     type: 'email',
     label: 'E-mail',
     require: require,
-    value: value && value.email,
     className: 'EMAIL-FIELD-CLASS',
     placeholder: 'usuario@email.com.br',
     info:
@@ -84,53 +83,37 @@ export const USER = (value) => {
   };
 };
 
-export const NAME = (value) => {
+export const NAME = () => {
   return {
     key: 7,
-    id: 'Nome',
+    id: 'nome',
     type: 'text',
-    value: value && value.pnome,
     require: require,
     label: 'Nome Completo',
     className: 'NAME-FIELD-CLASS',
   };
 };
-export const DEPARTMENT = (value) => {
+export const DEPARTMENT = () => {
   return {
     key: 8,
-    id: 'Departamento',
+    id: 'setor',
     type: 'text',
     require: require,
-    value: value && value.pdepartamento,
     label: 'Departamento',
     className: 'DEPARTMENT-FIELD-CLASS',
     placeholder: 'ex : Contabilidade',
   };
 };
 
-export const CEL_TELPHONE = (value) => {
+export const CEL_TELPHONE = () => {
   return {
     key: 9,
-    id: 'Celular',
+    id: 'celular',
     type: 'text',
     label: 'Celular',
-    value: value && value.pcelfone,
     mask: '(99) 9 9999-9999',
     require: '',
     className: 'CELPHONE-FIELD-CLASS',
-  };
-};
-
-export const TELPHONE = (value) => {
-  return {
-    key: 10,
-    id: 'ptelphone',
-    type: 'text',
-    label: 'Telefone Fixo',
-    value: value && value.pfone,
-    mask: '(99) 9999-9999',
-    require: require,
-    className: 'TELPHONE-FIELD-CLASS',
   };
 };
 
@@ -209,7 +192,7 @@ export const CPF = (mask, error, funBlu, funFoc) => {
     changeBlur: funBlu,
     error: error,
     key: 16,
-    id: 'Cpf',
+    id: 'cpf',
     type: 'text',
     label: 'CPF',
     mask: mask,
@@ -217,7 +200,7 @@ export const CPF = (mask, error, funBlu, funFoc) => {
     require: require,
   };
 };
-export const CNPJ = (mask, error, value, funBlu, funFoc) => {
+export const CNPJ = (mask, error, funBlu, funFoc) => {
   return {
     changeFocus: funFoc,
     changeBlur: funBlu,
@@ -229,7 +212,7 @@ export const CNPJ = (mask, error, value, funBlu, funFoc) => {
     mask: mask,
     className: 'CNPJ-FIELD-CLASS',
     require: require,
-    value: value && value.cpnj,
+
   };
 };
 export const STREET = (value, error) => {

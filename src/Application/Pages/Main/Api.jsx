@@ -13,7 +13,7 @@ export function LOGIN(user, pass) {
 export function AUTO_LOGIN(cnpjcpf, token) {
   const data = { CNPJCPF: cnpjcpf, Token: token };
   return {
-    url: baseURL + '/GetDadosByToken/ ',
+    url: baseURL + '/Login/ ',
     options: {
       method: 'POST',
       body: JSON.stringify(data),
@@ -23,7 +23,7 @@ export function AUTO_LOGIN(cnpjcpf, token) {
 export function RECOVER_PASSWORDD(cnpjcpf, email) {
   const data = { CNPJCPF: cnpjcpf, Email: email };
   return {
-    url: baseURL + '/GerarNovaSenha/ ',
+    url: baseURL + '/RecuperarSenha/ ',
     options: {
       method: 'POST',
       body: JSON.stringify(data),
@@ -40,17 +40,17 @@ export function FIRST_ACESS(cnpjcpf, email) {
     },
   };
 }
-export function FREE_ACESS(id) {
-  const data = { IdUsuario: id };
+export function FREE_ACESS(cnpjcpf) {
+  const data = { CNPJCPF: cnpjcpf };
   return {
-    url: baseURL + '/ConfirmaSenha/ ',
+    url: baseURL + '/RecuperarSenha/ ',
     options: {
       method: 'POST',
       body: JSON.stringify(data),
     },
   };
 }
-export function CHANGE_PROFILE(obj, id, cnpj) {
+export function CHANGE_PROFILE(obj, id, cnpj, senhaliberada) {
   const data = {
     CNPJCPF: cnpj,
     SenhaNova: obj.SenhaNova,
@@ -61,6 +61,7 @@ export function CHANGE_PROFILE(obj, id, cnpj) {
     Email: obj.Email,
     Celular: obj.Celular,
     IdUsuario: id,
+    SenhaLiberada: senhaliberada
   };
   return {
     url: baseURL + '/AlterarDadosLogado/ ',
@@ -71,9 +72,9 @@ export function CHANGE_PROFILE(obj, id, cnpj) {
   };
 }
 export function GET_USER(id) {
-  const data = { IdCredenciado: id };
+  const data = { IdPrestador: id };
   return {
-    url: baseURL + '/GetUsuariosPrestadorByID/ ',
+    url: baseURL + '/GetUsuariosOfPrestadorByID/ ',
     options: {
       method: 'POST',
       body: JSON.stringify(data),

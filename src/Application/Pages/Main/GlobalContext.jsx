@@ -59,17 +59,19 @@ export const GlobalStorage = ({ children }) => {
     if (response != undefined) {
       if (response.status === 200) {
         let dados = json.Content;
+        console.log(dados.DadosPrestador)
         setLogin(true);
         setData(json.Content);
         localStorage.setItem('token', dados.Token);
-        localStorage.setItem('codigo', dados.CNPJCPF);
-        if (dados.Nome == null || dados.SenhaPadrao == true) {
+        localStorage.setItem('codigo', dados.DadosPrestador.CNPJCPF);
+        if (dados.nome == null || dados.senhaPadrao == true) {
           navigate('/conta/Perfil');
         } else
           navigate('/conta/');
       }
     } else return setError(serverError);
   }
+
 
   //AUTO LOGIN
   async function AutoLogin() {
@@ -81,7 +83,7 @@ export const GlobalStorage = ({ children }) => {
           let dados = json.Content;
           setLogin(true);
           setData(dados);
-          if (dados.Nome == null || dados.SenhaPadrao == true) {
+          if (dados.nome == null || dados.senhaPadrao == true) {
             navigate('/conta/Perfil');
           } else
             navigate('/conta/');
@@ -117,20 +119,21 @@ export const GlobalStorage = ({ children }) => {
   }
 
   // FREE ACESS 
-  async function _FreeAcess(id) {
-    const { url, options } = FREE_ACESS(id);
+  async function _FreeAcess(cnpjcpf) {
+    const { url, options } = FREE_ACESS(cnpjcpf);
     await request(url, options);
   }
   // ALTERAR DADOS PERFIL
   async function _ChangeUserData(obj) {
-    const { url, options } = CHANGE_PROFILE(obj, data.IdUsuario, data.CNPJCPF);
+    const { url, options } = CHANGE_PROFILE(obj, data.idUsuario, data.CNPJCPF, data.senhaLiberada);
     const { json } = await request(url, options);
     setDadosAlterados(json.Message);
   }
 
-  // GET USUARIOS PORTAL
+  //GET USUARIOS PORTAL
+
   async function _GetUserById() {
-    const { url, options } = GET_USER(data.IdCredenciado)
+    const { url, options } = GET_USER(data.idPrestador)
     const { json, response } = await request(url, options);
     if (response.status === 200) {
       setUsers(json.Content)
