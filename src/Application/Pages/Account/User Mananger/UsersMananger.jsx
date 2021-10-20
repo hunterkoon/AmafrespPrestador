@@ -11,8 +11,7 @@ import Tool from "../../../../Assets/Tool_yellow.svg";
 import "./UsersMananger.css";
 
 const UsersMananger = () => {
-  const { toggleModal, setToggleModal, users /*_GetUserById */ } =
-    React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users /*_GetUserById */ } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();

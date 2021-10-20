@@ -5,10 +5,14 @@ import GeneralForms from "../../../../Shared/Forms/GeneralForms";
 import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
-import { adjustsUserSubmit, deleteUserSubmit } from "../../../../Hooks/useSubmitDada";
+import {
+  adjustsUserSubmit,
+  deleteUserSubmit,
+} from "../../../../Hooks/useSubmitDada";
 import Succesfull from "../../../../Components/Sub/Modal";
 import "./UserChanges.css";
 import useErrorForm from "../../../../Hooks/useErrorForm";
+import { convertNeSwToNwSe } from "google-map-react";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
@@ -25,11 +29,22 @@ const UserChanges = ({ ...props }) => {
   const [alertExclude, setAlertExclude] = React.useState(false);
   const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
-  const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
+  const [objectSend, setObjectSend] = React.useState({});
+  const { adjustsManangerUser, addFunctionalitiesCheckbox } =GeneralForms(userSelectedForm);
+  const deleteUsersSubmit = Object.assign(deleteUserSubmit(userSelectedForm),objectSend );
+  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm),functions,objectSend);
+  const err = useErrorForm(adjustsManangerUser);
 
-  const deleteUsersSubmit = deleteUserSubmit(userSelectedForm);
-  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), functions);
-  const err = useErrorForm(adjustsManangerUser)
+  React.useEffect(() => {
+    function object() {
+      userEditProps &&
+        setObjectSend({
+          idUsuario: userEditProps.idUsuario,
+          idPrestador: userEditProps.idPrestador,
+        });
+    }
+    object();
+  }, [userEditProps]);
 
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
@@ -49,35 +64,46 @@ const UserChanges = ({ ...props }) => {
   }, [props.deleteUser?.profile, props.user?.profile]);
 
   const handleSubmit = ({ target }) => {
-    //TODO FECTH FUNCTIONS   
     if (target.tagName == "FORM" && err === true) {
-      setAlertSuccesful(!alertSuccesful)
+      setAlertSuccesful(!alertSuccesful);
+      //todo fetch changes user
       console.log(changesUsersSubmit);
     } else if (target.tagName !== "FORM") {
+      //todo fetch delet user
       console.log(deleteUsersSubmit);
     }
   };
 
-  // VALIDAÇÃO DE DADOS RECEBIDOS
-  const validateFunctions = (field, state) => {
-    if (field === "Gerenciar Usuários") {
-      if (state.privilegios.gerenciar == "null") {
-        return false;
-      } else return true;
-    }
-    if (field === "Incluir Usuário") {
-      if (state.privilegios.atualizar == "null") {
-        return false;
-      } else return true;
-    }
-    if (field === "Consulta tabela de preços") {
-      if (state.privilegios.adicionar == "null") {
-        return false;
-      } else return true;
-    }
+  const filterFunctions = (state) => {
+    let filterFunc;
+    if (state.Funcionalidades)
+      filterFunc = state.Funcionalidades.map((list) => {
+        if (list?.nome) {
+          return list.nome;
+        }
+        return null;
+      });
+    return filterFunc;
   };
-  // COMPONENTE COM FORMULARIOS
 
+  // VALIDAÇÃO DE DADOS RECEBIDOS
+  //recebe o estado de filterfunctions e compara cada elemento da array.
+  const validateFunctions = (field, state) => {
+  
+    const idValidate = {
+      priceTable : "Consulta tabela de preços",
+      addNewUser : "Incluir Usuário",
+      manangerUsers: "Gerenciar Usuários"
+    };
+    if(state){
+      if(idValidate[field] == state.filter((i) => i == idValidate[field] )){
+        return true;
+      }
+    }
+      return false;
+  };
+
+  // COMPONENTE COM FORMULARIOS
   const InputsForms = () => {
     return (
       <>
@@ -95,9 +121,7 @@ const UserChanges = ({ ...props }) => {
             functions
           )}
           <div className="div-sub-form-user-mananger-button">
-            <Button
-              value="Alterar"
-            />
+            <Button value="Alterar" />
             <Button
               onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
               color="#E20000"
@@ -129,9 +153,8 @@ const UserChanges = ({ ...props }) => {
         addFunctionalitiesCheckbox.reduce((acc, field) => {
           return {
             ...acc,
-            [field.id]: validateFunctions(
-              field.id,
-              userEditProps ? userEditProps : userDeleteProps
+            [field.id]: validateFunctions( field.id,
+              filterFunctions(userEditProps ? userEditProps : userDeleteProps)
             ),
           };
         }, {})

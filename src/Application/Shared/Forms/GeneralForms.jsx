@@ -29,7 +29,7 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
-const { UpdadeRegister, RegisterNewUser, ModifyUsers, PriceTable, addressTypeMain, addressTypePostal } = GeneralFunctionalities();
+const { /*UpdadeRegister, */ RegisterNewUser, ModifyUsers, PriceTable, addressTypeMain, addressTypePostal } = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
   //  const { address  } = React.useContext(GlobalContext);
@@ -126,10 +126,10 @@ const GeneralForms = (loginData) => {
   //FUNCIONALIDADES A SEREM LIBERADAS
 
   const addFunctionalitiesCheckbox = [
-    UpdadeRegister,
+    // UpdadeRegister,
+    PriceTable,
     RegisterNewUser,
     ModifyUsers,
-    PriceTable,
   ];
 
   const upRegFormRegisterData = [cnpj, socialReason, fantasy];

@@ -27,7 +27,7 @@ function App() {
           <div className="App">
             <Routes>
               <Route exact path="/" element={<Login />} />
-              <Route path="/conta/*" element={<Account />} />
+        {/* Aplicar Protect Route */  }  <Route path="/conta/*" element={<Account />} />    
               <Route path="/PrimeiroAcesso" element={<FirstAccess />} />
               <Route path="/RecuperarSenha" element={<RecoverPassword />} />
               <Route path="/Help" element={<Help />} />

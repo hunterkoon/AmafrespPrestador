@@ -10,7 +10,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 9999999 !important;
     opacity: 0;
     animation: opacityAnimation forwards 600ms;
 }
@@ -47,6 +47,7 @@
 
 .div-sub-user-mananger input {
     height: 40px;
+    z-index: 1;
 }
 
 .div-sub-functions-user-mananger span {
@@ -65,6 +66,7 @@
 }
 
 .div-sub-functions-user-mananger {
+    z-index: 999999 !important;
     display: flex;
     flex-direction: row;
     margin: 2%;

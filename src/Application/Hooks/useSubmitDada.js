@@ -85,11 +85,10 @@ export const adjustsUserSubmit = (data) => {
   return {
     nome: adjustsUser.Name,
     CNPJCPF: adjustsUser.Cpf,
-    telefoneFixo: adjustsUser.Telphone,
-    telefoneCelular: adjustsUser.Celphone,
+    celular: adjustsUser.Celphone,
     email: adjustsUser.Email,
-    departamento: adjustsUser.Department,
-    novaSenha: adjustsUser.NewPassword,
+    setor: adjustsUser.Department,
+    senhaNova: adjustsUser.NewPassword,
   };
 };
 export const deleteUserSubmit = (data) => {

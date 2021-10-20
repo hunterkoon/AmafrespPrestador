@@ -6,7 +6,7 @@
   font-family: NotoSans-Regular;
   width: 100%;
   margin: 0 auto;
-  z-index: 999 !important;
+
 }
 
 .p-error-null {
@@ -23,7 +23,7 @@
   position: absolute;
   transition: 300ms;
   color: #ffff;
-  background-color: #FDAB15;
+  background-color: #FF7A00;
   border-radius: 10px 10px 10px 0px;
   box-shadow: 10px 10px 10px 0px #9b9090;
   transform: translate(0px, -60px);
