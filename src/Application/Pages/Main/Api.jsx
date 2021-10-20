@@ -52,7 +52,6 @@ export function FREE_ACESS(cnpjcpf) {
 }
 export function CHANGE_PROFILE(obj, id, cnpj, senhaliberada) {
   const data = {
-    CNPJCPF: cnpj,
     SenhaNova: obj.SenhaNova,
     Senha: obj.Senha,
     Nome: obj.Nome,
@@ -60,8 +59,9 @@ export function CHANGE_PROFILE(obj, id, cnpj, senhaliberada) {
     Cpf: obj.Cpf,
     Email: obj.Email,
     Celular: obj.Celular,
-    IdUsuario: id,
-    SenhaLiberada: senhaliberada
+    IdUsuario: id ? id : obj.idUsuario,
+    SenhaLiberada: senhaliberada ? senhaliberada : obj.senhaLiberada,
+    CNPJCPF: cnpj ? cnpj : obj.CNPJCPF,
   };
   return {
     url: baseURL + '/AlterarDadosLogado/ ',

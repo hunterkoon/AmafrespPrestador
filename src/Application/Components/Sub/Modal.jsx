@@ -3,6 +3,7 @@ import Title from "./Title";
 import Titledecorated from "./Titledecorated";
 import { GlobalContext } from "../../Pages/Main/GlobalContext";
 import "./Modal.css";
+import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 const Modal = ({ ...props }) => {
   const { dadosAlterados } = React.useContext(GlobalContext);
 

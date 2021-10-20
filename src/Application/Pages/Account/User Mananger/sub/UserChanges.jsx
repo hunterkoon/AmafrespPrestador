@@ -5,14 +5,10 @@ import GeneralForms from "../../../../Shared/Forms/GeneralForms";
 import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
-import {
-  adjustsUserSubmit,
-  deleteUserSubmit,
-} from "../../../../Hooks/useSubmitDada";
+import { adjustsUserSubmit, deleteUserSubmit, } from "../../../../Hooks/useSubmitDada";
 import Succesfull from "../../../../Components/Sub/Modal";
 import "./UserChanges.css";
 import useErrorForm from "../../../../Hooks/useErrorForm";
-import { convertNeSwToNwSe } from "google-map-react";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
@@ -27,12 +23,14 @@ const UserChanges = ({ ...props }) => {
   // TOGGLE MODAIS
   const [alertSuccesful, setAlertSuccesful] = React.useState(false);
   const [alertExclude, setAlertExclude] = React.useState(false);
-  const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, data, _ChangeUserData } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
   const [objectSend, setObjectSend] = React.useState({});
-  const { adjustsManangerUser, addFunctionalitiesCheckbox } =GeneralForms(userSelectedForm);
-  const deleteUsersSubmit = Object.assign(deleteUserSubmit(userSelectedForm),objectSend );
-  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm),functions,objectSend);
+  const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
+  // MONTA OBJETOS DE ENVIO
+  const deleteUsersSubmit = Object.assign(deleteUserSubmit(userSelectedForm), objectSend);
+  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), functions, objectSend);
+  //VERIFICA ERROS NO FORMULARIO
   const err = useErrorForm(adjustsManangerUser);
 
   React.useEffect(() => {
@@ -41,10 +39,13 @@ const UserChanges = ({ ...props }) => {
         setObjectSend({
           idUsuario: userEditProps.idUsuario,
           idPrestador: userEditProps.idPrestador,
+          senhaLiberada: userEditProps.senhaLiberada,
+          CNPJCPF: data.DadosPrestador.CNPJCPF
         });
     }
     object();
   }, [userEditProps]);
+
 
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
@@ -67,7 +68,7 @@ const UserChanges = ({ ...props }) => {
     if (target.tagName == "FORM" && err === true) {
       setAlertSuccesful(!alertSuccesful);
       //todo fetch changes user
-      console.log(changesUsersSubmit);
+      _ChangeUserData(changesUsersSubmit);
     } else if (target.tagName !== "FORM") {
       //todo fetch delet user
       console.log(deleteUsersSubmit);
@@ -89,18 +90,18 @@ const UserChanges = ({ ...props }) => {
   // VALIDAÇÃO DE DADOS RECEBIDOS
   //recebe o estado de filterfunctions e compara cada elemento da array.
   const validateFunctions = (field, state) => {
-  
+
     const idValidate = {
-      priceTable : "Consulta tabela de preços",
-      addNewUser : "Incluir Usuário",
+      priceTable: "Consulta tabela de preços",
+      addNewUser: "Incluir Usuário",
       manangerUsers: "Gerenciar Usuários"
     };
-    if(state){
-      if(idValidate[field] == state.filter((i) => i == idValidate[field] )){
+    if (state) {
+      if (idValidate[field] == state.filter((i) => i == idValidate[field])) {
         return true;
       }
     }
-      return false;
+    return false;
   };
 
   // COMPONENTE COM FORMULARIOS
@@ -153,7 +154,7 @@ const UserChanges = ({ ...props }) => {
         addFunctionalitiesCheckbox.reduce((acc, field) => {
           return {
             ...acc,
-            [field.id]: validateFunctions( field.id,
+            [field.id]: validateFunctions(field.id,
               filterFunctions(userEditProps ? userEditProps : userDeleteProps)
             ),
           };
@@ -167,13 +168,13 @@ const UserChanges = ({ ...props }) => {
     <>
       <Succesfull
         alert={alertSuccesful}
-        onClick={() => setAlertSuccesful(!alertSuccesful)}
-        text={"Usuário Alterado!"}
+        onClick={() => [setAlertSuccesful(!alertSuccesful)]}
+        disclaimer={"Usuário Alterado!"}
       />
       <Succesfull
         alert={alertExclude}
         onClick={() => setAlertExclude(!alertExclude)}
-        text={"Usuário Excluído!"}
+        disclaimer={"Usuário Excluído!"}
       />
 
       {props.user?.open && toggleModal ? (

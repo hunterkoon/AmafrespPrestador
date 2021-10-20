@@ -36,7 +36,6 @@ export const GlobalStorage = ({ children }) => {
   const [users, setUsers] = React.useState([]);
 
 
-
   // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
 
@@ -59,7 +58,6 @@ export const GlobalStorage = ({ children }) => {
     if (response != undefined) {
       if (response.status === 200) {
         let dados = json.Content;
-        console.log(dados.DadosPrestador)
         setLogin(true);
         setData(json.Content);
         localStorage.setItem('token', dados.Token);
@@ -85,11 +83,13 @@ export const GlobalStorage = ({ children }) => {
           setData(dados);
           if (dados.nome == null || dados.senhaPadrao == true) {
             navigate('/conta/Perfil');
-          } else
+          }
+          else
             navigate('/conta/');
+
         }
         else
-          return setError(json.Message)
+          return setError("Token de acesso expirado, realize o Login novamente!")
       }
       else
         return setError(serverError);
@@ -124,31 +124,30 @@ export const GlobalStorage = ({ children }) => {
     await request(url, options);
   }
   // ALTERAR DADOS PERFIL
-  async function _ChangeUserData(obj) {
-    const { url, options } = CHANGE_PROFILE(obj, data.idUsuario, data.CNPJCPF, data.senhaLiberada);
+  async function _ChangeUserData(obj, id, cnpj, senhaliberada) {
+    const { url, options } = CHANGE_PROFILE(obj, id, cnpj, senhaliberada);
     const { json } = await request(url, options);
     setDadosAlterados(json.Message);
   }
-
   //GET USUARIOS PORTAL
-
-  // async function _GetUserById() {
-  //   const { url, options } = GET_USER(data.idPrestador)
-  //   const { json, response } = await request(url, options);
-  //   if (response.status === 200) {
-  //     setUsers(json.Content)
-  //   }
-  // }
-
+  async function _GetUsersById() {
+    const { url, options } = GET_USER(data.idPrestador)
+    const { json, response } = await request(url, options);
+    if (response.status === 200) {
+      setUsers(json.Content)
+    }
+  }
+  // BUSCA USUARIOS
+  React.useEffect(() => {
+    if (data.admin) {
+      _GetUsersById()
+    }
+  }, [data])
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
     setError(null)
-
   }, [window.location.href])
-
-
-
 
   const handleLogout = () => {
     navigate('/');
@@ -185,7 +184,8 @@ export const GlobalStorage = ({ children }) => {
         _FreeAcess,
         setError,
         _ChangeUserData,
-        // _GetUserById,
+        setUsers,
+        _GetUsersById,
         users,
         dadosAlterados,
         data,

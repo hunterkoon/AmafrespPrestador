@@ -47,10 +47,14 @@ const Profile = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (erroForm) {
-      _ChangeUserData(UserSubmit);
-      console.log(UserSubmit)
+      _ChangeUserData(
+        UserSubmit,
+        data.idUsuario,
+        data.DadosPrestador.CNPJCPF,
+        data.senhaLiberada);
       setErr(true);
     }
+
     //TODO FETCH FUNCTION
   };
   return (

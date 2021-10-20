@@ -11,15 +11,12 @@ import Tool from "../../../../Assets/Tool_yellow.svg";
 import "./UsersMananger.css";
 
 const UsersMananger = () => {
-  const { toggleModal, setToggleModal, users /*_GetUserById */ } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users, } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
 
-  // React.useEffect(() => {
-  //   _GetUserById();
-  // }, [])
-
+  console.log(users)
   const handleEdit = (profile) => {
     setToggleModal(!toggleModal);
     setEditUser({ profile: profile, open: true });
@@ -33,21 +30,21 @@ const UsersMananger = () => {
   };
 
   const Employee = () => {
-    return json.Content.map((lista) => (
+    return users.map((lista) => (
       <tr key={lista.idUsuario}>
         <td>{lista.nome}</td>
         <td>{lista.cpf}</td>
         <td>{lista.setor}</td>
         <td>{lista.email}</td>
-        <td style={{fontSize: "0.8em"}}>
-          {Object.entries(lista.Funcionalidades).map((item)  =>
+        <td style={{ fontSize: "0.8em" }}>
+          {Object.entries(lista.Funcionalidades).map((item) =>
             item[1] != null ? (
-              <label key={item[1].idFuncionalidade } style={{fontSize: "0.8rem"}}>
+              <label key={item[1].idFuncionalidade} style={{ fontSize: "0.8rem" }}>
                 *{item[1].nome.toString()} <br />
               </label>
             ) : (
-              "Sem Função"
-            )
+                "Sem Função"
+              )
           )}
         </td>
         <td className="table-td-edit" onClick={() => handleEdit(lista)}>
@@ -88,7 +85,7 @@ const UsersMananger = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody>{users ? <Employee /> : null}</tbody>
+          <tbody>{users && <Employee />}</tbody>
         </table>
       </div>
     </>

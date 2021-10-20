@@ -83,12 +83,12 @@ export const adjustsProfileSubmit = (data) => {
 export const adjustsUserSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
-    nome: adjustsUser.Name,
-    CNPJCPF: adjustsUser.Cpf,
-    celular: adjustsUser.Celphone,
-    email: adjustsUser.Email,
-    setor: adjustsUser.Department,
-    senhaNova: adjustsUser.NewPassword,
+    Nome: adjustsUser.Name,
+    Cpf: adjustsUser.Cpf,
+    Celular: adjustsUser.Celphone,
+    Email: adjustsUser.Email,
+    Departamento: adjustsUser.Department,
+    SenhaNova: adjustsUser.NewPassword,
   };
 };
 export const deleteUserSubmit = (data) => {

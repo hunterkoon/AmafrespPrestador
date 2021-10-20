@@ -28,7 +28,7 @@ const Account = () => {
       <aside className="div-context" name='app-context' onClick={(e) => handleMenuHide(e)}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="Gerenciar" element={<Gerenciar />} />
+          <Route path="Gerenciar" element={<Gerenciar />} /> {/*todo protectRoute */}
           <Route path="Contatos" element={<FaleConosco />} />
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
           <Route path="RegisterUpdate" element={<RegisterUpdate />} />
