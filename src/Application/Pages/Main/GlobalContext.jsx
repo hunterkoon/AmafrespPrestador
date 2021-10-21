@@ -31,7 +31,7 @@ export const GlobalStorage = ({ children }) => {
 
   const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
-  const [dadosAlterados, setDadosAlterados] = React.useState(null);
+  const [msgDataChanges, setMsgDataChanges] = React.useState(null);
   const [data, setData] = React.useState({});
   const [changeData, setchangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
@@ -128,7 +128,7 @@ export const GlobalStorage = ({ children }) => {
   async function _ChangeUserData(obj, id, cnpj, senhaliberada) {
     const { url, options } = CHANGE_PROFILE(obj, id, cnpj, senhaliberada);
     const { json } = await request(url, options);
-    setDadosAlterados(json.Message);
+    setMsgDataChanges(json.Message);
   }
   //GET USUARIOS PORTAL
   async function _GetUsersById() {
@@ -191,7 +191,7 @@ export const GlobalStorage = ({ children }) => {
         setchangeData,
         changeData,
         users,
-        dadosAlterados,
+        msgDataChanges,
         data,
         globalHandle,
         option,

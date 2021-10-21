@@ -20,7 +20,7 @@ const Usuarios = () => {
   const erroForm = useErrorForm(addUserForm);
 
   // ADICIONA ITENS ANTERIORES AO ARRAY;
-
+  // console.log(addFunctionalitiesCheckbox)
   const [functions, setFunctions] = React.useState(
     addFunctionalitiesCheckbox.reduce((acc, field) => {
       return {
@@ -39,8 +39,30 @@ const Usuarios = () => {
     }, {})
   );
 
-  const addUserOBJ = Object.assign(functions, addUserSubmit(newUser));
+  const functionsOBJ = (func) => {
+    const arr = [];
 
+    function Funcionalidade(item, item2) {
+      this.nome = item;
+      this.idFuncionalidade = item2
+    }
+
+    const valuesOfFunc = {
+      manangerUsers: 1,
+      addNewUser: 2,
+      priceTable: 3,
+    }
+
+    Object.entries(func).map((item) => {
+      if (item[1] == true) {
+        arr.push(new Funcionalidade(item[0], valuesOfFunc[item[0]]));
+      }
+    })
+    const fun = { Funcionalidades: [...arr] }
+    return fun;
+  }
+
+  const addUserOBJ = Object.assign(addUserSubmit(newUser), functionsOBJ(functions));
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
 
   const handleChangeUser = ({ target }) => {
@@ -147,7 +169,7 @@ const Usuarios = () => {
       </div>
       <>
         <Succesfull
-          text={"Usuário Registrado"}
+          disclaimer={"Usuário Registrado"}
           alert={err}
           onClick={() => setErr(!err)}
         />
