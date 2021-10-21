@@ -33,6 +33,7 @@ export const GlobalStorage = ({ children }) => {
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
   const [dadosAlterados, setDadosAlterados] = React.useState(null);
   const [data, setData] = React.useState({});
+  const [changeData, setchangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
 
 
@@ -131,6 +132,7 @@ export const GlobalStorage = ({ children }) => {
   }
   //GET USUARIOS PORTAL
   async function _GetUsersById() {
+
     const { url, options } = GET_USER(data.idPrestador)
     const { json, response } = await request(url, options);
     if (response.status === 200) {
@@ -186,6 +188,8 @@ export const GlobalStorage = ({ children }) => {
         _ChangeUserData,
         setUsers,
         _GetUsersById,
+        setchangeData,
+        changeData,
         users,
         dadosAlterados,
         data,

@@ -11,12 +11,27 @@ import Tool from "../../../../Assets/Tool_yellow.svg";
 import "./UsersMananger.css";
 
 const UsersMananger = () => {
-  const { toggleModal, setToggleModal, users, } = React.useContext(GlobalContext);
+
+
+
+  const { toggleModal, setToggleModal, users, changeData } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
 
-  console.log(users)
+  // Interface
+  React.useEffect(() => {
+    const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.idUsuario })
+    if (users[indexAltered] && changeData) {
+      users[indexAltered].nome = changeData?.Nome;
+      users[indexAltered].email = changeData?.Email;
+      users[indexAltered].cpf = changeData?.Cpf;
+      users[indexAltered].setor = changeData?.Departamento;
+      users[indexAltered].celular = changeData?.Celular;
+    }
+    Employee()
+  }, [users, setToggleModal, changeData])
+
   const handleEdit = (profile) => {
     setToggleModal(!toggleModal);
     setEditUser({ profile: profile, open: true });
@@ -30,14 +45,15 @@ const UsersMananger = () => {
   };
 
   const Employee = () => {
-    return users.map((lista) => (
-      <tr key={lista.idUsuario}>
-        <td>{lista.nome}</td>
-        <td>{lista.cpf}</td>
-        <td>{lista.setor}</td>
-        <td>{lista.email}</td>
+
+    return users && users.map((lista) => (
+      <tr key={lista?.idUsuario}>
+        <td>{lista?.nome}</td>
+        <td>{lista?.cpf}</td>
+        <td>{lista?.setor}</td>
+        <td>{lista?.email}</td>
         <td style={{ fontSize: "0.8em" }}>
-          {Object.entries(lista.Funcionalidades).map((item) =>
+          {lista && Object.entries(lista?.Funcionalidades).map((item) =>
             item[1] != null ? (
               <label key={item[1].idFuncionalidade} style={{ fontSize: "0.8rem" }}>
                 *{item[1].nome.toString()} <br />

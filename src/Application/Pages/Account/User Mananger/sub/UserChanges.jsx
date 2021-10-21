@@ -23,7 +23,7 @@ const UserChanges = ({ ...props }) => {
   // TOGGLE MODAIS
   const [alertSuccesful, setAlertSuccesful] = React.useState(false);
   const [alertExclude, setAlertExclude] = React.useState(false);
-  const { toggleModal, setToggleModal, data, _ChangeUserData } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, data, _ChangeUserData, setchangeData } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
   const [objectSend, setObjectSend] = React.useState({});
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
@@ -46,7 +46,6 @@ const UserChanges = ({ ...props }) => {
     object();
   }, [userEditProps]);
 
-
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
@@ -64,14 +63,11 @@ const UserChanges = ({ ...props }) => {
     setUserEditProps(props.user?.profile);
   }, [props.deleteUser?.profile, props.user?.profile]);
 
-  const handleSubmit = ({ target }) => {
-    if (target.tagName == "FORM" && err === true) {
+  const handleSubmit = () => {
+    if (err === true) {
       setAlertSuccesful(!alertSuccesful);
-      //todo fetch changes user
       _ChangeUserData(changesUsersSubmit);
-    } else if (target.tagName !== "FORM") {
-      //todo fetch delet user
-      console.log(deleteUsersSubmit);
+      setchangeData(changesUsersSubmit);
     }
   };
 
@@ -121,14 +117,7 @@ const UserChanges = ({ ...props }) => {
             handleChangeFunctions,
             functions
           )}
-          <div className="div-sub-form-user-mananger-button">
-            <Button value="Alterar" />
-            <Button
-              onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
-              color="#E20000"
-              value="Fechar"
-            />
-          </div>
+
         </div>
       </>
     );
@@ -180,9 +169,20 @@ const UserChanges = ({ ...props }) => {
       {props.user?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger">
-            <form onSubmit={(e) => [e.preventDefault(), handleSubmit(e)]}>
+            <form onSubmit={(e) => [e.preventDefault(), handleSubmit()]}>
               <h1>Guia de Alteração de usuário</h1>
+
               {InputsForms()}
+
+              <div className="div-sub-form-user-mananger-button">
+                <Button value="Alterar" />
+                <Button
+                  onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
+                  color="#E20000"
+                  value="Fechar"
+                />
+              </div>
+
             </form>
           </div>
         </div>
@@ -208,7 +208,7 @@ const UserChanges = ({ ...props }) => {
                 onClick={(e) => [
                   setAlertExclude(!alertExclude),
                   setToggleModal(false),
-                  handleSubmit(e),
+                  /*Submit*/
                 ]}
               />
               <Button
