@@ -1,5 +1,5 @@
 // LIMPAR FORMULARIO
-export const handleCleanInputs = () => {
+export const handleCleanInputs = (state, setstate) => {
   const inputs = document.querySelectorAll("input");
   inputs.forEach((item) => {
     if (item.value) {
@@ -9,8 +9,8 @@ export const handleCleanInputs = () => {
       item.checked = false;
     }
   });
-  setNewUser(
-    addUserForm.reduce((acc, field) => {
+  setstate(
+    state.reduce((acc, field) => {
       return {
         ...acc,
         [field.id]: "",

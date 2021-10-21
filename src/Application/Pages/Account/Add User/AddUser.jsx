@@ -22,7 +22,7 @@ const Usuarios = () => {
   const erroForm = useErrorForm(addUserForm);
 
   // ADICIONA ITENS ANTERIORES AO ARRAY;
-  // console.log(addFunctionalitiesCheckbox)
+
   const [functions, setFunctions] = React.useState(
     addFunctionalitiesCheckbox.reduce((acc, field) => {
       return {
@@ -109,7 +109,7 @@ const Usuarios = () => {
               <div className="div-sub-add-new-user-button-area">
                 <Button value="Cadastrar" />
                 <Button
-                  onClick={(e) => [e.preventDefault(), handleCleanInputs()]}
+                  onClick={(e) => [e.preventDefault(), handleCleanInputs(addUserForm, setNewUser)]}
                   color="#FDAB15"
                   value="Limpar"
                   class="button-limpar"
