@@ -12,14 +12,12 @@ import "./UsersMananger.css";
 
 const UsersMananger = () => {
 
-
-
   const { toggleModal, setToggleModal, users, changeData } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
 
-  // Interface
+  // INTERFACE
   React.useEffect(() => {
     const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.idUsuario })
     if (users[indexAltered] && changeData) {
@@ -44,6 +42,7 @@ const UsersMananger = () => {
     setEditUser({ profile: profile, open: false });
   };
 
+  // LISTA DA TABELA COM USUÁRIOS
   const Employee = () => {
 
     return users && users.map((lista) => (

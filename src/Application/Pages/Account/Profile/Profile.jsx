@@ -44,18 +44,16 @@ const Profile = () => {
   }, [adjustsByUser, setAlterRegisterData]);
   const erroForm = useErrorForm(adjustsUserForm);
 
+  const assemblyOBJ = {
+    IdUsuario: data.idUsuario,
+  }
+  const profileSubmitData = Object.assign(UserSubmit, assemblyOBJ)
   const handleSubmit = (event) => {
     event.preventDefault();
     if (erroForm) {
-      _ChangeUserData(
-        UserSubmit,
-        data.idUsuario,
-        data.DadosPrestador.CNPJCPF,
-        data.senhaLiberada);
+      _ChangeUserData(profileSubmitData);
       setErr(true);
     }
-
-    //TODO FETCH FUNCTION
   };
   return (
     <div className="div-main-perfil pageView">

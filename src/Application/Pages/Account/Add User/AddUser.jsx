@@ -8,13 +8,15 @@ import Button from "../../../Components/Sub/Button";
 import Succesfull from "../../../Components/Sub/Modal";
 import useErrorForm from "../../../Hooks/useErrorForm";
 import { addUserSubmit } from "../../../Hooks/useSubmitDada";
-import "./AddUser.css";
+import { HandleObjectFunctions } from "../../../Shared/Commons/Helpers/HandleObjectFunctions";
+import { handleCleanInputs } from "../../../Shared/Commons/Helpers/HandleCleanInputs";
 import Style from "./Forms.module.css";
+import "./AddUser.css";
 
 const Usuarios = () => {
 
   const { useInputsGeneral } = useInputs()
-  const { newUserData, setNewUserData } = React.useContext(GlobalContext);
+  const { newUserData, setNewUserData, _AddNewUser } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);
   const erroForm = useErrorForm(addUserForm);
@@ -39,32 +41,7 @@ const Usuarios = () => {
     }, {})
   );
 
-  const functionsOBJ = (func) => {
-    const arr = [];
-
-    function Funcionalidade(item, item2) {
-      this.nome = item;
-      this.idFuncionalidade = item2
-    }
-
-    const valuesOfFunc = {
-      manangerUsers: 1,
-      addNewUser: 2,
-      priceTable: 3,
-    }
-
-    Object.entries(func).map((item) => {
-      if (item[1] == true) {
-        arr.push(new Funcionalidade(item[0], valuesOfFunc[item[0]]));
-      }
-    })
-    const fun = { Funcionalidades: [...arr] }
-    return fun;
-  }
-
-  const addUserOBJ = Object.assign(addUserSubmit(newUser), functionsOBJ(functions));
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
-
   const handleChangeUser = ({ target }) => {
     const { id, value } = target;
     setNewUser({ ...newUser, [id]: value });
@@ -90,36 +67,15 @@ const Usuarios = () => {
     setNewUserData({ ...functions, ...newUser });
   }, [functions, newUser, setNewUserData]);
 
-  // TODO FETCH;
-
+  // SUBMIT 
   const handleSubmit = (e) => {
+    const addUserSubmitObj = Object.assign(addUserSubmit(newUser), HandleObjectFunctions(functions));
     e.preventDefault();
     if (erroForm) {
       setErr(true);
-      console.log(addUserOBJ);
+      // FUNÇÃO DE FETCH 
+      _AddNewUser(addUserSubmitObj);
     } else setErr(false);
-  };
-
-  // LIMPAR FORMULARIO
-
-  const handleCleanInputs = () => {
-    const inputs = document.querySelectorAll("input");
-    inputs.forEach((item) => {
-      if (item.value) {
-        item.value = "";
-      }
-      if (item.type === "checkbox") {
-        item.checked = false;
-      }
-    });
-    setNewUser(
-      addUserForm.reduce((acc, field) => {
-        return {
-          ...acc,
-          [field.id]: "",
-        };
-      }, {})
-    );
   };
 
   return (
@@ -159,13 +115,9 @@ const Usuarios = () => {
                   class="button-limpar"
                 />
               </div>
-
             </div>
-
           </form>
         </div>
-
-
       </div>
       <>
         <Succesfull

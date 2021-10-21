@@ -9,6 +9,7 @@ import { adjustsUserSubmit, deleteUserSubmit, } from "../../../../Hooks/useSubmi
 import Succesfull from "../../../../Components/Sub/Modal";
 import "./UserChanges.css";
 import useErrorForm from "../../../../Hooks/useErrorForm";
+import { HandleObjectFunctions } from "../../../../Shared/Commons/Helpers/HandleObjectFunctions";
 
 const UserChanges = ({ ...props }) => {
   const { useInputsGeneral } = useInputs();
@@ -23,27 +24,22 @@ const UserChanges = ({ ...props }) => {
   // TOGGLE MODAIS
   const [alertSuccesful, setAlertSuccesful] = React.useState(false);
   const [alertExclude, setAlertExclude] = React.useState(false);
-  const { toggleModal, setToggleModal, data, _ChangeUserData, setchangeData } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, _ChangeUserData, setchangeData } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
   const [objectSend, setObjectSend] = React.useState({});
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
   // MONTA OBJETOS DE ENVIO
   const deleteUsersSubmit = Object.assign(deleteUserSubmit(userSelectedForm), objectSend);
-  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), functions, objectSend);
+  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), objectSend, HandleObjectFunctions(functions));
   //VERIFICA ERROS NO FORMULARIO
   const err = useErrorForm(adjustsManangerUser);
 
+  // ADICIONA ITENS AO OBJETO PAI
   React.useEffect(() => {
-    function object() {
-      userEditProps &&
-        setObjectSend({
-          idUsuario: userEditProps.idUsuario,
-          idPrestador: userEditProps.idPrestador,
-          senhaLiberada: userEditProps.senhaLiberada,
-          CNPJCPF: data.DadosPrestador.CNPJCPF
-        });
-    }
-    object();
+    setObjectSend({
+      IdUsuario: userEditProps.idUsuario,
+      IdPrestador: userEditProps.idPrestador,
+    });
   }, [userEditProps]);
 
   // HANDLE CHANGES
@@ -67,6 +63,7 @@ const UserChanges = ({ ...props }) => {
     if (err === true) {
       setAlertSuccesful(!alertSuccesful);
       _ChangeUserData(changesUsersSubmit);
+      // ATUALIZA ELEMENTOS PARA  INTEFACE
       setchangeData(changesUsersSubmit);
     }
   };
@@ -117,7 +114,6 @@ const UserChanges = ({ ...props }) => {
             handleChangeFunctions,
             functions
           )}
-
         </div>
       </>
     );
@@ -171,9 +167,8 @@ const UserChanges = ({ ...props }) => {
           <div className="pageView div-sub-user-mananger">
             <form onSubmit={(e) => [e.preventDefault(), handleSubmit()]}>
               <h1>Guia de Alteração de usuário</h1>
-
+              {/* FORMULARIO DE ENVIO */}
               {InputsForms()}
-
               <div className="div-sub-form-user-mananger-button">
                 <Button value="Alterar" />
                 <Button
@@ -187,7 +182,7 @@ const UserChanges = ({ ...props }) => {
           </div>
         </div>
       ) : null}
-
+      {/* FORMULARIO DE DELETE */}
       {props.deleteUser?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger-confirm">
@@ -208,7 +203,7 @@ const UserChanges = ({ ...props }) => {
                 onClick={(e) => [
                   setAlertExclude(!alertExclude),
                   setToggleModal(false),
-                  /*Submit*/
+                  /* TODO Submit*/
                 ]}
               />
               <Button

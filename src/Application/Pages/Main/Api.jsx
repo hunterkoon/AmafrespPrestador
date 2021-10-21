@@ -50,8 +50,10 @@ export function FREE_ACESS(cnpjcpf) {
     },
   };
 }
-export function CHANGE_PROFILE(obj, id, cnpj, senhaliberada) {
+export function CHANGE_PROFILE(obj, cnpj, senhaliberada) {
   const data = {
+    IdPrestador: obj.IdPrestador,
+    IdUsuario: obj.IdUsuario,
     SenhaNova: obj.SenhaNova,
     Senha: obj.Senha,
     Nome: obj.Nome,
@@ -59,9 +61,9 @@ export function CHANGE_PROFILE(obj, id, cnpj, senhaliberada) {
     Cpf: obj.Cpf,
     Email: obj.Email,
     Celular: obj.Celular,
-    IdUsuario: id ? id : obj.idUsuario,
-    SenhaLiberada: senhaliberada ? senhaliberada : obj.senhaLiberada,
-    CNPJCPF: cnpj ? cnpj : obj.CNPJCPF,
+    SenhaLiberada: senhaliberada,
+    CNPJCPF: cnpj,
+    Funcionalidades: obj.Funcionalidades
   };
   return {
     url: baseURL + '/AlterarDadosLogado/ ',
@@ -75,6 +77,26 @@ export function GET_USER(id) {
   const data = { IdPrestador: id };
   return {
     url: baseURL + '/GetUsuariosOfPrestadorByID/ ',
+    options: {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  };
+}
+export function ADD_USER(obj, idprestador, senhaliberada) {
+  const data = {
+    Nome: obj.Nome,
+    Cpf: obj.Cpf,
+    Email: obj.Email,
+    Celular: obj.Celular,
+    Departamento: obj.Departamento,
+    Senha: obj.Senha,
+    Funcionalidades: obj.Funcionalidades,
+    IdPrestador: idprestador,
+    SenhaLiberada: senhaliberada
+  };
+  return {
+    url: baseURL + '/InserirUsuario/',
     options: {
       method: 'POST',
       body: JSON.stringify(data),

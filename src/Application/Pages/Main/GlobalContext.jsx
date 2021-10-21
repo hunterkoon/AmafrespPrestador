@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER } from './Api';
 import { serverError } from '../../Shared/Commons/Constants/Errors';
 
 // import { GETDADOS } from "./Api";
@@ -31,7 +31,7 @@ export const GlobalStorage = ({ children }) => {
 
   const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
-  const [msgDataChanges, setMsgDataChanges] = React.useState(null);
+  const [msgDataChanges, setMsgDataChanges] = React.useState("");
   const [data, setData] = React.useState({});
   const [changeData, setchangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
@@ -87,7 +87,6 @@ export const GlobalStorage = ({ children }) => {
           }
           else
             navigate('/conta/');
-
         }
         else
           return setError("Token de acesso expirado, realize o Login novamente!")
@@ -124,27 +123,36 @@ export const GlobalStorage = ({ children }) => {
     const { url, options } = FREE_ACESS(cnpjcpf);
     await request(url, options);
   }
+
   // ALTERAR DADOS PERFIL
-  async function _ChangeUserData(obj, id, cnpj, senhaliberada) {
-    const { url, options } = CHANGE_PROFILE(obj, id, cnpj, senhaliberada);
+  async function _ChangeUserData(obj) {
+    const { url, options } = CHANGE_PROFILE(obj, data.DadosPrestador.CNPJCPF, data.senhaLiberada);
     const { json } = await request(url, options);
     setMsgDataChanges(json.Message);
   }
+
   //GET USUARIOS PORTAL
   async function _GetUsersById() {
-
     const { url, options } = GET_USER(data.idPrestador)
     const { json, response } = await request(url, options);
     if (response.status === 200) {
       setUsers(json.Content)
     }
   }
+
+  // ADD NOVO USUARIO
+  async function _AddNewUser(obj) {
+    const { url, options } = ADD_USER(obj, data.idPrestador, data.senhaLiberada);
+    const { json } = await request(url, options);
+    setMsgDataChanges(json.Message)
+  }
+
   // BUSCA USUARIOS
   React.useEffect(() => {
     if (data.admin) {
       _GetUsersById()
     }
-  }, [data])
+  }, [data, msgDataChanges])
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
@@ -188,6 +196,7 @@ export const GlobalStorage = ({ children }) => {
         _ChangeUserData,
         setUsers,
         _GetUsersById,
+        _AddNewUser,
         setchangeData,
         changeData,
         users,
