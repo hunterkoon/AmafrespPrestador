@@ -15,12 +15,12 @@ import "./MainMenu.css";
 import "../../../App.css";
 
 const MainMenu = () => {
-  const { animateMenu, handleLogout, globalHandle, setGlobalHandle, option } = React.useContext(GlobalContext);
-  const [menuItemFuncs, setMenuItemFuncs] =  React.useState(false);
-  const [menuItemRegUp, setMenuItemRegUp] =   React.useState(false);
+  const { animateMenu, handleLogout, globalHandle, setGlobalHandle, option, data } = React.useContext(GlobalContext);
+  const [menuItemFuncs, setMenuItemFuncs] = React.useState(false);
+  const [menuItemRegUp, setMenuItemRegUp] = React.useState(false);
   const [menuItemUsers, setMenuItemUsers] = React.useState(false);
   const { width } = useWindowDimensions();
-  
+
   const setMenuItens = React.useMemo(
     () => [
       setMenuItemFuncs,
@@ -73,7 +73,7 @@ const MainMenu = () => {
           />
 
           {/* Area Restrita */}
-          {!option ? (
+          {data.admin && data.admin == true ? (
             <>
               <ItemMenu
                 state={menuItemUsers}

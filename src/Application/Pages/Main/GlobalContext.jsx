@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER } from './Api';
 import { serverError } from '../../Shared/Commons/Constants/Errors';
 
 // import { GETDADOS } from "./Api";
@@ -31,10 +31,10 @@ export const GlobalStorage = ({ children }) => {
 
   const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
-  const [dadosAlterados, setDadosAlterados] = React.useState(null);
+  const [msgDataChanges, setMsgDataChanges] = React.useState("");
   const [data, setData] = React.useState({});
+  const [changeData, setchangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
-
 
 
   // ATUALIZAÇÃO CADASTRAL
@@ -59,7 +59,6 @@ export const GlobalStorage = ({ children }) => {
     if (response != undefined) {
       if (response.status === 200) {
         let dados = json.Content;
-        console.log(dados.DadosPrestador)
         setLogin(true);
         setData(json.Content);
         localStorage.setItem('token', dados.Token);
@@ -85,11 +84,12 @@ export const GlobalStorage = ({ children }) => {
           setData(dados);
           if (dados.nome == null || dados.senhaPadrao == true) {
             navigate('/conta/Perfil');
-          } else
+          }
+          else
             navigate('/conta/');
         }
         else
-          return setError(json.Message)
+          return setError("Token de acesso expirado, realize o Login novamente!")
       }
       else
         return setError(serverError);
@@ -123,32 +123,41 @@ export const GlobalStorage = ({ children }) => {
     const { url, options } = FREE_ACESS(cnpjcpf);
     await request(url, options);
   }
+
   // ALTERAR DADOS PERFIL
   async function _ChangeUserData(obj) {
-    const { url, options } = CHANGE_PROFILE(obj, data.idUsuario, data.CNPJCPF, data.senhaLiberada);
+    const { url, options } = CHANGE_PROFILE(obj, data.DadosPrestador.CNPJCPF, data.senhaLiberada);
     const { json } = await request(url, options);
-    setDadosAlterados(json.Message);
+    setMsgDataChanges(json.Message);
   }
 
   //GET USUARIOS PORTAL
+  async function _GetUsersById() {
+    const { url, options } = GET_USER(data.idPrestador)
+    const { json, response } = await request(url, options);
+    if (response.status === 200) {
+      setUsers(json.Content)
+    }
+  }
 
-  // async function _GetUserById() {
-  //   const { url, options } = GET_USER(data.idPrestador)
-  //   const { json, response } = await request(url, options);
-  //   if (response.status === 200) {
-  //     setUsers(json.Content)
-  //   }
-  // }
+  // ADD NOVO USUARIO
+  async function _AddNewUser(obj) {
+    const { url, options } = ADD_USER(obj, data.idPrestador, data.senhaLiberada);
+    const { json } = await request(url, options);
+    setMsgDataChanges(json.Message)
+  }
 
+  // BUSCA USUARIOS
+  React.useEffect(() => {
+    if (data.admin) {
+      _GetUsersById()
+    }
+  }, [data, msgDataChanges])
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
     setError(null)
-
   }, [window.location.href])
-
-
-
 
   const handleLogout = () => {
     navigate('/');
@@ -185,9 +194,13 @@ export const GlobalStorage = ({ children }) => {
         _FreeAcess,
         setError,
         _ChangeUserData,
-        // _GetUserById,
+        setUsers,
+        _GetUsersById,
+        _AddNewUser,
+        setchangeData,
+        changeData,
         users,
-        dadosAlterados,
+        msgDataChanges,
         data,
         globalHandle,
         option,

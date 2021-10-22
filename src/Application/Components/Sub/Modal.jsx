@@ -3,8 +3,9 @@ import Title from "./Title";
 import Titledecorated from "./Titledecorated";
 import { GlobalContext } from "../../Pages/Main/GlobalContext";
 import "./Modal.css";
+import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 const Modal = ({ ...props }) => {
-  const { dadosAlterados } = React.useContext(GlobalContext);
+  const { msgDataChanges } = React.useContext(GlobalContext);
 
   function refreshPage() {
     window.location.reload();
@@ -18,7 +19,7 @@ const Modal = ({ ...props }) => {
               <Titledecorated text={props.error ? "Falha :( " : "Sucesso!!!"} />
               <Title text={props.disclaimer} />
               <Title text={props.text} />
-              <h3> {!props.error ? dadosAlterados && dadosAlterados : null} </h3>
+              <h3> {!props.error ? msgDataChanges && msgDataChanges : null} </h3>
             </div>
             <div onClick={props.disclaimer ? null : () => refreshPage()}>
               <div className="div-close-modal" onClick={props.onClick}>
