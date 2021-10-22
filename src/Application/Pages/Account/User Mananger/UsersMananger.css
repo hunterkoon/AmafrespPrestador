@@ -42,10 +42,35 @@
 
 .table-td-delete {
   cursor: pointer;
+  text-decoration-line: underline;
 }
 
 .table-td-delete p {
   color: #E20000
+}
+
+.active-tag {
+  display: flex;
+  background-color: #25b099;
+  text-align-last: center;
+}
+
+.active-tag h1 {
+  margin: 0 auto;
+  color: #ffff;
+  font-size: 0.9em;
+}
+
+.inative-tag {
+  display: flex;
+  background-color: #f20000;
+  text-align-last: center;
+}
+
+.inative-tag h1 {
+  font-size: 0.9em;
+  margin: 0 auto;
+  color: #ffff;
 }
 
 .div-add-new-user-mananger-users {
@@ -81,17 +106,18 @@ th:nth-child(1), td:nth-child(1) {
 .trash-img {
   display: flex;
   margin: 0 auto;
-  width: 25px;
+  width: 35px;
 }
 
+/* 
 .trash-img:hover {
   content: '';
   display: block;
-  width: 25px;
-  height: 25px;
-  background-image: url('../../../../Assets/Trash-g.gif');
+  width: 45px;
+  height: 45px;
+  background-image: url('../../../../Assets/Caution.gif');
   background-size: contain;
-}
+} */
 
 .tool-img {
   display: flex;

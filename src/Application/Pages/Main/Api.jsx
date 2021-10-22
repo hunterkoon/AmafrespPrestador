@@ -103,3 +103,13 @@ export function ADD_USER(obj, idprestador, senhaliberada) {
     },
   };
 }
+export function DEACTIVE_USER(obj) {
+  const data = obj;
+  return {
+    url: baseURL + '/AtivarDesativarUsuario/',
+    options: {
+      method: 'POST',
+      body: JSON.stringify(data),
+    },
+  };
+}

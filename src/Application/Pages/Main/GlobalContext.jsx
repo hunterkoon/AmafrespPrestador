@@ -3,7 +3,7 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER, DEACTIVE_USER } from './Api';
 import { serverError } from '../../Shared/Commons/Constants/Errors';
 
 // import { GETDADOS } from "./Api";
@@ -73,7 +73,7 @@ export const GlobalStorage = ({ children }) => {
 
 
   //AUTO LOGIN
-  async function AutoLogin() {
+  async function _AutoLogin() {
     if ((CNPJCPF != null) && (TOKEN != null)) {
       const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
       const { response, json } = await request(url, options);
@@ -86,7 +86,7 @@ export const GlobalStorage = ({ children }) => {
             navigate('/conta/Perfil');
           }
           else
-            navigate('/conta/');
+            navigate('/conta/Gerenciar');
         }
         else
           return setError("Token de acesso expirado, realize o Login novamente!")
@@ -146,6 +146,14 @@ export const GlobalStorage = ({ children }) => {
     const { json } = await request(url, options);
     setMsgDataChanges(json.Message)
   }
+  // DELETAR USUARIO
+  async function _DeactiveUser(obj) {
+    const { url, options } = DEACTIVE_USER(obj)
+    const { json } = await request(url, options);
+    setMsgDataChanges(json.Message)
+
+  }
+
 
   // BUSCA USUARIOS
   React.useEffect(() => {
@@ -187,16 +195,17 @@ export const GlobalStorage = ({ children }) => {
         setRegUpData,
         setToggleModal,
         setGlobalHandle,
-        AutoLogin,
+        setError,
+        setUsers,
+        _AutoLogin,
         _LoginValidate,
         _RecoverPassword,
         _FirstAcess,
         _FreeAcess,
-        setError,
         _ChangeUserData,
-        setUsers,
         _GetUsersById,
         _AddNewUser,
+        _DeactiveUser,
         setchangeData,
         changeData,
         users,

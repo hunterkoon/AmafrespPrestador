@@ -6,7 +6,8 @@ import UserChanges from "./sub/UserChanges";
 import Title from "../../../Components/Sub/Title";
 import user from "../../../../Assets/UserProfille.svg";
 import { useNavigate } from "react-router";
-import Trash from "../../../../Assets/Trash.svg";
+import Caution from "../../../../Assets/error.svg";
+import CautionGif from "../../../../Assets/Caution.gif";
 import Tool from "../../../../Assets/Tool_yellow.svg";
 import "./UsersMananger.css";
 
@@ -53,22 +54,31 @@ const UsersMananger = () => {
             <td>{lista?.cpf}</td>
             <td>{lista?.setor}</td>
             <td>{lista?.email}</td>
+
+            {/* Funcionalidades */}
             <td style={{ fontSize: "0.8em" }}>
               {lista && Object.entries(lista?.Funcionalidades).map((item) =>
                 item[1] != null ? (
                   <label key={n++} style={{ fontSize: "0.8rem" }}>
                     *{item[1].nome.toString()} <br />
                   </label>
-                ) : (
-                    "Sem Função"
-                  )
-              )}
+                ) : "Sem Função")}
             </td>
+            {/* Ativo / Inativo */}
+            <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
+              {lista?.ativo ?
+                <h1>Ativo</h1> :
+                <h1>Inativo</h1>}
+            </td>
+
+            {/* Editar */}
             <td className="table-td-edit" onClick={() => handleEdit(lista)}>
               <img src={Tool} className="tool-img" alt="ferramenta" />
             </td>
+            {/* Inativa / Ativar */}
             <td onClick={() => handleDelete(lista)} className="table-td-delete">
-              <img src={Trash} className="trash-img" alt="lixeirinha" />
+              {!lista?.ativo ? "Ativar" : "Inativar"}
+              {/* <img src={Caution} className="trash-img" alt="caution" /> */}
             </td>
           </tr>
         ) : null));
@@ -76,6 +86,7 @@ const UsersMananger = () => {
 
   return (
     <>
+
       <UserChanges user={editUser} deleteUser={deleteUser} />
 
       <div className="div-main-gerenciarUsuarios pageView">
@@ -98,8 +109,9 @@ const UsersMananger = () => {
               <th>Setor</th>
               <th>Email</th>
               <th>Privilégios</th>
-              <th></th>
-              <th></th>
+              <th>Ativo</th>
+              <th>Editar</th>
+              <th>Ativar/Inativar</th>
             </tr>
           </thead>
           <tbody>{users && <Employee />}</tbody>

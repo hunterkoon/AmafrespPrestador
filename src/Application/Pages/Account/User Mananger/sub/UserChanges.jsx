@@ -12,6 +12,7 @@ import useErrorForm from "../../../../Hooks/useErrorForm";
 import { HandleObjectFunctions } from "../../../../Shared/Commons/Helpers/HandleObjectFunctions";
 
 const UserChanges = ({ ...props }) => {
+  const { toggleModal, setToggleModal, _ChangeUserData, setchangeData, _DeactiveUser, data } = React.useContext(GlobalContext);
   const { useInputsGeneral } = useInputs();
   // RECEBE DADOS DO USUÁRIO A SER EXCLUIDO
   const [userDeleteProps, setUserDeleteProps] = React.useState(null);
@@ -24,7 +25,6 @@ const UserChanges = ({ ...props }) => {
   // TOGGLE MODAIS
   const [alertSuccesful, setAlertSuccesful] = React.useState(false);
   const [alertExclude, setAlertExclude] = React.useState(false);
-  const { toggleModal, setToggleModal, _ChangeUserData, setchangeData } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
   const [objectSend, setObjectSend] = React.useState({});
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
@@ -39,6 +39,7 @@ const UserChanges = ({ ...props }) => {
     setObjectSend({
       IdUsuario: userEditProps && userEditProps.idUsuario,
       IdPrestador: userEditProps && userEditProps.idPrestador,
+      Ativo: userEditProps && userEditProps.ativo
     });
   }, [userEditProps]);
 
@@ -67,6 +68,10 @@ const UserChanges = ({ ...props }) => {
       setchangeData(changesUsersSubmit);
     }
   };
+  const handleSubmitDelete = () => {
+    console.log(deleteUsersSubmit)
+    _DeactiveUser(deleteUsersSubmit)
+  }
 
   const filterFunctions = (state) => {
     let filterFunc;
@@ -159,7 +164,7 @@ const UserChanges = ({ ...props }) => {
       <Succesfull
         alert={alertExclude}
         onClick={() => setAlertExclude(!alertExclude)}
-        disclaimer={"Usuário Excluído!"}
+        disclaimer={"Usuário Moficado!"}
       />
 
       {props.user?.open && toggleModal ? (
@@ -186,24 +191,20 @@ const UserChanges = ({ ...props }) => {
       {props.deleteUser?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger-confirm">
-            <h1>Guia de Exclusão de usuário</h1>
-            <span>Tem Certeza ?</span>
-            <span
-              style={{
-                color: "#f20000",
-                fontWeight: "bold",
-              }}
-            >
-              {userDeleteProps && userDeleteProps?.nome}
-            </span>
-            <span> será excluido permanentemente!</span>
+            <h1>Guia de {userDeleteProps && userDeleteProps.ativo ? "Inativação" : "Ativação"} de usuário</h1>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+              <h1 style={{ padding: "10px" }}> Tem Certeza ?  </h1>
+              <h3 style={{ color: "#f20000", fontWeight: "bold", }}>{userDeleteProps && userDeleteProps?.nome}  </h3>
+              <h1 style={{ padding: "10px" }}> Será {userDeleteProps && !userDeleteProps?.ativo ? "Ativo" : "Inativo"} ! </h1>
+            </div>
+
             <div className="div-sub-form-user-mananger-button">
               <Button
                 value="Sim"
                 onClick={(e) => [
                   setAlertExclude(!alertExclude),
                   setToggleModal(false),
-                  /* TODO Submit*/
+                  handleSubmitDelete()
                 ]}
               />
               <Button
