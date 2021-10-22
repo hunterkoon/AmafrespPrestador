@@ -11,26 +11,24 @@ import LoginImg from '../../../Assets/Login_2.svg';
 import UsuarioLogin from '../../../Assets/UsuarioLogin.svg';
 import IconDoubt from '../../../Assets/IconDoubt.svg';
 import GeneralForms from '../../Shared/Forms/GeneralForms';
-import { loginDataSubmit } from '../../Hooks/useSubmitDada';
+import Error from '../../Components/Sub/Error'
+import { loginDataCNPJSubmit, loginDataCPFSubmit } from '../../Hooks/useSubmitDada';
 import './Login.css';
 import '../../../App.css';
 
 const Login = () => {
-  // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
 
+  // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
   const { useInputsGeneral } = useInputs();
-  const { option, setLoginData, loginData, LoginValidate } = React.useContext(
-    GlobalContext,
-  );
+  const { option, setLoginData, loginData, _LoginValidate, _AutoLogin } = React.useContext(GlobalContext);
 
   // CONSTANTES IMPORTADAS PARA GERAR FORMS
-
   const { loginCommon, loginAdm } = GeneralForms(loginData);
-  const loginSubmit = loginDataSubmit(loginData);
+  const loginADMSubmit = loginDataCNPJSubmit(loginData);
+  const loginCOMSubmit = loginDataCPFSubmit(loginData);
 
   // ATUALIZA LISTA ATUAL DE ARRAYS COM ITENS ANTERIORES
   const variable = option ? loginCommon : loginAdm;
-
   const [fieldsLogin, setFieldsLogin] = React.useState(
     variable.reduce((acc, field) => {
       return {
@@ -41,25 +39,24 @@ const Login = () => {
   );
 
   // FUNÇÃO ATUALIZADORA, PASSA PARA ESTADO GLOBAL ARRAY ATUALIZADO
-
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setFieldsLogin({ ...fieldsLogin, [id]: value });
   };
 
   // FUNÇÃO ATUALIZADORA
-
   React.useEffect(() => {
     setLoginData(fieldsLogin);
   }, [fieldsLogin, setLoginData, variable]);
 
   // TODO FUNÇÃO DE FETCH
-  console.log(loginSubmit);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    LoginValidate(loginSubmit);
+    _LoginValidate(option ? loginCOMSubmit : loginADMSubmit);
   };
+  React.useEffect(() => {
+    _AutoLogin();
+  }, [])
 
   return (
     <>
@@ -88,6 +85,7 @@ const Login = () => {
                 <img src={IconDoubt} alt="" />
               </Link>
             </div>
+
             <form onSubmit={handleSubmit}>
               {useInputsGeneral(
                 option ? loginCommon : loginAdm, // list of inputs
@@ -95,6 +93,7 @@ const Login = () => {
                 fieldsLogin, // values
                 'menuView', // class
               )}
+              <Error />
               <div
                 className={
                   !option ? 'div-button-login' : 'div-button-login-user'

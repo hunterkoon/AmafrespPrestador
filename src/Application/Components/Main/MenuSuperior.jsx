@@ -7,7 +7,7 @@ import User_Profile from "../../../Assets/UserProfille.svg";
 import Button from "../Sub/Button";
 import "./MenuSuperior.css";
 const MenuSuperior = () => {
-  const { profile, setProfile, login } = React.useContext(GlobalContext);
+  const { profile, setProfile, login, data } = React.useContext(GlobalContext);
   const navigate = useNavigate();
   return (
     <>
@@ -36,32 +36,35 @@ const MenuSuperior = () => {
               />
             </span>
           </div>
-          <div className="div-prestador-menu-superior">
-            <div>
-              <h2>Empresa:</h2>
-              <h4>{/* data ? data[0].EMPRESA : */ "Lorem Ipsum"}</h4>
+          {data.DadosPrestador ?
+            <div className="div-prestador-menu-superior">
+
+              <div>
+                <h2>Empresa:</h2>
+                <h4>{data.DadosPrestador.RazaoSocial}</h4>
+              </div>
+              <div>
+                <h2>CNPJ:</h2>
+                <h4>{data.DadosPrestador.CNPJCPF}</h4>
+              </div>
+              <div>
+                <h2>Segmento:</h2>
+                <h4>{data.DadosPrestador.Segmento}</h4>
+              </div>
+              <div>
+                <h2>Tipo Credenciado: </h2>
+                <h4>{data.DadosPrestador.TipoPrestador}</h4>
+              </div>
             </div>
-            <div>
-              <h2>CNPJ:</h2>
-              <h4>{/* data ? data[0].CNPJ : */ "Lorem Ipsum"}</h4>
-            </div>
-            <div>
-              <h2>Segmento:</h2>
-              <h4>{/*data ? data[0].SEGMENTO : */"Lorem Ipsum"}</h4>
-            </div>
-            <div>
-              <h2>Tipo Credenciado: </h2>
-              <h4>{/*data ? data[0].TIPO_CREDENCIADO : */"Lorem Ipsum"}</h4>
-            </div>
-          </div>
+            : null}
           <div className="div-colaborador-menu-superior">
             <div>
               <h2>Nome:</h2>
-              <h4>{/*data ? data[0].NOME : */"Lorem Ipsum"}</h4>
+              <h4>{data.nome ? data.nome : "Atualize seus dados"}</h4>
             </div>
             <div>
               <h2>Departamento:</h2>
-              <h4>{/*data ? data[0].DEPARTAMENTO : */"Lorem Ipsum"}</h4>
+              <h4>{data.setor ? data.setor : "Departamento"}</h4>
             </div>
             <div
               onClick={() => setProfile(!profile)}

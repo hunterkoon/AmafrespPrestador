@@ -7,7 +7,7 @@ import {
   PASSWORD_CONFIRM,
   NAME,
   CEL_TELPHONE,
-  TELPHONE,
+  // TELPHONE,
   DEPARTMENT,
   ACTUAL_PASSWORD,
   NEW_PASSWORD,
@@ -29,7 +29,7 @@ import {
   handleErrorCNPJ,
   handleMaskCNPJ,
 } from "../Commons/Helpers/HandleInputs";
-const { UpdadeRegister,RegisterNewUser,ModifyUsers,PriceTable,addressTypeMain,addressTypePostal} = GeneralFunctionalities();
+const { /*UpdadeRegister, */ RegisterNewUser, ModifyUsers, PriceTable, addressTypeMain, addressTypePostal } = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
   //  const { address  } = React.useContext(GlobalContext);
@@ -69,7 +69,7 @@ const GeneralForms = (loginData) => {
   const atualPassword = ACTUAL_PASSWORD();
   const email = EMAIL();
   const name = NAME();
-  const telphone = TELPHONE();
+  // const telphone = TELPHONE();
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
   const socialReason = SOCIAL();
@@ -80,7 +80,7 @@ const GeneralForms = (loginData) => {
   //  const location = CITY(address);
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
-  const firstAcessForm = [cnpj, email, emailConfirm, password, passwordConfirm];
+  const firstAcessForm = [cnpj, email, emailConfirm /*, password, passwordConfirm */];
   // FORMULARIOS DE LOGIN
   const loginCommon = [cpf, password];
   const loginAdm = [cnpj, password];
@@ -94,7 +94,6 @@ const GeneralForms = (loginData) => {
     name,
     cpf,
     department,
-    telphone,
     celphone,
     password,
     passwordConfirm,
@@ -105,9 +104,8 @@ const GeneralForms = (loginData) => {
   //FORMULARIO DE ALTERAÇÃO DE PERFIL
   const adjustsUserForm = [
     name,
-    cpf,
     department,
-    telphone,
+    cpf,
     celphone,
     atualPassword,
     newPassword,
@@ -119,7 +117,6 @@ const GeneralForms = (loginData) => {
   const adjustsManangerUser = [
     name,
     cpf,
-    telphone,
     celphone,
     newPassword,
     email,
@@ -129,10 +126,10 @@ const GeneralForms = (loginData) => {
   //FUNCIONALIDADES A SEREM LIBERADAS
 
   const addFunctionalitiesCheckbox = [
-    UpdadeRegister,
+    // UpdadeRegister,
+    PriceTable,
     RegisterNewUser,
     ModifyUsers,
-    PriceTable,
   ];
 
   const upRegFormRegisterData = [cnpj, socialReason, fantasy];

@@ -1,145 +1,93 @@
 export const json = {
-  colaboradores: [
-    { id: '1',
-      pnome: "GABRIEL PINHEIRO CAMPOS",
-      pdepartamento: "TI",
-      cpf: "41343494869",
-      email: "gabrielcampos@afresp.org.br",
-      ptelphone:'1155273533',
-      pcelfone:'11939213367',
-      privilegios: {
-        atualizar: "1",
-        gerenciar: "null",
-        adicionar: "1",
-      },
+  "StatusCode": 200,
+  "Message": "",
+  "Content": [
+    {
+      "Token": null,
+      "DadosPrestador": null,
+      "Funcionalidades": [
+        {
+          "idFuncionalidade": 1,
+          "nome": "Gerenciar Usuários",
+          "tbAMAPortalUsuarioFuncionalidade": []
+        },
+        {
+          "idFuncionalidade": 2,
+          "nome": "Incluir Usuário",
+          "tbAMAPortalUsuarioFuncionalidade": []
+        },
+        {
+          "idFuncionalidade": 3,
+          "nome": "Consulta tabela de preços",
+          "tbAMAPortalUsuarioFuncionalidade": []
+        }
+      ],
+      "idUsuario": 1,
+      "idPrestador": 205,
+      "cpf": "41343494869",
+      "nome": "GABRIEL PINHEIRO CAMPOS",
+      "celular": "11939213367",
+      "senha": null,
+      "email": "gabrielcampos@afresp.org.br",
+      "setor": "TECNOLOGIA",
+      "admin": true,
+      "senhaLiberada": true,
+      "senhaPadrao": false,
+      "dtInclusao": "0001-01-01T00:00:00",
+      "dtCancelamento": null,
+      "ativo": true,
+      "tbAMAPortalUsuarioFuncionalidade": [],
+      "tbCCredenciado": null
     },
-
-    { id: '2',
-      pnome: "ADEBAIOR MENDES JR.",
-      pdepartamento: "APROVAÇÕES",
-      cpf: "3124111",
-      email: "adebaior@absd.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "1",
-        gerenciar: "1",
-        adicionar: "1",
-      },
+    {
+      "Token": null,
+      "DadosPrestador": null,
+      "Funcionalidades": [
+        null
+      ],
+      "idUsuario": 1223,
+      "idPrestador": 205,
+      "cpf": "41343495830",
+      "nome": "GUSTAVO CAMPOS",
+      "celular": "11939213367",
+      "senha": null,
+      "email": null,
+      "setor": "TECNOLOGIA",
+      "admin": false,
+      "senhaLiberada": true,
+      "senhaPadrao": true,
+      "dtInclusao": "0001-01-01T00:00:00",
+      "dtCancelamento": null,
+      "ativo": true,
+      "tbAMAPortalUsuarioFuncionalidade": [],
+      "tbCCredenciado": null
     },
-
-    { id: '3',
-      pnome: "LUIZ ALBERTO DA VOTSA.",
-      pdepartamento: "CONTABILIDADE",
-      cpf: "0000012346",
-      email: "luiz@asluiz.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
+    {
+      "Token": null,
+      "DadosPrestador": null,
+      "Funcionalidades": [
+        {
+        "idFuncionalidade": 1,
+        "nome": "Gerenciar Usuários",
+        "tbAMAPortalUsuarioFuncionalidade": []
       },
+      ],
+      "idUsuario": 3251,
+      "idPrestador": 205,
+      "cpf": "41343495830",
+      "nome": "MARIANA CAMPOS",
+      "celular": "11939213367",
+      "senha": null,
+      "email": null,
+      "setor": "ADV",
+      "admin": false,
+      "senhaLiberada": true,
+      "senhaPadrao": true,
+      "dtInclusao": "0001-01-01T00:00:00",
+      "dtCancelamento": null,
+      "ativo": true,
+      "tbAMAPortalUsuarioFuncionalidade": [],
+      "tbCCredenciado": null
     },
-
-    { id: '4',
-      pnome: "NOME DE TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-    { id: '5',
-      pnome: "NOME DE TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-    { id: '6',
-      pnome: "NOME TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-    { id: '7',
-      pnome: "NOME DE TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-    { id: '8',
-      pnome: "NOME DE TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-    { id: '9',
-      pnome: "NOME DE TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-    { id: '10',
-      pnome: "NOME DE TESTE",
-      pdepartamento: "DEPARTAMENTO",
-      cpf: "99999999999",
-      email: "email@email.com",
-      ptelphone:'1100000000',
-      pcelfone:'110000000000',
-      privilegios: {
-        atualizar: "null",
-        gerenciar: "null",
-        adicionar: "1",
-      },
-    },
-
-
-  ],
+  ]
 };

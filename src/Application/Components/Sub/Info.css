@@ -7,13 +7,16 @@
     position: relative;
     width: 18px;
     margin-left: 5% ;
+   
   }
   .info-img:hover~.info-label , 
   .info-check:hover~.info-label{
+    z-index: 9999;
     display: block;
     z-index: 1;
   }
   .info-label{
+    z-index: 99999 !important;
     align-items: center;
     justify-content: space-evenly;
     color: #c1c1c1;
@@ -24,8 +27,8 @@
     height: max-content;
     border-radius: 10px 10px 10px 0px;
     transform: translateY(-95px);
-    z-index: -9999;
-    display: none;
+  
+    display: none; /*Alterar*/
   }
   .info-label h5{
   margin: 5% ;
