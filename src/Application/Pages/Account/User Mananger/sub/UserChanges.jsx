@@ -5,12 +5,14 @@ import GeneralForms from "../../../../Shared/Forms/GeneralForms";
 import Button from "../../../../Components/Sub/Button";
 import Style from "./Forms.module.css";
 import { GlobalContext } from "../../../Main/GlobalContext";
-import { adjustsUserSubmit, deleteUserSubmit } from "../../../../Hooks/useSubmitDada";
-import Succesfull from "../../../../Components/Sub/Succesfull";
+import { adjustsUserSubmit, deleteUserSubmit, } from "../../../../Hooks/useSubmitDada";
+import Succesfull from "../../../../Components/Sub/Modal";
 import "./UserChanges.css";
 import useErrorForm from "../../../../Hooks/useErrorForm";
+import { HandleObjectFunctions } from "../../../../Shared/Commons/Helpers/HandleObjectFunctions";
 
 const UserChanges = ({ ...props }) => {
+  const { toggleModal, setToggleModal, _ChangeUserData, setchangeData, _DeactiveUser, data } = React.useContext(GlobalContext);
   const { useInputsGeneral } = useInputs();
   // RECEBE DADOS DO USUÁRIO A SER EXCLUIDO
   const [userDeleteProps, setUserDeleteProps] = React.useState(null);
@@ -23,13 +25,24 @@ const UserChanges = ({ ...props }) => {
   // TOGGLE MODAIS
   const [alertSuccesful, setAlertSuccesful] = React.useState(false);
   const [alertExclude, setAlertExclude] = React.useState(false);
-  const { toggleModal, setToggleModal } = React.useContext(GlobalContext);
   // RECEBE FORMULARIOS
+  const [objectSend, setObjectSend] = React.useState({});
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
+  // MONTA OBJETOS DE ENVIO
+  const deleteUsersSubmit = Object.assign(deleteUserSubmit(userSelectedForm), objectSend);
+  const changesUsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), objectSend, HandleObjectFunctions(functions));
+  //VERIFICA ERROS NO FORMULARIO
+  const err = useErrorForm(adjustsManangerUser);
 
-  const deleteUsersSubmit = deleteUserSubmit(userSelectedForm);
-  const changesUsersSubmit = Object.assign( adjustsUserSubmit(userSelectedForm),functions);
-  const err =  useErrorForm(adjustsManangerUser)
+  // ADICIONA ITENS AO OBJETO PAI
+  React.useEffect(() => {
+    setObjectSend({
+      IdUsuario: userEditProps && userEditProps.idUsuario,
+      IdPrestador: userEditProps && userEditProps.idPrestador,
+      Ativo: userEditProps && userEditProps.ativo
+    });
+  }, [userEditProps]);
+
   // HANDLE CHANGES
   const handleChangeInputs = ({ target }) => {
     const { id, value } = target;
@@ -47,36 +60,49 @@ const UserChanges = ({ ...props }) => {
     setUserEditProps(props.user?.profile);
   }, [props.deleteUser?.profile, props.user?.profile]);
 
-  const handleSubmit = ({ target }) => {
-    //TODO FECTH FUNCTIONS   
-    if (target.tagName == "FORM" && err === true) {
-      setAlertSuccesful(!alertSuccesful) 
-      console.log(changesUsersSubmit );
-    } else if  ( target.tagName !== "FORM") {
-      console.log(deleteUsersSubmit);
+  const handleSubmit = () => {
+    if (err === true) {
+      setAlertSuccesful(!alertSuccesful);
+      _ChangeUserData(changesUsersSubmit);
+      // ATUALIZA ELEMENTOS PARA  INTEFACE
+      setchangeData(changesUsersSubmit);
     }
+  };
+  const handleSubmitDelete = () => {
+    console.log(deleteUsersSubmit)
+    _DeactiveUser(deleteUsersSubmit)
+  }
+
+  const filterFunctions = (state) => {
+    let filterFunc;
+    if (state.Funcionalidades)
+      filterFunc = state.Funcionalidades.map((list) => {
+        if (list?.nome) {
+          return list.nome;
+        }
+        return null;
+      });
+    return filterFunc;
   };
 
   // VALIDAÇÃO DE DADOS RECEBIDOS
+  //recebe o estado de filterfunctions e compara cada elemento da array.
   const validateFunctions = (field, state) => {
-    if (field === "modifyUser") {
-      if (state.privilegios.gerenciar == "null") {
-        return false;
-      } else return true;
-    }
-    if (field === "update") {
-      if (state.privilegios.atualizar == "null") {
-        return false;
-      } else return true;
-    }
-    if (field === "newUser") {
-      if (state.privilegios.adicionar == "null") {
-        return false;
-      } else return true;
-    }
-  };
-  // COMPONENTE COM FORMULARIOS
 
+    const idValidate = {
+      priceTable: "Consulta tabela de preços",
+      addNewUser: "Incluir Usuário",
+      manangerUsers: "Gerenciar Usuários"
+    };
+    if (state) {
+      if (idValidate[field] == state.filter((i) => i == idValidate[field])) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  // COMPONENTE COM FORMULARIOS
   const InputsForms = () => {
     return (
       <>
@@ -93,16 +119,6 @@ const UserChanges = ({ ...props }) => {
             handleChangeFunctions,
             functions
           )}
-          <div className="div-sub-form-user-mananger-button">
-            <Button
-              value="Alterar"
-            />
-            <Button
-              onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
-              color="#E20000"
-              value="Fechar"
-            />
-          </div>
         </div>
       </>
     );
@@ -128,9 +144,8 @@ const UserChanges = ({ ...props }) => {
         addFunctionalitiesCheckbox.reduce((acc, field) => {
           return {
             ...acc,
-            [field.id]: validateFunctions(
-              field.id,
-              userEditProps ? userEditProps : userDeleteProps
+            [field.id]: validateFunctions(field.id,
+              filterFunctions(userEditProps ? userEditProps : userDeleteProps)
             ),
           };
         }, {})
@@ -143,47 +158,53 @@ const UserChanges = ({ ...props }) => {
     <>
       <Succesfull
         alert={alertSuccesful}
-        onClick={() => setAlertSuccesful(!alertSuccesful)}
-        text={"Usuário Alterado!"}
+        onClick={() => [setAlertSuccesful(!alertSuccesful)]}
+        disclaimer={"Usuário Alterado!"}
       />
       <Succesfull
         alert={alertExclude}
         onClick={() => setAlertExclude(!alertExclude)}
-        text={"Usuário Excluído!"}
+        disclaimer={"Usuário Moficado!"}
       />
 
       {props.user?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger">
-            <form onSubmit={(e) => [e.preventDefault(), handleSubmit(e)]}>
+            <form onSubmit={(e) => [e.preventDefault(), handleSubmit()]}>
               <h1>Guia de Alteração de usuário</h1>
+              {/* FORMULARIO DE ENVIO */}
               {InputsForms()}
+              <div className="div-sub-form-user-mananger-button">
+                <Button value="Alterar" />
+                <Button
+                  onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
+                  color="#E20000"
+                  value="Fechar"
+                />
+              </div>
+
             </form>
           </div>
         </div>
       ) : null}
-
+      {/* FORMULARIO DE DELETE */}
       {props.deleteUser?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger-confirm">
-            <h1>Guia de Exclusão de usuário</h1>
-            <span>Tem Certeza ?</span>
-            <span
-              style={{
-                color: "#f20000",
-                fontWeight: "bold",
-              }}
-            >
-              {userDeleteProps && userDeleteProps?.pnome}
-            </span>
-            <span> será excluido permanentemente!</span>
+            <h1>Guia de {userDeleteProps && userDeleteProps.ativo ? "Inativação" : "Ativação"} de usuário</h1>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+              <h1 style={{ padding: "10px" }}> Tem Certeza ?  </h1>
+              <h3 style={{ color: "#f20000", fontWeight: "bold", }}>{userDeleteProps && userDeleteProps?.nome}  </h3>
+              <h1 style={{ padding: "10px" }}> Será {userDeleteProps && !userDeleteProps?.ativo ? "Ativo" : "Inativo"} ! </h1>
+            </div>
+
             <div className="div-sub-form-user-mananger-button">
               <Button
                 value="Sim"
                 onClick={(e) => [
                   setAlertExclude(!alertExclude),
                   setToggleModal(false),
-                  handleSubmit(e),
+                  handleSubmitDelete()
                 ]}
               />
               <Button

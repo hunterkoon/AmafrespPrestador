@@ -19,25 +19,26 @@ const GeneralFunctionalities = () => {
     this.name = name;
     //this.img receive image in just case
   }
-  const UpdadeRegister = new Functionalities(
-    "checkbox", // type
-    "update", // general key
-    "Atualização Cadastral", // label
-    updateInfo ,// info
-    false, // require
-    '' , // name
-  );
+  // const UpdadeRegister = new Functionalities(
+  //   "checkbox", // type
+  //   "update", // general key
+  //   "Atualização Cadastral", // label
+  //   updateInfo ,// info
+  //   false, // require
+  //   '' , // name
+  // );
+
   //FUNCIONALIDADES DE USUARIOS
   const RegisterNewUser = new Functionalities(
     "checkbox",
-    "newUser",
+    "addNewUser",
     "Cadastrar Usuários",
     addUserInfo,
     false
   );
   const ModifyUsers = new Functionalities(
     "checkbox",
-    "modifyUser",
+    "manangerUsers",
     "Gerenciar Usuários",
     modUserInfo,
     false
@@ -70,7 +71,7 @@ const GeneralFunctionalities = () => {
   );
 
   return {
-    UpdadeRegister: UpdadeRegister,
+    // UpdadeRegister: UpdadeRegister,
     RegisterNewUser: RegisterNewUser,
     ModifyUsers: ModifyUsers,
     addressTypeMain: addressTypeMain,

@@ -9,7 +9,7 @@ import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 import "./Header.css";
 
 export default function Header() {
-  const { setProfile, profile, login, setAnimateMenu, handleLogout } =  React.useContext(GlobalContext);
+  const { setProfile, profile, login, setAnimateMenu, handleLogout, data } = React.useContext(GlobalContext);
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function Header() {
       <header className="Header">
         <div className="div-img-logotipo">
           <img
-            onClick={() => ( login ? navigate("/conta") : navigate("/"))}
+            onClick={() => (login ? navigate("/conta") : navigate("/"))}
             src={Logotipo}
             alt="Logotipo Amafresp"
           />
@@ -45,16 +45,15 @@ export default function Header() {
                 alt=""
               />
             </div>
-            <div onClick={handleClick} className="div-user-info">
-              <span className="span-user">
-                {/* TODO FETCH NOME USER */}
-                {"Lorem Ipsum Zupoi"}
-              </span>
-              <span className="span-employ">
-                {/* TODO FETCH NOME EMPRESA */}
-                {"Lorem Ipsum Gumoi"}
-              </span>
-            </div>
+            {data.DadosPrestador ?
+              <div onClick={handleClick} className="div-user-info">
+                <span className="span-user">
+                  {data.nome}
+                </span>
+                <span className="span-employ">
+                  {data.DadosPrestador.Fantasia}
+                </span>
+              </div> : null}
           </div>
         ) : null}
 
@@ -65,7 +64,7 @@ export default function Header() {
           Sair
         </div>
 
-        {(width <= 1024 && login === true ) && login ? (
+        {(width <= 1024 && login === true) && login ? (
           <div className="div-hamburguer">
             <Hamburguer />
           </div>

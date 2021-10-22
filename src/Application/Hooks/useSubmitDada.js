@@ -8,23 +8,30 @@ class InputConstants {
     this.ActualPassword = handlePasswordHash(data.ATUALsenha);
     this.Password = handlePasswordHash(data.password);
     this.Cpf = data.cpf && data.cpf.replace(regex, '');
-    this.CNPJCPF = data.cnpj && data.cnpj.replace(regex, '');
-    this.Email = data.email && data.email.toUpperCase();
-    this.Department = data.pdepartamento && data.pdepartamento.toUpperCase();
-    this.SocialReason = data.razaoSocial && data.razaoSocial.toUpperCase();
-    this.FantasyName = data.nomeFantasia && data.nomeFantasia.toUpperCase();
-    this.Name = data.pnome && data.pnome.toUpperCase();
-    this.Telphone = data.ptelphone;
-    this.Celphone = data.pcelfone;
+    this.Cnpj = data.CNPJCPF && data.CNPJCPF.replace(regex, '');
+    this.Email = data.email;
+    this.Department = data.setor && data.setor.toUpperCase();
+    this.SocialReason = data.RazaoSocial && data.RazaoSocial.toUpperCase();
+    this.FantasyName = data.Fantasia && data.Fantasia.toUpperCase();
+    this.Name = data.nome && data.nome.toUpperCase();
+    this.Celphone = data.celular && data.celular.replace(regex, '');
     this.Cep = data.cep && data.cep.replace(regex, '');
     this.Street = data.logradouro;
     this.Neighborhood = data.bairro;
   }
 }
-export const loginDataSubmit = (data) => {
+export const loginDataCNPJSubmit = (data) => {
   const login = new InputConstants(data);
   return {
-    CNPJCPF: login.CNPJCPF,
+    CNPJCPF: login.Cnpj,
+    Senha: login.Password,
+  };
+};
+
+export const loginDataCPFSubmit = (data) => {
+  const login = new InputConstants(data);
+  return {
+    CNPJCPF: login.Cpf,
     Senha: login.Password,
   };
 };
@@ -32,60 +39,56 @@ export const loginDataSubmit = (data) => {
 export const recoverAdmPasswordSubmit = (data) => {
   const recoverAdm = new InputConstants(data);
   return {
-    email: recoverAdm.Email,
     CNPJCPF: recoverAdm.Cnpj,
+    Email: recoverAdm.Email,
   };
 };
 export const recoverCommonPasswordSubmit = (data) => {
-  const recoverAdm = new InputConstants(data);
+  const recoverCommon = new InputConstants(data);
   return {
-    email: recoverAdm.Email,
-    CNPJCPF: recoverAdm.Cpf,
+    CNPJCPF: recoverCommon.Cpf,
+    Email: recoverCommon.Email,
   };
 };
 export const addUserSubmit = (data) => {
   const addUser = new InputConstants(data);
   return {
-    nome: addUser.Name,
-    CNPJCPF: addUser.Cpf,
-    email: addUser.Email,
-    senha: addUser.Password,
-    telefoneFixo: addUser.Telphone,
-    telefoneCelular: addUser.Celphone,
-    departamento: addUser.Department,
+    Nome: addUser.Name,
+    Cpf: addUser.Cpf,
+    Email: addUser.Email,
+    Senha: addUser.Password,
+    Celular: addUser.Celphone,
+    Departamento: addUser.Department,
   };
 };
 export const firstAcessSubmit = (data) => {
   const firtAcess = new InputConstants(data);
   return {
     CNPJCPF: firtAcess.Cnpj,
-    email: firtAcess.Email,
-    senha: firtAcess.Password,
+    Email: firtAcess.Email
   };
 };
 export const adjustsProfileSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
-    nome: adjustsUser.Name,
-    CNPJCPF: adjustsUser.Cpf,
-    telefoneFixo: adjustsUser.Telphone,
-    telefoneCelular: adjustsUser.Celphone,
-    email: adjustsUser.Email,
-    departamento: adjustsUser.Department,
-    senha: adjustsUser.ActualPassword,
-    novaSenha: adjustsUser.NewPassword,
+    Nome: adjustsUser.Name,
+    Cpf: adjustsUser.Cpf,
+    Celular: adjustsUser.Celphone,
+    Email: adjustsUser.Email,
+    Departamento: adjustsUser.Department,
+    Senha: adjustsUser.ActualPassword,
+    SenhaNova: adjustsUser.NewPassword,
   };
 };
 export const adjustsUserSubmit = (data) => {
   const adjustsUser = new InputConstants(data);
   return {
-    nome: adjustsUser.Name,
-    CNPJCPF: adjustsUser.Cpf,
-    telefoneFixo: adjustsUser.Telphone,
-    telefoneCelular: adjustsUser.Celphone,
-    email: adjustsUser.Email,
-    departamento: adjustsUser.Department,
-    novaSenha: adjustsUser.NewPassword,
+    Nome: adjustsUser.Name,
+    Cpf: adjustsUser.Cpf,
+    Celular: adjustsUser.Celphone,
+    Email: adjustsUser.Email,
+    Departamento: adjustsUser.Department,
+    SenhaNova: adjustsUser.NewPassword,
   };
 };
 export const deleteUserSubmit = (data) => {

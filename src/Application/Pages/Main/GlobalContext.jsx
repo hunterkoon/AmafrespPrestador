@@ -3,7 +3,8 @@ import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
 import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN } from './Api';
+import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER, DEACTIVE_USER } from './Api';
+import { serverError } from '../../Shared/Commons/Constants/Errors';
 
 // import { GETDADOS } from "./Api";
 
@@ -22,16 +23,24 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
-  const { loading, error, request } = useFetch();
+  const { setLoading, loading, error, request, setError } = useFetch();
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
 
-  // ATUALIZAÇÃO CADASTRAL
+  //FETCH DATA 
 
+  const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
+  const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
+  const [msgDataChanges, setMsgDataChanges] = React.useState("");
+  const [data, setData] = React.useState({});
+  const [changeData, setchangeData] = React.useState({});
+  const [users, setUsers] = React.useState([]);
+
+
+  // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
 
   // FETCH EDNE CEP
-
   React.useEffect(() => {
     async function GetCep() {
       const cep = ApiCep(regUpData.cep);
@@ -44,32 +53,130 @@ export const GlobalStorage = ({ children }) => {
   }, [regUpData.cep, request]);
 
   //LOGIN
-  async function LoginValidate(obj) {
+  async function _LoginValidate(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
-    if (json.StatusCode === 200) {
-      setLogin(true);
-    }
-    console.log(json);
-    return {
-      response: response,
-      json: json,
-    };
+    if (response != undefined) {
+      if (response.status === 200) {
+        let dados = json.Content;
+        setLogin(true);
+        setData(json.Content);
+        localStorage.setItem('token', dados.Token);
+        localStorage.setItem('codigo', dados.DadosPrestador.CNPJCPF);
+        if (dados.nome == null || dados.senhaPadrao == true) {
+          navigate('/conta/Perfil');
+        } else
+          navigate('/conta/');
+      }
+    } else return setError(serverError);
   }
 
-  // ALTERA ROTA DEPENDENDO DO ESTADO LOGIN PARA O LOGITPO PRINCIPAL
-  //RETORNA PARA AREA DE LOGIN CASO LOGIN SEJA FALSE]
+
+  //AUTO LOGIN
+  async function _AutoLogin() {
+    if ((CNPJCPF != null) && (TOKEN != null)) {
+      const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
+      const { response, json } = await request(url, options);
+      if (response != undefined) {
+        if (response.status === 200) {
+          let dados = json.Content;
+          setLogin(true);
+          setData(dados);
+          if (dados.nome == null || dados.senhaPadrao == true) {
+            navigate('/conta/Perfil');
+          }
+          else
+            navigate('/conta/Gerenciar');
+        }
+        else
+          return setError("Token de acesso expirado, realize o Login novamente!")
+      }
+      else
+        return setError(serverError);
+    }
+  }
+
+  // FIRST ACESS
+  async function _FirstAcess(obj) {
+    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email)
+    const { response, json } = await request(url, options);
+    if (response != undefined) {
+      if (response.status === 200) {
+        navigate("/RegisterSucessful")
+      } else return setError(json.Message);
+    } else return setError(serverError);
+  }
+
+  // RECOVER PASSWORD
+  async function _RecoverPassword(obj) {
+    const { url, options } = RECOVER_PASSWORDD(obj.CNPJCPF, obj.Email);
+    const { response, json } = await request(url, options);
+    if (response != undefined) {
+      if (response.status === 200) {
+        navigate("/RecoverSuccessful")
+      } else return setError(json.Message);
+    } else return setError(serverError);
+  }
+
+  // FREE ACESS 
+  async function _FreeAcess(cnpjcpf) {
+    const { url, options } = FREE_ACESS(cnpjcpf);
+    await request(url, options);
+  }
+
+  // ALTERAR DADOS PERFIL
+  async function _ChangeUserData(obj) {
+    const { url, options } = CHANGE_PROFILE(obj, data.DadosPrestador.CNPJCPF, data.senhaLiberada);
+    const { json } = await request(url, options);
+    setMsgDataChanges(json.Message);
+  }
+
+  //GET USUARIOS PORTAL
+  async function _GetUsersById() {
+    const { url, options } = GET_USER(data.idPrestador)
+    const { json, response } = await request(url, options);
+    if (response.status === 200) {
+      setUsers(json.Content)
+    }
+  }
+
+  // ADD NOVO USUARIO
+  async function _AddNewUser(obj) {
+    const { url, options } = ADD_USER(obj, data.idPrestador, data.senhaLiberada);
+    const { json } = await request(url, options);
+    setMsgDataChanges(json.Message)
+  }
+  // DELETAR USUARIO
+  async function _DeactiveUser(obj) {
+    const { url, options } = DEACTIVE_USER(obj)
+    const { json } = await request(url, options);
+    setMsgDataChanges(json.Message)
+
+  }
+
+
+  // BUSCA USUARIOS
   React.useEffect(() => {
-    if (login) {
-      return navigate('/conta');
-    } else return navigate('/');
-  }, [login, navigate]);
+    if (data.admin) {
+      _GetUsersById()
+    }
+  }, [data, msgDataChanges])
+
+  // RESETA POSIÇÃO DE ERRO
+  React.useEffect(() => {
+    setError(null)
+  }, [window.location.href])
 
   const handleLogout = () => {
     navigate('/');
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
+    setData({});
+    localStorage.removeItem('token');
+    localStorage.removeItem('codigo');
+    setCNPJCPF(null);
+    setToken(null);
   };
 
   return (
@@ -88,7 +195,22 @@ export const GlobalStorage = ({ children }) => {
         setRegUpData,
         setToggleModal,
         setGlobalHandle,
-        LoginValidate,
+        setError,
+        setUsers,
+        _AutoLogin,
+        _LoginValidate,
+        _RecoverPassword,
+        _FirstAcess,
+        _FreeAcess,
+        _ChangeUserData,
+        _GetUsersById,
+        _AddNewUser,
+        _DeactiveUser,
+        setchangeData,
+        changeData,
+        users,
+        msgDataChanges,
+        data,
         globalHandle,
         option,
         profile,

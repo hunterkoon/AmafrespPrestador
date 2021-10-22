@@ -1,5 +1,4 @@
 import React from "react";
-
 import { GlobalContext } from "./GlobalContext";
 import { UrlPrimeiroAcesso } from "../../Shared/Commons/Constants/image-url-primeiro-acesso";
 import { firstAcessSubmit } from "../../Hooks/useSubmitDada";
@@ -11,15 +10,16 @@ import Title from "../../Components/Sub/Title";
 import Button from "../../Components/Sub/Button";
 import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
 import useErrorForm from "../../Hooks/useErrorForm";
+import Error from '../../Components/Sub/Error'
 import "./FirstAccess.css";
 
 const FirstAccess = () => {
-  
-  const { firtAcessData, setFirtAcessData } = React.useContext(GlobalContext);
+
+  const { firtAcessData, setFirtAcessData, _FirstAcess } = React.useContext(GlobalContext);
   const firstAcessSubmitData = firstAcessSubmit(firtAcessData);
   const { firstAcessForm } = GeneralForms(firtAcessData);
   const erroForm = useErrorForm(firstAcessForm);
-  const {useInputsGeneral} = useInputs()
+  const { useInputsGeneral } = useInputs()
   const navigate = useNavigate();
 
   const [primeiroAcesso, setPrimeiroAcesso] = React.useState(
@@ -39,10 +39,8 @@ const FirstAccess = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (erroForm) {
-      navigate("/RegisterSucessful");
-      console.log(firstAcessSubmitData);
+      _FirstAcess(firstAcessSubmitData);
     }
-    //TODO  FETCH POST
   };
 
   React.useEffect(() => {
@@ -67,6 +65,7 @@ const FirstAccess = () => {
           <Titledecorated text="Primeiro Acesso" />
           <Title text="Portal Amafresp Prestador" />
           {useInputsGeneral(firstAcessForm, handleChange, primeiroAcesso)}
+          <Error />
           <div className="div-button-form-primeiro-acesso">
             <Button value="Registrar" />
           </div>

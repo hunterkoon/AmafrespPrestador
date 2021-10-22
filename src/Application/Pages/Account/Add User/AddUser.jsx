@@ -5,16 +5,18 @@ import Titledecorated from "../../../Components/Sub/Titledecorated";
 import Title from "../../../Components/Sub/Title";
 import GeneralForms from "../../../Shared/Forms/GeneralForms";
 import Button from "../../../Components/Sub/Button";
-import Succesfull from "../../../Components/Sub/Succesfull";
+import Succesfull from "../../../Components/Sub/Modal";
 import useErrorForm from "../../../Hooks/useErrorForm";
 import { addUserSubmit } from "../../../Hooks/useSubmitDada";
-import "./AddUser.css";
+import { HandleObjectFunctions } from "../../../Shared/Commons/Helpers/HandleObjectFunctions";
+import { handleCleanInputs } from "../../../Shared/Commons/Helpers/HandleCleanInputs";
 import Style from "./Forms.module.css";
+import "./AddUser.css";
 
 const Usuarios = () => {
-  
-  const {useInputsGeneral } = useInputs()
-  const { newUserData, setNewUserData } = React.useContext(GlobalContext);
+
+  const { useInputsGeneral } = useInputs()
+  const { newUserData, setNewUserData, _AddNewUser } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);
   const erroForm = useErrorForm(addUserForm);
@@ -39,10 +41,7 @@ const Usuarios = () => {
     }, {})
   );
 
-  const addUserOBJ = Object.assign(functions, addUserSubmit(newUser));
-
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
-
   const handleChangeUser = ({ target }) => {
     const { id, value } = target;
     setNewUser({ ...newUser, [id]: value });
@@ -68,36 +67,15 @@ const Usuarios = () => {
     setNewUserData({ ...functions, ...newUser });
   }, [functions, newUser, setNewUserData]);
 
-  // TODO FETCH;
-
+  // SUBMIT 
   const handleSubmit = (e) => {
+    const addUserSubmitObj = Object.assign(addUserSubmit(newUser), HandleObjectFunctions(functions));
     e.preventDefault();
     if (erroForm) {
       setErr(true);
-      console.log(addUserOBJ);
+      // FUNÇÃO DE FETCH 
+      _AddNewUser(addUserSubmitObj);
     } else setErr(false);
-  };
-
-  // LIMPAR FORMULARIO
-
-  const handleCleanInputs = () => {
-    const inputs = document.querySelectorAll("input");
-    inputs.forEach((item) => {
-      if (item.value) {
-        item.value = "";
-      }
-      if (item.type === "checkbox") {
-        item.checked = false;
-      }
-    });
-    setNewUser(
-      addUserForm.reduce((acc, field) => {
-        return {
-          ...acc,
-          [field.id]: "",
-        };
-      }, {})
-    );
   };
 
   return (
@@ -128,26 +106,22 @@ const Usuarios = () => {
                 handleChangeFunctions,
                 functions
               )}
-            <div className="div-sub-add-new-user-button-area">
-              <Button value="Cadastrar" />
-              <Button
-                onClick={(e) => [e.preventDefault(), handleCleanInputs()]}
-                color="#FDAB15"
-                value="Limpar"
-                class="button-limpar"
-              />
+              <div className="div-sub-add-new-user-button-area">
+                <Button value="Cadastrar" />
+                <Button
+                  onClick={(e) => [e.preventDefault(), handleCleanInputs(addUserForm, setNewUser)]}
+                  color="#FDAB15"
+                  value="Limpar"
+                  class="button-limpar"
+                />
+              </div>
             </div>
-
-            </div>
-
           </form>
         </div>
-
-
       </div>
       <>
-      <Succesfull
-          text={"Usuário Registrado"}
+        <Succesfull
+          disclaimer={"Usuário Registrado"}
           alert={err}
           onClick={() => setErr(!err)}
         />
