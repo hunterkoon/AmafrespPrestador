@@ -37,8 +37,8 @@ const UserChanges = ({ ...props }) => {
   // ADICIONA ITENS AO OBJETO PAI
   React.useEffect(() => {
     setObjectSend({
-      IdUsuario: userEditProps.idUsuario,
-      IdPrestador: userEditProps.idPrestador,
+      IdUsuario: userEditProps && userEditProps.idUsuario,
+      IdPrestador: userEditProps && userEditProps.idPrestador,
     });
   }, [userEditProps]);
 

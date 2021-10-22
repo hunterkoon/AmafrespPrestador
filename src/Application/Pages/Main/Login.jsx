@@ -17,13 +17,12 @@ import './Login.css';
 import '../../../App.css';
 
 const Login = () => {
-  // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
 
+  // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
   const { useInputsGeneral } = useInputs();
   const { option, setLoginData, loginData, _LoginValidate, AutoLogin } = React.useContext(GlobalContext);
 
   // CONSTANTES IMPORTADAS PARA GERAR FORMS
-
   const { loginCommon, loginAdm } = GeneralForms(loginData);
   const loginADMSubmit = loginDataCNPJSubmit(loginData);
   const loginCOMSubmit = loginDataCPFSubmit(loginData);
@@ -40,14 +39,12 @@ const Login = () => {
   );
 
   // FUNÇÃO ATUALIZADORA, PASSA PARA ESTADO GLOBAL ARRAY ATUALIZADO
-
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setFieldsLogin({ ...fieldsLogin, [id]: value });
   };
 
   // FUNÇÃO ATUALIZADORA
-
   React.useEffect(() => {
     setLoginData(fieldsLogin);
   }, [fieldsLogin, setLoginData, variable]);
@@ -56,10 +53,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     _LoginValidate(option ? loginCOMSubmit : loginADMSubmit);
-
-
   };
-
   React.useEffect(() => {
     AutoLogin();
   }, [])

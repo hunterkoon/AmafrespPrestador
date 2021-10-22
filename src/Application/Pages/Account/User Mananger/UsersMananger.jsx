@@ -12,7 +12,7 @@ import "./UsersMananger.css";
 
 const UsersMananger = () => {
 
-  const { toggleModal, setToggleModal, users, changeData } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users, changeData, data } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const navigate = useNavigate();
@@ -44,32 +44,34 @@ const UsersMananger = () => {
 
   // LISTA DA TABELA COM USUÁRIOS
   const Employee = () => {
-
+    let n = 0;
     return users && users.map((lista) => (
-      <tr key={lista?.idUsuario}>
-        <td>{lista?.nome}</td>
-        <td>{lista?.cpf}</td>
-        <td>{lista?.setor}</td>
-        <td>{lista?.email}</td>
-        <td style={{ fontSize: "0.8em" }}>
-          {lista && Object.entries(lista?.Funcionalidades).map((item) =>
-            item[1] != null ? (
-              <label key={item[1].idFuncionalidade} style={{ fontSize: "0.8rem" }}>
-                *{item[1].nome.toString()} <br />
-              </label>
-            ) : (
-                "Sem Função"
-              )
-          )}
-        </td>
-        <td className="table-td-edit" onClick={() => handleEdit(lista)}>
-          <img src={Tool} className="tool-img" alt="ferramenta" />
-        </td>
-        <td onClick={() => handleDelete(lista)} className="table-td-delete">
-          <img src={Trash} className="trash-img" alt="lixeirinha" />
-        </td>
-      </tr>
-    ));
+      lista?.idUsuario != data.idUsuario ?
+        (
+          <tr key={lista?.idUsuario}>
+            <td>{lista?.nome}</td>
+            <td>{lista?.cpf}</td>
+            <td>{lista?.setor}</td>
+            <td>{lista?.email}</td>
+            <td style={{ fontSize: "0.8em" }}>
+              {lista && Object.entries(lista?.Funcionalidades).map((item) =>
+                item[1] != null ? (
+                  <label key={n++} style={{ fontSize: "0.8rem" }}>
+                    *{item[1].nome.toString()} <br />
+                  </label>
+                ) : (
+                    "Sem Função"
+                  )
+              )}
+            </td>
+            <td className="table-td-edit" onClick={() => handleEdit(lista)}>
+              <img src={Tool} className="tool-img" alt="ferramenta" />
+            </td>
+            <td onClick={() => handleDelete(lista)} className="table-td-delete">
+              <img src={Trash} className="trash-img" alt="lixeirinha" />
+            </td>
+          </tr>
+        ) : null));
   };
 
   return (
