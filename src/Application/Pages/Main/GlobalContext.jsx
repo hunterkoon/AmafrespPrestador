@@ -9,6 +9,7 @@ import { serverError } from '../../Shared/Commons/Constants/Errors';
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+
   //#region ESTADOS GLOBAIS
   const navigate = useNavigate();
   const [toggleModal, setToggleModal] = React.useState(false);
@@ -38,8 +39,6 @@ export const GlobalStorage = ({ children }) => {
   const [regUpData, setRegUpData] = React.useState([]);
 
   //#endregion
-
-
 
   //#region  FETCHS DATA
 

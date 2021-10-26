@@ -1,4 +1,6 @@
-/* eslint-disable eqeqeq */
+
+//#region IMPORTS 
+
 import React from "react";
 import useInputs from "../../../../Hooks/useInputs";
 import GeneralForms from "../../../../Shared/Forms/GeneralForms";
@@ -10,8 +12,10 @@ import { HandleObjectFunctions } from "../../../../Shared/Commons/Helpers/Handle
 import { filterFunctions } from "../../../../Hooks/useFilterFunctions";
 import { adjustsUserSubmit, statusUserSubmit, } from "../../../../Hooks/useSubmitDada";
 import { GlobalContext } from "../../../Main/GlobalContext";
-import "./UserChanges.css";
 import { validateFunctions } from "../../../../Hooks/useValidadeFunctions";
+import "./UserChanges.css";
+
+//#endregion
 
 const UserChanges = ({ ...props }) => {
 

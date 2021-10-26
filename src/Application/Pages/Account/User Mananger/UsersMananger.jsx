@@ -1,3 +1,5 @@
+//#region  IMPORTS
+
 import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
 import { GlobalContext } from "../../Main/GlobalContext";
@@ -9,6 +11,8 @@ import Tool from "../../../../Assets/Tool_Green.svg";
 import Tool_Grey from "../../../../Assets/Tool_Grey.svg";
 import "./UsersMananger.css";
 import Modal from "../../../Components/Sub/Modal";
+
+//#endregion
 
 const UsersMananger = () => {
 
