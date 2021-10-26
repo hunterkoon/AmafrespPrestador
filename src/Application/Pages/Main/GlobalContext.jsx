@@ -1,3 +1,4 @@
+//#region IMPORTS
 import React from 'react';
 import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
@@ -5,6 +6,7 @@ import useFetch from '../../Hooks/useFetch';
 // import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
 import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER, DEACTIVE_USER } from './Api';
 import { serverError } from '../../Shared/Commons/Constants/Errors';
+//#endregion
 
 export const GlobalContext = React.createContext();
 
@@ -23,11 +25,17 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
-  const { setLoading, loading, error, request, setError } = useFetch();
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
+  const { loading, error, request, setError } = useFetch();
 
-  //FETCH DATA 
+  //FUNCIONALIDADES
+
+  const [manangeUsers, setManangeUsers] = React.useState(null); // Gerenciar Usuarios
+  const [addNewUser, setAddNewUser] = React.useState(null); // Adicionar novos Usuarios
+  const [showPriceTable, setShowPriceTable] = React.useState(null); // Visualizar tabela de preços
+
+  //FETCH ESTADOS 
 
   const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
@@ -35,7 +43,9 @@ export const GlobalStorage = ({ children }) => {
   const [data, setData] = React.useState({});
   const [changeData, setChangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
+
   // ATUALIZAÇÃO CADASTRAL
+
   const [regUpData, setRegUpData] = React.useState([]);
 
   //#endregion
@@ -87,7 +97,7 @@ export const GlobalStorage = ({ children }) => {
             navigate('/conta/Perfil');
           }
           else
-            navigate('/conta/Gerenciar');
+            navigate('/conta');
         }
         else
           return setError("Token de acesso expirado, realize o Login novamente!")
@@ -165,9 +175,10 @@ export const GlobalStorage = ({ children }) => {
     }
   }, [data])
 
-  // reseta erro
+  // reseta erro / mensagem
   React.useEffect(() => {
     setError(null)
+    setMsgDataChanges("")
   }, [window.location.href])
 
   // realiza logout 
@@ -182,6 +193,7 @@ export const GlobalStorage = ({ children }) => {
     setCNPJCPF(null);
     setToken(null);
   };
+
   //#endregion
 
   return (

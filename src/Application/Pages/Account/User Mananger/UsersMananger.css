@@ -46,7 +46,7 @@
 }
 
 .table-td-delete p {
-  color: #E20000
+  color: #be7b0e
 }
 
 .active-tag {
@@ -63,7 +63,7 @@
 
 .inative-tag {
   display: flex;
-  background-color: #f20000;
+  background-color: #FDAB15;
   text-align-last: center;
 }
 

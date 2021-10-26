@@ -81,7 +81,7 @@ const UserChanges = ({ ...props }) => {
   }, [props.deleteUser?.profile, props.user?.profile]);
   //#endregion
 
-  //#region HANDLES DE SUBMIT
+  //#region HANDLES SUBMIT
 
   const handleSubmit = () => {
     if (err === true) {
@@ -197,9 +197,9 @@ const UserChanges = ({ ...props }) => {
           <div className="pageView div-sub-user-mananger-confirm">
             <h1>Guia de {userDeleteProps && userDeleteProps.ativo ? "Inativação" : "Ativação"} de usuário</h1>
             <div className="div-sub-user-mananger-text">
-              <h1>
-                {`Tem Certeza ? ${userDeleteProps?.nome} Será ${!userDeleteProps?.ativo ? "Ativado" : "Inativado"} !`}
-              </h1>
+              <h3>
+                Tem Certeza ? <span style={{ color: "#FDAB15" }}> {userDeleteProps?.nome} </span> Será {!userDeleteProps?.ativo ? "Ativado" : "Inativado"} !
+              </h3>
             </div>
             <div className="div-sub-form-user-mananger-button">
               <Button
@@ -211,7 +211,7 @@ const UserChanges = ({ ...props }) => {
               />
               <Button
                 onClick={(e) => [e.preventDefault(), setToggleModal(false)]}
-                color="#E20000"
+                color="#FDAB15"
                 value="Não"
               />
             </div>

@@ -9,8 +9,8 @@ import user from "../../../../Assets/UserProfille.svg";
 import { useNavigate } from "react-router";
 import Tool from "../../../../Assets/Tool_Green.svg";
 import Tool_Grey from "../../../../Assets/Tool_Grey.svg";
-import "./UsersMananger.css";
 import Modal from "../../../Components/Sub/Modal";
+import "./UsersMananger.css";
 
 //#endregion
 
@@ -57,7 +57,7 @@ const UsersMananger = () => {
 
   //#endregion
 
-  //#region TABELA USUÁRIOS
+  //#region  USUÁRIOS
 
 
   const Employee = () => {
@@ -71,12 +71,12 @@ const UsersMananger = () => {
             <td>{lista?.setor}</td>
             <td>{lista?.email}</td>
 
-            <td style={{ fontSize: "0.8em" }}>
+            <td>
               {Object.entries(lista?.Funcionalidades).map((item) =>
                 <label key={n++}> {
                   item[1]?.nome == null
-                    ? "Nenhuma Funcionalidade"
-                    : '- ' + item[1]?.nome
+                    ? <span style={{ fontSize: "0.80em" }}>  Nenhuma Funcionalidade </span>
+                    : <span style={{ fontSize: "0.80em" }}>  - {item[1]?.nome} </span>
                 } < br />
                 </label>)}
             </td>
@@ -99,8 +99,8 @@ const UsersMananger = () => {
   //#endregion
 
   return (
+    //#region  MODAIS
     <>
-      //#region  MODAIS
       <Modal
         error={true}
         alert={toggleStatus}
@@ -140,11 +140,11 @@ const UsersMananger = () => {
               <th>Ativar/Inativar</th>
             </tr>
           </thead>
-          <tbody>{users && Employee()}</tbody>
+          <tbody style={{ fontSize: "0.9em" }}>{users && Employee()}</tbody>
         </table>
       </div>
-    //#endregion
     </>
+    //#endregion
   );
 };
 
