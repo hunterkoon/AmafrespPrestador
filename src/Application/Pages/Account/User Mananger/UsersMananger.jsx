@@ -1,52 +1,66 @@
 import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
 import { GlobalContext } from "../../Main/GlobalContext";
-import { json } from "./sub/Dados";
 import UserChanges from "./sub/UserChanges";
 import Title from "../../../Components/Sub/Title";
 import user from "../../../../Assets/UserProfille.svg";
 import { useNavigate } from "react-router";
-import Caution from "../../../../Assets/error.svg";
-import CautionGif from "../../../../Assets/Caution.gif";
-import Tool from "../../../../Assets/Tool_yellow.svg";
+import Tool from "../../../../Assets/Tool_Green.svg";
+import Tool_Grey from "../../../../Assets/Tool_Grey.svg";
 import "./UsersMananger.css";
+import Modal from "../../../Components/Sub/Modal";
 
 const UsersMananger = () => {
 
+  //#region ESTADOS
   const { toggleModal, setToggleModal, users, changeData, data } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
+  const [toggleStatus, setToggleStatus] = React.useState();
   const navigate = useNavigate();
+  //#endregion
 
-  // INTERFACE
+  //#region HANDLE EDITS 
+  const handleEdit = (profile) => {
+    setToggleModal(!toggleModal);
+    setEditUser({ profile: profile, open: true });
+    setDeleteUser({ profile: profile, open: false });
+  };
+  const handleDelete = (profile) => {
+    setToggleModal(!toggleModal);
+    setDeleteUser({ profile: profile, open: true });
+    setEditUser({ profile: profile, open: false });
+  };
+  //#endregion
+
+
+  //#region INTERFACE
+
   React.useEffect(() => {
-    const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.idUsuario })
+    const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.IdUsuario })
     if (users[indexAltered] && changeData) {
       users[indexAltered].nome = changeData?.Nome;
       users[indexAltered].email = changeData?.Email;
       users[indexAltered].cpf = changeData?.Cpf;
       users[indexAltered].setor = changeData?.Departamento;
       users[indexAltered].celular = changeData?.Celular;
+      // users[indexAltered].ativo = changeData?.Ativo;
+      users[indexAltered].Funcionalidades = changeData?.Funcionalidades;
     }
-    Employee()
-  }, [users, setToggleModal, changeData])
+    Employee();
+    updateList();
+  }, [changeData, setToggleModal])
+  //#endregion
 
-  const handleEdit = (profile) => {
-    setToggleModal(!toggleModal);
-    setEditUser({ profile: profile, open: true });
-    setDeleteUser({ profile: profile, open: false });
-  };
 
-  const handleDelete = (profile) => {
-    setToggleModal(!toggleModal);
-    setDeleteUser({ profile: profile, open: true });
-    setEditUser({ profile: profile, open: false });
-  };
+  //#region TABELA USUÁRIOS
 
-  // LISTA DA TABELA COM USUÁRIOS
+  const updateList = (item) => {
+    return item && item[1]?.nome == null ? "Nenhuma Funcionalidade" : item && item[1]?.nome
+  }
   const Employee = () => {
     let n = 0;
-    return users && users.map((lista) => (
+    return users.map((lista) => (
       lista?.idUsuario != data.idUsuario ?
         (
           <tr key={lista?.idUsuario}>
@@ -55,39 +69,38 @@ const UsersMananger = () => {
             <td>{lista?.setor}</td>
             <td>{lista?.email}</td>
 
-            {/* Funcionalidades */}
             <td style={{ fontSize: "0.8em" }}>
-              {lista && Object.entries(lista?.Funcionalidades).map((item) =>
-                item[1] != null ? (
-                  <label key={n++} style={{ fontSize: "0.8rem" }}>
-                    *{item[1].nome.toString()} <br />
-                  </label>
-                ) : "Sem Função")}
+              {Object.entries(lista?.Funcionalidades).map((item) => <>  - {updateList(item)} < br /> </>)}
             </td>
-            {/* Ativo / Inativo */}
             <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
               {lista?.ativo ?
                 <h1>Ativo</h1> :
                 <h1>Inativo</h1>}
             </td>
-
-            {/* Editar */}
-            <td className="table-td-edit" onClick={() => handleEdit(lista)}>
-              <img src={Tool} className="tool-img" alt="ferramenta" />
+            {/* editar */}
+            <td className="table-td-edit" onClick={() => lista?.ativo ? handleEdit(lista) : setToggleStatus(!toggleStatus)}>
+              <img src={lista?.ativo ? Tool : Tool_Grey} className="tool-img" alt="ferramenta" />
             </td>
-            {/* Inativa / Ativar */}
+            {/* ativa/desativar */}
             <td onClick={() => handleDelete(lista)} className="table-td-delete">
               {!lista?.ativo ? "Ativar" : "Inativar"}
-              {/* <img src={Caution} className="trash-img" alt="caution" /> */}
             </td>
           </tr>
         ) : null));
   };
+  //#endregion
 
   return (
     <>
+      <Modal
+        error={true}
+        alert={toggleStatus}
+        disclaimer={"Ative este usuário para edita-lo"}
+        onClick={() => setToggleStatus(!toggleStatus)} />
 
-      <UserChanges user={editUser} deleteUser={deleteUser} />
+      <UserChanges
+        user={editUser}
+        deleteUser={deleteUser} />
 
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
@@ -109,12 +122,12 @@ const UsersMananger = () => {
               <th>Setor</th>
               <th>Email</th>
               <th>Privilégios</th>
-              <th>Ativo</th>
+              <th>Status</th>
               <th>Editar</th>
               <th>Ativar/Inativar</th>
             </tr>
           </thead>
-          <tbody>{users && <Employee />}</tbody>
+          <tbody>{users && Employee()}</tbody>
         </table>
       </div>
     </>

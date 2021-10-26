@@ -11,10 +11,15 @@ export const HandleObjectFunctions = (func) => {
     addNewUser: 2,
     priceTable: 3,
   }
+  const nameOfFunc = {
+    manangerUsers: "Gerenciar Usuários",
+    addNewUser: "Adicionar Usuários",
+    priceTable: "Consultar Tabela de Preços",
+  }
 
   Object.entries(func).map((item) => {
     if (item[1] == true) {
-      arr.push(new Funcionalidade(item[0], valuesOfFunc[item[0]]));
+      arr.push(new Funcionalidade(nameOfFunc[item[0]], valuesOfFunc[item[0]]));
     }
   })
   const fun = { Funcionalidades: [...arr] }

@@ -3,10 +3,8 @@ import Title from "./Title";
 import Titledecorated from "./Titledecorated";
 import { GlobalContext } from "../../Pages/Main/GlobalContext";
 import "./Modal.css";
-import useWindowDimensions from "../../Hooks/UseDimensionScreen";
 const Modal = ({ ...props }) => {
   const { msgDataChanges } = React.useContext(GlobalContext);
-
   function refreshPage() {
     window.location.reload();
   }

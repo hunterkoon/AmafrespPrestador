@@ -121,7 +121,7 @@ const Usuarios = () => {
       </div>
       <>
         <Succesfull
-          disclaimer={"Usuário Registrado"}
+          text={"Usuário Registrado"}
           alert={err}
           onClick={() => setErr(!err)}
         />

@@ -33,7 +33,7 @@ export const GlobalStorage = ({ children }) => {
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
   const [msgDataChanges, setMsgDataChanges] = React.useState("");
   const [data, setData] = React.useState({});
-  const [changeData, setchangeData] = React.useState({});
+  const [changeData, setChangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
 
 
@@ -41,16 +41,16 @@ export const GlobalStorage = ({ children }) => {
   const [regUpData, setRegUpData] = React.useState([]);
 
   // FETCH EDNE CEP
-  React.useEffect(() => {
-    async function GetCep() {
-      const cep = ApiCep(regUpData.cep);
-      if (regUpData.cep && regUpData.cep.length === 8) {
-        const { json /*response */ } = await request(cep);
-        setAdress(json);
-      }
-    }
-    GetCep();
-  }, [regUpData.cep, request]);
+  // React.useEffect(() => {
+  //   async function GetCep() {
+  //     const cep = ApiCep(regUpData.cep);
+  //     if (regUpData.cep && regUpData.cep.length === 8) {
+  //       const { json /*response */ } = await request(cep);
+  //       setAdress(json);
+  //     }
+  //   }
+  //   GetCep();
+  // }, [regUpData.cep, request]);
 
   //LOGIN
   async function _LoginValidate(obj) {
@@ -70,7 +70,6 @@ export const GlobalStorage = ({ children }) => {
       }
     } else return setError(serverError);
   }
-
 
   //AUTO LOGIN
   async function _AutoLogin() {
@@ -151,7 +150,6 @@ export const GlobalStorage = ({ children }) => {
     const { url, options } = DEACTIVE_USER(obj)
     const { json } = await request(url, options);
     setMsgDataChanges(json.Message)
-
   }
 
 
@@ -160,7 +158,7 @@ export const GlobalStorage = ({ children }) => {
     if (data.admin) {
       _GetUsersById()
     }
-  }, [data, msgDataChanges])
+  }, [data])
 
   // RESETA POSIÇÃO DE ERRO
   React.useEffect(() => {
@@ -197,6 +195,7 @@ export const GlobalStorage = ({ children }) => {
         setGlobalHandle,
         setError,
         setUsers,
+        setChangeData,
         _AutoLogin,
         _LoginValidate,
         _RecoverPassword,
@@ -206,7 +205,6 @@ export const GlobalStorage = ({ children }) => {
         _GetUsersById,
         _AddNewUser,
         _DeactiveUser,
-        setchangeData,
         changeData,
         users,
         msgDataChanges,
