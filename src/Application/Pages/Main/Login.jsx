@@ -20,7 +20,7 @@ const Login = () => {
 
   // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
   const { useInputsGeneral } = useInputs();
-  const { option, setLoginData, loginData, _LoginValidate, _AutoLogin } = React.useContext(GlobalContext);
+  const { option, setLoginData, loginData, _Login, _AutoLogin } = React.useContext(GlobalContext);
 
   // CONSTANTES IMPORTADAS PARA GERAR FORMS
   const { loginCommon, loginAdm } = GeneralForms(loginData);
@@ -52,7 +52,7 @@ const Login = () => {
   // TODO FUNÇÃO DE FETCH
   const handleSubmit = (event) => {
     event.preventDefault();
-    _LoginValidate(option ? loginCOMSubmit : loginADMSubmit);
+    _Login(option ? loginCOMSubmit : loginADMSubmit);
   };
   React.useEffect(() => {
     _AutoLogin();

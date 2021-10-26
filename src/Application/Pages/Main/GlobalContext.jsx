@@ -2,15 +2,14 @@ import React from 'react';
 import useWindowDimensions from '../../Hooks/UseDimensionScreen';
 import { useNavigate } from 'react-router';
 import useFetch from '../../Hooks/useFetch';
-import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
+// import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
 import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER, DEACTIVE_USER } from './Api';
 import { serverError } from '../../Shared/Commons/Constants/Errors';
-
-// import { GETDADOS } from "./Api";
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+  //#region ESTADOS GLOBAIS
   const navigate = useNavigate();
   const [toggleModal, setToggleModal] = React.useState(false);
   const [globalHandle, setGlobalHandle] = React.useState(null);
@@ -35,10 +34,14 @@ export const GlobalStorage = ({ children }) => {
   const [data, setData] = React.useState({});
   const [changeData, setChangeData] = React.useState({});
   const [users, setUsers] = React.useState([]);
-
-
   // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
+
+  //#endregion
+
+
+
+  //#region  FETCHS DATA
 
   // FETCH EDNE CEP
   // React.useEffect(() => {
@@ -52,8 +55,8 @@ export const GlobalStorage = ({ children }) => {
   //   GetCep();
   // }, [regUpData.cep, request]);
 
-  //LOGIN
-  async function _LoginValidate(obj) {
+  //login
+  async function _Login(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
     if (response != undefined) {
@@ -71,7 +74,7 @@ export const GlobalStorage = ({ children }) => {
     } else return setError(serverError);
   }
 
-  //AUTO LOGIN
+  //auto login
   async function _AutoLogin() {
     if ((CNPJCPF != null) && (TOKEN != null)) {
       const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
@@ -95,7 +98,7 @@ export const GlobalStorage = ({ children }) => {
     }
   }
 
-  // FIRST ACESS
+  // primeiro acesso
   async function _FirstAcess(obj) {
     const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email)
     const { response, json } = await request(url, options);
@@ -106,7 +109,7 @@ export const GlobalStorage = ({ children }) => {
     } else return setError(serverError);
   }
 
-  // RECOVER PASSWORD
+  // recuperação de senha
   async function _RecoverPassword(obj) {
     const { url, options } = RECOVER_PASSWORDD(obj.CNPJCPF, obj.Email);
     const { response, json } = await request(url, options);
@@ -117,20 +120,20 @@ export const GlobalStorage = ({ children }) => {
     } else return setError(serverError);
   }
 
-  // FREE ACESS 
+  // liberar acesso
   async function _FreeAcess(cnpjcpf) {
     const { url, options } = FREE_ACESS(cnpjcpf);
     await request(url, options);
   }
 
-  // ALTERAR DADOS PERFIL
+  // alterar dados do perfil/usuario
   async function _ChangeUserData(obj) {
     const { url, options } = CHANGE_PROFILE(obj, data.DadosPrestador.CNPJCPF, data.senhaLiberada);
     const { json } = await request(url, options);
     setMsgDataChanges(json.Message);
   }
 
-  //GET USUARIOS PORTAL
+  //obter lista de usuarios prestador
   async function _GetUsersById() {
     const { url, options } = GET_USER(data.idPrestador)
     const { json, response } = await request(url, options);
@@ -152,19 +155,23 @@ export const GlobalStorage = ({ children }) => {
     setMsgDataChanges(json.Message)
   }
 
+  //#endregion
 
-  // BUSCA USUARIOS
+  //#region  HANDLES GLOBAIS
+
+  // realiza busca de usuarios , ao fazer login  
   React.useEffect(() => {
     if (data.admin) {
       _GetUsersById()
     }
   }, [data])
 
-  // RESETA POSIÇÃO DE ERRO
+  // reseta erro
   React.useEffect(() => {
     setError(null)
   }, [window.location.href])
 
+  // realiza logout 
   const handleLogout = () => {
     navigate('/');
     setLogin(false);
@@ -176,6 +183,7 @@ export const GlobalStorage = ({ children }) => {
     setCNPJCPF(null);
     setToken(null);
   };
+  //#endregion
 
   return (
     <GlobalContext.Provider
@@ -197,7 +205,7 @@ export const GlobalStorage = ({ children }) => {
         setUsers,
         setChangeData,
         _AutoLogin,
-        _LoginValidate,
+        _Login,
         _RecoverPassword,
         _FirstAcess,
         _FreeAcess,

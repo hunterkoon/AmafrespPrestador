@@ -17,6 +17,7 @@ const UsersMananger = () => {
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const [toggleStatus, setToggleStatus] = React.useState();
+
   const navigate = useNavigate();
   //#endregion
 
@@ -31,33 +32,30 @@ const UsersMananger = () => {
     setDeleteUser({ profile: profile, open: true });
     setEditUser({ profile: profile, open: false });
   };
-  //#endregion
 
+  //#endregion
 
   //#region INTERFACE
 
   React.useEffect(() => {
-    const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.IdUsuario })
+    const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.UsersSubmit?.IdUsuario })
     if (users[indexAltered] && changeData) {
-      users[indexAltered].nome = changeData?.Nome;
-      users[indexAltered].email = changeData?.Email;
-      users[indexAltered].cpf = changeData?.Cpf;
-      users[indexAltered].setor = changeData?.Departamento;
-      users[indexAltered].celular = changeData?.Celular;
-      // users[indexAltered].ativo = changeData?.Ativo;
-      users[indexAltered].Funcionalidades = changeData?.Funcionalidades;
+      users[indexAltered].nome = changeData.UsersSubmit?.Nome;
+      users[indexAltered].email = changeData.UsersSubmit?.Email;
+      users[indexAltered].cpf = changeData.UsersSubmit?.Cpf;
+      users[indexAltered].setor = changeData.UsersSubmit?.Departamento;
+      users[indexAltered].celular = changeData.UsersSubmit?.Celular;
+      users[indexAltered].Funcionalidades = changeData.UsersSubmit?.Funcionalidades;
+      users[indexAltered].ativo = changeData?.Status;
     }
     Employee();
-    updateList();
-  }, [changeData, setToggleModal])
-  //#endregion
+  }, [changeData, changeData, setToggleModal])
 
+  //#endregion
 
   //#region TABELA USUÁRIOS
 
-  const updateList = (item) => {
-    return item && item[1]?.nome == null ? "Nenhuma Funcionalidade" : item && item[1]?.nome
-  }
+
   const Employee = () => {
     let n = 0;
     return users.map((lista) => (
@@ -70,7 +68,13 @@ const UsersMananger = () => {
             <td>{lista?.email}</td>
 
             <td style={{ fontSize: "0.8em" }}>
-              {Object.entries(lista?.Funcionalidades).map((item) => <>  - {updateList(item)} < br /> </>)}
+              {Object.entries(lista?.Funcionalidades).map((item) =>
+                <label key={n++}> {
+                  item[1]?.nome == null
+                    ? "Nenhuma Funcionalidade"
+                    : '- ' + item[1]?.nome
+                } < br />
+                </label>)}
             </td>
             <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
               {lista?.ativo ?
@@ -92,6 +96,7 @@ const UsersMananger = () => {
 
   return (
     <>
+      //#region  MODAIS
       <Modal
         error={true}
         alert={toggleStatus}
@@ -100,7 +105,11 @@ const UsersMananger = () => {
 
       <UserChanges
         user={editUser}
-        deleteUser={deleteUser} />
+        deleteUser={deleteUser}
+      />
+      //#endregion
+
+      //#region  TABELA
 
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
@@ -130,6 +139,7 @@ const UsersMananger = () => {
           <tbody>{users && Employee()}</tbody>
         </table>
       </div>
+    //#endregion
     </>
   );
 };

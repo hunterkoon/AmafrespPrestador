@@ -1,12 +1,9 @@
+import { nameOfFunc } from "../Shared/Commons/Constants/NameIdFunctions";
+
 export const validateFunctions = (field, state) => {
 
-  const idValidate = {
-    priceTable: "Consulta tabela de preços",
-    addNewUser: "Incluir Usuário",
-    manangerUsers: "Gerenciar Usuários"
-  };
   if (state) {
-    if (idValidate[field] == state.filter((i) => i == idValidate[field])) {
+    if (nameOfFunc[field] == state.filter((i) => i == nameOfFunc[field])) {
       return true;
     }
   }

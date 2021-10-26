@@ -19,17 +19,23 @@ const UserChanges = ({ ...props }) => {
 
   const { toggleModal, setToggleModal, _ChangeUserData, setChangeData, _DeactiveUser } = React.useContext(GlobalContext);
   const { useInputsGeneral } = useInputs();
+
   // RECEBE DADOS DO USUÁRI
   const [userDeleteProps, setUserDeleteProps] = React.useState(null);
   const [userEditProps, setUserEditProps] = React.useState(null);
+
   // RECEBE ATUALIZAÇÕES DO HANDLECHANGE
   const [userSelectedForm, setUserSelectedForm] = React.useState([]);
   const [functions, setFunctions] = React.useState([]);
+
   // TOGGLE MODAIS
   const [alertSuccesful, setAlertSuccesful] = React.useState(false);
   const [alertExclude, setAlertExclude] = React.useState(false);
+  const [activeToggle, setActiveToggle] = React.useState(null);
+
   // RECEBE FORMULARIOS
   const { adjustsManangerUser, addFunctionalitiesCheckbox } = GeneralForms(userSelectedForm);
+
   //VERIFICA ERROS NO FORMULARIO
   const err = useErrorForm(adjustsManangerUser);
 
@@ -41,6 +47,7 @@ const UserChanges = ({ ...props }) => {
   const UsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), objectSend, HandleObjectFunctions(functions));
 
   React.useEffect(() => {
+    setActiveToggle(userEditProps?.ativo)
     setObjectSend({
       IdUsuario: userEditProps?.idUsuario,
       IdPrestador: userEditProps?.idPrestador,
@@ -48,6 +55,7 @@ const UserChanges = ({ ...props }) => {
       Funcionalidades: userEditProps?.Funcionalidades,
     });
   }, [userEditProps]);
+
   //#endregion
 
   //#region HANDLE CHANGES
@@ -70,11 +78,12 @@ const UserChanges = ({ ...props }) => {
   //#endregion
 
   //#region HANDLES DE SUBMIT
+
   const handleSubmit = () => {
     if (err === true) {
       setAlertSuccesful(!alertSuccesful)
       _ChangeUserData(UsersSubmit)
-      setChangeData(UsersSubmit)
+      setChangeData({ UsersSubmit: UsersSubmit, Status: true })
     }
   };
 
@@ -82,8 +91,9 @@ const UserChanges = ({ ...props }) => {
     setAlertExclude(!alertExclude)
     setToggleModal(false)
     _DeactiveUser(UsersSubmit)
-    setChangeData(UsersSubmit)
+    setChangeData({ UsersSubmit: UsersSubmit, Status: !activeToggle })
   };
+
   //#endregion
 
   //#region FORMULARIOS

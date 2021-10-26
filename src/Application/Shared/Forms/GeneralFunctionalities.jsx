@@ -6,7 +6,7 @@ import {
 } from "../Commons/Constants/info-strings";
 
 const GeneralFunctionalities = () => {
-  function Functionalities(type, key, label, info, require,name) {
+  function Functionalities(type, key, label, info, require, name) {
     const className = "GENERAL-CHECKBOX-CLASS";
     this.type = type;
     this.key = key;
@@ -32,7 +32,7 @@ const GeneralFunctionalities = () => {
   const RegisterNewUser = new Functionalities(
     "checkbox",
     "addNewUser",
-    "Cadastrar Usuários",
+    "Incluir Usuários",
     addUserInfo,
     false
   );
@@ -76,7 +76,7 @@ const GeneralFunctionalities = () => {
     ModifyUsers: ModifyUsers,
     addressTypeMain: addressTypeMain,
     addressTypePostal: addressTypePostal,
-    PriceTable : PriceTable,
+    PriceTable: PriceTable,
   };
 };
 export default GeneralFunctionalities;
