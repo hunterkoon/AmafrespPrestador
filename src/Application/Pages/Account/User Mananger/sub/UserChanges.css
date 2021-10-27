@@ -72,6 +72,12 @@
     margin: 2%;
 }
 
+.div-sub-user-mananger-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 @media only screen and (max-width:1024px) {
     .div-sub-user-mananger {
         display: flex;
@@ -80,9 +86,7 @@
         position: absolute;
         width: 90%;
         height: max-content;
-  
     }
-
     .div-sub-functions-user-mananger {
         flex-direction: column;
         justify-content: center;

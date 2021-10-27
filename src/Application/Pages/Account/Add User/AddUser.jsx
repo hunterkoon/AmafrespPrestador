@@ -12,14 +12,16 @@ import { HandleObjectFunctions } from "../../../Shared/Commons/Helpers/HandleObj
 import { handleCleanInputs } from "../../../Shared/Commons/Helpers/HandleCleanInputs";
 import Style from "./Forms.module.css";
 import "./AddUser.css";
+import { useNavigate } from "react-router";
 
 const Usuarios = () => {
 
   const { useInputsGeneral } = useInputs()
-  const { newUserData, setNewUserData, _AddNewUser } = React.useContext(GlobalContext);
+  const { newUserData, setNewUserData, _AddNewUser, addNewUser } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);
   const erroForm = useErrorForm(addUserForm);
+  const navigate = useNavigate();
 
   // ADICIONA ITENS ANTERIORES AO ARRAY;
 
@@ -40,6 +42,14 @@ const Usuarios = () => {
       };
     }, {})
   );
+
+  //#region HANDLE NAVIGATE  
+    
+  React.useEffect(()=>{
+    return addNewUser ? null : navigate('/conta');
+  },[addNewUser, navigate])
+
+  //#endregion 
 
   // HANDLE VERIFICA SE CHECKBOX ESTA TRUE CASO ESTEJA POPULA LISTA COM TRUE,CASO NAO FALSE;
   const handleChangeUser = ({ target }) => {
@@ -67,13 +77,12 @@ const Usuarios = () => {
     setNewUserData({ ...functions, ...newUser });
   }, [functions, newUser, setNewUserData]);
 
-  // SUBMIT 
+
   const handleSubmit = (e) => {
     const addUserSubmitObj = Object.assign(addUserSubmit(newUser), HandleObjectFunctions(functions));
     e.preventDefault();
     if (erroForm) {
       setErr(true);
-      // FUNÇÃO DE FETCH 
       _AddNewUser(addUserSubmitObj);
     } else setErr(false);
   };
@@ -121,7 +130,7 @@ const Usuarios = () => {
       </div>
       <>
         <Succesfull
-          disclaimer={"Usuário Registrado"}
+          text={"Usuário Registrado"}
           alert={err}
           onClick={() => setErr(!err)}
         />

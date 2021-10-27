@@ -69,11 +69,11 @@ const GeneralForms = (loginData) => {
   const atualPassword = ACTUAL_PASSWORD();
   const email = EMAIL();
   const name = NAME();
-  // const telphone = TELPHONE();
   const celphone = CEL_TELPHONE();
   const department = DEPARTMENT();
   const socialReason = SOCIAL();
   const fantasy = FANTASY_NAME();
+  // const telphone = TELPHONE();
   //  const cep = CEP();
   //  const logradouro = STREET(address );
   //  const bairro = NEIGHBORHOOD(address);
@@ -123,7 +123,7 @@ const GeneralForms = (loginData) => {
     department,
   ];
 
-  //FUNCIONALIDADES A SEREM LIBERADAS
+  //FUNCIONALIDADES 
 
   const addFunctionalitiesCheckbox = [
     // UpdadeRegister,

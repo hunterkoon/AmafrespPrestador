@@ -1,16 +1,31 @@
-import React from 'react';
-import useWindowDimensions from '../../Hooks/UseDimensionScreen';
-import { useNavigate } from 'react-router';
-import useFetch from '../../Hooks/useFetch';
-import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER, DEACTIVE_USER } from './Api';
-import { serverError } from '../../Shared/Commons/Constants/Errors';
+//#region IMPORTS
 
-// import { GETDADOS } from "./Api";
+import React from "react";
+import useWindowDimensions from "../../Hooks/UseDimensionScreen";
+import { useNavigate } from "react-router";
+import useFetch from "../../Hooks/useFetch";
+// import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
+import {
+  LOGIN,
+  AUTO_LOGIN,
+  RECOVER_PASSWORDD,
+  FIRST_ACESS,
+  FREE_ACESS,
+  CHANGE_PROFILE,
+  GET_USER,
+  ADD_USER,
+  DEACTIVE_USER,
+} from "./Api";
+import { serverError } from "../../Shared/Commons/Constants/Errors";
+import { jsonMock } from "../Account/User Mananger/sub/Dados";
+
+//#endregion
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+  //#region ESTADOS GLOBAIS
+
   const navigate = useNavigate();
   const [toggleModal, setToggleModal] = React.useState(false);
   const [globalHandle, setGlobalHandle] = React.useState(null);
@@ -23,37 +38,52 @@ export const GlobalStorage = ({ children }) => {
   const [profile, setProfile] = React.useState(false);
   const [login, setLogin] = React.useState(false);
   const [animateMenu, setAnimateMenu] = React.useState(false);
-  const { setLoading, loading, error, request, setError } = useFetch();
   const [address, setAdress] = React.useState([]);
   const { width, height } = useWindowDimensions();
+  const { loading, error, request, setError } = useFetch();
 
-  //FETCH DATA 
+  //FETCH ESTADOS
 
-  const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
-  const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
-  const [msgDataChanges, setMsgDataChanges] = React.useState("");
-  const [data, setData] = React.useState({});
-  const [changeData, setchangeData] = React.useState({});
-  const [users, setUsers] = React.useState([]);
+  const [CNPJCPF, setCNPJCPF] = React.useState(
+    localStorage.getItem("codigo" && "codigo")
+  );
+  const [TOKEN, setToken] = React.useState(
+    localStorage.getItem("token" && "token")
+  );
 
+  const [msgDataChanges, setMsgDataChanges] = React.useState(""); // Seta mensagens do back
+  const [data, setData] = React.useState({}); // Recebe dados Login
+  const [users, setUsers] = React.useState([]); // recebe Usuarios do sistema
+
+  //INTERFACES
+
+  const [changeData, setChangeData] = React.useState({}); // Interface
 
   // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
 
-  // FETCH EDNE CEP
-  React.useEffect(() => {
-    async function GetCep() {
-      const cep = ApiCep(regUpData.cep);
-      if (regUpData.cep && regUpData.cep.length === 8) {
-        const { json /*response */ } = await request(cep);
-        setAdress(json);
-      }
-    }
-    GetCep();
-  }, [regUpData.cep, request]);
+  //FUNCIONALIDADES
 
-  //LOGIN
-  async function _LoginValidate(obj) {
+  const [manangeUsers, setManangeUsers] = React.useState(false); // Gerenciar Usuarios
+  const [addNewUser, setAddNewUser] = React.useState(false); // Adicionar novos Usuarios
+  const [showPriceTable, setShowPriceTable] = React.useState(false); // Visualizar tabela de preços
+
+  //#region  FETCHS DATA
+
+  // FETCH EDNE CEP
+  // React.useEffect(() => {
+  //   async function GetCep() {
+  //     const cep = ApiCep(regUpData.cep);
+  //     if (regUpData.cep && regUpData.cep.length === 8) {
+  //       const { json /*response */ } = await request(cep);
+  //       setAdress(json);
+  //     }
+  //   }
+  //   GetCep();
+  // }, [regUpData.cep, request]);
+
+  //login
+  async function _Login(obj) {
     const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
     const { response, json } = await request(url, options);
     if (response != undefined) {
@@ -61,20 +91,18 @@ export const GlobalStorage = ({ children }) => {
         let dados = json.Content;
         setLogin(true);
         setData(json.Content);
-        localStorage.setItem('token', dados.Token);
-        localStorage.setItem('codigo', dados.DadosPrestador.CNPJCPF);
+        localStorage.setItem("token", dados.Token);
+        localStorage.setItem("codigo", dados.DadosPrestador.CNPJCPF);
         if (dados.nome == null || dados.senhaPadrao == true) {
-          navigate('/conta/Perfil');
-        } else
-          navigate('/conta/');
+          navigate("/conta/Perfil");
+        } else navigate("/conta/");
       }
     } else return setError(serverError);
   }
 
-
-  //AUTO LOGIN
+  //auto login
   async function _AutoLogin() {
-    if ((CNPJCPF != null) && (TOKEN != null)) {
+    if (CNPJCPF != null && TOKEN != null) {
       const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
       const { response, json } = await request(url, options);
       if (response != undefined) {
@@ -83,101 +111,133 @@ export const GlobalStorage = ({ children }) => {
           setLogin(true);
           setData(dados);
           if (dados.nome == null || dados.senhaPadrao == true) {
-            navigate('/conta/Perfil');
-          }
-          else
-            navigate('/conta/Gerenciar');
-        }
-        else
-          return setError("Token de acesso expirado, realize o Login novamente!")
-      }
-      else
-        return setError(serverError);
+            navigate("/conta/Perfil");
+          } else navigate("/conta");
+        } else
+          return setError(
+            "Token de acesso expirado, realize o Login novamente!"
+          );
+      } else return setError(serverError);
     }
   }
 
-  // FIRST ACESS
+  // primeiro acesso
   async function _FirstAcess(obj) {
-    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email)
+    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email);
     const { response, json } = await request(url, options);
     if (response != undefined) {
       if (response.status === 200) {
-        navigate("/RegisterSucessful")
+        navigate("/RegisterSucessful");
       } else return setError(json.Message);
     } else return setError(serverError);
   }
 
-  // RECOVER PASSWORD
+  // recuperação de senha
   async function _RecoverPassword(obj) {
     const { url, options } = RECOVER_PASSWORDD(obj.CNPJCPF, obj.Email);
     const { response, json } = await request(url, options);
     if (response != undefined) {
       if (response.status === 200) {
-        navigate("/RecoverSuccessful")
+        navigate("/RecoverSuccessful");
       } else return setError(json.Message);
     } else return setError(serverError);
   }
 
-  // FREE ACESS 
+  // liberar acesso
   async function _FreeAcess(cnpjcpf) {
     const { url, options } = FREE_ACESS(cnpjcpf);
     await request(url, options);
   }
 
-  // ALTERAR DADOS PERFIL
+  // alterar dados do perfil/usuario
   async function _ChangeUserData(obj) {
-    const { url, options } = CHANGE_PROFILE(obj, data.DadosPrestador.CNPJCPF, data.senhaLiberada);
+    const { url, options } = CHANGE_PROFILE(
+      obj,
+      data.DadosPrestador.CNPJCPF,
+      data.senhaLiberada
+    );
     const { json } = await request(url, options);
     setMsgDataChanges(json.Message);
   }
 
-  //GET USUARIOS PORTAL
+  //obter lista de usuarios prestador
   async function _GetUsersById() {
-    const { url, options } = GET_USER(data.idPrestador)
+    const { url, options } = GET_USER(data.idPrestador);
     const { json, response } = await request(url, options);
     if (response.status === 200) {
-      setUsers(json.Content)
+      setUsers(json.Content);
     }
   }
 
   // ADD NOVO USUARIO
   async function _AddNewUser(obj) {
-    const { url, options } = ADD_USER(obj, data.idPrestador, data.senhaLiberada);
+    const { url, options } = ADD_USER(
+      obj,
+      data.idPrestador,
+      data.senhaLiberada
+    );
     const { json } = await request(url, options);
-    setMsgDataChanges(json.Message)
+    setMsgDataChanges(json.Message);
   }
   // DELETAR USUARIO
   async function _DeactiveUser(obj) {
-    const { url, options } = DEACTIVE_USER(obj)
+    const { url, options } = DEACTIVE_USER(obj);
     const { json } = await request(url, options);
-    setMsgDataChanges(json.Message)
-
+    setMsgDataChanges(json.Message);
   }
 
+  //#endregion
 
-  // BUSCA USUARIOS
+  //#region  HANDLES GLOBAIS
+
+
+
+  // reseta erro / mensagem
   React.useEffect(() => {
-    if (data.admin) {
-      _GetUsersById()
-    }
-  }, [data, msgDataChanges])
+    setError(null);
+    setMsgDataChanges("");
+  }, [window.location.href]);
 
-  // RESETA POSIÇÃO DE ERRO
-  React.useEffect(() => {
-    setError(null)
-  }, [window.location.href])
-
+  // realiza logout
   const handleLogout = () => {
-    navigate('/');
+    navigate("/");
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
     setData({});
-    localStorage.removeItem('token');
-    localStorage.removeItem('codigo');
+    localStorage.removeItem("token");
+    localStorage.removeItem("codigo");
     setCNPJCPF(null);
     setToken(null);
+    setManangeUsers(false)
+    setAddNewUser(false)
+    setShowPriceTable(false)
   };
+  // realiza liberação de funcionalidades 
+
+  const Functions = () => {
+    let dados = data;
+    const Funcs = {
+      1: setManangeUsers,
+      2: setAddNewUser,
+      3: setShowPriceTable,
+    };
+    if (dados.Funcionalidades) {
+      return dados?.Funcionalidades.map((funcao) => funcao.idFuncionalidade)
+        .map((id) => Funcs[id])
+        .map((state) => state(true));
+    }
+  };
+
+  React.useEffect(() => {
+    Functions();
+    if (manangeUsers) {
+      _GetUsersById(); // realiza busca de usuarios 
+    }
+  }, [data, manangeUsers]);
+
+
+  //#endregion
 
   return (
     <GlobalContext.Provider
@@ -197,8 +257,9 @@ export const GlobalStorage = ({ children }) => {
         setGlobalHandle,
         setError,
         setUsers,
+        setChangeData,
         _AutoLogin,
-        _LoginValidate,
+        _Login,
         _RecoverPassword,
         _FirstAcess,
         _FreeAcess,
@@ -206,7 +267,6 @@ export const GlobalStorage = ({ children }) => {
         _GetUsersById,
         _AddNewUser,
         _DeactiveUser,
-        setchangeData,
         changeData,
         users,
         msgDataChanges,
@@ -228,6 +288,11 @@ export const GlobalStorage = ({ children }) => {
         regUpData,
         address,
         toggleModal,
+        //#region FUNCIONALIDADES
+        manangeUsers,
+        addNewUser,
+        showPriceTable,
+        //#endregion
       }}
     >
       {children}

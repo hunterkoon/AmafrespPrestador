@@ -7,6 +7,8 @@ import Wait from "../../../../Assets/Wait.gif";
 import Down from "../../../../Assets/Down.gif";
 import Succesfull from "../../../Components/Sub/Modal";
 import "./PriceTable.css";
+import { GlobalContext } from "../../Main/GlobalContext";
+import { useNavigate } from "react-router";
 
 const PriceTable = () => {
 
@@ -14,9 +16,19 @@ const PriceTable = () => {
   const [boo, setBoo] = React.useState("");
   const [priceTable, setPriceTable] = React.useState("");
   const [statusIMG, setStatusIMG] = React.useState();
+  const {showPriceTable} = React.useContext(GlobalContext);
+  const navigate = useNavigate();
   //const { option } = React.useContext(GlobalContext); // estado recebe do banco priceTable de aprovação
 
   // TODO ALERTAR SOBRE EXISTENCIA DE CAMPO NA TABELA
+
+  //#region HANDLE NAVIGATE  
+    
+  React.useEffect(()=>{
+    return showPriceTable ? null : navigate('/conta');
+  },[showPriceTable, navigate])
+
+  //#endregion
 
 
   React.useEffect(() => {

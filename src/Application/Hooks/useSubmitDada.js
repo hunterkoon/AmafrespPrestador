@@ -4,9 +4,9 @@ const regex = /\W/g;
 
 class InputConstants {
   constructor(data) {
-    this.NewPassword = handlePasswordHash(data.NOVAsenha);
-    this.ActualPassword = handlePasswordHash(data.ATUALsenha);
-    this.Password = handlePasswordHash(data.password);
+    this.NewPassword = data.NOVAsenha && handlePasswordHash(data.NOVAsenha);
+    this.ActualPassword = data.ATUALsenha && handlePasswordHash(data.ATUALsenha);
+    this.Password = data.password && handlePasswordHash(data.password);
     this.Cpf = data.cpf && data.cpf.replace(regex, '');
     this.Cnpj = data.CNPJCPF && data.CNPJCPF.replace(regex, '');
     this.Email = data.email;
@@ -18,6 +18,10 @@ class InputConstants {
     this.Cep = data.cep && data.cep.replace(regex, '');
     this.Street = data.logradouro;
     this.Neighborhood = data.bairro;
+    // this.IdEmploy = data.idPrestador;
+    // this.IdUser = data.idUsuario;
+    // this.Status = data.ativo;
+
   }
 }
 export const loginDataCNPJSubmit = (data) => {
@@ -89,13 +93,9 @@ export const adjustsUserSubmit = (data) => {
     Email: adjustsUser.Email,
     Departamento: adjustsUser.Department,
     SenhaNova: adjustsUser.NewPassword,
-  };
-};
-export const deleteUserSubmit = (data) => {
-  const adjustsUser = new InputConstants(data);
-  return {
-    nome: adjustsUser.Name,
-    CNPJCPF: adjustsUser.Cpf,
+    // IdUsuario: adjustsUser.IdUser,
+    // IdPrestador: adjustsUser.IdEmploy,
+    // Ativo: adjustsUser.Status
   };
 };
 
