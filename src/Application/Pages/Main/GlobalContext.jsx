@@ -190,12 +190,7 @@ export const GlobalStorage = ({ children }) => {
 
   //#region  HANDLES GLOBAIS
 
-  // realiza busca de usuarios , ao fazer login
-  React.useEffect(() => {
-    if (data.admin) {
-      _GetUsersById();
-    }
-  }, [data]);
+
 
   // reseta erro / mensagem
   React.useEffect(() => {
@@ -236,7 +231,11 @@ export const GlobalStorage = ({ children }) => {
 
   React.useEffect(() => {
     Functions();
-  }, [data]);
+    if (manangeUsers) {
+      _GetUsersById(); // realiza busca de usuarios 
+    }
+  }, [data, manangeUsers]);
+
 
   //#endregion
 

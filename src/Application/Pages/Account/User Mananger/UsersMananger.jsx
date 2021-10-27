@@ -17,19 +17,19 @@ import "./UsersMananger.css";
 const UsersMananger = () => {
 
   //#region ESTADOS
-  const { toggleModal, setToggleModal, users, changeData, data , manangeUsers} = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users, changeData, data, manangeUsers, addNewUser } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const [toggleStatus, setToggleStatus] = React.useState();
   const navigate = useNavigate();
-  
+
   //#endregion
 
   //#region HANDLE NAVIGATE
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     return manangeUsers ? null : navigate('/conta');
-  },[manangeUsers, navigate])
+  }, [manangeUsers, navigate])
 
   //#endregion
 
@@ -61,7 +61,7 @@ const UsersMananger = () => {
       users[indexAltered].ativo = changeData?.Status;
     }
     Employee();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeData, changeData, setToggleModal])
 
   //#endregion
@@ -124,13 +124,16 @@ const UsersMananger = () => {
           <Titledecorated text="Usuários" />
           <Title text={"Gerenciar usuários"} />
         </div>
-        <div
-          onClick={() => navigate("../AdicionarUsuarios")}
-          className="div-add-new-user-mananger-users"
-        >
-          <img src={user} alt={"imagem usuário"} />
+
+        {addNewUser ?
+          <div
+            onClick={() => navigate("../AdicionarUsuarios")}
+            className="div-add-new-user-mananger-users"
+          >
+            <img src={user} alt={"imagem usuário"} />
           Novo Usuário
-        </div>
+        </div> : null}
+
         <table className="table-list-users-mananger">
           <thead>
             <tr>
