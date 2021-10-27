@@ -1,17 +1,29 @@
 //#region IMPORTS
-import React from 'react';
-import useWindowDimensions from '../../Hooks/UseDimensionScreen';
-import { useNavigate } from 'react-router';
-import useFetch from '../../Hooks/useFetch';
+
+import React from "react";
+import useWindowDimensions from "../../Hooks/UseDimensionScreen";
+import { useNavigate } from "react-router";
+import useFetch from "../../Hooks/useFetch";
 // import { ApiCep } from '../../Shared/Commons/Constants/RoutesApis';
-import { LOGIN, AUTO_LOGIN, RECOVER_PASSWORDD, FIRST_ACESS, FREE_ACESS, CHANGE_PROFILE, GET_USER, ADD_USER, DEACTIVE_USER } from './Api';
-import { serverError } from '../../Shared/Commons/Constants/Errors';
+import {
+  LOGIN,
+  AUTO_LOGIN,
+  RECOVER_PASSWORDD,
+  FIRST_ACESS,
+  FREE_ACESS,
+  CHANGE_PROFILE,
+  GET_USER,
+  ADD_USER,
+  DEACTIVE_USER,
+} from "./Api";
+import { serverError } from "../../Shared/Commons/Constants/Errors";
+import { jsonMock } from "../Account/User Mananger/sub/Dados";
+
 //#endregion
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-
   //#region ESTADOS GLOBAIS
 
   const navigate = useNavigate();
@@ -30,27 +42,31 @@ export const GlobalStorage = ({ children }) => {
   const { width, height } = useWindowDimensions();
   const { loading, error, request, setError } = useFetch();
 
-  //FUNCIONALIDADES
+  //FETCH ESTADOS
 
-  const [manangeUsers, setManangeUsers] = React.useState(null); // Gerenciar Usuarios
-  const [addNewUser, setAddNewUser] = React.useState(null); // Adicionar novos Usuarios
-  const [showPriceTable, setShowPriceTable] = React.useState(null); // Visualizar tabela de preços
-
-  //FETCH ESTADOS 
-
-  const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
-  const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
+  const [CNPJCPF, setCNPJCPF] = React.useState(
+    localStorage.getItem("codigo" && "codigo")
+  );
+  const [TOKEN, setToken] = React.useState(
+    localStorage.getItem("token" && "token")
+  );
 
   const [msgDataChanges, setMsgDataChanges] = React.useState(""); // Seta mensagens do back
   const [data, setData] = React.useState({}); // Recebe dados Login
   const [users, setUsers] = React.useState([]); // recebe Usuarios do sistema
 
-  //INTERFACES 
+  //INTERFACES
 
   const [changeData, setChangeData] = React.useState({}); // Interface
 
   // ATUALIZAÇÃO CADASTRAL
   const [regUpData, setRegUpData] = React.useState([]);
+
+  //FUNCIONALIDADES
+
+  const [manangeUsers, setManangeUsers] = React.useState(false); // Gerenciar Usuarios
+  const [addNewUser, setAddNewUser] = React.useState(false); // Adicionar novos Usuarios
+  const [showPriceTable, setShowPriceTable] = React.useState(false); // Visualizar tabela de preços
 
   //#region  FETCHS DATA
 
@@ -75,19 +91,18 @@ export const GlobalStorage = ({ children }) => {
         let dados = json.Content;
         setLogin(true);
         setData(json.Content);
-        localStorage.setItem('token', dados.Token);
-        localStorage.setItem('codigo', dados.DadosPrestador.CNPJCPF);
+        localStorage.setItem("token", dados.Token);
+        localStorage.setItem("codigo", dados.DadosPrestador.CNPJCPF);
         if (dados.nome == null || dados.senhaPadrao == true) {
-          navigate('/conta/Perfil');
-        } else
-          navigate('/conta/');
+          navigate("/conta/Perfil");
+        } else navigate("/conta/");
       }
     } else return setError(serverError);
   }
 
   //auto login
   async function _AutoLogin() {
-    if ((CNPJCPF != null) && (TOKEN != null)) {
+    if (CNPJCPF != null && TOKEN != null) {
       const { url, options } = AUTO_LOGIN(CNPJCPF, TOKEN);
       const { response, json } = await request(url, options);
       if (response != undefined) {
@@ -96,26 +111,23 @@ export const GlobalStorage = ({ children }) => {
           setLogin(true);
           setData(dados);
           if (dados.nome == null || dados.senhaPadrao == true) {
-            navigate('/conta/Perfil');
-          }
-          else
-            navigate('/conta');
-        }
-        else
-          return setError("Token de acesso expirado, realize o Login novamente!")
-      }
-      else
-        return setError(serverError);
+            navigate("/conta/Perfil");
+          } else navigate("/conta");
+        } else
+          return setError(
+            "Token de acesso expirado, realize o Login novamente!"
+          );
+      } else return setError(serverError);
     }
   }
 
   // primeiro acesso
   async function _FirstAcess(obj) {
-    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email)
+    const { url, options } = FIRST_ACESS(obj.CNPJCPF, obj.Email);
     const { response, json } = await request(url, options);
     if (response != undefined) {
       if (response.status === 200) {
-        navigate("/RegisterSucessful")
+        navigate("/RegisterSucessful");
       } else return setError(json.Message);
     } else return setError(serverError);
   }
@@ -126,7 +138,7 @@ export const GlobalStorage = ({ children }) => {
     const { response, json } = await request(url, options);
     if (response != undefined) {
       if (response.status === 200) {
-        navigate("/RecoverSuccessful")
+        navigate("/RecoverSuccessful");
       } else return setError(json.Message);
     } else return setError(serverError);
   }
@@ -139,67 +151,100 @@ export const GlobalStorage = ({ children }) => {
 
   // alterar dados do perfil/usuario
   async function _ChangeUserData(obj) {
-    const { url, options } = CHANGE_PROFILE(obj, data.DadosPrestador.CNPJCPF, data.senhaLiberada);
+    const { url, options } = CHANGE_PROFILE(
+      obj,
+      data.DadosPrestador.CNPJCPF,
+      data.senhaLiberada
+    );
     const { json } = await request(url, options);
     setMsgDataChanges(json.Message);
   }
 
   //obter lista de usuarios prestador
   async function _GetUsersById() {
-    const { url, options } = GET_USER(data.idPrestador)
+    const { url, options } = GET_USER(data.idPrestador);
     const { json, response } = await request(url, options);
     if (response.status === 200) {
-      setUsers(json.Content)
+      setUsers(json.Content);
     }
   }
 
   // ADD NOVO USUARIO
   async function _AddNewUser(obj) {
-    const { url, options } = ADD_USER(obj, data.idPrestador, data.senhaLiberada);
+    const { url, options } = ADD_USER(
+      obj,
+      data.idPrestador,
+      data.senhaLiberada
+    );
     const { json } = await request(url, options);
-    setMsgDataChanges(json.Message)
+    setMsgDataChanges(json.Message);
   }
   // DELETAR USUARIO
   async function _DeactiveUser(obj) {
-    const { url, options } = DEACTIVE_USER(obj)
+    const { url, options } = DEACTIVE_USER(obj);
     const { json } = await request(url, options);
-    setMsgDataChanges(json.Message)
+    setMsgDataChanges(json.Message);
   }
 
   //#endregion
 
-  console.log(data)
   //#region  HANDLES GLOBAIS
 
-  // realiza busca de usuarios , ao fazer login  
+  // realiza busca de usuarios , ao fazer login
   React.useEffect(() => {
     if (data.admin) {
-      _GetUsersById()
+      _GetUsersById();
     }
-  }, [data])
+  }, [data]);
 
   // reseta erro / mensagem
   React.useEffect(() => {
-    setError(null)
-    setMsgDataChanges("")
-  }, [window.location.href])
+    setError(null);
+    setMsgDataChanges("");
+  }, [window.location.href]);
 
-  // realiza logout 
+  // realiza logout
   const handleLogout = () => {
-    navigate('/');
+    navigate("/");
     setLogin(false);
     setProfile(false);
     setAnimateMenu(false);
     setData({});
-    localStorage.removeItem('token');
-    localStorage.removeItem('codigo');
+    localStorage.removeItem("token");
+    localStorage.removeItem("codigo");
     setCNPJCPF(null);
     setToken(null);
   };
 
+  const Functions = () => {
+    let dados = jsonMock; // substituir por data
+
+    const Funcs = {
+      1: setManangeUsers,
+      2: setAddNewUser,
+      3: setShowPriceTable,
+    };
+
+    if (dados.Funcionalidades) {
+      return dados?.Funcionalidades.map((funcao) => funcao.idFuncionalidade)
+        .map((id) => Funcs[id])
+        .map((state) => state(true));
+    }
+  };
+
+  React.useEffect(() => {
+    Functions();
+  }, [manangeUsers, addNewUser, showPriceTable]);
+
+  console.log(
+    "/gerenciar: " + manangeUsers,
+    " /adicionar :" + addNewUser,
+    "/ tabela : " + showPriceTable
+  );
+
   //#endregion
 
-  //#region  RETORNO
+  //#region  RETURN
   return (
     <GlobalContext.Provider
       value={{
@@ -249,6 +294,11 @@ export const GlobalStorage = ({ children }) => {
         regUpData,
         address,
         toggleModal,
+        //#region FUNCIONALIDADES
+        manangeUsers, 
+        addNewUser,
+        showPriceTable,
+        //#endregion
       }}
     >
       {children}

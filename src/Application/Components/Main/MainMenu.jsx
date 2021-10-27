@@ -15,26 +15,28 @@ import "./MainMenu.css";
 import "../../../App.css";
 
 const MainMenu = () => {
-  const { animateMenu, handleLogout, globalHandle, setGlobalHandle, option, data } = React.useContext(GlobalContext);
+  const {
+    animateMenu,
+    handleLogout,
+    globalHandle,
+    setGlobalHandle,
+    data,
+    manangeUsers,
+    addNewUser,
+    showPriceTable,
+  } = React.useContext(GlobalContext);
+
   const [menuItemFuncs, setMenuItemFuncs] = React.useState(false);
   const [menuItemRegUp, setMenuItemRegUp] = React.useState(false);
   const [menuItemUsers, setMenuItemUsers] = React.useState(false);
   const { width } = useWindowDimensions();
 
   const setMenuItens = React.useMemo(
-    () => [
-      setMenuItemFuncs,
-      setMenuItemRegUp,
-      setMenuItemUsers,
-    ],
+    () => [setMenuItemFuncs, setMenuItemRegUp, setMenuItemUsers],
     []
   );
 
-  const menuItens = [
-    menuItemFuncs,
-    menuItemRegUp,
-    menuItemUsers,
-  ];
+  const menuItens = [menuItemFuncs, menuItemRegUp, menuItemUsers];
 
   const handleMenuAnimation = (event) => {
     const tag = event.target.tagName;
@@ -72,9 +74,10 @@ const MainMenu = () => {
             srcSeta=""
           />
 
-          {/* Area Restrita */}
-          {data.admin && data.admin == true ? (
-            <>
+          {/* USUÁRIOS */}
+
+          <>
+            {addNewUser || manangeUsers ? (
               <ItemMenu
                 state={menuItemUsers}
                 alt="item menu usuários"
@@ -86,22 +89,30 @@ const MainMenu = () => {
                   setMenuItemUsers(!menuItemUsers),
                 ]}
               >
-                <SubItemMenu
-                  link="AdicionarUsuarios"
-                  state={menuItemUsers}
-                  itemSubMenu="Adicionar Usuário"
-                  subMenuSrcImg={More}
-                />
-                <SubItemMenu
-                  link="Gerenciar"
-                  state={menuItemUsers}
-                  itemSubMenu="Gerenciar"
-                  subMenuSrcImg={More}
-                />
+                {/* Adicionar Usuários */}
+                {addNewUser ? (
+                  <SubItemMenu
+                    link="AdicionarUsuarios"
+                    state={menuItemUsers}
+                    itemSubMenu="Adicionar Usuário"
+                    subMenuSrcImg={More}
+                  />
+                ) : null}
+
+                {/* Gerenciar Usuários */}
+                {manangeUsers ? (
+                  <SubItemMenu
+                    link="Gerenciar"
+                    state={menuItemUsers}
+                    itemSubMenu="Gerenciar"
+                    subMenuSrcImg={More}
+                  />
+                ) : null}
               </ItemMenu>
-            </>
-          ) : null}
-          {/*   END - Area Restrita */}
+            ) : null}
+          </>
+
+          {/* ATUALIZAÇÃO CADASTRAL */}
 
           <ItemMenu
             state={menuItemRegUp}
@@ -126,6 +137,9 @@ const MainMenu = () => {
             />
           </ItemMenu>
 
+          {/* FUNCIONALIDADES */}
+
+          {showPriceTable ?
           <ItemMenu
             state={menuItemFuncs}
             alt="item menu Recadastro"
@@ -137,12 +151,16 @@ const MainMenu = () => {
               setMenuItemFuncs(!menuItemFuncs),
             ]}
           >
+            {/* tabela */}
             <SubItemMenu
               link="Tabela"
               itemSubMenu="Tabela de Preços"
               subMenuSrcImg={More}
-            />
-          </ItemMenu>
+            /> 
+
+          </ItemMenu> : null }
+
+          {/* FALE CONOSCO */}
 
           <ItemMenu
             href={"/#/conta/Contatos"}
@@ -151,6 +169,8 @@ const MainMenu = () => {
             item="Contatos"
             srcItem={iconFaleConosco}
           />
+
+            {/* SAIR */}
 
           {animateMenu && (
             <ItemMenu

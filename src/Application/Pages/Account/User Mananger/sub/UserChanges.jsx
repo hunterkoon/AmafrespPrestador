@@ -154,7 +154,6 @@ const UserChanges = ({ ...props }) => {
 
   return (
     <>
-      //#region MODAIS 
       <Succesfull
         alert={alertSuccesful}
         onClick={() => [setAlertSuccesful(!alertSuccesful)]}
@@ -165,9 +164,7 @@ const UserChanges = ({ ...props }) => {
         onClick={() => setAlertExclude(!alertExclude)}
         disclaimer={"Usuário Alterado!"}
       />
-      //#endregion
 
-      //#region  FORMULARIO DE EDIÇÃO  
 
       {props.user?.open && toggleModal ? (
         <div className="div-main-user-mananger">
@@ -188,10 +185,7 @@ const UserChanges = ({ ...props }) => {
         </div>
       ) : null}
 
-      //#endregion
-
-      //#region  FORMULARIO DE DELETE 
-
+ 
       {props.deleteUser?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger-confirm">
@@ -219,7 +213,6 @@ const UserChanges = ({ ...props }) => {
         </div>
       ) : null}
     </>
-    //#endregion
   );
 };
 export default UserChanges;

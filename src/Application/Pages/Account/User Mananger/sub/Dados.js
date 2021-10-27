@@ -1,4 +1,4 @@
-export const json = {
+export const jsonMock = {
 
   "Token": "B467C801EACD54B5AD2002D091421A89",
   "DadosPrestador": {
@@ -16,16 +16,16 @@ export const json = {
       "nome": "Gerenciar Usuários",
       "tbAMAPortalUsuarioFuncionalidade": []
     },
-    {
-      "idFuncionalidade": 2,
-      "nome": "Incluir Usuário",
-      "tbAMAPortalUsuarioFuncionalidade": []
-    },
-    {
-      "idFuncionalidade": 3,
-      "nome": "Consulta tabela de preços",
-      "tbAMAPortalUsuarioFuncionalidade": []
-    }
+    // {
+    //   "idFuncionalidade": 2,
+    //   "nome": "Incluir Usuário",
+    //   "tbAMAPortalUsuarioFuncionalidade": []
+    // },
+    // {
+    //   "idFuncionalidade": 3,
+    //   "nome": "Consulta tabela de preços",
+    //   "tbAMAPortalUsuarioFuncionalidade": []
+    // }
   ],
   "idUsuario": 1,
   "idPrestador": 205,

@@ -17,12 +17,20 @@ import "./UsersMananger.css";
 const UsersMananger = () => {
 
   //#region ESTADOS
-  const { toggleModal, setToggleModal, users, changeData, data } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users, changeData, data , manangeUsers} = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const [toggleStatus, setToggleStatus] = React.useState();
-
   const navigate = useNavigate();
+  
+  //#endregion
+
+  //#region HANDLE NAVIGATE
+
+  React.useEffect(()=>{
+    return manangeUsers ? null : navigate('/conta');
+  },[manangeUsers, navigate])
+
   //#endregion
 
   //#region HANDLE EDITS 
@@ -53,13 +61,12 @@ const UsersMananger = () => {
       users[indexAltered].ativo = changeData?.Status;
     }
     Employee();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeData, changeData, setToggleModal])
 
   //#endregion
 
   //#region  USUÁRIOS
-
-
   const Employee = () => {
     let n = 0;
     return users.map((lista) => (
@@ -99,7 +106,6 @@ const UsersMananger = () => {
   //#endregion
 
   return (
-    //#region  MODAIS
     <>
       <Modal
         error={true}
@@ -111,9 +117,7 @@ const UsersMananger = () => {
         user={editUser}
         deleteUser={deleteUser}
       />
-      //#endregion
 
-      //#region  TABELA
 
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
@@ -144,7 +148,6 @@ const UsersMananger = () => {
         </table>
       </div>
     </>
-    //#endregion
   );
 };
 
