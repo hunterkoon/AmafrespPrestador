@@ -13,6 +13,7 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({ children }) => {
 
   //#region ESTADOS GLOBAIS
+
   const navigate = useNavigate();
   const [toggleModal, setToggleModal] = React.useState(false);
   const [globalHandle, setGlobalHandle] = React.useState(null);
@@ -39,16 +40,17 @@ export const GlobalStorage = ({ children }) => {
 
   const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
   const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
-  const [msgDataChanges, setMsgDataChanges] = React.useState("");
-  const [data, setData] = React.useState({});
-  const [changeData, setChangeData] = React.useState({});
-  const [users, setUsers] = React.useState([]);
+
+  const [msgDataChanges, setMsgDataChanges] = React.useState(""); // Seta mensagens do back
+  const [data, setData] = React.useState({}); // Recebe dados Login
+  const [users, setUsers] = React.useState([]); // recebe Usuarios do sistema
+
+  //INTERFACES 
+
+  const [changeData, setChangeData] = React.useState({}); // Interface
 
   // ATUALIZAÇÃO CADASTRAL
-
   const [regUpData, setRegUpData] = React.useState([]);
-
-  //#endregion
 
   //#region  FETCHS DATA
 
@@ -166,6 +168,7 @@ export const GlobalStorage = ({ children }) => {
 
   //#endregion
 
+  console.log(data)
   //#region  HANDLES GLOBAIS
 
   // realiza busca de usuarios , ao fazer login  
@@ -196,6 +199,7 @@ export const GlobalStorage = ({ children }) => {
 
   //#endregion
 
+  //#region  RETORNO
   return (
     <GlobalContext.Provider
       value={{
@@ -251,3 +255,4 @@ export const GlobalStorage = ({ children }) => {
     </GlobalContext.Provider>
   );
 };
+//#endregion
