@@ -214,17 +214,19 @@ export const GlobalStorage = ({ children }) => {
     localStorage.removeItem("codigo");
     setCNPJCPF(null);
     setToken(null);
+    setManangeUsers(false)
+    setAddNewUser(false)
+    setShowPriceTable(false)
   };
+  // realiza liberação de funcionalidades 
 
   const Functions = () => {
-    let dados = jsonMock; // substituir por data
-
+    let dados = data;
     const Funcs = {
       1: setManangeUsers,
       2: setAddNewUser,
       3: setShowPriceTable,
     };
-
     if (dados.Funcionalidades) {
       return dados?.Funcionalidades.map((funcao) => funcao.idFuncionalidade)
         .map((id) => Funcs[id])
@@ -234,17 +236,10 @@ export const GlobalStorage = ({ children }) => {
 
   React.useEffect(() => {
     Functions();
-  }, [manangeUsers, addNewUser, showPriceTable]);
-
-  console.log(
-    "/gerenciar: " + manangeUsers,
-    " /adicionar :" + addNewUser,
-    "/ tabela : " + showPriceTable
-  );
+  }, [data]);
 
   //#endregion
 
-  //#region  RETURN
   return (
     <GlobalContext.Provider
       value={{
@@ -295,7 +290,7 @@ export const GlobalStorage = ({ children }) => {
         address,
         toggleModal,
         //#region FUNCIONALIDADES
-        manangeUsers, 
+        manangeUsers,
         addNewUser,
         showPriceTable,
         //#endregion
@@ -305,4 +300,3 @@ export const GlobalStorage = ({ children }) => {
     </GlobalContext.Provider>
   );
 };
-//#endregion
