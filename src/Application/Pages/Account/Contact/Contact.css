@@ -10,10 +10,20 @@
 
 .map-open {
   display: flex;
-  width: 80vw;
-  height: 70vh;
+  width: 100vw;
+  height: 65vh;
   align-items: center;
   margin: 3%;
+}
+/* @media only screen and (min-width:1025px) and (max-width:1600px){
+  .map-open {
+    display: flex;
+    width: 73vw;
+    height: 65vh;
+    align-items: center;
+    margin: 3%;
+  }
+
 }
 
 @media only screen and (max-width:1024px){
@@ -23,14 +33,12 @@
     height: 40vh;
     align-items: center;
     margin: 3%;
-  }
-  
-}
+    border-radius: 15px;
+  }  
+} */
 
-.popup{
-
-
-  
+.div-mapin{
+  border-radius: 15px;
 }
 
 .div-sub-contact  {
@@ -41,6 +49,7 @@
 .div-sub-contact h1 {
   padding: 0;
   color: #25b099;
+  font-size: 1.6em;
  
 }
 .div-sub-contact div {
@@ -52,9 +61,7 @@
 
  
 }
-.div-sub-contact h3, h4 {
-margin: 2% ;
- }
+
  .div-sub-contact-mapin{
    width: 300px;
    box-shadow: 5px 5px 5px grey;
@@ -64,3 +71,49 @@ margin: 2% ;
    z-index: 9999;
    margin: 1%;
  }
+
+ .tel-list{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 20px;
+ }
+ 
+ .tel-list section{
+  display: flex;
+ flex-direction: column;
+ justify-items: center;
+}
+
+ .tel-list section li {
+opacity: 1;
+ }
+ .tel-list  section h3 {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+ }
+/* 
+
+ .tel-list section h3::before{
+  transform: rotate(90deg);
+  display: flex;
+  flex-direction: column;
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: url('../../../../Assets/Seta_Verde.svg');
+  background-repeat: no-repeat; 
+ }
+ 
+ .tel-list section h3:hover::before{
+   transition: 200ms;
+  transform: rotate(180deg);
+
+ } */
+
+ /* .tel-list section h3:hover + li{
+  display: block;
+  opacity: 1;
+  transition: 200ms;
+  }
+  */
