@@ -1,53 +1,47 @@
 import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
-import GoogleMaps from "google-map-react";
 import ImgPin from "../../../../Assets/Pin.gif";
+import ReactMapGl, { Marker, Popup } from "react-map-gl";
 import "./Contact.css";
+// import GoogleMaps from "google-map-react";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import mapboxgl from "mapbox-gl";
 
 const FaleConosco = () => {
-  const defaultProps = {
-    center: {
-      lat: -23.58305873178371,
-      lng: -46.66781466013052,
-    },
-    zoom: 19,
-  };
-  const AnyReactComponent = ({ img }) => (
-    <div className="maps">
-      <img src={img} alt="pin map" />
-
-      <label>
-        <h1>Atendimento AMAFRESP</h1>
-        Av. Brigadeiro Luís Antônio, 4843 – 1 º Andar - Horário: das 8h às 17h
-        <a
-          style={{ textDecoration: "underline" }}
-          href={"https://g.page/Afresp?share"}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Ver no Maps
-        </a>
-      </label>
-    </div>
-  );
-
+  const [viewport, setViewport] = React.useState({
+    latitude: -23.583,
+    longitude: -46.668,
+    width: "100%",
+    height: "100%",
+    zoom: 18.32,
+  });
   return (
     <div className="div-main-faleConosco pageView">
       <div className="div-title-pages">
         <Titledecorated text="Fale Conosco" />
       </div>
-      <div style={{ height: "60vh", width: "95%", margin: "0 auto" }}>
-        <GoogleMaps
-          bootstrapURLKeys={{ key: "AIzaSyChYgkieCv8PxYNuIamnInUGWgQhuZp5FI" }}
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}
+
+      <div className="map-open">
+        <ReactMapGl
+          {...viewport}
+          mapboxApiAccessToken={process.env.REACT_APP_ACCESS_TOKEN_MAP_BOX}
+          mapStyle="mapbox://styles/hunterkoon/ckvb0sybk8vx914mfs99ktqvx"
+          onViewportChange={(viewport) => {
+            setViewport(viewport);
+          }}
         >
-          <AnyReactComponent
-            lat={defaultProps.center.lat}
-            lng={defaultProps.center.lng}
-            img={ImgPin}
-          />
-        </GoogleMaps>
+          <Marker latitude={-23.58305873178371} longitude={-46.66781466013052}>
+            <img width={80} src={ImgPin} alt="" />
+          </Marker>
+          <Popup 
+          latitude={-23.58305873178371}
+          longitude={-46.66781466013052}
+          closeButton={false}
+          className="popup"
+           >
+            <div>Pin</div>
+          </Popup>
+        </ReactMapGl>
       </div>
 
       <div className="div-sub-contact">

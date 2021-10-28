@@ -17,13 +17,13 @@ import {
   DEACTIVE_USER,
 } from "./Api";
 import { serverError } from "../../Shared/Commons/Constants/Errors";
-import { jsonMock } from "../Account/User Mananger/sub/Dados";
 
 //#endregion
 
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
+  
   //#region ESTADOS GLOBAIS
 
   const navigate = useNavigate();
@@ -193,6 +193,7 @@ export const GlobalStorage = ({ children }) => {
 
 
   // reseta erro / mensagem
+  
   React.useEffect(() => {
     setError(null);
     setMsgDataChanges("");
@@ -234,6 +235,7 @@ export const GlobalStorage = ({ children }) => {
     if (manangeUsers) {
       _GetUsersById(); // realiza busca de usuarios 
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, manangeUsers]);
 
 

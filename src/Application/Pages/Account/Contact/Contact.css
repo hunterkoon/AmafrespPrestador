@@ -8,26 +8,29 @@
   overflow-x: hidden;
 }
 
-.maps {
+.map-open {
   display: flex;
-  width: 350px;
-  height: 65px;
+  width: 80vw;
+  height: 70vh;
   align-items: center;
+  margin: 3%;
 }
 
-.maps img {
-  width: 100px;
-  height: 100px;
+@media only screen and (max-width:1024px){
+  .map-open {
+    display: flex;
+    width: 100vw;
+    height: 40vh;
+    align-items: center;
+    margin: 3%;
+  }
+  
 }
 
-.maps label {
-  font-family: NotoSans-Regular;
-  background-color: white;
-  width: 300px;
-  padding: 3%;
-  border-radius: 10px 10px 10px 0px;
-  color: #414141;
-  box-shadow: #818181 0px 0px 10px 1px;
+.popup{
+
+
+  
 }
 
 .div-sub-contact  {
@@ -51,4 +54,13 @@
 }
 .div-sub-contact h3, h4 {
 margin: 2% ;
+ }
+ .div-sub-contact-mapin{
+   width: 300px;
+   box-shadow: 5px 5px 5px grey;
+   border-radius: 10px;
+   background-color: white;
+   justify-content: center;
+   z-index: 9999;
+   margin: 1%;
  }
