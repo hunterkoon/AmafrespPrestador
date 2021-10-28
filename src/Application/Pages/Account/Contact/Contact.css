@@ -86,7 +86,22 @@
 
  .tel-list section li {
 opacity: 1;
+display: flex;
+flex-direction: row;
  }
+ 
+ .tel-list section li::before {
+  transform: rotate(90deg);
+  display: flex;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-image: url('../../../../Assets/Telefone.svg');
+  background-repeat: no-repeat; 
+  margin: 15px;
+  
+   }
+
  .tel-list  section h3 {
   display: flex;
   width: 100%;
