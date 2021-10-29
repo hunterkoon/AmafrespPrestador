@@ -8,7 +8,7 @@ export const CPF_CNPJ = (mask, error, funBlu, funFoc) => {
     key: 1,
     id: 'CNPJCPF',
     type: 'text',
-    label: 'CNPJ / CPF',
+    label: 'CPF/CNPJ',
     mask: mask,
     className: 'CPF-FIELD-CLASS',
     value: '',

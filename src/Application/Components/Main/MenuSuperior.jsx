@@ -44,7 +44,7 @@ const MenuSuperior = () => {
                 <h4>{data.DadosPrestador.RazaoSocial}</h4>
               </div>
               <div>
-                <h2>CNPJ:</h2>
+                <h2>CNPJ/CPF:</h2>
                 <h4>{data.DadosPrestador.CNPJCPF}</h4>
               </div>
               <div>

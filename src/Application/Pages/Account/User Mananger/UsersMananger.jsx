@@ -9,6 +9,7 @@ import user from "../../../../Assets/UserProfille.svg";
 import { useNavigate } from "react-router";
 import Tool from "../../../../Assets/Tool_Green.svg";
 import Tool_Grey from "../../../../Assets/Tool_Grey.svg";
+import Nobody from "../../../../Assets/Nobody.gif";
 import Modal from "../../../Components/Sub/Modal";
 import "./UsersMananger.css";
 
@@ -17,10 +18,11 @@ import "./UsersMananger.css";
 const UsersMananger = () => {
 
   //#region ESTADOS
-  const { toggleModal, setToggleModal, users, changeData, data, manangeUsers, addNewUser } = React.useContext(GlobalContext);
+  const { toggleModal, setToggleModal, users, changeData, data, manangeUsers, addNewUser, admin } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const [toggleStatus, setToggleStatus] = React.useState();
+  const [list, setList] = React.useState(true);
   const navigate = useNavigate();
 
   //#endregion
@@ -28,9 +30,18 @@ const UsersMananger = () => {
   //#region HANDLE NAVIGATE
 
   React.useEffect(() => {
-    return manangeUsers ? null : navigate('/conta');
+    return manangeUsers || admin ? null : navigate('/conta');
   }, [manangeUsers, navigate])
 
+  //#endregion
+
+  //#region EFFECT LISTS
+  React.useEffect(() => {
+    users.map((lista) =>
+      lista?.idUsuario != data.idUsuario && lista?.admin != true ?
+        setList(true) : setList(false)
+    )
+  }, [data, users])
   //#endregion
 
   //#region HANDLE EDITS 
@@ -70,7 +81,7 @@ const UsersMananger = () => {
   const Employee = () => {
     let n = 0;
     return users.map((lista) => (
-      lista?.idUsuario != data.idUsuario ?
+      lista?.idUsuario != data.idUsuario && lista?.admin != true ?
         (
           <tr key={lista?.idUsuario}>
             <td>{lista?.nome}</td>
@@ -133,22 +144,27 @@ const UsersMananger = () => {
             <img src={user} alt={"imagem usuário"} />
           Novo Usuário
         </div> : null}
-
-        <table className="table-list-users-mananger">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Setor</th>
-              <th>Email</th>
-              <th>Privilégios</th>
-              <th>Status</th>
-              <th>Editar</th>
-              <th>Ativar/Inativar</th>
-            </tr>
-          </thead>
-          <tbody style={{ fontSize: "0.9em" }}>{users && Employee()}</tbody>
-        </table>
+        {list ?
+          <table className="table-list-users-mananger">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Setor</th>
+                <th>Email</th>
+                <th>Privilégios</th>
+                <th>Status</th>
+                <th>Editar</th>
+                <th>Ativar/Inativar</th>
+              </tr>
+            </thead>
+            <tbody style={{ fontSize: "0.9em" }}>{users && Employee()}</tbody>
+          </table> :
+          <div className="div-sub-nobody">
+            <h1>Nenhum Usuário</h1>
+            <p>Adicione usuários para gerenciar!</p>
+            <img src={Nobody} alt={"hands down"} />
+          </div>}
       </div>
     </>
   );

@@ -15,6 +15,7 @@ import {
   FANTASY_NAME,
   CPF,
   CNPJ,
+  CPF_CNPJ,
   // CEP,
   // STREET,
   // NEIGHBORHOOD,
@@ -28,13 +29,17 @@ import {
   handleErrorCPF,
   handleErrorCNPJ,
   handleMaskCNPJ,
+  handleMaskCNPJCPF,
+  handleErrorCNPJCPF
 } from "../Commons/Helpers/HandleInputs";
 const { /*UpdadeRegister, */ RegisterNewUser, ModifyUsers, PriceTable, addressTypeMain, addressTypePostal } = GeneralFunctionalities();
 
 const GeneralForms = (loginData) => {
   //  const { address  } = React.useContext(GlobalContext);
+  const [CNPJCPFmask, setCNPJCPFMask] = React.useState("");
   const [CNPJmask, setCNPJMask] = React.useState("");
   const [CPFmask, setCPFMask] = React.useState("");
+  const [CNPJCPFError, setCNPJCPFError] = React.useState("");
   const [CPFError, setCPFError] = React.useState("");
   const [CNPJError, setCNPJError] = React.useState("");
   const [passwordError, setPasswordError] = React.useState("");
@@ -46,6 +51,7 @@ const GeneralForms = (loginData) => {
       return loginData ? setstate(fun(loginData)) : null;
     };
 
+    handleFunction(setCNPJCPFMask, handleMaskCNPJCPF);
     handleFunction(setCNPJMask, handleMaskCNPJ);
     handleFunction(setCPFMask, handleMaskCPF);
     handleFunction(setPasswordError, handleErrorPassword);
@@ -53,13 +59,14 @@ const GeneralForms = (loginData) => {
     handleFunction(setCPFError, handleErrorCPF);
     handleFunction(setEmailError, handleErroEmail);
     handleFunction(setNewpasswordError, handleErrorNewPassword);
+    handleFunction(setCNPJCPFError, handleErrorCNPJCPF);
 
     // handleFunction(setCepReplace, handleCepReplaced);
   }, [loginData]);
 
   // CONSTANTES QUE RECEBEM FUNÇÕES DE DEFINIÇÃO DE MASCARAS E ERROS
 
-  // const CpfCnpj = CPF_CNPJ(mask, cpfcnpjError);
+  const CpfCnpj = CPF_CNPJ(CNPJCPFmask, CNPJCPFError);
   const cnpj = CNPJ(CNPJmask, CNPJError);
   const cpf = CPF(CPFmask, CPFError);
   const emailConfirm = EMAIL_CONFIRM(emailError);
@@ -80,10 +87,10 @@ const GeneralForms = (loginData) => {
   //  const location = CITY(address);
 
   // FORMULÁRIO DO PRIMEIRO ACESSO
-  const firstAcessForm = [cnpj, email, emailConfirm /*, password, passwordConfirm */];
+  const firstAcessForm = [CpfCnpj, email, emailConfirm /*, password, passwordConfirm */];
   // FORMULARIOS DE LOGIN
   const loginCommon = [cpf, password];
-  const loginAdm = [cnpj, password];
+  const loginAdm = [CpfCnpj, password];
 
   // FORMULARIOS DE RECUPERAÇÃO DE PASSWORD
   const recoverFiedsAdm = [cnpj, email];
@@ -118,6 +125,7 @@ const GeneralForms = (loginData) => {
     name,
     cpf,
     celphone,
+    atualPassword,
     newPassword,
     email,
     department,

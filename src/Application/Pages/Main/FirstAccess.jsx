@@ -30,7 +30,6 @@ const FirstAccess = () => {
       };
     }, {})
   );
-
   const handleChange = ({ target }) => {
     const { id, value } = target;
     setPrimeiroAcesso({ ...primeiroAcesso, [id]: value });
