@@ -8,47 +8,92 @@
   overflow-x: hidden;
 }
 
-.maps {
+.map-box{
   display: flex;
-  width: 350px;
-  height: 65px;
-  align-items: center;
+  margin-top: 3%;
+  justify-content: center;
 }
 
-.maps img {
-  width: 100px;
-  height: 100px;
-}
-
-.maps label {
-  font-family: NotoSans-Regular;
-  background-color: white;
-  width: 300px;
-  padding: 3%;
-  border-radius: 10px 10px 10px 0px;
-  color: #414141;
-  box-shadow: #818181 0px 0px 10px 1px;
-}
-
-.div-sub-contact  {
+.div-sub-contact {
   padding: 0;
   width: 95%;
   margin: 0 auto;
+  margin-top: 3%;
+  margin-bottom: 5%;
 }
+
 .div-sub-contact h1 {
   padding: 0;
   color: #25b099;
- 
+  font-size: 1.6em;
 }
+
 .div-sub-contact div {
   display: flex;
   flex-direction: row;
   align-content: space-around;
   justify-content: center;
   align-items: center;
-
- 
 }
-.div-sub-contact h3, h4 {
-margin: 2% ;
- }
+
+.div-sub-contact-mapin {
+  width: 300px;
+  box-shadow: 5px 5px 5px grey;
+  border-radius: 10px;
+  background-color: white;
+  justify-content: center;
+  z-index: 9999;
+  margin: 1%;
+}
+
+.tel-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.tel-list section {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.tel-list section li {
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  color: #474747;
+  font-size: 1em;
+}
+
+.tel-list section li::before {
+  transform: rotate(90deg);
+  display: flex;
+  content: "";
+  width: 15px;
+  background-image: url('../../../../Assets/Telefone.svg');
+  background-repeat: no-repeat;
+  transform: rotate(-90deg);
+  opacity: 0.5;
+}
+
+.tel-list section h3 {
+  display: flex;
+  width: 100%;
+  /* cursor: pointer; */
+  color: #474747;
+  font-size: 1.3em;
+}
+
+.div-sub-ans {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  margin: 3%;
+  
+}
+
+.div-sub-ans img {
+  width: 15%;
+}
+
