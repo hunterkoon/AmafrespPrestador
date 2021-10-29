@@ -8,7 +8,7 @@ const MapBox = () => {
   const [viewport, setViewport] = React.useState({
     latitude: -23.583,
     longitude: -46.668,
-    width: "80vw",
+    width: "75vw",
     height: "60vh",
     zoom: 18.32,
   });

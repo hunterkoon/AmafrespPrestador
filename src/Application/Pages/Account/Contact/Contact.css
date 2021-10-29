@@ -18,11 +18,10 @@
   padding: 0;
   width: 95%;
   margin: 0 auto;
-  margin-top: 3%;
-  margin-bottom: 5%;
 }
 
 .div-sub-contact h1 {
+  margin: 3%;
   padding: 0;
   color: #25b099;
   font-size: 1.6em;
@@ -49,41 +48,48 @@
 .tel-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 25px;
 }
 
-.tel-list section {
+.tel-list li {
   display: flex;
   flex-direction: column;
   justify-items: center;
 }
 
-.tel-list section li {
+.tel-list p {
+padding-top: 10px;
+}
+.tel-list  li {
   opacity: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   color: #474747;
   font-size: 1em;
 }
 
-.tel-list section li::before {
+.tel-list p::before {
   transform: rotate(90deg);
-  display: flex;
+  display: inline-block;
   content: "";
   width: 15px;
+  height: 15px;
   background-image: url('../../../../Assets/Telefone.svg');
   background-repeat: no-repeat;
   transform: rotate(-90deg);
   opacity: 0.5;
+  margin-right: 2%;
 }
 
-.tel-list section h3 {
+.tel-list h3 {
   display: flex;
   width: 100%;
   /* cursor: pointer; */
   color: #474747;
-  font-size: 1.3em;
+  font-size: 1.1em;
+  margin: 1% auto;
 }
+
 
 .div-sub-ans {
   display: flex;
@@ -99,4 +105,10 @@
 .div-sub-contact-email {
   display: flex;
   flex-direction: row;
+}
+
+.div-end{
+  width: 100%;
+  margin: 3%;
+
 }
