@@ -8,14 +8,10 @@
   overflow-x: hidden;
 }
 
-.map-open {
+.map-box{
   display: flex;
-  width: 100vw;
-  height: 65vh;
-}
-
-.div-mapin {
-  border-radius: 15px;
+  margin-top: 3%;
+  justify-content: center;
 }
 
 .div-sub-contact {
@@ -67,6 +63,7 @@
   display: flex;
   flex-direction: row;
   color: #474747;
+  font-size: 1em;
 }
 
 .tel-list section li::before {
@@ -85,34 +82,18 @@
   width: 100%;
   /* cursor: pointer; */
   color: #474747;
+  font-size: 1.3em;
 }
 
 .div-sub-ans {
+  display: flex;
   width: 100%;
+  justify-content: flex-start;
+  margin: 3%;
+  
 }
 
-/* 
+.div-sub-ans img {
+  width: 15%;
+}
 
- .tel-list section h3::before{
-  transform: rotate(90deg);
-  display: flex;
-  flex-direction: column;
-  content: "";
-  width: 30px;
-  height: 30px;
-  background-image: url('../../../../Assets/Seta_Verde.svg');
-  background-repeat: no-repeat; 
- }
- 
- .tel-list section h3:hover::before{
-   transition: 200ms;
-  transform: rotate(180deg);
-
- } */
-
-/* .tel-list section h3:hover + li{
-  display: block;
-  opacity: 1;
-  transition: 200ms;
-  }
-  */

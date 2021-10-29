@@ -1,20 +1,12 @@
 import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
-import ImgPin from "../../../../Assets/Pin.gif";
-import ReactMapGl, { Marker, Popup } from "react-map-gl";
 import Title from "../../../Components/Sub/Title";
+import MapBox from "./MapBox";
+import ANS from '../../../../Assets/ans-logo.b9b86cbf.png'
 import "./Contact.css";
 
 
 const Contact = () => {
-  const [viewport, setViewport] = React.useState({
-    latitude: -23.583,
-    longitude: -46.668,
-    width: "100vh",
-    height: "100vw",
-    zoom: 18.32,
-  });
-
 
   return (
     <div className="div-main-faleConosco pageView">
@@ -22,48 +14,12 @@ const Contact = () => {
         <Titledecorated text="Fale Conosco" />
         <Title text="Contatos" />
       </div>
-      <div className="map-open">
-        <ReactMapGl
-          {...viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/hunterkoon/ckvb0sybk8vx914mfs99ktqvx"
-          onViewportChange={(viewport) => {
-            setViewport(viewport);
-          }}
-        >
-          <Marker latitude={-23.58305873178371} longitude={-46.66781466013052}>
-            <img width={80} src={ImgPin} alt="" />
-          </Marker>
-          <Popup
-            latitude={-23.58305873178371}
-            longitude={-46.66781466013052}
-            closeButton={false}
-            className="popup"
-          >
-            <div>
-              <label>
-                <h1>Atendimento AMAFRESP</h1>
-                Av. Brigadeiro Luís Antônio, 4843 – 1 º Andar - Horário: das 8h
-                às 17h
-                <a
-                  style={{ textDecoration: "underline" }}
-                  href={"https://g.page/Afresp?share"}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Ver no Maps
-                </a>
-              </label>
-            </div>
-          </Popup>
-        </ReactMapGl>
-      </div>
+
+      {<MapBox/>}
 
       <div className="div-sub-contact">
         <h1>Telefones Úteis</h1>
-
         <ul className="tel-list">
-
           <section>
             <h3>Diretoria e Gerência da Amafresp</h3>
             <li>(11) 3886-8881</li>
@@ -116,16 +72,18 @@ const Contact = () => {
 
           <section>
             <h3>Relacionamento com o associado</h3>
-            <li> (11) 3886-8881 | (11) 3886-8813 <br />
-             (11) 3886-8878 | (11) 3886-8865
-              (11) 3886-8875</li>
+            <li>
+              {" "}
+              (11) 3886-8881 | (11) 3886-8813 <br />
+              (11) 3886-8878 | (11) 3886-8865 (11) 3886-8875
+            </li>
           </section>
         </ul>
       </div>
-      <div className="div-sub-ans">
-        <img src={""} alt={""} />
-      </div>
 
+      <div className="div-sub-ans">
+        <img src={ANS} alt={""} />
+      </div>
     </div>
   );
 };
