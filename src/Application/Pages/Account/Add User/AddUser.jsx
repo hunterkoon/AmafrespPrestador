@@ -17,7 +17,7 @@ import { useNavigate } from "react-router";
 const Usuarios = () => {
 
   const { useInputsGeneral } = useInputs()
-  const { newUserData, setNewUserData, _AddNewUser, addNewUser } = React.useContext(GlobalContext);
+  const { newUserData, setNewUserData, _AddNewUser, addNewUser, admin } = React.useContext(GlobalContext);
   const { addUserForm, addFunctionalitiesCheckbox } = GeneralForms(newUserData);
   const [err, setErr] = React.useState(false);
   const erroForm = useErrorForm(addUserForm);
@@ -44,10 +44,10 @@ const Usuarios = () => {
   );
 
   //#region HANDLE NAVIGATE  
-    
-  React.useEffect(()=>{
-    return addNewUser ? null : navigate('/conta');
-  },[addNewUser, navigate])
+
+  React.useEffect(() => {
+    return addNewUser || admin ? null : navigate('/conta');
+  }, [addNewUser, navigate])
 
   //#endregion 
 

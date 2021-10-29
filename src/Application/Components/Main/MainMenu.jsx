@@ -20,8 +20,8 @@ const MainMenu = () => {
     handleLogout,
     globalHandle,
     setGlobalHandle,
-    data,
     manangeUsers,
+    admin,
     addNewUser,
     showPriceTable,
   } = React.useContext(GlobalContext);
@@ -77,7 +77,7 @@ const MainMenu = () => {
           {/* USUÁRIOS */}
 
           <>
-            {addNewUser || manangeUsers ? (
+            {addNewUser || admin ? (
               <ItemMenu
                 state={menuItemUsers}
                 alt="item menu usuários"
@@ -90,7 +90,7 @@ const MainMenu = () => {
                 ]}
               >
                 {/* Adicionar Usuários */}
-                {addNewUser ? (
+                {addNewUser || admin ? (
                   <SubItemMenu
                     link="AdicionarUsuarios"
                     state={menuItemUsers}
@@ -100,7 +100,7 @@ const MainMenu = () => {
                 ) : null}
 
                 {/* Gerenciar Usuários */}
-                {manangeUsers ? (
+                {manangeUsers || admin ? (
                   <SubItemMenu
                     link="Gerenciar"
                     state={menuItemUsers}
@@ -139,26 +139,26 @@ const MainMenu = () => {
 
           {/* FUNCIONALIDADES */}
 
-          {showPriceTable ?
-          <ItemMenu
-            state={menuItemFuncs}
-            alt="item menu Recadastro"
-            item="Funcionalidades"
-            srcItem={iconFunctionalities}
-            srcSeta={Seta}
-            onClick={() => [
-              handleToggleMenu(),
-              setMenuItemFuncs(!menuItemFuncs),
-            ]}
-          >
-            {/* tabela */}
-            <SubItemMenu
-              link="Tabela"
-              itemSubMenu="Tabela de Preços"
-              subMenuSrcImg={More}
-            /> 
+          {showPriceTable || admin ?
+            <ItemMenu
+              state={menuItemFuncs}
+              alt="item menu Recadastro"
+              item="Funcionalidades"
+              srcItem={iconFunctionalities}
+              srcSeta={Seta}
+              onClick={() => [
+                handleToggleMenu(),
+                setMenuItemFuncs(!menuItemFuncs),
+              ]}
+            >
+              {/* tabela */}
+              <SubItemMenu
+                link="Tabela"
+                itemSubMenu="Tabela de Preços"
+                subMenuSrcImg={More}
+              />
 
-          </ItemMenu> : null }
+            </ItemMenu> : null}
 
           {/* FALE CONOSCO */}
 
@@ -170,7 +170,7 @@ const MainMenu = () => {
             srcItem={iconFaleConosco}
           />
 
-            {/* SAIR */}
+          {/* SAIR */}
 
           {animateMenu && (
             <ItemMenu

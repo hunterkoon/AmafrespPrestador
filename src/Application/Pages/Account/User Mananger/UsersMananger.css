@@ -14,7 +14,7 @@
 
 .table-list-users-mananger {
   margin: 0% auto;
-  width: 90%;
+  width: 95%;
   margin: 3% auto;
 }
 
@@ -123,6 +123,32 @@ th:nth-child(1), td:nth-child(1) {
   display: flex;
   margin: 0 auto;
   width: 35px;
+}
+
+.div-sub-nobody h1 {
+  color: #25b099;
+  font-size: 1.6em;
+  width: 100%;
+}
+
+.div-sub-nobody p {
+  color: #414141;
+  font-size: 1.3em;
+  width: 100%;
+}
+
+.div-sub-nobody img {
+  width: 100px;
+}
+
+.div-sub-nobody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  margin-top: 10%;
 }
 
 @media only screen and (max-width:1024px) {

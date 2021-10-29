@@ -21,14 +21,12 @@ const Contact = () => {
             <h2>
               Av. Brigadeiro Luís Antônio, 4843 – 1 º Andar Horário: das 8h às 17h
             </h2>
-            <a href="mailto:amafresp@afresp.org.br" Style="color:#25b099;">
-              Envie um email
-            </a>
+            <h2> amafresp@afresp.org.br</h2>
           </p>
         </div>
 
         <h1>Telefones Úteis</h1>
-       
+
         <ul className="tel-list">
           <li>
             <h3>Diretoria e Gerência da Amafresp</h3>
