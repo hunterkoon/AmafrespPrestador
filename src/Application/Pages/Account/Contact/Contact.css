@@ -12,101 +12,85 @@
   display: flex;
   width: 100vw;
   height: 65vh;
-  align-items: center;
-  margin: 3%;
-}
-/* @media only screen and (min-width:1025px) and (max-width:1600px){
-  .map-open {
-    display: flex;
-    width: 73vw;
-    height: 65vh;
-    align-items: center;
-    margin: 3%;
-  }
-
 }
 
-@media only screen and (max-width:1024px){
-  .map-open {
-    display: flex;
-    width: 100vw;
-    height: 40vh;
-    align-items: center;
-    margin: 3%;
-    border-radius: 15px;
-  }  
-} */
-
-.div-mapin{
+.div-mapin {
   border-radius: 15px;
 }
 
-.div-sub-contact  {
+.div-sub-contact {
   padding: 0;
   width: 95%;
   margin: 0 auto;
+  margin-top: 3%;
+  margin-bottom: 5%;
 }
+
 .div-sub-contact h1 {
   padding: 0;
   color: #25b099;
   font-size: 1.6em;
- 
 }
+
 .div-sub-contact div {
   display: flex;
   flex-direction: row;
   align-content: space-around;
   justify-content: center;
   align-items: center;
-
- 
 }
 
- .div-sub-contact-mapin{
-   width: 300px;
-   box-shadow: 5px 5px 5px grey;
-   border-radius: 10px;
-   background-color: white;
-   justify-content: center;
-   z-index: 9999;
-   margin: 1%;
- }
+.div-sub-contact-mapin {
+  width: 300px;
+  box-shadow: 5px 5px 5px grey;
+  border-radius: 10px;
+  background-color: white;
+  justify-content: center;
+  z-index: 9999;
+  margin: 1%;
+}
 
- .tel-list{
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   gap: 20px;
- }
- 
- .tel-list section{
+.tel-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.tel-list section {
   display: flex;
- flex-direction: column;
- justify-items: center;
+  flex-direction: column;
+  justify-items: center;
 }
 
- .tel-list section li {
-opacity: 1;
-display: flex;
-flex-direction: row;
- }
- 
- .tel-list section li::before {
+.tel-list section li {
+  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  color: #474747;
+}
+
+.tel-list section li::before {
   transform: rotate(90deg);
   display: flex;
   content: "";
   width: 15px;
-  height: 15px;
   background-image: url('../../../../Assets/Telefone.svg');
-  background-repeat: no-repeat; 
-  margin: 15px;
-  
-   }
+  background-repeat: no-repeat;
+  transform: rotate(-90deg);
+  opacity: 0.5;
+}
 
- .tel-list  section h3 {
+.tel-list section h3 {
   display: flex;
   width: 100%;
-  cursor: pointer;
- }
+  /* cursor: pointer; */
+  color: #474747;
+}
+
+.div-sub-ans {
+  width: 100%;
+}
+
 /* 
 
  .tel-list section h3::before{
@@ -126,7 +110,7 @@ flex-direction: row;
 
  } */
 
- /* .tel-list section h3:hover + li{
+/* .tel-list section h3:hover + li{
   display: block;
   opacity: 1;
   transition: 200ms;
