@@ -23,7 +23,7 @@ import { serverError } from "../../Shared/Commons/Constants/Errors";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  
+
   //#region ESTADOS GLOBAIS
 
   const navigate = useNavigate();
@@ -64,6 +64,7 @@ export const GlobalStorage = ({ children }) => {
 
   //FUNCIONALIDADES
 
+  const [admin, setAdmin] = React.useState(false); // Gerenciar Usuarios
   const [manangeUsers, setManangeUsers] = React.useState(false); // Gerenciar Usuarios
   const [addNewUser, setAddNewUser] = React.useState(false); // Adicionar novos Usuarios
   const [showPriceTable, setShowPriceTable] = React.useState(false); // Visualizar tabela de preços
@@ -193,7 +194,7 @@ export const GlobalStorage = ({ children }) => {
 
 
   // reseta erro / mensagem
-  
+
   React.useEffect(() => {
     setError(null);
     setMsgDataChanges("");
@@ -229,14 +230,14 @@ export const GlobalStorage = ({ children }) => {
         .map((state) => state(true));
     }
   };
-
   React.useEffect(() => {
+
     Functions();
-    if (manangeUsers) {
-      _GetUsersById(); // realiza busca de usuarios 
+    if (manangeUsers || admin) {
+      _GetUsersById();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, manangeUsers]);
+    return data && data.admin ? setAdmin(true) : null;
+  }, [data, manangeUsers, admin]);
 
 
   //#endregion
@@ -269,6 +270,7 @@ export const GlobalStorage = ({ children }) => {
         _GetUsersById,
         _AddNewUser,
         _DeactiveUser,
+        admin,
         changeData,
         users,
         msgDataChanges,

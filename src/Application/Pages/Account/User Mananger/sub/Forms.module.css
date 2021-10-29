@@ -1,4 +1,4 @@
-.form{
+.form {
     display: grid;
     gap: 10px;
 }
@@ -6,18 +6,25 @@
 .form label[class~="NAME-FIELD-CLASS"] {
     grid-area: 1/1/1/3;
 }
- .form label[class~="CPF-FIELD-CLASS"] {
+
+.form label[class~="CPF-FIELD-CLASS"] {
     grid-area: 1/3/1/4;
 }
+
 .form label[class~="EMAIL-FIELD-CLASS"] {
-    grid-area: 2/1/2/3;
+    grid-area: 2/1/2/2;
 }
+
+.form label[class~="PASSWORD-FIELD-CLASS"] {
+    grid-area: 2/2/2/3;
+}
+
 .form label[class~="CONFIRMPASSWORD-FIELD-CLASS"] {
     grid-area: 2/3/2/4;
 }
 
-@media only screen and (max-width:1024px){
-    .form{
+@media only screen and (max-width:1024px) {
+    .form {
         display: flex;
         flex-direction: column;
     }
