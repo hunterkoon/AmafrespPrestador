@@ -93,9 +93,8 @@ export const adjustsUserSubmit = (data) => {
     Email: adjustsUser.Email,
     Departamento: adjustsUser.Department,
     SenhaNova: adjustsUser.NewPassword,
-    // IdUsuario: adjustsUser.IdUser,
-    // IdPrestador: adjustsUser.IdEmploy,
-    // Ativo: adjustsUser.Status
+    Senha: adjustsUser.ActualPassword,
+
   };
 };
 

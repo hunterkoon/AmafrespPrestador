@@ -118,6 +118,7 @@ const GeneralForms = (loginData) => {
     name,
     cpf,
     celphone,
+    atualPassword,
     newPassword,
     email,
     department,

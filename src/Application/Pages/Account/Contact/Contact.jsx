@@ -15,10 +15,19 @@ const Contact = () => {
         <Title text="Contatos" />
       </div>
 
-      {<MapBox/>}
+      {<MapBox />}
 
       <div className="div-sub-contact">
         <h1>Telefones Úteis</h1>
+
+
+        <div className="div-sub-contact-email">
+          <h3> Contato </h3>
+          <p>Email: amafresp@afresp.org.br
+          Local: Av. Brigadeiro Luís Antônio, 4843 – 1 º Andar
+          Horário: das 8h às 17h</p>
+        </div>
+
         <ul className="tel-list">
           <section>
             <h3>Diretoria e Gerência da Amafresp</h3>
@@ -73,13 +82,13 @@ const Contact = () => {
           <section>
             <h3>Relacionamento com o associado</h3>
             <li>
-              {" "}
               (11) 3886-8881 | (11) 3886-8813 <br />
               (11) 3886-8878 | (11) 3886-8865 (11) 3886-8875
             </li>
           </section>
         </ul>
       </div>
+
 
       <div className="div-sub-ans">
         <img src={ANS} alt={""} />

@@ -8,7 +8,7 @@
   overflow-x: hidden;
 }
 
-.map-box{
+.map-box {
   display: flex;
   margin-top: 3%;
   justify-content: center;
@@ -90,10 +90,13 @@
   width: 100%;
   justify-content: flex-start;
   margin: 3%;
-  
 }
 
 .div-sub-ans img {
   width: 15%;
 }
 
+.div-sub-contact-email {
+  display: flex;
+  flex-direction: row;
+}
