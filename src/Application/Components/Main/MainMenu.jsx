@@ -113,29 +113,30 @@ const MainMenu = () => {
           </>
 
           {/* ATUALIZAÇÃO CADASTRAL */}
-
-          <ItemMenu
-            state={menuItemRegUp}
-            alt="item menu Recadastro"
-            item="Atualização Cadastral"
-            srcItem={iconRecadastro}
-            srcSeta={Seta}
-            onClick={() => [
-              handleToggleMenu(),
-              setMenuItemRegUp(!menuItemRegUp),
-            ]}
-          >
-            <SubItemMenu
-              link="RegisterUpdate"
-              itemSubMenu="Realizar Atualização"
-              subMenuSrcImg={More}
-            />
-            <SubItemMenu
-              link="Status"
-              itemSubMenu="Status"
-              subMenuSrcImg={More}
-            />
-          </ItemMenu>
+          {admin ?
+            <ItemMenu
+              state={menuItemRegUp}
+              alt="item menu Recadastro"
+              item="Atualização Cadastral"
+              srcItem={iconRecadastro}
+              srcSeta={Seta}
+              onClick={() => [
+                handleToggleMenu(),
+                setMenuItemRegUp(!menuItemRegUp),
+              ]}
+            >
+              <SubItemMenu
+                link="RegisterUpdate"
+                itemSubMenu="Realizar Atualização"
+                subMenuSrcImg={More}
+              />
+              <SubItemMenu
+                link="Status"
+                itemSubMenu="Status"
+                subMenuSrcImg={More}
+              />
+            </ItemMenu>
+            : null}
 
           {/* FUNCIONALIDADES */}
 

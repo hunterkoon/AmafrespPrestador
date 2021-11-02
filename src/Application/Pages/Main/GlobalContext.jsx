@@ -192,7 +192,6 @@ export const GlobalStorage = ({ children }) => {
   //#region  HANDLES GLOBAIS
 
 
-
   // reseta erro / mensagem
 
   React.useEffect(() => {
@@ -236,7 +235,8 @@ export const GlobalStorage = ({ children }) => {
     if (manangeUsers || admin) {
       _GetUsersById();
     }
-    return data && data.admin ? setAdmin(true) : null;
+    if (data && data.admin) { return setAdmin(true) }
+    else return setAdmin(false)
   }, [data, manangeUsers, admin]);
 
 
