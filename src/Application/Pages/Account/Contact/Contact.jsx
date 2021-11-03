@@ -12,17 +12,15 @@ const Contact = () => {
         <Titledecorated text="Fale Conosco" />
         <Title text="Contatos" />
       </div>
-
-      {<MapBox />}
-
+      <MapBox />
       <div className="div-sub-contact">
         <div className="div-sub-contact-email">
-          <p className="div-end">
+          <div className="div-end">
             <h2>
-              Av. Brigadeiro Luís Antônio, 4843 – 1 º Andar Horário: das 8h às 17h
+              Av. Brigadeiro Luís Antônio, 4843 – 1 º Andar Horário: das 8h às 17h <br />
+              Email: amafresp@afresp.org.br
             </h2>
-            <h2> amafresp@afresp.org.br</h2>
-          </p>
+          </div>
         </div>
 
         <h1>Telefones Úteis</h1>
