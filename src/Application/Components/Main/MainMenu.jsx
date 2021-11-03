@@ -8,6 +8,7 @@ import iconUser from "../../../Assets/iconUsersBackgroundGreen.svg";
 import iconRecadastro from "../../../Assets/iconRecadastramentoBackgroundGreen.svg";
 import iconFunctionalities from "../../../Assets/Gear.svg";
 import useWindowDimensions from "../../Hooks/UseDimensionScreen";
+import { useNavigate } from "react-router-dom";
 import More from "../../../Assets/More.svg";
 import Seta from "../../../Assets/Seta.svg";
 import Sair from "../../../Assets/Sair.svg";
@@ -30,18 +31,26 @@ const MainMenu = () => {
   const [menuItemRegUp, setMenuItemRegUp] = React.useState(false);
   const [menuItemUsers, setMenuItemUsers] = React.useState(false);
   const { width } = useWindowDimensions();
+  const navigate = useNavigate();
+  const [direction, setDirection] = React.useState(null);
+
+  React.useEffect(() => {
+    if (direction != null) {
+      navigate(direction)
+      setDirection(null)
+    }
+  }, [direction])
 
   const setMenuItens = React.useMemo(
     () => [setMenuItemFuncs, setMenuItemRegUp, setMenuItemUsers],
     []
   );
-
   const menuItens = [menuItemFuncs, menuItemRegUp, menuItemUsers];
 
   const handleMenuAnimation = (event) => {
     const tag = event.target.tagName;
     const imgTag = event.target.children[0];
-    return tag === "A" ? imgTag.classList.toggle("animation") : false;
+    return tag === "SPAN" ? imgTag.classList.toggle("animation") : false;
   };
 
   const handleToggleMenu = () => {
@@ -67,11 +76,10 @@ const MainMenu = () => {
       >
         <ul>
           <ItemMenu
-            href={"/#/conta/"}
-            alt="item menu home page"
             item="Conta"
             srcItem={iconHome}
             srcSeta=""
+            onClick={() => setDirection('/conta')}
           />
 
           {/* USUÁRIOS */}
@@ -164,8 +172,7 @@ const MainMenu = () => {
           {/* FALE CONOSCO */}
 
           <ItemMenu
-            href={"/#/conta/Contatos"}
-            rel={null}
+            onClick={() => setDirection('Contatos')}
             alt="item menu fale conosco"
             item="Contatos"
             srcItem={iconFaleConosco}
@@ -176,7 +183,6 @@ const MainMenu = () => {
           {animateMenu && (
             <ItemMenu
               href={"../"}
-              rel={null}
               onClick={handleLogout}
               alt="item menu fale conosco"
               item="Sair"

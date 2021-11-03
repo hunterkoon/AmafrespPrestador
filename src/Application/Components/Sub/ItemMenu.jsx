@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './ItemMenu.css';
+
 const ItemMenu = ({ ...props }) => {
   return (
     <li className="li-item-menu">
-      <a rel={props.rel} href={props.href} style={{ cursor: 'pointer' }} onClick={props.onClick}>
+      <span style={{ cursor: 'pointer' }} onClick={props.onClick}>
         <img src={props.srcItem} alt={props.alt} />
         {props.item}
         <img
@@ -15,7 +16,7 @@ const ItemMenu = ({ ...props }) => {
             transform: props.state ? 'rotate(90deg)' : 'rotate(0deg)',
           }}
         />
-      </a>
+      </span>
       {props.state ? (
         <div style={{ height: 'auto' }}> {props.children} </div>
       ) : null}

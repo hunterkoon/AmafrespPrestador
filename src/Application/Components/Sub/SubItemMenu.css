@@ -10,9 +10,14 @@
   height: 3em;
 }
 
+.add-user-sub h4 {
+  font-size: 0.8em;
+}
+
 .add-user-sub img {
   width: 1em;
 }
+
 .add-user-sub img {
   margin-left: 1.7em;
 }

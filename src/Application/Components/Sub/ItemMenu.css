@@ -1,5 +1,5 @@
-.li-item-menu a {
-  font-size: 0.9rem;
+.li-item-menu span {
+  font-size: 0.85rem;
   width: stretch;
   margin-left: 1em;
   font-family: NotoSans-Regular;
@@ -9,16 +9,20 @@
   text-decoration: none;
   align-items: center;
 }
+
 /* .li-item-menu a:hover {
   opacity: 70%;
 } */
+
 .li-item-menu img {
   margin: auto 1em;
 }
+
 .li-item-menu {
   width: stretch;
   margin-top: 1.6em;
 }
+
 .img-item-menu-seta {
   transition: 150ms;
 }
