@@ -106,7 +106,7 @@ const Usuarios = () => {
               )}
 
             </div>
-            <div className="div-sub-add-new-user-functions-area">
+            {/* <div className="div-sub-add-new-user-functions-area">
               <h1> Marque as funcões a serem liberadas</h1>
             </div>
             <div className="div-sub-add-new-user-checkbox-area">
@@ -115,16 +115,17 @@ const Usuarios = () => {
                 handleChangeFunctions,
                 functions
               )}
-              <div className="div-sub-add-new-user-button-area">
-                <Button value="Cadastrar" />
-                <Button
-                  onClick={(e) => [e.preventDefault(), handleCleanInputs(addUserForm, setNewUser)]}
-                  color="#FDAB15"
-                  value="Limpar"
-                  class="button-limpar"
-                />
-              </div>
+            </div> */}
+            <div className="div-sub-add-new-user-button-area">
+              <Button value="Cadastrar" />
+              <Button
+                onClick={(e) => [e.preventDefault(), handleCleanInputs(addUserForm, setNewUser)]}
+                color="#FDAB15"
+                value="Limpar"
+                class="button-limpar"
+              />
             </div>
+
           </form>
         </div>
       </div>

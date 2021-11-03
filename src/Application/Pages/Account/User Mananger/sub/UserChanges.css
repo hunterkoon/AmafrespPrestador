@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: auto;
+    min-height: 80vh;
     background-color: rgba(0, 0, 0, 0.329);
     position: absolute;
     top: 0;
