@@ -1,6 +1,7 @@
 import React from "react";
 import ImgPin from "../../../../Assets/Pin.gif";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
+
 import "./Contact.css";
 
 const MapBox = () => {
