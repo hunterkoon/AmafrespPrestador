@@ -37,10 +37,10 @@ const UsersMananger = () => {
 
   //#region EFFECT LISTS
   React.useEffect(() => {
-    manangeUsers ?? users.map((lista) =>
-      lista?.idUsuario != data.idUsuario && lista?.admin != true ?
+    if (manangeUsers || admin)
+      users.map((lista) => lista?.idUsuario != data.idUsuario && lista?.admin != true ?
         setList(true) : setList(false)
-    )
+      )
   }, [data, users])
   //#endregion
 
@@ -55,25 +55,6 @@ const UsersMananger = () => {
     setDeleteUser({ profile: profile, open: true });
     setEditUser({ profile: profile, open: false });
   };
-
-  //#endregion
-
-  //#region INTERFACE
-
-  React.useEffect(() => {
-    const indexAltered = manangeUsers ?? users.findIndex((user) => { return user.idUsuario === changeData.UsersSubmit?.IdUsuario })
-    if (users[indexAltered] && changeData) {
-      users[indexAltered].nome = changeData.UsersSubmit?.Nome;
-      users[indexAltered].email = changeData.UsersSubmit?.Email;
-      users[indexAltered].cpf = changeData.UsersSubmit?.Cpf;
-      users[indexAltered].setor = changeData.UsersSubmit?.Departamento;
-      users[indexAltered].celular = changeData.UsersSubmit?.Celular;
-      users[indexAltered].Funcionalidades = changeData.UsersSubmit?.Funcionalidades;
-      users[indexAltered].ativo = changeData?.Status;
-    }
-    Employee();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeData, changeData, setToggleModal])
 
   //#endregion
 
@@ -92,11 +73,12 @@ const UsersMananger = () => {
             <td>
               {Object.entries(lista?.Funcionalidades).map((item) =>
                 <label key={n++}> {
-                  item[1]?.nome == null
+                  item?.[1] === null
                     ? <span style={{ fontSize: "0.80em" }}>  Nenhuma Funcionalidade </span>
                     : <span style={{ fontSize: "0.80em" }}>  - {item[1]?.nome} </span>
                 } < br />
-                </label>)}
+                </label>
+              )}
             </td>
             <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
               {lista?.ativo ?
@@ -115,6 +97,29 @@ const UsersMananger = () => {
         ) : null));
   };
   //#endregion
+
+  //#region INTERFACE
+
+  React.useEffect(() => {
+    if (manangeUsers || admin) {
+      const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.UsersSubmit?.IdUsuario })
+      if (users[indexAltered] && changeData) {
+        users[indexAltered].nome = changeData.UsersSubmit?.Nome;
+        users[indexAltered].email = changeData.UsersSubmit?.Email;
+        users[indexAltered].cpf = changeData.UsersSubmit?.Cpf;
+        users[indexAltered].setor = changeData.UsersSubmit?.Departamento;
+        users[indexAltered].celular = changeData.UsersSubmit?.Celular;
+        users[indexAltered].Funcionalidades = changeData.UsersSubmit?.Funcionalidades;
+        users[indexAltered].ativo = changeData?.Status;
+      }
+      Employee();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeData, setToggleModal])
+
+  //#endregion
+
+
 
   return (
     <>

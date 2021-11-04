@@ -51,14 +51,14 @@ const UserChanges = ({ ...props }) => {
   const UsersSubmit = Object.assign(adjustsUserSubmit(userSelectedForm), objectSend, HandleObjectFunctions(functions));
 
   React.useEffect(() => {
-    setActiveToggle(userEditProps?.ativo)
     setObjectSend({
       IdUsuario: userEditProps?.idUsuario,
       IdPrestador: userEditProps?.idPrestador,
-      Ativo: userEditProps?.ativo,
+      Ativo: activeToggle,
       Funcionalidades: userEditProps?.Funcionalidades,
     });
-  }, [userEditProps]);
+  }, [userEditProps, activeToggle]);
+
 
   //#endregion
 
@@ -78,6 +78,7 @@ const UserChanges = ({ ...props }) => {
   React.useEffect(() => {
     setUserDeleteProps(props.deleteUser?.profile);
     setUserEditProps(props.user?.profile);
+    setActiveToggle(props.user?.profile.ativo)
   }, [props.deleteUser?.profile, props.user?.profile]);
   //#endregion
 
@@ -95,7 +96,14 @@ const UserChanges = ({ ...props }) => {
     setAlertExclude(!alertExclude)
     setToggleModal(false)
     _DeactiveUser(UsersSubmit)
-    setChangeData({ UsersSubmit: UsersSubmit, Status: !activeToggle })
+    try {
+
+      setActiveToggle(!activeToggle)
+      setChangeData({ UsersSubmit: UsersSubmit, Status: !activeToggle })
+    }
+    catch{
+      throw "Falha"
+    }
   };
 
   //#endregion
@@ -185,7 +193,7 @@ const UserChanges = ({ ...props }) => {
         </div>
       ) : null}
 
- 
+
       {props.deleteUser?.open && toggleModal ? (
         <div className="div-main-user-mananger">
           <div className="pageView div-sub-user-mananger-confirm">

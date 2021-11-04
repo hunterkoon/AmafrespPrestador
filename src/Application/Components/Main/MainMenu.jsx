@@ -90,7 +90,7 @@ const MainMenu = () => {
 
           {/* USUÁRIOS */}
 
-          {addNewUser || admin ? (
+          {addNewUser || admin || manangeUsers ? (
             <ItemMenu
               state={menuItemUsers}
               alt="item menu usuários"
