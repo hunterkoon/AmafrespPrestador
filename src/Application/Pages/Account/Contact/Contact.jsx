@@ -1,7 +1,7 @@
 import React from "react";
 import Titledecorated from "../../../Components/Sub/Titledecorated";
 import Title from "../../../Components/Sub/Title";
-import MapBox from "./MapBox";
+import MapContact from "./MapContact";
 import ANS from "../../../../Assets/ans-logo.b9b86cbf.png";
 import "./Contact.css";
 
@@ -12,7 +12,7 @@ const Contact = () => {
         <Titledecorated text="Fale Conosco" />
         <Title text="Contatos" />
       </div>
-      <MapBox />
+      <MapContact />
       <div className="div-sub-contact">
         <div className="div-sub-contact-email">
           <div className="div-end">

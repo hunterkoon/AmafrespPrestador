@@ -14,10 +14,12 @@ import Seta from "../../../Assets/Seta.svg";
 import Sair from "../../../Assets/Sair.svg";
 import "./MainMenu.css";
 import "../../../App.css";
+import { handleWindow } from "../../Shared/Commons/Helpers/HandlerMenu";
 
 const MainMenu = () => {
   const {
     animateMenu,
+    setAnimateMenu,
     handleLogout,
     globalHandle,
     setGlobalHandle,
@@ -27,23 +29,27 @@ const MainMenu = () => {
     showPriceTable,
   } = React.useContext(GlobalContext);
 
+  const [direction, setDirection] = React.useState(null);
   const [menuItemFuncs, setMenuItemFuncs] = React.useState(false);
   const [menuItemRegUp, setMenuItemRegUp] = React.useState(false);
   const [menuItemUsers, setMenuItemUsers] = React.useState(false);
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
-  const [direction, setDirection] = React.useState(null);
+
 
   React.useEffect(() => {
-    if (direction != null) {
-      navigate(direction)
+    const linkDirection = () => {
+      if (direction != null) {
+        navigate(direction)
+        handleWindow(direction, setAnimateMenu)
+      }
       setDirection(null)
     }
+    linkDirection();
   }, [direction])
 
   const setMenuItens = React.useMemo(
-    () => [setMenuItemFuncs, setMenuItemRegUp, setMenuItemUsers],
-    []
+    () => [setMenuItemFuncs, setMenuItemRegUp, setMenuItemUsers], []
   );
   const menuItens = [menuItemFuncs, menuItemRegUp, menuItemUsers];
 
@@ -84,41 +90,39 @@ const MainMenu = () => {
 
           {/* USUÁRIOS */}
 
-          <>
-            {addNewUser || admin ? (
-              <ItemMenu
-                state={menuItemUsers}
-                alt="item menu usuários"
-                item="Usuários"
-                srcItem={iconUser}
-                srcSeta={Seta}
-                onClick={() => [
-                  handleToggleMenu(),
-                  setMenuItemUsers(!menuItemUsers),
-                ]}
-              >
-                {/* Adicionar Usuários */}
-                {addNewUser || admin ? (
-                  <SubItemMenu
-                    link="AdicionarUsuarios"
-                    state={menuItemUsers}
-                    itemSubMenu="Adicionar Usuário"
-                    subMenuSrcImg={More}
-                  />
-                ) : null}
+          {addNewUser || admin ? (
+            <ItemMenu
+              state={menuItemUsers}
+              alt="item menu usuários"
+              item="Usuários"
+              srcItem={iconUser}
+              srcSeta={Seta}
+              onClick={() => [
+                handleToggleMenu(),
+                setMenuItemUsers(!menuItemUsers),
+              ]}
+            >
+              {/* Adicionar Usuários */}
+              {addNewUser || admin ? (
+                <SubItemMenu
+                  link="AdicionarUsuarios"
+                  state={menuItemUsers}
+                  itemSubMenu="Adicionar Usuário"
+                  subMenuSrcImg={More}
+                />
+              ) : null}
 
-                {/* Gerenciar Usuários */}
-                {manangeUsers || admin ? (
-                  <SubItemMenu
-                    link="Gerenciar"
-                    state={menuItemUsers}
-                    itemSubMenu="Gerenciar"
-                    subMenuSrcImg={More}
-                  />
-                ) : null}
-              </ItemMenu>
-            ) : null}
-          </>
+              {/* Gerenciar Usuários */}
+              {manangeUsers || admin ? (
+                <SubItemMenu
+                  link="Gerenciar"
+                  state={menuItemUsers}
+                  itemSubMenu="Gerenciar"
+                  subMenuSrcImg={More}
+                />
+              ) : null}
+            </ItemMenu>
+          ) : null}
 
           {/* ATUALIZAÇÃO CADASTRAL */}
           {admin ?

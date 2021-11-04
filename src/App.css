@@ -3,35 +3,46 @@ html {
   animation-duration: 400ms;
   font-family: NotoSans-Regular;
 }
+
+.leaflet-container {
+  width: 100%;
+  height: 40vh;
+}
+
 .App {
   width: 100%;
   min-height: 90vh;
   overflow: hidden;
   position: relative;
 }
+
 .div-title-pages {
   position: relative;
   margin-top: 5%;
   margin-left: 3%;
 }
+
 .erro {
   position: absolute;
   color: red;
   margin: 0;
   padding: 0;
 }
+
 @media only screen and (max-width: 1300px) {
   .div-title-pages {
     margin-left: 5%;
     margin-top: 10%;
   }
 }
+
 @media only screen and (max-width: 1024px) {
   .div-title-pages {
     margin-left: 8%;
     margin-top: 10%;
   }
 }
+
 @media only screen and (max-width: 600px) {
   .div-title-pages {
     margin-left: 8%;
@@ -43,16 +54,17 @@ p {
   margin: 0;
   color: #474747;
 }
-h1,
-h2,
-h3 {
+
+h1, h2, h3 {
   font-family: NotoSans-Bold;
   font-size: 1rem;
 }
+
 h4 {
   font-weight: lighter;
   font-family: NotoSans-Regular;
 }
+
 a {
   color: unset;
   align-items: center;
@@ -65,17 +77,19 @@ a {
 li {
   list-style: none;
 }
+
 label {
   width: 100%;
   color: unset;
   text-decoration: unset;
   font-size: 1rem;
 }
-input{
+
+input {
   width: 100%;
 }
-/* CONTAINER PERSONALIZADO  CHECKBOX */
 
+/* CONTAINER PERSONALIZADO  CHECKBOX */
 
 @keyframes iconsAnime {
   from {
@@ -85,34 +99,38 @@ input{
     transform: rotate(10deg);
   }
 }
+
 .pageViewDrop {
   opacity: 0;
   transform: translateX(-120px);
   animation: menuViewFrom 0.3s forwards;
 }
+
 .menuView {
   opacity: 0;
   transform: translateY(30px);
   animation: menuViewTo 0.3s forwards;
 }
+
 .pageView {
   opacity: 0;
   animation: pageviewTo 0.4s forwards;
   transform: translateX(-150px);
 }
+
 @keyframes menuViewTo {
   to {
     opacity: 1;
     transform: initial;
   }
 }
+
 @keyframes menuViewFrom {
   to {
     opacity: 1;
     transform: initial;
   }
 }
-
 
 @keyframes pageviewTo {
   to {

@@ -23,7 +23,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-input-mask": "^2.0.4",
-        "react-leaflet": "^3.2.1",
+        "react-leaflet": "^3.2.2",
         "react-map-gl": "^6.1.17",
         "react-router-dom": "^6.0.0-beta.0",
         "react-scripts": "^4.0.3",
@@ -45,20 +45,11 @@
             "react-app/jest"
         ]
     },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all",
-            "not chrome < 51",
-            "not safari < 10"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+    ],
     "devDependencies": {
         "css-loader": "^6.5.0",
         "envify": "^4.1.0",
