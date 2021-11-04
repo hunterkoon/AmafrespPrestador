@@ -37,7 +37,7 @@ const UsersMananger = () => {
 
   //#region EFFECT LISTS
   React.useEffect(() => {
-    users.map((lista) =>
+    manangeUsers ?? users.map((lista) =>
       lista?.idUsuario != data.idUsuario && lista?.admin != true ?
         setList(true) : setList(false)
     )
@@ -61,7 +61,7 @@ const UsersMananger = () => {
   //#region INTERFACE
 
   React.useEffect(() => {
-    const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.UsersSubmit?.IdUsuario })
+    const indexAltered = manangeUsers ?? users.findIndex((user) => { return user.idUsuario === changeData.UsersSubmit?.IdUsuario })
     if (users[indexAltered] && changeData) {
       users[indexAltered].nome = changeData.UsersSubmit?.Nome;
       users[indexAltered].email = changeData.UsersSubmit?.Email;
