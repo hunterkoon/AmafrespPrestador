@@ -1,0 +1,21 @@
+.div-main-payments {
+  font-family: NotoSans-Regular;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.iframe-function {
+  height: 60vh;
+}
+
+.div-inputs {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.div-inputs input {
+  margin: 3%;
+}

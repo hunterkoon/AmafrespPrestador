@@ -11,6 +11,7 @@ import Status from '../Account/Status/Status';
 import Menu from '../../Components/Main/MainMenu';
 import Perfil from '../Account/Profile/Profile'
 import Tabela from '../Account/Functionalities/PriceTable'
+import Payments from '../Account/Functionalities/Payments';
 import './Account.css';
 
 const Account = () => {
@@ -28,13 +29,14 @@ const Account = () => {
       <aside className="div-context" name='app-context' onClick={(e) => handleMenuHide(e)}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="Gerenciar" element={<Gerenciar />} /> 
+          <Route path="Gerenciar" element={<Gerenciar />} />
           <Route path="Contatos" element={<FaleConosco />} />
           <Route path="AdicionarUsuarios" element={<AdicionarUsuarios />} />
           <Route path="RegisterUpdate" element={<RegisterUpdate />} />
           <Route path="Status" element={<Status />} />
           <Route path="Perfil" element={<Perfil />} />
           <Route path="Tabela" element={<Tabela />} />
+          <Route path="Demonstrativo" element={<Payments />} />
         </Routes>
       </aside>
     </div>

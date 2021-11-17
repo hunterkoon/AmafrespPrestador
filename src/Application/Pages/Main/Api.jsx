@@ -1,7 +1,7 @@
 const baseURL = 'http://localhost:54565/PortalPrestador';
 
-export function LOGIN(user, pass) {
-  const data = { CNPJCPF: user, Senha: pass };
+export function LOGIN(obj) {
+  const data = obj;
   return {
     url: baseURL + '/Login/ ',
     options: {

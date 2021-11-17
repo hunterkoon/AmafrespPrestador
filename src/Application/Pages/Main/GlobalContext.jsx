@@ -17,6 +17,8 @@ import {
   DEACTIVE_USER,
 } from "./Api";
 import { serverError } from "../../Shared/Commons/Constants/Errors";
+import { handlePasswordHash } from "../../Shared/Commons/Helpers/HandleInputs";
+import { removeCookies } from "../../Hooks/useRemoveCookies";
 
 //#endregion
 
@@ -44,12 +46,8 @@ export const GlobalStorage = ({ children }) => {
 
   //FETCH ESTADOS
 
-  const [CNPJCPF, setCNPJCPF] = React.useState(
-    localStorage.getItem("codigo" && "codigo")
-  );
-  const [TOKEN, setToken] = React.useState(
-    localStorage.getItem("token" && "token")
-  );
+  const [CNPJCPF, setCNPJCPF] = React.useState(localStorage.getItem("codigo" && "codigo"));
+  const [TOKEN, setToken] = React.useState(localStorage.getItem("token" && "token"));
 
   const [msgDataChanges, setMsgDataChanges] = React.useState(""); // Seta mensagens do back
   const [data, setData] = React.useState({}); // Recebe dados Login
@@ -84,8 +82,10 @@ export const GlobalStorage = ({ children }) => {
   // }, [regUpData.cep, request]);
 
   //login
+
   async function _Login(obj) {
-    const { url, options } = LOGIN(obj.CNPJCPF, obj.Senha);
+
+    const { url, options } = LOGIN(obj);
     const { response, json } = await request(url, options);
     if (response != undefined) {
       if (response.status === 200) {
@@ -94,6 +94,8 @@ export const GlobalStorage = ({ children }) => {
         setData(json.Content);
         localStorage.setItem("token", dados.Token);
         localStorage.setItem("codigo", dados.DadosPrestador.CNPJCPF);
+        document.cookie = `pass=${obj.Senha}`;
+        document.cookie = `cod=${dados.DadosPrestador.CNPJCPF}`;
         if (dados.nome == null || dados.senhaPadrao == true) {
           navigate("/conta/Perfil");
         } else navigate("/conta/");
@@ -206,13 +208,15 @@ export const GlobalStorage = ({ children }) => {
     setProfile(false);
     setAnimateMenu(false);
     setData({});
-    localStorage.removeItem("token");
-    localStorage.removeItem("codigo");
     setCNPJCPF(null);
     setToken(null);
     setManangeUsers(false)
     setAddNewUser(false)
     setShowPriceTable(false)
+    localStorage.removeItem("token");
+    localStorage.removeItem("codigo");
+    removeCookies();
+
   };
   // realiza liberação de funcionalidades 
 
@@ -230,7 +234,6 @@ export const GlobalStorage = ({ children }) => {
     }
   };
   React.useEffect(() => {
-
     Functions();
     if (manangeUsers || admin) {
       _GetUsersById();
@@ -292,6 +295,7 @@ export const GlobalStorage = ({ children }) => {
         regUpData,
         address,
         toggleModal,
+        CNPJCPF,
         //#region FUNCIONALIDADES
         manangeUsers,
         addNewUser,

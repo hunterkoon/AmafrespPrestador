@@ -171,6 +171,14 @@ const MainMenu = () => {
                 subMenuSrcImg={More}
               />
 
+              {admin ?
+                <SubItemMenu
+                  link="Demonstrativo"
+                  itemSubMenu="Demonstrativos"
+                  subMenuSrcImg={More}
+                /> : null}
+
+
             </ItemMenu> : null}
 
           {/* FALE CONOSCO */}

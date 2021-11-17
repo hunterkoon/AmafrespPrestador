@@ -35,7 +35,7 @@ export const loginDataCNPJSubmit = (data) => {
 export const loginDataCPFSubmit = (data) => {
   const login = new InputConstants(data);
   return {
-    CNPJCPF: login.Cpf,
+    Cpf: login.Cpf,
     Senha: login.Password,
   };
 };
