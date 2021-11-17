@@ -8,7 +8,10 @@
 }
 
 .iframe-function {
-  height: 60vh;
+  height: 100vh;
+  margin: 3%;
+  background: url(../../../../Assets/Loading.gif) center center no-repeat;
+  background-size: 150px;
 }
 
 .div-inputs {

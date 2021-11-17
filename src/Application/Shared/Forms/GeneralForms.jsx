@@ -93,7 +93,7 @@ const GeneralForms = (loginData) => {
   const loginAdm = [CpfCnpj, password];
 
   // FORMULARIOS DE RECUPERAÇÃO DE PASSWORD
-  const recoverFiedsAdm = [cnpj, email];
+  const recoverFiedsAdm = [CpfCnpj, email];
   const recoverFiedsCommon = [cpf, email];
 
   //FORMULARIO DE INSERÇÃO DE USUARIOS

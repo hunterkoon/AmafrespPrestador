@@ -84,7 +84,6 @@ export const GlobalStorage = ({ children }) => {
   //login
 
   async function _Login(obj) {
-
     const { url, options } = LOGIN(obj);
     const { response, json } = await request(url, options);
     if (response != undefined) {
@@ -213,9 +212,9 @@ export const GlobalStorage = ({ children }) => {
     setManangeUsers(false)
     setAddNewUser(false)
     setShowPriceTable(false)
+    removeCookies();
     localStorage.removeItem("token");
     localStorage.removeItem("codigo");
-    removeCookies();
 
   };
   // realiza liberação de funcionalidades 

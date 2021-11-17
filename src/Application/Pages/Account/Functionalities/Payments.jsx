@@ -2,40 +2,27 @@ import React from 'react'
 import "./Payments.css";
 import Titledecorated from '../../../Components/Sub/Titledecorated';
 import { GlobalContext } from '../../Main/GlobalContext';
+import LoadPage from '../../../Components/Sub/Load';
+import PaymentsIframe from './Subs/PaymentsIframe';
 
 const Payments = () => {
-  const { CNPJCPF } = React.useContext(GlobalContext)
-  const iframeRef = React.useRef();
+  const [loads, setLoads] = React.useState(true);
+  const [payments, setPayments] = React.useState(null);
 
-  // function getTags() {
-  //   let iframe = document.getElementById('iframeLegacy');
-  //   let innerDoc = iframe.contentWindow.document;
-  //   console.log(innerDoc)
-  // }
-
-  React.useEffect(() => { console.log(iframeRef.current) })
+  React.useEffect(() => {
+    setPayments(<PaymentsIframe />)
+    const setTime = () => {
+      setTimeout(() => setLoads(false), 1000)
+    }
+    setTime()
+  }, [loads])
 
   return (
     <div className="div-main-payments pageView">
       <div className="div-title-pages">
         <Titledecorated text="Demonstrativos de Pagamento" />
       </div>
-
-      {/* <div className="div-inputs">
-        <label htmlFor="login">Credenciado</label>
-        <input ref={inputLogin} id="login" type="text" />
-        <label htmlFor="pass">Senha</label>
-        <input ref={inputPass} id="pass" type="password" />
-      </div> */}
-      <iframe
-        ref={iframeRef}
-        className="iframe-function"
-        frameBorder="0"
-        allowfullscreen="false"
-        src="http://localhost:2630/Contratados/cPagamento.aspx"
-      >
-      </iframe>
-
+      <PaymentsIframe />
     </div>
   )
 }

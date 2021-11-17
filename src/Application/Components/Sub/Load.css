@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     display: flex;
-
 }
 
 .div-sub-load {
@@ -20,8 +19,7 @@
     justify-content: center;
     border-radius: 15px;
     box-shadow: 5px 5px 10px grey;
-    z-index: 999;   
-    opacity: 60%;
+    z-index: 999;
 }
 
 .input-img-load {
