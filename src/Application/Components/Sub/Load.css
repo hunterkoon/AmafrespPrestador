@@ -20,6 +20,7 @@
     border-radius: 15px;
     box-shadow: 5px 5px 10px grey;
     z-index: 999;
+    text-align: center;
 }
 
 .input-img-load {
