@@ -19,6 +19,7 @@ const Payments = () => {
         src="http://localhost:2630/Contratados/cPagamento.aspx"
         loading="eager"
         onLoad={() => setLoadingPage(false)}
+        referrerpolicy="no-referrer"
       >
       </iframe>
       <Load load={loadingPage} />
