@@ -16,7 +16,7 @@ const Payments = () => {
         allowfullscreen="false"
         className="iframe-function"
         frameBorder="0"
-        src="http://localhost:2630/Contratados/cPagamento.aspx"
+        src="http://afrespdesenv:6080/Contratados/cPagamento.aspx"
         loading="eager"
         onLoad={() => setLoadingPage(false)}
         referrerpolicy="no-referrer"
