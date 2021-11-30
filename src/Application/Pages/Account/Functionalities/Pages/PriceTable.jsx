@@ -1,14 +1,15 @@
 import React from "react";
-import Titledecorated from "../../../Components/Sub/Titledecorated";
-import Title from "../../../Components/Sub/Title";
-import Button from "../../../Components/Sub/Button";
-import Document from "../../../../Assets/Document.gif";
-import Wait from "../../../../Assets/Wait.gif";
-import Down from "../../../../Assets/Down.gif";
-import Succesfull from "../../../Components/Sub/Modal";
-import "./PriceTable.css";
-import { GlobalContext } from "../../Main/GlobalContext";
+import Titledecorated from "../../../../Components/Sub/Titledecorated";
+import Title from "../../../../Components/Sub/Title";
+import Button from "../../../../Components/Sub/Button";
+import Document from "../../../../../Assets/Document.gif";
+import Wait from "../../../../../Assets/Wait.gif";
+import Down from "../../../../../Assets/Down.gif";
+import Succesfull from "../../../../Components/Sub/Modal";
+import { GlobalContext } from "../../../Main/GlobalContext";
 import { useNavigate } from "react-router";
+import "./PriceTable.css";
+
 
 const PriceTable = () => {
 

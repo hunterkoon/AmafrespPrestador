@@ -1,0 +1,40 @@
+.functionalities-module {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #38C6AE;
+  z-index: 9999;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 3%;
+  color: #ffffff;
+}
+
+.functionalities-module:hover {
+
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: 200ms;
+  color: #F1F1F1;
+  background-color: #017663;
+  text-decoration: underline;
+
+}
+
+.functionalities-module img {
+  width: 100px;
+}
+
+.animation {
+  animation: iconsAnime;
+  animation-duration: 200ms;
+  animation-iteration-count: 3;
+  animation-direction: alternate-reverse;
+}
+
+.noframe {
+  display: none;
+}

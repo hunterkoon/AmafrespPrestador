@@ -1,0 +1,39 @@
+.div-main-functionalities {
+  font-family: NotoSans-Regular;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.div-sub-functionalities {
+  height: auto;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 3%;
+  /* margin-top: 5%; */
+  margin-bottom: 5%;
+  grid-gap: 0%;
+  gap: 25px;
+  justify-items: center;
+}
+
+.div-sub-functionalities-group {
+  margin: 3%;
+}
+
+.noframe {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .div-sub-functionalities {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    align-items: center;
+  }
+}

@@ -10,8 +10,11 @@ import RegisterUpdate from '../Account/Registration Update/RegisterUpdate';
 import Status from '../Account/Status/Status';
 import Menu from '../../Components/Main/MainMenu';
 import Perfil from '../Account/Profile/Profile'
-import Tabela from '../Account/Functionalities/PriceTable'
-import Payments from '../Account/Functionalities/Payments';
+import Tabela from '../Account/Functionalities/Pages/PriceTable'
+import Payments from '../Account/Functionalities/Pages/Payments';
+import Services from '../Account/Functionalities/Pages/Services';
+import Improvements from '../Account/Functionalities/Pages/Improvements';
+import Functionalities from '../Account/Functionalities/Functionalities';
 import './Account.css';
 
 const Account = () => {
@@ -35,8 +38,13 @@ const Account = () => {
           <Route path="RegisterUpdate" element={<RegisterUpdate />} />
           <Route path="Status" element={<Status />} />
           <Route path="Perfil" element={<Perfil />} />
+          <Route path="Funcionalidades" element={<Functionalities />} />
+
+          {/* Funcionalidades */}
           <Route path="Tabela" element={<Tabela />} />
-          <Route path="Demonstrativo" element={<Payments />} />
+          <Route path="Pagamentos" element={<Payments />} />
+          <Route path="Atendimentos" element={<Services />} />
+          <Route path="Informes" element={<Improvements />} />
         </Routes>
       </aside>
     </div>

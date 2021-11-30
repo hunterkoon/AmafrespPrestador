@@ -1,4 +1,4 @@
-const baseURL = 'http://afrespdesenv:6080/AfrApi/PortalPrestador/';
+const baseURL = 'http://afrespdesenv:6080/AfrApi/PortalPrestador';
 
 export function LOGIN(obj) {
   const data = obj;

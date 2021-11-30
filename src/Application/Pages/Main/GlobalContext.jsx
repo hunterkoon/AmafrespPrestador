@@ -272,6 +272,8 @@ export const GlobalStorage = ({ children }) => {
         _GetUsersById,
         _AddNewUser,
         _DeactiveUser,
+        CNPJCPF,
+        TOKEN,
         admin,
         changeData,
         users,
