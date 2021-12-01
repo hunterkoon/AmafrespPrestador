@@ -20,6 +20,7 @@ import Eligibility from '../Account/Functionalities/Pages/Eligibility';
 import Informs from '../Account/Functionalities/Pages/Informs';
 import Questions from '../Account/Functionalities/Pages/Questions';
 import Others from '../Account/Functionalities/Pages/Others';
+import Forms from '../Account/Functionalities/Pages/Forms';
 import './Account.css';
 
 const Account = () => {
@@ -53,7 +54,7 @@ const Account = () => {
           <Route path="Lotes" element={<QueryBatch />} />
           <Route path="Glosas" element={<Glosas />} />
           <Route path="Elegibilidade" element={<Eligibility />} />
-          <Route path="Formularios" element={<Eligibility />} />
+          <Route path="Formularios" element={<Forms />} />
           <Route path="Duvidas" element={<Questions />} />
           <Route path="Outros" element={<Others />} />
         </Routes>

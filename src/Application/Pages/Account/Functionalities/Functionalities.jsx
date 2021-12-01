@@ -29,8 +29,6 @@ import "./Functionalities.css"
 const Functionalities = () => {
 
   const linkLord = "LordIcon - https://lordicon.com/icons"
-
-
   return (
     <div className="div-main-functionalities pageView">
       <div className="div-title-pages">

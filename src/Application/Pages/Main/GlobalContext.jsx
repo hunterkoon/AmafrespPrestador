@@ -215,6 +215,7 @@ export const GlobalStorage = ({ children }) => {
     removeCookies();
     localStorage.removeItem("token");
     localStorage.removeItem("codigo");
+    localStorage.removeItem("disclaimerIsOpened");
 
   };
   // realiza liberação de funcionalidades 
