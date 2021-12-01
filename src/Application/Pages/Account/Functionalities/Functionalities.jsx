@@ -18,111 +18,146 @@ import CoinStatic from '../../../../Assets/CoinStatic.svg'
 import CoinGif from '../../../../Assets/CoinGif.gif'
 import CharStatic from '../../../../Assets/CharStatic.svg'
 import CharGif from '../../../../Assets/CharGif.gif'
-import Load from '../../../Components/Sub/Load'
+import BookStatic from '../../../../Assets/BookStatic.svg'
+import BookGif from '../../../../Assets/BookGif.gif'
+import OthersStatic from '../../../../Assets/OthersStatic.svg'
+import OthersGif from '../../../../Assets/OthersGif.gif'
+import Func from '../../../../Assets/DoctorsFuncionalities.svg'
+import DisclaimerPayments from './Subs/DisclaimerPayments'
 import "./Functionalities.css"
-import Glosas from './Pages/Glosas'
 
 const Functionalities = () => {
-  // const [loadingPage, setLoadingPage] = React.useState(true)
+
   const linkLord = "LordIcon - https://lordicon.com/icons"
 
-  const DisclaimerPayments = () => {
-    return <div className={"disclaimer-payments-on"} >
-      <p>
-        Atenção:
-        Os Demonstrativos de Pagamento e Análise de Contas (incluindo as Glosas), estão disponíveis no site da Orizon. Em breve, este serviço será desabilitado no site da AMAFRESP e será disponibilizado somente no Portal da Orizon.
-        Maiores informações sobre o acesso ao portal da Orizon entrar em contato pelos telefones 3003-7333 (regiões metropolitanas) e 0800 724 7333 (Demais regiões).
-      </p>
-    </div>
-  }
+
   return (
     <div className="div-main-functionalities pageView">
       <div className="div-title-pages">
         <Titledecorated text="Funcionalidades" />
       </div>
-      
       <DisclaimerPayments />
 
       <div className="div-sub-functionalities-group">
-        {/* Demonstrativos */}
+
+        <div className="div-sub-functionalities-info">
+          <img src={Func} alt="" />
+          <p>
+            Sejam bem-vindos à área de funcionalidades do portal Amafresp Prestador, aqui poderá encontrar todas as funcionalidades das quais já utilizava anteriormente, novas funções estão em desenvolvimento para melhor entendê-lo(a), caso tenha alguma dificuldade no acesso disponibilizaremos um meio de comunicação para eventuais chamados.
+          </p>
+        </div>
+
         <div className="div-sub-func">
-          <Title text="Demonstrativos" size="1.6em" className="title-func" />
           {/* Pagamentos */}
-          <FunctionalitiesModule
-            imgGif={Document}
-            imgStatic={DocumentStatic}
-            alt={linkLord}
-            nameFunction={"Pagamentos"}
-            link={"/conta/Pagamentos"}
-            disclaimer={true}
-          />
-          {/* Atendimentos Realizados */}
-          <FunctionalitiesModule
-            imgGif={ServiceGif}
-            imgStatic={ServiceStatic}
-            alt={linkLord}
-            nameFunction={"Atendimentos Realizados"}
-            link={"/conta/Atendimentos"}
-          />
-          {/* Informe de Rendimentos/Retenções */}
-          <FunctionalitiesModule
-            imgGif={ImprovementsGif}
-            imgStatic={ImprovementsStatic}
-            alt={linkLord}
-            nameFunction={"Informe de Rendimentos/Retenções"}
-            link={"/conta/Informes"}
-          />
-        </div>
+          <div>
+            <Title text="Demonstrativos" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={Document}
+              imgStatic={DocumentStatic}
+              alt={linkLord}
+              nameFunction={"Pagamentos"}
+              link={"/conta/Pagamentos"}
+              disclaimer={true}
+            />
+            {/* Atendimentos Realizados */}
+            <Title text="Atendimento" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={ServiceGif}
+              imgStatic={ServiceStatic}
+              alt={linkLord}
+              nameFunction={"Atendimentos Realizados"}
+              link={"/conta/Atendimentos"}
+            />
+            {/* Informe de Rendimentos/Retenções */}
+            <Title text="Informes" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={ImprovementsGif}
+              imgStatic={ImprovementsStatic}
+              alt={linkLord}
+              nameFunction={"Informe de Rendimentos"}
+              link={"/conta/Informes"}
+            />
+          </div>
 
-        {/* Faturamento */}
-        <div className="div-sub-func">
-          <Title text="Faturamento" size="1.6em"   className="title-func"/>
-          {/* Consulta de Lotes Enviados */}
-          <FunctionalitiesModule
-            imgGif={ServiceGif}
-            imgStatic={ServiceStatic}
-            alt={linkLord}
-            nameFunction={"Consulta de Lotes Enviados"}
-            link={"/conta/Lotes"}
-          />
-          {/* Envio de Lote XML */}
-          <FunctionalitiesModule
-            imgGif={SendArrowGif}
-            imgStatic={SendArrowStatic}
-            alt={linkLord}
-            nameFunction={"Envio de Lote XML"}
-            externalLink={"https://www.orizon.com.br/"}
-          />
+          <div>
+            {/* Consulta de Lotes Enviados */}
+            <Title text="Faturamento" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={ServiceGif}
+              imgStatic={ServiceStatic}
+              alt={linkLord}
+              nameFunction={"Consulta de Lotes Enviados"}
+              link={"/conta/Lotes"}
+            />
+            {/* Envio de Lote XML */}
+            <Title text="XML" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={SendArrowGif}
+              imgStatic={SendArrowStatic}
+              alt={linkLord}
+              nameFunction={"Envio de Lote XML"}
+              externalLink={"https://www.orizon.com.br/"}
+            />
+            {/* Recurso de Glosas */}
+            <Title text="Glosas" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={CoinGif}
+              imgStatic={CoinStatic}
+              alt={linkLord}
+              nameFunction={"Consulta de Recursos"}
+              link={"/conta/Glosas"}
+            />
+          </div>
+          <div>
+            {/* Formularios */}
+            <Title text="Formulários" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={Document}
+              imgStatic={DocumentStatic}
+              alt={linkLord}
+              nameFunction={"Downloads"}
+              link={"/conta/Formularios"}
+            />
+            {/* Elegibilidade */}
+            <Title text="Elegibilidade" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={CharGif}
+              imgStatic={CharStatic}
+              alt={linkLord}
+              nameFunction={"Consulta de Elegibilidade"}
+              link={"/conta/Elegibilidade"}
+            />
+            {/* Tabela de Precos */}
+            <Title text="Tabela de Preços" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={PriceTableGif}
+              imgStatic={PriceTableStatic}
+              alt={linkLord}
+              nameFunction={"Solicitar"}
+              link={"/conta/TabelaPrecos"}
+            />
+          </div>
+          <div>
+            {/* Dúvidas */}
+            <Title text="Dúvidas" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={BookGif}
+              imgStatic={BookStatic}
+              alt={linkLord}
+              nameFunction={"Consultar"}
+              link={"/conta/Duvidas"}
+            />
+            <Title text="Outros" size="1.3em" className="title-func" />
+            <FunctionalitiesModule
+              imgGif={OthersGif}
+              imgStatic={OthersStatic}
+              alt={linkLord}
+              nameFunction={"Outros"}
+              link={"/conta/Outros"}
+            />
+          </div>
         </div>
-
-        {/* Recurso de Glosas */}
-        <div className="div-sub-func">
-          <Title text="Glosas" size="1.6em" className="title-func"  />
-          {/* Consulta de Recursos */}
-          <FunctionalitiesModule
-            imgGif={CoinGif}
-            imgStatic={CoinStatic}
-            alt={linkLord}
-            nameFunction={"Consulta de Recursos"}
-            link={"/conta/Glosas"}
-          />
-        </div>
-
-        {/* Elegibilidade */}
-        <div className="div-sub-func">
-          <Title text="Elegibilidade" size="1.6em"  className="title-func" />
-          {/* Consulta de Elegibilidade */}
-          <FunctionalitiesModule
-            imgGif={CharGif}
-            imgStatic={CharStatic}
-            alt={linkLord}
-            nameFunction={"Consulta de Elegibilidade"}
-            link={"/conta/Elegibilidade"}
-          />
-        </div>
-
       </div>
-
     </div>
   )
 }

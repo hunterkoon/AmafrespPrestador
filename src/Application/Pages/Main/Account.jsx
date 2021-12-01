@@ -13,11 +13,14 @@ import Perfil from '../Account/Profile/Profile'
 import Tabela from '../Account/Functionalities/Pages/PriceTable'
 import Payments from '../Account/Functionalities/Pages/Payments';
 import Services from '../Account/Functionalities/Pages/Services';
-import Improvements from '../Account/Functionalities/Pages/Improvements';
 import Functionalities from '../Account/Functionalities/Functionalities';
 import QueryBatch from '../Account/Functionalities/Pages/QueryBatch';
-import './Account.css';
 import Glosas from '../Account/Functionalities/Pages/Glosas';
+import Eligibility from '../Account/Functionalities/Pages/Eligibility';
+import Informs from '../Account/Functionalities/Pages/Informs';
+import Questions from '../Account/Functionalities/Pages/Questions';
+import Others from '../Account/Functionalities/Pages/Others';
+import './Account.css';
 
 const Account = () => {
   const { setAnimateMenu, setGlobalHandle, setProfile } = React.useContext(GlobalContext);
@@ -43,12 +46,16 @@ const Account = () => {
           <Route path="Funcionalidades" element={<Functionalities />} />
 
           {/* Funcionalidades */}
-          <Route path="Tabela" element={<Tabela />} />
+          <Route path="TabelaPrecos" element={<Tabela />} />
           <Route path="Pagamentos" element={<Payments />} />
           <Route path="Atendimentos" element={<Services />} />
-          <Route path="Informes" element={<Improvements />} />
+          <Route path="Informes" element={<Informs />} />
           <Route path="Lotes" element={<QueryBatch />} />
           <Route path="Glosas" element={<Glosas />} />
+          <Route path="Elegibilidade" element={<Eligibility />} />
+          <Route path="Formularios" element={<Eligibility />} />
+          <Route path="Duvidas" element={<Questions />} />
+          <Route path="Outros" element={<Others />} />
         </Routes>
       </aside>
     </div>

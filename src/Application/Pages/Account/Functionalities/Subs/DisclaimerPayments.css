@@ -1,0 +1,48 @@
+.disclaimer-payments-on {
+  position: absolute;
+  display: flex;
+  background-color: bisque;
+  border-radius: 10px 10px;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+  padding: 3%;
+  z-index: 99999999999 !important;
+  margin: 20%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.disclaimer-payments-on h1 {
+  position: absolute;
+  background-color: #f20000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  top: 0;
+  margin: 0;
+  box-shadow: 2px 2px 2px grey;
+  cursor: pointer;
+}
+
+.disclaimer-payments-on p {
+  font-size: 0.85em;
+  color: #414141;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.disclaimer-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #414141;
+  z-index: 9999;
+  opacity: 50%;
+}

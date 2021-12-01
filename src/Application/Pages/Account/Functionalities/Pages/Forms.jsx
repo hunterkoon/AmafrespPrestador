@@ -1,29 +1,21 @@
 import React from 'react'
 import Load from '../../../../Components/Sub/Load'
 import Titledecorated from '../../../../Components/Sub/Titledecorated';
-import { GlobalContext } from '../../../Main/GlobalContext';
 import "./FunctionalitiesPagesCommon.css";
 
-const Improvements = () => {
-  const [url, setUrl] = React.useState(null)
+const Forms = () => {
   const [loadingPage, setLoadingPage] = React.useState(true)
-  const { data } = React.useContext(GlobalContext)
-
-  React.useEffect(() => {
-    setUrl(data?.DadosPrestador?.CNPJCPF)
-  }, [data])
-
   return (
     <div className="div-main-FunctionalitiesCommon pageView">
       <div className="div-title-pages">
-        <Titledecorated text="Informe de Rendimentos/Retenções" />
+        <Titledecorated text="Recurso de Glosas" />
       </div>
-
       <iframe
-        sandbox={true}
+        sandbox
+        allowfullscreen="false"
         className="iframe-function"
         frameBorder="0"
-        src={`http://amafresp.afresp.org.br/ExtratoCredenciado/Default.aspx?id=${url}`}
+        src="http://afrespdesenv:6080/portal/Contratados/formularios.aspx"
         loading="eager"
         onLoad={() => setLoadingPage(false)}
         referrerpolicy="no-referrer"
@@ -33,4 +25,5 @@ const Improvements = () => {
     </div >
   )
 }
-export default Improvements
+
+export default Forms

@@ -10,47 +10,36 @@
 .div-sub-functionalities-group {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   margin: 3%;
 }
 
 .div-sub-func {
-  align-items: center;
-  text-align: center;
-}
-
-.disclaimer-payments {
-  display: none;
-}
-
-.disclaimer-payments-on {
   display: flex;
-  background-color: bisque;
-  border-radius: 10px 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-  padding: 3%;
-  margin: 3% ;
-  z-index: 99999999999 !important;
-  width: 50%;
-  left: 3%;
-
-}
-
-.disclaimer-payments-on p {
-  font-size: 0.85em;
-  color: #414141;
+  text-align: center;
+  align-items: normal;
 }
 
 .div-sub-functionalities-group h1 {
   margin-bottom: 30px !important;
 }
 
-@media only screen and (max-width: 1024px) {
+.div-sub-functionalities-info {
+  width: 30%;
+}
 
-  .div-sub-functionalities {
-    display: flex;
+@media only screen and (max-width: 1024px) {
+  .div-sub-functionalities-group {
     flex-direction: column;
-    width: 95%;
     align-items: center;
+    width: 90%;
+  }
+
+  .div-sub-func {
+    flex-direction: column;
+  }
+
+  .div-sub-functionalities-info {
+    margin: 10%;
+    width: 90%;
   }
 }

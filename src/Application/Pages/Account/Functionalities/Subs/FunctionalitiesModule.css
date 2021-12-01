@@ -1,6 +1,6 @@
 .functionalities-module {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 10px;
   z-index: 9999;
   cursor: pointer;
@@ -13,7 +13,7 @@
   color: #474747;
   font-weight: bolder;
   background-color: #ebebeb;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .functionalities-module:hover {
@@ -36,3 +36,37 @@
   animation-direction: alternate-reverse;
 }
 
+.div-sub-functionalities-info {
+  margin: 3%;
+}
+
+.div-sub-functionalities-info p {
+  line-height: 2em;
+  text-align: center;
+}
+
+@media only screen and (min-width:1024px) and (max-width:1580px) {
+  .functionalities-module {
+    width: 120px;
+    height: 120px;
+    font-size: 0.7rem;
+  }
+
+  .functionalities-module img {
+    width: 60px;
+  }
+
+  .functionalities-module:hover {
+    font-size: 0.8rem;
+  }
+
+  .div-sub-functionalities-info p {
+    line-height: 1.3em;
+    font-size: 0.80em;
+    text-align: center;
+  }
+
+  .div-sub-functionalities-info {
+    margin: 0%;
+  }
+}

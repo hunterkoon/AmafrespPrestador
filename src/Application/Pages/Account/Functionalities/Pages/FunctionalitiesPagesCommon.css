@@ -14,11 +14,24 @@
   background-size: 150px; */
 }
 
-.div-inputs {
-  width: 50%;
-  margin: 0 auto;
+
+.div-sub-questions {
+  display: flex;
 }
 
-.div-inputs input {
+.section-quests-links img {
   margin: 3%;
+  width: 40px;
 }
+
+.section-quests-links a:hover {
+  text-decoration: underline;
+}
+
+.section-quests-links {
+  margin: 3%;
+  width: 60%;
+}
+
+
+@media only screen and (max-width:1024px) {}
