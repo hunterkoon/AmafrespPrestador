@@ -3,23 +3,19 @@ import Load from '../../../../Components/Sub/Load'
 import Titledecorated from '../../../../Components/Sub/Titledecorated';
 import "./FunctionalitiesPagesCommon.css";
 
-const Services = () => {
+const Eligibility = () => {
   const [loadingPage, setLoadingPage] = React.useState(true)
   return (
     <div className="div-main-FunctionalitiesCommon pageView">
       <div className="div-title-pages">
-        <Titledecorated text="Atendimentos Realizados" />
+        <Titledecorated text="Consulta de Elegibilidade" />
       </div>
       <iframe
         sandbox
-        allow
         allowfullscreen="false"
         className="iframe-function"
         frameBorder="0"
-        allow-forms
-        allow-scripts
-        src="http://afrespdesenv:6080/portal/Contratados/cAtendimento.aspx"
-        // src="http://localhost:2630/Contratados/cAtendimento.aspx"
+        src="http://afrespdesenv:6080/portal/Contratados/elegibilidade.aspx"
         loading="eager"
         onLoad={() => setLoadingPage(false)}
         referrerpolicy="no-referrer"
@@ -30,4 +26,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Eligibility

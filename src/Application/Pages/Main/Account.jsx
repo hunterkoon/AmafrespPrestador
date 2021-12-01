@@ -15,7 +15,9 @@ import Payments from '../Account/Functionalities/Pages/Payments';
 import Services from '../Account/Functionalities/Pages/Services';
 import Improvements from '../Account/Functionalities/Pages/Improvements';
 import Functionalities from '../Account/Functionalities/Functionalities';
+import QueryBatch from '../Account/Functionalities/Pages/QueryBatch';
 import './Account.css';
+import Glosas from '../Account/Functionalities/Pages/Glosas';
 
 const Account = () => {
   const { setAnimateMenu, setGlobalHandle, setProfile } = React.useContext(GlobalContext);
@@ -45,6 +47,8 @@ const Account = () => {
           <Route path="Pagamentos" element={<Payments />} />
           <Route path="Atendimentos" element={<Services />} />
           <Route path="Informes" element={<Improvements />} />
+          <Route path="Lotes" element={<QueryBatch />} />
+          <Route path="Glosas" element={<Glosas />} />
         </Routes>
       </aside>
     </div>

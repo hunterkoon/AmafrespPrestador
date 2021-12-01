@@ -4,15 +4,14 @@ import Titledecorated from '../../../../Components/Sub/Titledecorated';
 import { GlobalContext } from '../../../Main/GlobalContext';
 import "./FunctionalitiesPagesCommon.css";
 
-const Payments = () => {
+const Improvements = () => {
   const [url, setUrl] = React.useState(null)
   const [loadingPage, setLoadingPage] = React.useState(true)
   const { data } = React.useContext(GlobalContext)
 
   React.useEffect(() => {
-    setUrl(data.DadosPrestador.CNPJCPF)
+    setUrl(data?.DadosPrestador?.CNPJCPF)
   }, [data])
-  console.log(url)
 
   return (
     <div className="div-main-FunctionalitiesCommon pageView">
@@ -25,7 +24,6 @@ const Payments = () => {
         className="iframe-function"
         frameBorder="0"
         src={`http://amafresp.afresp.org.br/ExtratoCredenciado/Default.aspx?id=${url}`}
-        // src="http://localhost:2030/Contratados/cPagamento.aspx"
         loading="eager"
         onLoad={() => setLoadingPage(false)}
         referrerpolicy="no-referrer"
@@ -35,4 +33,4 @@ const Payments = () => {
     </div >
   )
 }
-export default Payments
+export default Improvements
