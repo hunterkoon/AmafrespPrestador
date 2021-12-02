@@ -14,9 +14,14 @@
   background-size: 150px; */
 }
 
+/* Duvidas */
 
 .div-sub-questions {
   display: flex;
+}
+
+.div-sub-questions a {
+  width: fit-content;
 }
 
 .section-quests-links img {
@@ -32,6 +37,3 @@
   margin: 3%;
   width: 60%;
 }
-
-
-@media only screen and (max-width:1024px) {}

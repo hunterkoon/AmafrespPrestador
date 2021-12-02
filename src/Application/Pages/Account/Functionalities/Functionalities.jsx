@@ -3,7 +3,6 @@ import React from 'react'
 import Title from "../../../Components/Sub/Title"
 import Titledecorated from "../../../Components/Sub/Titledecorated"
 import FunctionalitiesModule from "./Subs/FunctionalitiesModule"
-import Gear from '../../../../Assets/Gear.svg'
 import Document from '../../../../Assets/DocumentBills.gif'
 import DocumentStatic from '../../../../Assets/DocumentBillsStatic.svg'
 import PriceTableStatic from '../../../../Assets/PriceTableStatic.svg'
@@ -24,27 +23,32 @@ import OthersStatic from '../../../../Assets/OthersStatic.svg'
 import OthersGif from '../../../../Assets/OthersGif.gif'
 import Func from '../../../../Assets/DoctorsFuncionalities.svg'
 import DisclaimerPayments from './Subs/DisclaimerPayments'
+import { GlobalContext } from '../../Main/GlobalContext'
 import "./Functionalities.css"
 
 const Functionalities = () => {
 
   const linkLord = "LordIcon - https://lordicon.com/icons"
+  const [urlInforms, setUrlInforms] = React.useState(null)
+  const { data } = React.useContext(GlobalContext)
+
+  React.useEffect(() => {
+    setUrlInforms(data?.DadosPrestador?.CNPJCPF)
+  }, [data])
+
   return (
     <div className="div-main-functionalities pageView">
       <div className="div-title-pages">
         <Titledecorated text="Funcionalidades" />
       </div>
       <DisclaimerPayments />
-
       <div className="div-sub-functionalities-group">
-
         <div className="div-sub-functionalities-info">
           <img src={Func} alt="" />
           <p>
             Sejam bem-vindos à área de funcionalidades do portal Amafresp Prestador, aqui poderá encontrar todas as funcionalidades das quais já utilizava anteriormente, novas funções estão em desenvolvimento para melhor entendê-lo(a), caso tenha alguma dificuldade no acesso disponibilizaremos um meio de comunicação para eventuais chamados.
           </p>
         </div>
-
         <div className="div-sub-func">
           {/* Pagamentos */}
           <div>
@@ -74,9 +78,9 @@ const Functionalities = () => {
               alt={linkLord}
               nameFunction={"Informe de Rendimentos"}
               link={"/conta/Informes"}
+
             />
           </div>
-
           <div>
             {/* Consulta de Lotes Enviados */}
             <Title text="Faturamento" size="1.3em" className="title-func" />
@@ -145,6 +149,7 @@ const Functionalities = () => {
               nameFunction={"Consultar"}
               link={"/conta/Duvidas"}
             />
+            {/* Outros*/}
             <Title text="Outros" size="1.3em" className="title-func" />
             <FunctionalitiesModule
               imgGif={OthersGif}
