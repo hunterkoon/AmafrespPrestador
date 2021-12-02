@@ -15,6 +15,7 @@ import useErrorForm from "../../Hooks/useErrorForm";
 import Error from '../../Components/Sub/Error'
 import "./Login.css";
 import "./RecoverPassword.css";
+import Freepik from "../../Shared/Commons/Constants/Freepik";
 
 const RecoverPassword = () => {
 
@@ -102,6 +103,7 @@ const RecoverPassword = () => {
             </div>
           </form>
         </div>
+        <Freepik />
       </div>
     </>
   );

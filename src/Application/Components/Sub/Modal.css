@@ -26,14 +26,16 @@
     z-index: 99999999;
     border-radius: 15px;
     flex-direction: column;
-    animation:  animateInitial .8s forwards;
-    
+    animation: animateInitial .8s forwards;
+
 }
 
 @keyframes animateInitial {
     from {
         opacity: 0;
-    }to {
+    }
+
+    to {
         opacity: 1;
     }
 }
@@ -68,6 +70,5 @@
 .div-main-successfull h1 {
     font-size: 1.2em;
     line-height: 1.2em;
-    
-}
 
+}

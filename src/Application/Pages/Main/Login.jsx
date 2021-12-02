@@ -15,6 +15,7 @@ import Error from '../../Components/Sub/Error'
 import { loginDataCNPJSubmit, loginDataCPFSubmit } from '../../Hooks/useSubmitDada';
 import './Login.css';
 import '../../../App.css';
+import Freepik from '../../Shared/Commons/Constants/Freepik';
 
 const Login = () => {
 
@@ -71,7 +72,6 @@ const Login = () => {
               src={option ? UsuarioLogin : LoginImg}
               alt="Imagem de Profissionais da medicina"
             />
-            <a href={UrlImgLogin}>www.freepik.com</a>
           </div>
         </div>
         <div className="div-form-login">
@@ -117,6 +117,7 @@ const Login = () => {
             </form>
           </div>
         </div>
+        <Freepik />
       </div>
     </>
   );

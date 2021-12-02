@@ -70,3 +70,28 @@
     margin: 0%;
   }
 }
+
+.popup-back {
+  display: none;
+}
+
+.popup {
+  width: 180px;
+  height: auto;
+  background-color: #FDAB15;
+  position: absolute;
+  border-radius: 10px 10px 10px 0;
+  color: #ffffff;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+  transition: 200ms;
+  transform: translate(182px, -82px);
+  z-index: 999;
+
+}
+
+.popup p {
+  margin: 3%;
+  padding: 3%;
+  font-size: 0.9em;
+  color: #ffffff;
+}

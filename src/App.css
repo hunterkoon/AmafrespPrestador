@@ -29,6 +29,16 @@ html {
   padding: 0;
 }
 
+.freepik {
+  color: #c1c1c1;
+  font-size: 0.6em;
+  padding: 1em;
+  display: flex;
+  z-index: 999;
+  position: absolute;
+  bottom: 0;
+}
+
 @media only screen and (max-width: 1300px) {
   .div-title-pages {
     margin-left: 5%;

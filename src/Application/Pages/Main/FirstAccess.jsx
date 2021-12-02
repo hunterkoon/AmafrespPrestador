@@ -12,6 +12,7 @@ import PrimeiroAcessoImg from "../../../Assets/PrimeiroAcesso.svg";
 import useErrorForm from "../../Hooks/useErrorForm";
 import Error from '../../Components/Sub/Error'
 import "./FirstAccess.css";
+import Freepik from "../../Shared/Commons/Constants/Freepik";
 
 const FirstAccess = () => {
 
@@ -70,6 +71,7 @@ const FirstAccess = () => {
           </div>
         </form>
       </div>
+      <Freepik />
     </div>
   );
 };

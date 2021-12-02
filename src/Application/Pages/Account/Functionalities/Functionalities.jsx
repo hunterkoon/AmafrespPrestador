@@ -1,4 +1,4 @@
-
+//#region IMPORTS
 import React from 'react'
 import Title from "../../../Components/Sub/Title"
 import Titledecorated from "../../../Components/Sub/Titledecorated"
@@ -25,7 +25,8 @@ import Func from '../../../../Assets/DoctorsFuncionalities.svg'
 import DisclaimerPayments from './Subs/DisclaimerPayments'
 import { GlobalContext } from '../../Main/GlobalContext'
 import "./Functionalities.css"
-
+import Freepik from '../../../Shared/Commons/Constants/Freepik'
+//#endregion
 const Functionalities = () => {
 
   const linkLord = "LordIcon - https://lordicon.com/icons"
@@ -45,13 +46,14 @@ const Functionalities = () => {
       <div className="div-sub-functionalities-group">
         <div className="div-sub-functionalities-info">
           <img src={Func} alt="" />
+          <Freepik />
           <p>
             Sejam bem-vindos à área de funcionalidades do portal Amafresp Prestador, aqui poderá encontrar todas as funcionalidades das quais já utilizava anteriormente, novas funções estão em desenvolvimento para melhor entendê-lo(a), caso tenha alguma dificuldade no acesso disponibilizaremos um meio de comunicação para eventuais chamados.
           </p>
         </div>
         <div className="div-sub-func">
-          {/* Pagamentos */}
           <div>
+            {/* Pagamentos */}
             <Title text="Demonstrativos" size="1.3em" className="title-func" />
             <FunctionalitiesModule
               imgGif={Document}
@@ -78,7 +80,6 @@ const Functionalities = () => {
               alt={linkLord}
               nameFunction={"Informe de Rendimentos"}
               link={"/conta/Informes"}
-
             />
           </div>
           <div>
@@ -99,6 +100,8 @@ const Functionalities = () => {
               alt={linkLord}
               nameFunction={"Envio de Lote XML"}
               externalLink={"https://www.orizon.com.br/"}
+              popup={"Apartir de 01/09/2014 este recurso só estará disponivel através da empresa Orizon www.orizon.com.br"}
+
             />
             {/* Recurso de Glosas */}
             <Title text="Glosas" size="1.3em" className="title-func" />

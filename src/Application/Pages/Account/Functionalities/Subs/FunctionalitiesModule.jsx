@@ -10,7 +10,13 @@ const FunctionalitiesModule = ({ ...props }) => {
   const externalLink = () => {
     window.open(props.externalLink, '_blank');
   }
-
+  const Popup = () => {
+    return (
+      <div className={mouseEnter ? "popup" : "popup-back"}>
+        <p>{props.popup}</p>
+      </div>
+    )
+  }
   React.useEffect(() => {
     if (mouseEnter) {
       setImgState(props.imgGif)
@@ -18,21 +24,27 @@ const FunctionalitiesModule = ({ ...props }) => {
     else {
       setImgState(props.imgStatic)
     }
-  })
+  }, [mouseEnter])
 
   return (
-    <div
-      className="functionalities-module"
-      onClick={() => props.link != undefined ? navigate(props.link) : externalLink()}
-      onMouseEnter={() => setMouseEnter(true)}
-      onMouseLeave={() => setMouseEnter(false)}
-    >
-      <img
-        src={imgState}
-        alt={props.alt}
-      />
-      <h4>{props.nameFunction}</h4>
-    </div>
+    <>
+      {props.popup ?
+        <Popup text="Popup" />
+        : null}
+      <div
+        className="functionalities-module menuView"
+        onClick={() => props.link != undefined ? navigate(props.link) : externalLink()}
+        onMouseEnter={() => setMouseEnter(true)}
+        onMouseLeave={() => setMouseEnter(false)}
+      >
+
+        <img
+          src={imgState}
+          alt={props.alt}
+        />
+        <h4>{props.nameFunction}</h4>
+      </div>
+    </>
 
   )
 }
