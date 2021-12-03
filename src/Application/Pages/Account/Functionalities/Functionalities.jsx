@@ -100,7 +100,7 @@ const Functionalities = () => {
               alt={linkLord}
               nameFunction={"Envio de Lote XML"}
               externalLink={"https://www.orizon.com.br/"}
-              popup={"Apartir de 01/09/2014 este recurso só estará disponivel através da empresa Orizon www.orizon.com.br"}
+              popup={"A partir de 01/09/2014 este recurso só estará disponivel através da empresa Orizon www.orizon.com.br"}
 
             />
             {/* Recurso de Glosas */}

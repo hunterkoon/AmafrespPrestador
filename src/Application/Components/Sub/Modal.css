@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: auto;
     background-color: rgba(0, 0, 0, 0.329);
     position: fixed;
     top: 0;
