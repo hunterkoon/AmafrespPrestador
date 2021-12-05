@@ -11,6 +11,7 @@ import Tool from "../../../../Assets/Tool_Green.svg";
 import Tool_Grey from "../../../../Assets/Tool_Grey.svg";
 import Nobody from "../../../../Assets/Nobody.gif";
 import Modal from "../../../Components/Sub/Modal";
+import { dadosMock } from "./sub/Dados";
 import "./UsersMananger.css";
 
 //#endregion
@@ -24,24 +25,27 @@ const UsersMananger = () => {
   const [toggleStatus, setToggleStatus] = React.useState();
   const [list, setList] = React.useState(true);
   const navigate = useNavigate();
+  const [initial, setInitial] = React.useState(0);
+  const [finish, setFinish] = React.useState(4);
+  const [userList, setUserList] = React.useState([]);
 
   //#endregion
 
   //#region HANDLE NAVIGATE
 
-  React.useEffect(() => {
-    return manangeUsers || admin ? null : navigate('/conta');
-  }, [manangeUsers, navigate])
+  // React.useEffect(() => {
+  //   return manangeUsers || admin ? null : navigate('/conta');
+  // }, [manangeUsers, navigate])
 
   //#endregion
 
   //#region EFFECT LISTS
-  React.useEffect(() => {
-    if (manangeUsers || admin)
-      users.map((lista) => lista?.idUsuario != data.idUsuario && lista?.admin != true ?
-        setList(true) : setList(false)
-      )
-  }, [data, users])
+  // React.useEffect(() => {
+  //   if (manangeUsers || admin)
+  //     users.map((lista) => lista?.idUsuario != data.idUsuario && lista?.admin != true ?
+  //       setList(true) : setList(false)
+  //     )
+  // }, [data, users])
   //#endregion
 
   //#region HANDLE EDITS 
@@ -56,15 +60,37 @@ const UsersMananger = () => {
     setEditUser({ profile: profile, open: false });
   };
 
+  let pages = parseInt(dadosMock.length / 5)
+  let rest = pages % 2
+
+  React.useEffect(() => {
+    // setFinish(finish + 4);
+    setUserList(dadosMock.filter((element, index, arr) => {
+      if (index >= initial && index <= finish) {
+        return element
+      }
+    }))
+    console.log(initial, finish)
+  }, [initial, finish])
+
+  const Pagination = () => {
+    return dadosMock.map((items, index) =>
+      index < pages + rest ?
+        <h1 onClick={(e) => [setInitial(parseInt(e.target.innerText) * 5)]}
+          Style="border: 1px solid red; width:30px; text-align:center; cursor:pointer;">{index}</h1>
+        : null)
+  }
+
   //#endregion
 
   //#region  USUÁRIOS
   const Employee = () => {
     let n = 0;
-    return users.map((lista) => (
-      lista?.idUsuario != data.idUsuario && lista?.admin != true ?
+    return userList && userList.map((lista, index) => (
+      lista?.idUsuario ?
         (
           <tr key={lista?.idUsuario}>
+            {/* <td>{index}</td> */}
             <td>{lista?.nome}</td>
             <td>{lista?.cpf}</td>
             <td>{lista?.setor}</td>
@@ -94,15 +120,57 @@ const UsersMananger = () => {
               {!lista?.ativo ? "Ativar" : "Inativar"}
             </td>
           </tr>
-        ) : null));
+        )
+        : null
+    ))
   };
-  //#endregion
+  //#region 
+  // const Employee = () => {
+  //   let n = 0;
+  //   return users.map((lista) => (
+  //     lista?.idUsuario != data.idUsuario && lista?.admin != true ?
+  //       (
+  //         <tr key={lista?.idUsuario}>
+  //           <td>{lista?.nome}</td>
+  //           <td>{lista?.cpf}</td>
+  //           <td>{lista?.setor}</td>
+  //           <td>{lista?.email}</td>
 
+  //           <td>
+  //             {Object.entries(lista?.Funcionalidades).map((item) =>
+  //               <label key={n++}> {
+  //                 item?.[1] === null
+  //                   ? <span style={{ fontSize: "0.80em" }}>  Nenhuma Funcionalidade </span>
+  //                   : <span style={{ fontSize: "0.80em" }}>  - {item[1]?.nome} </span>
+  //               } < br />
+  //               </label>
+  //             )}
+  //           </td>
+  //           <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
+  //             {lista?.ativo ?
+  //               <h1>Ativo</h1> :
+  //               <h1>Inativo</h1>}
+  //           </td>
+  //           {/* editar */}
+  //           <td className="table-td-edit" onClick={() => lista?.ativo ? handleEdit(lista) : setToggleStatus(!toggleStatus)}>
+  //             <img src={lista?.ativo ? Tool : Tool_Grey} className="tool-img" alt="ferramenta" />
+  //           </td>
+  //           {/* ativa/desativar */}
+  //           <td onClick={() => handleDelete(lista)} className="table-td-delete">
+  //             {!lista?.ativo ? "Ativar" : "Inativar"}
+  //           </td>
+  //         </tr>
+  //       ) : null));
+  // };
+  //#endregion
+  //#endregion
   //#region INTERFACE
 
   React.useEffect(() => {
     if (manangeUsers || admin) {
-      const indexAltered = users.findIndex((user) => { return user.idUsuario === changeData.UsersSubmit?.IdUsuario })
+      const indexAltered = users.findIndex((user) => {
+        return user.idUsuario === changeData.UsersSubmit?.IdUsuario
+      })
       if (users[indexAltered] && changeData) {
         users[indexAltered].nome = changeData.UsersSubmit?.Nome;
         users[indexAltered].email = changeData.UsersSubmit?.Email;
@@ -118,8 +186,6 @@ const UsersMananger = () => {
   }, [changeData, setToggleModal])
 
   //#endregion
-
-
 
   return (
     <>
@@ -153,6 +219,7 @@ const UsersMananger = () => {
           <table className="table-list-users-mananger">
             <thead>
               <tr>
+                {/* <th>Id</th> */}
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>Setor</th>
@@ -170,6 +237,9 @@ const UsersMananger = () => {
             <p>Adicione usuários para gerenciar!</p>
             <img src={Nobody} alt={"hands down"} />
           </div>}
+        <div Style="display:flex;">
+          <Pagination initial={3} finish={4} />
+        </div>
       </div>
     </>
   );
