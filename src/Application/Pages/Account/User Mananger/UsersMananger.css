@@ -155,6 +155,40 @@ th:nth-child(5), td:nth-child(5) {
   margin-top: 10%;
 }
 
+.h1-pagination{
+  width: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #e1e1e1;
+  border: solid white 1px;
+  background-color: #25b099;
+  border-radius: 5px;
+}
+.h1-pagination:hover{
+
+width: 30px;
+transition: 200ms;
+box-shadow: 3px 3px 3px 0px #9b9090;
+}
+
+.div-pagination{
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.div-search{
+  width: 40%;
+  margin: 0 auto;
+}
+.div-search input{
+ height: 40px;
+}
+
+
 @media only screen and (max-width:1024px) {
   .table-list-users-mananger {
     display: initial;

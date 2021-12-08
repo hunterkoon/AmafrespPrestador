@@ -13,21 +13,35 @@ import Nobody from "../../../../Assets/Nobody.gif";
 import Modal from "../../../Components/Sub/Modal";
 import { dadosMock } from "./sub/Dados";
 import "./UsersMananger.css";
+import { serverError } from "../../../Shared/Commons/Constants/Errors";
+import Input from "../../../Components/Sub/Input";
 
 //#endregion
 
 const UsersMananger = () => {
-
   //#region ESTADOS
-  const { toggleModal, setToggleModal, users, changeData, data, manangeUsers, addNewUser, admin } = React.useContext(GlobalContext);
+  const {
+    toggleModal,
+    setToggleModal,
+    users,
+    changeData,
+    data,
+    manangeUsers,
+    addNewUser,
+    admin,
+  } = React.useContext(GlobalContext);
   const [editUser, setEditUser] = React.useState();
   const [deleteUser, setDeleteUser] = React.useState();
   const [toggleStatus, setToggleStatus] = React.useState();
   const [list, setList] = React.useState(true);
   const navigate = useNavigate();
-  const [initial, setInitial] = React.useState(0);
-  const [finish, setFinish] = React.useState(4);
+
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const [finish, setFinish] = React.useState(0);
+  const [pagesState, setPagesState] = React.useState([]);
   const [userList, setUserList] = React.useState([]);
+  const [initialIndexItem, setInitialIndexItem] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState("");
 
   //#endregion
 
@@ -48,7 +62,7 @@ const UsersMananger = () => {
   // }, [data, users])
   //#endregion
 
-  //#region HANDLE EDITS 
+  //#region HANDLE EDITS
   const handleEdit = (profile) => {
     setToggleModal(!toggleModal);
     setEditUser({ profile: profile, open: true });
@@ -60,71 +74,106 @@ const UsersMananger = () => {
     setEditUser({ profile: profile, open: false });
   };
 
-  let pages = parseInt(dadosMock.length / 5)
-  let rest = pages % 2
-
   React.useEffect(() => {
-    // setFinish(finish + 4);
-    setUserList(dadosMock.filter((element, index, arr) => {
-      if (index >= initial && index <= finish) {
-        return element
-      }
-    }))
-    console.log(initial, finish)
-  }, [initial, finish])
+    const total = dadosMock && dadosMock.length;
+    const limit = 5;
+    const totalPages = Math.ceil(total / limit);
+
+    const pages = [];
+    for (let i = 0; i < totalPages; i++) {
+      pages.push(i);
+    }
+    setPagesState(pages);
+    const initial = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+    setFinish(initial[currentPage] + 4);
+    setInitialIndexItem(initial[currentPage]);
+    setUserList(
+      dadosMock &&
+        dadosMock.filter(
+          (item, index) => index >= initialIndexItem && index <= finish
+        )
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, initialIndexItem]);
 
   const Pagination = () => {
-    return dadosMock.map((items, index) =>
-      index < pages + rest ?
-        <h1 onClick={(e) => [setInitial(parseInt(e.target.innerText) * 5)]}
-          Style="border: 1px solid red; width:30px; text-align:center; cursor:pointer;">{index}</h1>
-        : null)
-  }
+    return (
+      pagesState &&
+      pagesState.map((items, index) => (
+        <h1
+          key={items}
+          onClick={(e) => [setCurrentPage(parseInt(e.target.innerText))]}
+          className="h1-pagination"
+        >
+          {items}
+        </h1>
+      ))
+    );
+  };
 
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value.toUpperCase());
+    setUserList(
+      !null
+        ? dadosMock.filter((element) => element.nome.includes(searchValue))
+        : dadosMock.filter(
+            (item, index) => index >= initialIndexItem && index <= finish
+          )
+    );
+
+   return  userList != null ? setPagesState(null) : null;
+  };
   //#endregion
 
   //#region  USUÁRIOS
   const Employee = () => {
     let n = 0;
-    return userList && userList.map((lista, index) => (
-      lista?.idUsuario ?
-        (
-          <tr key={lista?.idUsuario}>
-            {/* <td>{index}</td> */}
-            <td>{lista?.nome}</td>
-            <td>{lista?.cpf}</td>
-            <td>{lista?.setor}</td>
-            <td>{lista?.email}</td>
+    return userList?.map((lista, index) =>
+      lista?.idUsuario != dadosMock.idUsuario && lista?.admin != true ? (
+        <tr className="pageView" key={lista?.idUsuario}>
+          {/* <td>{index}</td> */}
+          <td>{lista?.nome}</td>
+          <td>{lista?.cpf}</td>
+          <td>{lista?.setor}</td>
+          <td>{lista?.email}</td>
 
-            <td>
-              {Object.entries(lista?.Funcionalidades).map((item) =>
-                <label key={n++}> {
-                  item?.[1] === null
-                    ? <span style={{ fontSize: "0.80em" }}>  Nenhuma Funcionalidade </span>
-                    : <span style={{ fontSize: "0.80em" }}>  - {item[1]?.nome} </span>
-                } < br />
-                </label>
-              )}
-            </td>
-            <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
-              {lista?.ativo ?
-                <h1>Ativo</h1> :
-                <h1>Inativo</h1>}
-            </td>
-            {/* editar */}
-            <td className="table-td-edit" onClick={() => lista?.ativo ? handleEdit(lista) : setToggleStatus(!toggleStatus)}>
-              <img src={lista?.ativo ? Tool : Tool_Grey} className="tool-img" alt="ferramenta" />
-            </td>
-            {/* ativa/desativar */}
-            <td onClick={() => handleDelete(lista)} className="table-td-delete">
-              {!lista?.ativo ? "Ativar" : "Inativar"}
-            </td>
-          </tr>
-        )
-        : null
-    ))
+          <td>
+            {Object.entries(lista?.Funcionalidades).map((item) => (
+              <label key={n++}>
+                {item?.[1] === null ? (
+                  <span style={{ fontSize: "0.80em" }}></span>
+                ) : (
+                  <span style={{ fontSize: "0.80em" }}>- {item[1]?.nome}</span>
+                )}
+                <br />
+              </label>
+            ))}
+          </td>
+          <td className={lista?.ativo ? "active-tag" : "inative-tag"}>
+            {lista?.ativo ? <h1>Ativo</h1> : <h1>Inativo</h1>}
+          </td>
+          {/* editar */}
+          <td
+            className="table-td-edit"
+            onClick={() =>
+              lista?.ativo ? handleEdit(lista) : setToggleStatus(!toggleStatus)
+            }
+          >
+            <img
+              src={lista?.ativo ? Tool : Tool_Grey}
+              className="tool-img"
+              alt="ferramenta"
+            />
+          </td>
+          {/* ativa/desativar */}
+          <td onClick={() => handleDelete(lista)} className="table-td-delete">
+            {!lista?.ativo ? "Ativar" : "Inativar"}
+          </td>
+        </tr>
+      ) : null
+    );
   };
-  //#region 
+  //#region
   // const Employee = () => {
   //   let n = 0;
   //   return users.map((lista) => (
@@ -169,21 +218,22 @@ const UsersMananger = () => {
   React.useEffect(() => {
     if (manangeUsers || admin) {
       const indexAltered = users.findIndex((user) => {
-        return user.idUsuario === changeData.UsersSubmit?.IdUsuario
-      })
+        return user.idUsuario === changeData.UsersSubmit?.IdUsuario;
+      });
       if (users[indexAltered] && changeData) {
         users[indexAltered].nome = changeData.UsersSubmit?.Nome;
         users[indexAltered].email = changeData.UsersSubmit?.Email;
         users[indexAltered].cpf = changeData.UsersSubmit?.Cpf;
         users[indexAltered].setor = changeData.UsersSubmit?.Departamento;
         users[indexAltered].celular = changeData.UsersSubmit?.Celular;
-        users[indexAltered].Funcionalidades = changeData.UsersSubmit?.Funcionalidades;
+        users[indexAltered].Funcionalidades =
+          changeData.UsersSubmit?.Funcionalidades;
         users[indexAltered].ativo = changeData?.Status;
       }
       Employee();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeData, setToggleModal])
+  }, [changeData, setToggleModal]);
 
   //#endregion
 
@@ -193,30 +243,36 @@ const UsersMananger = () => {
         error={true}
         alert={toggleStatus}
         disclaimer={"Ative este usuário para edita-lo"}
-        onClick={() => setToggleStatus(!toggleStatus)} />
-
-      <UserChanges
-        user={editUser}
-        deleteUser={deleteUser}
+        onClick={() => setToggleStatus(!toggleStatus)}
       />
 
+      <UserChanges user={editUser} deleteUser={deleteUser} />
 
       <div className="div-main-gerenciarUsuarios pageView">
         <div className="div-title-pages">
           <Titledecorated text="Usuários" />
           <Title text={"Gerenciar usuários"} />
         </div>
-
-        {addNewUser ?
+        <div className="div-search">
+          {" "}
+          <Input
+            id="input-search"
+            placeholder="Buscar por nome"
+            onChange={(e) => handleSearch(e)}
+            value={searchValue}
+          />{" "}
+        </div>
+        {addNewUser ? (
           <div
             onClick={() => navigate("../AdicionarUsuarios")}
             className="div-add-new-user-mananger-users"
           >
             <img src={user} alt={"imagem usuário"} />
-          Novo Usuário
-        </div> : null}
-        {list ?
-          <table className="table-list-users-mananger">
+            Novo Usuário
+          </div>
+        ) : null}
+        {list ? (
+          <table className="table-list-users-mananger pageView">
             <thead>
               <tr>
                 {/* <th>Id</th> */}
@@ -231,13 +287,15 @@ const UsersMananger = () => {
               </tr>
             </thead>
             <tbody style={{ fontSize: "0.9em" }}>{users && Employee()}</tbody>
-          </table> :
+          </table>
+        ) : (
           <div className="div-sub-nobody">
             <h1>Nenhum Usuário</h1>
             <p>Adicione usuários para gerenciar!</p>
             <img src={Nobody} alt={"hands down"} />
-          </div>}
-        <div Style="display:flex;">
+          </div>
+        )}
+        <div className="div-pagination">
           <Pagination initial={3} finish={4} />
         </div>
       </div>

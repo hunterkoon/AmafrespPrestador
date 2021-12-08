@@ -214,7 +214,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 15651,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "TESTE",
@@ -239,7 +239,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 1234,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "TESTE TESTE",
@@ -264,7 +264,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 33536,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "CHIMBINHA",
@@ -289,7 +289,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 335436,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "RATO",
@@ -314,7 +314,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 333796,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "LOMBARDI",
@@ -339,7 +339,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 3344636,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "CAVALO",
@@ -364,7 +364,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 33165136,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "GERTRUDES",
@@ -389,7 +389,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 311336,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "SADICO",
@@ -414,7 +414,7 @@ export const dadosMock = [
     "Funcionalidades": [
       null
     ],
-    "idUsuario": 3336,
+    "idUsuario": 635412,
     "idPrestador": 205,
     "cpf": "12346578910",
     "nome": "OVIDIO",
@@ -430,5 +430,130 @@ export const dadosMock = [
     "ativo": false,
     "tbAMAPortalUsuarioFuncionalidade": [],
     "tbCCredenciado": null
-  }
+  },
+  {
+    "Token": null,
+    "senhaNova": null,
+    "CNPJCPF": "00004286000183",
+    "DadosPrestador": null,
+    "Funcionalidades": [
+      null
+    ],
+    "idUsuario": 458854,
+    "idPrestador": 205,
+    "cpf": "12346578910",
+    "nome": "OVIDIO",
+    "celular": "",
+    "senha": null,
+    "email": "gabrielcampos@afresp.org.br",
+    "setor": "CASO",
+    "admin": false,
+    "senhaLiberada": true,
+    "senhaPadrao": false,
+    "dtInclusao": "0001-01-01T00:00:00",
+    "dtCancelamento": null,
+    "ativo": false,
+    "tbAMAPortalUsuarioFuncionalidade": [],
+    "tbCCredenciado": null
+  },
+  {
+    "Token": null,
+    "senhaNova": null,
+    "CNPJCPF": "00004286000183",
+    "DadosPrestador": null,
+    "Funcionalidades": [
+      null
+    ],
+    "idUsuario": 140232,
+    "idPrestador": 205,
+    "cpf": "12346578910",
+    "nome": "OVIDIO",
+    "celular": "",
+    "senha": null,
+    "email": "gabrielcampos@afresp.org.br",
+    "setor": "CASO",
+    "admin": false,
+    "senhaLiberada": true,
+    "senhaPadrao": false,
+    "dtInclusao": "0001-01-01T00:00:00",
+    "dtCancelamento": null,
+    "ativo": false,
+    "tbAMAPortalUsuarioFuncionalidade": [],
+    "tbCCredenciado": null
+  },
+  {
+    "Token": null,
+    "senhaNova": null,
+    "CNPJCPF": "00004286000183",
+    "DadosPrestador": null,
+    "Funcionalidades": [
+      null
+    ],
+    "idUsuario": 665412,
+    "idPrestador": 205,
+    "cpf": "12346578910",
+    "nome": "OVIDIO",
+    "celular": "",
+    "senha": null,
+    "email": "gabrielcampos@afresp.org.br",
+    "setor": "CASO",
+    "admin": false,
+    "senhaLiberada": true,
+    "senhaPadrao": false,
+    "dtInclusao": "0001-01-01T00:00:00",
+    "dtCancelamento": null,
+    "ativo": false,
+    "tbAMAPortalUsuarioFuncionalidade": [],
+    "tbCCredenciado": null
+  },
+  {
+    "Token": null,
+    "senhaNova": null,
+    "CNPJCPF": "00004286000183",
+    "DadosPrestador": null,
+    "Funcionalidades": [
+      null
+    ],
+    "idUsuario": 123456,
+    "idPrestador": 205,
+    "cpf": "12346578910",
+    "nome": "OVIDIO",
+    "celular": "",
+    "senha": null,
+    "email": "gabrielcampos@afresp.org.br",
+    "setor": "CASO",
+    "admin": false,
+    "senhaLiberada": true,
+    "senhaPadrao": false,
+    "dtInclusao": "0001-01-01T00:00:00",
+    "dtCancelamento": null,
+    "ativo": false,
+    "tbAMAPortalUsuarioFuncionalidade": [],
+    "tbCCredenciado": null
+  },
+  {
+    "Token": null,
+    "senhaNova": null,
+    "CNPJCPF": "00004286000183",
+    "DadosPrestador": null,
+    "Funcionalidades": [
+      null
+    ],
+    "idUsuario": 1000,
+    "idPrestador": 205,
+    "cpf": "12346578910",
+    "nome": "OVIDIO",
+    "celular": "",
+    "senha": null,
+    "email": "gabrielcampos@afresp.org.br",
+    "setor": "CASO",
+    "admin": false,
+    "senhaLiberada": true,
+    "senhaPadrao": false,
+    "dtInclusao": "0001-01-01T00:00:00",
+    "dtCancelamento": null,
+    "ativo": false,
+    "tbAMAPortalUsuarioFuncionalidade": [],
+    "tbCCredenciado": null
+  },
 ]
