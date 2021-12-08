@@ -1,3 +1,6 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
+// import { serverError } from "../../../Shared/Commons/Constants/Errors";
 //#region  IMPORTS
 
 import React from "react";
@@ -12,14 +15,13 @@ import Tool_Grey from "../../../../Assets/Tool_Grey.svg";
 import Nobody from "../../../../Assets/Nobody.gif";
 import Modal from "../../../Components/Sub/Modal";
 import { dadosMock } from "./sub/Dados";
-import "./UsersMananger.css";
-import { serverError } from "../../../Shared/Commons/Constants/Errors";
 import Input from "../../../Components/Sub/Input";
+import "./UsersMananger.css";
 
 //#endregion
 
+//#region ESTADOS
 const UsersMananger = () => {
-  //#region ESTADOS
   const {
     toggleModal,
     setToggleModal,
@@ -47,19 +49,21 @@ const UsersMananger = () => {
 
   //#region HANDLE NAVIGATE
 
-  // React.useEffect(() => {
-  //   return manangeUsers || admin ? null : navigate('/conta');
-  // }, [manangeUsers, navigate])
+  React.useEffect(() => {
+    return manangeUsers || admin ? null : navigate("/conta");
+  }, [manangeUsers, navigate]);
 
   //#endregion
 
   //#region EFFECT LISTS
-  // React.useEffect(() => {
-  //   if (manangeUsers || admin)
-  //     users.map((lista) => lista?.idUsuario != data.idUsuario && lista?.admin != true ?
-  //       setList(true) : setList(false)
-  //     )
-  // }, [data, users])
+  React.useEffect(() => {
+    if (manangeUsers || admin)
+      users.map((lista) =>
+        lista?.idUsuario != data.idUsuario && lista?.admin != true
+          ? setList(true)
+          : setList(false)
+      );
+  }, [data, users]);
   //#endregion
 
   //#region HANDLE EDITS
@@ -74,27 +78,39 @@ const UsersMananger = () => {
     setEditUser({ profile: profile, open: false });
   };
 
-  React.useEffect(() => {
+  //#endregion
+
+  //#region HANDLE PAGINATION/SEARCH
+
+  const handlePages = () => {
     const total = dadosMock && dadosMock.length;
     const limit = 5;
     const totalPages = Math.ceil(total / limit);
-
     const pages = [];
     for (let i = 0; i < totalPages; i++) {
       pages.push(i);
     }
-    setPagesState(pages);
-    const initial = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
-    setFinish(initial[currentPage] + 4);
-    setInitialIndexItem(initial[currentPage]);
+    console.log("passou aqui");
+    return setPagesState(pages);
+  };
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value.toUpperCase());
     setUserList(
-      dadosMock &&
-        dadosMock.filter(
-          (item, index) => index >= initialIndexItem && index <= finish
-        )
+      searchValue.length >= 1
+        ? dadosMock.filter((element) => element.nome.includes(searchValue))
+        : dadosMock.filter(
+            (item, index) => index >= initialIndexItem && index <= finish
+          )
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, initialIndexItem]);
+    return searchValue.length >= 1 ? setPagesState(null) : handlePages();
+  };
+
+  const FinishResult = () => {
+    return (
+      <h1> {!userList.length == 0 ? null : "Nenhum resultado encontrado!."}</h1>
+    );
+  };
 
   const Pagination = () => {
     return (
@@ -110,26 +126,26 @@ const UsersMananger = () => {
       ))
     );
   };
-
-  const handleSearch = (e) => {
-    setSearchValue(e.target.value.toUpperCase());
+  React.useEffect(() => {
+    handlePages();
+    const initial = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+    setFinish(initial[currentPage] + 4);
+    setInitialIndexItem(initial[currentPage]);
     setUserList(
-      !null
-        ? dadosMock.filter((element) => element.nome.includes(searchValue))
-        : dadosMock.filter(
-            (item, index) => index >= initialIndexItem && index <= finish
-          )
+      dadosMock &&
+        dadosMock.filter(
+          (item, index) => index >= initialIndexItem && index <= finish
+        )
     );
+  }, [currentPage, initialIndexItem]);
 
-   return  userList != null ? setPagesState(null) : null;
-  };
   //#endregion
 
   //#region  USUÁRIOS
   const Employee = () => {
     let n = 0;
     return userList?.map((lista, index) =>
-      lista?.idUsuario != dadosMock.idUsuario && lista?.admin != true ? (
+      lista?.idUsuario != userList.idUsuario && lista?.admin != true ? (
         <tr className="pageView" key={lista?.idUsuario}>
           {/* <td>{index}</td> */}
           <td>{lista?.nome}</td>
@@ -173,46 +189,9 @@ const UsersMananger = () => {
       ) : null
     );
   };
-  //#region
-  // const Employee = () => {
-  //   let n = 0;
-  //   return users.map((lista) => (
-  //     lista?.idUsuario != data.idUsuario && lista?.admin != true ?
-  //       (
-  //         <tr key={lista?.idUsuario}>
-  //           <td>{lista?.nome}</td>
-  //           <td>{lista?.cpf}</td>
-  //           <td>{lista?.setor}</td>
-  //           <td>{lista?.email}</td>
 
-  //           <td>
-  //             {Object.entries(lista?.Funcionalidades).map((item) =>
-  //               <label key={n++}> {
-  //                 item?.[1] === null
-  //                   ? <span style={{ fontSize: "0.80em" }}>  Nenhuma Funcionalidade </span>
-  //                   : <span style={{ fontSize: "0.80em" }}>  - {item[1]?.nome} </span>
-  //               } < br />
-  //               </label>
-  //             )}
-  //           </td>
-  //           <td className={lista?.ativo ? "active-tag" : "inative-tag"} >
-  //             {lista?.ativo ?
-  //               <h1>Ativo</h1> :
-  //               <h1>Inativo</h1>}
-  //           </td>
-  //           {/* editar */}
-  //           <td className="table-td-edit" onClick={() => lista?.ativo ? handleEdit(lista) : setToggleStatus(!toggleStatus)}>
-  //             <img src={lista?.ativo ? Tool : Tool_Grey} className="tool-img" alt="ferramenta" />
-  //           </td>
-  //           {/* ativa/desativar */}
-  //           <td onClick={() => handleDelete(lista)} className="table-td-delete">
-  //             {!lista?.ativo ? "Ativar" : "Inativar"}
-  //           </td>
-  //         </tr>
-  //       ) : null));
-  // };
   //#endregion
-  //#endregion
+
   //#region INTERFACE
 
   React.useEffect(() => {
@@ -232,7 +211,6 @@ const UsersMananger = () => {
       }
       Employee();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeData, setToggleModal]);
 
   //#endregion
@@ -296,7 +274,8 @@ const UsersMananger = () => {
           </div>
         )}
         <div className="div-pagination">
-          <Pagination initial={3} finish={4} />
+          <Pagination />
+          <FinishResult />
         </div>
       </div>
     </>
