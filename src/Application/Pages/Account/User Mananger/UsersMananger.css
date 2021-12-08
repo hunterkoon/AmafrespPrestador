@@ -76,11 +76,12 @@
 .div-add-new-user-mananger-users {
   cursor: pointer;
   display: flex;
+  right: 1;
   margin-left: auto;
-  margin-right: 5%;
-  margin-top: 0.1%;
+  margin-right: 3%;
+  margin-top: 2.1%;
   background-color: #25b099;
-  width: 25%;
+  width: 180px;
   height: 60px;
   border-radius: 10px;
   color: #ffff;
@@ -155,20 +156,81 @@ th:nth-child(5), td:nth-child(5) {
   margin-top: 10%;
 }
 
+.h1-pagination {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #e1e1e1;
+  border: solid white 1px;
+  background-color: #25b099;
+  border-radius: 5px;
+}
+
+.h1-pagination:hover {
+
+  width: 30px;
+  transition: 200ms;
+  box-shadow: 3px 3px 3px 0px #9b9090;
+}
+
+.div-pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.div-search {
+  width: 40%;
+  margin: 3%;
+}
+
+.div-search input {
+  height: 40px;
+}
+
+.div-search-user {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
 @media only screen and (max-width:1024px) {
   .table-list-users-mananger {
     display: initial;
     flex-direction: column;
     width: 96%;
   }
+
   .div-add-new-user-mananger-users {
     width: 96%;
     margin: 3% auto;
   }
+
   th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5) {
     display: none;
   }
+
   th:nth-child(1), td:nth-child(1) {
     width: 100%;
+  }
+
+  .div-search-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  .div-search input {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .div-search {
+    width: 95%;
+    margin: 0 auto;
   }
 }

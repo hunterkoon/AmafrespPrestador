@@ -15,12 +15,14 @@ import Error from '../../Components/Sub/Error'
 import { loginDataCNPJSubmit, loginDataCPFSubmit } from '../../Hooks/useSubmitDada';
 import './Login.css';
 import '../../../App.css';
+import Freepik from '../../Shared/Commons/Constants/Freepik';
 
 const Login = () => {
 
   // IMPORTA DO CONTEXTO GLOBAL INFORMAÇÕES DE OPÇÃO DE ENTRADA E LOGIN
   const { useInputsGeneral } = useInputs();
-  const { option, setLoginData, loginData, _Login, _AutoLogin } = React.useContext(GlobalContext);
+  const { option, setLoginData, loginData, _Login, _AutoLogin, CNPJCPF,
+    TOKEN } = React.useContext(GlobalContext);
 
   // CONSTANTES IMPORTADAS PARA GERAR FORMS
   const { loginCommon, loginAdm } = GeneralForms(loginData);
@@ -54,8 +56,10 @@ const Login = () => {
     event.preventDefault();
     _Login(option ? loginCOMSubmit : loginADMSubmit);
   };
+
   React.useEffect(() => {
-    _AutoLogin();
+    if (CNPJCPF && TOKEN)
+      _AutoLogin();
   }, [])
 
   return (
@@ -68,7 +72,6 @@ const Login = () => {
               src={option ? UsuarioLogin : LoginImg}
               alt="Imagem de Profissionais da medicina"
             />
-            <a href={UrlImgLogin}>www.freepik.com</a>
           </div>
         </div>
         <div className="div-form-login">
@@ -114,6 +117,7 @@ const Login = () => {
             </form>
           </div>
         </div>
+        <Freepik />
       </div>
     </>
   );

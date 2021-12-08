@@ -17,7 +17,7 @@ const Help = () => {
 
       <div className="div-sub-main-help">
         <div className="div-sub-img-help">
-          <img src={IconDoubt} alt="Vetor Doutor Segurando Prancheta" />
+          <img src={IconDoubt} alt="Vetor Duvida" />
         </div>
 
         <div className="div-sub-txt-help">

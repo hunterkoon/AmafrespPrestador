@@ -215,6 +215,7 @@ export const GlobalStorage = ({ children }) => {
     removeCookies();
     localStorage.removeItem("token");
     localStorage.removeItem("codigo");
+    localStorage.removeItem("disclaimerIsOpened");
 
   };
   // realiza liberação de funcionalidades 
@@ -272,6 +273,8 @@ export const GlobalStorage = ({ children }) => {
         _GetUsersById,
         _AddNewUser,
         _DeactiveUser,
+        CNPJCPF,
+        TOKEN,
         admin,
         changeData,
         users,

@@ -152,20 +152,21 @@ const MainMenu = () => {
 
           {/* FUNCIONALIDADES */}
 
-          {showPriceTable || admin ?
-            <ItemMenu
-              state={menuItemFuncs}
-              alt="item menu Recadastro"
-              item="Funcionalidades"
-              srcItem={iconFunctionalities}
-              srcSeta={Seta}
-              onClick={() => [
-                handleToggleMenu(),
-                setMenuItemFuncs(!menuItemFuncs),
-              ]}
-            >
-              {/* tabela */}
-              <SubItemMenu
+          {/* {showPriceTable || admin ? */}
+          <ItemMenu
+            state={menuItemFuncs}
+            alt="item menu Recadastro"
+            item="Funcionalidades"
+            srcItem={iconFunctionalities}
+            // srcSeta={Seta}
+            onClick={() => [
+              handleToggleMenu(),
+              setMenuItemFuncs(!menuItemFuncs),
+              setDirection('/conta/Funcionalidades')
+            ]}
+          >
+            {/* tabela */}
+            {/* <SubItemMenu
                 link="Tabela"
                 itemSubMenu="Tabela de Preços"
                 subMenuSrcImg={More}
@@ -176,10 +177,10 @@ const MainMenu = () => {
                   link="Demonstrativo"
                   itemSubMenu="Demonstrativos"
                   subMenuSrcImg={More}
-                /> : null}
-
-
-            </ItemMenu> : null}
+                /> 
+                : null} */}
+          </ItemMenu>
+          {/* : null} */}
 
           {/* FALE CONOSCO */}
 

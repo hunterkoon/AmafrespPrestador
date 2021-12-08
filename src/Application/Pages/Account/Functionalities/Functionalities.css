@@ -1,0 +1,45 @@
+.div-main-functionalities {
+  font-family: NotoSans-Regular;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.div-sub-functionalities-group {
+  display: flex;
+  flex-direction: row;
+  margin: 3%;
+}
+
+.div-sub-func {
+  display: flex;
+  text-align: center;
+  align-items: normal;
+}
+
+.div-sub-functionalities-group h1 {
+  margin-bottom: 30px !important;
+}
+
+.div-sub-functionalities-info {
+  width: 30%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .div-sub-functionalities-group {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  .div-sub-func {
+    flex-direction: column;
+  }
+
+  .div-sub-functionalities-info {
+    margin: 10%;
+    width: 90%;
+  }
+}

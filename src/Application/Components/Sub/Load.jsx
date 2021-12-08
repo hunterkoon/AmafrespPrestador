@@ -13,7 +13,7 @@ const Load = ({ ...props }) => {
               className="input-img-load"
               alt="loading Gif"
             />
-            <labe> Seu Conteúdo esta Carregando, aguarde ... </labe>
+            <labe> Carregando, aguarde ... </labe>
           </div>
         </div>
       ) : null}

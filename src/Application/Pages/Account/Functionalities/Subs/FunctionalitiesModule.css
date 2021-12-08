@@ -1,0 +1,97 @@
+.functionalities-module {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  z-index: 9999;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 25px;
+  color: #474747;
+  font-weight: bolder;
+  background-color: #ebebeb;
+  font-size: 1rem;
+}
+
+.functionalities-module:hover {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  transition: 200ms;
+  color: #ffffff;
+  font-weight: bolder;
+  background-color: #38C6AE;
+  font-size: 1.1rem;
+}
+
+.functionalities-module img {
+  width: 100px;
+}
+
+.animation {
+  animation: iconsAnime;
+  animation-duration: 200ms;
+  animation-iteration-count: 3;
+  animation-direction: alternate-reverse;
+}
+
+.div-sub-functionalities-info {
+  margin: 3%;
+}
+
+.div-sub-functionalities-info p {
+  line-height: 2em;
+  text-align: center;
+}
+
+@media only screen and (min-width:1024px) and (max-width:1580px) {
+  .functionalities-module {
+    width: 120px;
+    height: 120px;
+    font-size: 0.7rem;
+  }
+
+  .functionalities-module img {
+    width: 60px;
+  }
+
+  .functionalities-module:hover {
+    font-size: 0.8rem;
+  }
+
+  .div-sub-functionalities-info p {
+    line-height: 1.3em;
+    font-size: 0.80em;
+    text-align: center;
+  }
+
+  .div-sub-functionalities-info {
+    margin: 0%;
+  }
+}
+
+.popup-back {
+  display: none;
+}
+
+.popup {
+  width: 180px;
+  height: auto;
+  background-color: #FDAB15;
+  position: absolute;
+  border-radius: 10px 10px 10px 0;
+  color: #ffffff;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+  transition: 200ms;
+  transform: translate(182px, -82px);
+  z-index: 999;
+
+}
+
+.popup p {
+  margin: 3%;
+  padding: 3%;
+  font-size: 0.9em;
+  color: #ffffff;
+}

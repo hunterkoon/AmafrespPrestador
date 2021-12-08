@@ -1,0 +1,92 @@
+.div-main-FunctionalitiesCommon {
+  font-family: NotoSans-Regular;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  width: 100%;
+}
+
+.iframe-function {
+  height: 70vh;
+  width: 100%;
+  /* background: url(../../../../Assets/Loading.gif) center center no-repeat;
+  background-size: 150px; */
+}
+
+/* Duvidas */
+
+.div-sub-questions {
+  display: flex;
+}
+
+.div-sub-questions a {
+  width: 30%;
+}
+
+.section-quests-links img {
+  margin: 3%;
+  width: 40px;
+}
+
+.section-quests-links a:hover {
+  text-decoration: underline;
+}
+
+.section-quests-links {
+  margin: 3%;
+  width: 60%;
+}
+
+/* Outros */
+.div-others {
+  display: flex;
+  margin: 3%;
+  flex-direction: column;
+}
+
+.div-emergencia {
+  display: flex;
+  margin: 3%;
+}
+
+.div-emergencia div {
+  margin-left: 3%;
+}
+
+.div-emergencia img {
+  width: 50px;
+}
+
+.div-emergencia p {
+  width: max-content;
+  margin-top: 10px;
+  font-style: oblique;
+}
+
+.div-others-coord {
+  display: flex;
+  margin-left: 3%;
+}
+
+.div-coord {
+  margin: 3%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.div-coord div {
+  margin: 3%;
+}
+
+.div-others-coord img {
+  width: 50px;
+  margin: 3%;
+}
+
+.div-others-coord p {
+  margin-top: 5px;
+  font-style: oblique;
+  color: #474747;
+}

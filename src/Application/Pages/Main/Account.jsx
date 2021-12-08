@@ -10,8 +10,17 @@ import RegisterUpdate from '../Account/Registration Update/RegisterUpdate';
 import Status from '../Account/Status/Status';
 import Menu from '../../Components/Main/MainMenu';
 import Perfil from '../Account/Profile/Profile'
-import Tabela from '../Account/Functionalities/PriceTable'
-import Payments from '../Account/Functionalities/Payments';
+import Tabela from '../Account/Functionalities/Pages/PriceTable'
+import Payments from '../Account/Functionalities/Pages/Payments';
+import Services from '../Account/Functionalities/Pages/Services';
+import Functionalities from '../Account/Functionalities/Functionalities';
+import QueryBatch from '../Account/Functionalities/Pages/QueryBatch';
+import Glosas from '../Account/Functionalities/Pages/Glosas';
+import Eligibility from '../Account/Functionalities/Pages/Eligibility';
+import Informs from '../Account/Functionalities/Pages/Informs';
+import Questions from '../Account/Functionalities/Pages/Questions';
+import Others from '../Account/Functionalities/Pages/Others';
+import Forms from '../Account/Functionalities/Pages/Forms';
 import './Account.css';
 
 const Account = () => {
@@ -35,8 +44,19 @@ const Account = () => {
           <Route path="RegisterUpdate" element={<RegisterUpdate />} />
           <Route path="Status" element={<Status />} />
           <Route path="Perfil" element={<Perfil />} />
-          <Route path="Tabela" element={<Tabela />} />
-          <Route path="Demonstrativo" element={<Payments />} />
+          <Route path="Funcionalidades" element={<Functionalities />} />
+
+          {/* Funcionalidades */}
+          <Route path="TabelaPrecos" element={<Tabela />} />
+          <Route path="Pagamentos" element={<Payments />} />
+          <Route path="Atendimentos" element={<Services />} />
+          <Route path="Informes" element={<Informs />} />
+          <Route path="Lotes" element={<QueryBatch />} />
+          <Route path="Glosas" element={<Glosas />} />
+          <Route path="Elegibilidade" element={<Eligibility />} />
+          <Route path="Formularios" element={<Forms />} />
+          <Route path="Duvidas" element={<Questions />} />
+          <Route path="Outros" element={<Others />} />
         </Routes>
       </aside>
     </div>
