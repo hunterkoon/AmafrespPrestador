@@ -77,20 +77,17 @@ const UsersMananger = () => {
     setDeleteUser({ profile: profile, open: true });
     setEditUser({ profile: profile, open: false });
   };
-
   //#endregion
 
   //#region HANDLE PAGINATION/SEARCH
-
   const handlePages = () => {
-    const total = dadosMock && dadosMock.length;
+    const total = users && users.length;
     const limit = 5;
     const totalPages = Math.ceil(total / limit);
     const pages = [];
     for (let i = 0; i < totalPages; i++) {
       pages.push(i);
     }
-    console.log("passou aqui");
     return setPagesState(pages);
   };
 
@@ -98,10 +95,10 @@ const UsersMananger = () => {
     setSearchValue(e.target.value.toUpperCase());
     setUserList(
       searchValue.length >= 1
-        ? dadosMock.filter((element) => element.nome.includes(searchValue))
-        : dadosMock.filter(
-            (item, index) => index >= initialIndexItem && index <= finish
-          )
+        ? users.filter((element) => element.nome.includes(searchValue))
+        : users.filter(
+          (item, index) => index >= initialIndexItem && index <= finish
+        )
     );
     return searchValue.length >= 1 ? setPagesState(null) : handlePages();
   };
@@ -126,22 +123,37 @@ const UsersMananger = () => {
       ))
     );
   };
+
   React.useEffect(() => {
     handlePages();
     const initial = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
     setFinish(initial[currentPage] + 4);
     setInitialIndexItem(initial[currentPage]);
     setUserList(
-      dadosMock &&
-        dadosMock.filter(
-          (item, index) => index >= initialIndexItem && index <= finish
-        )
+      users &&
+      users.filter(
+        (item, index) => index >= initialIndexItem && index <= finish
+      )
     );
   }, [currentPage, initialIndexItem]);
 
   //#endregion
 
   //#region  USUÁRIOS
+
+  const NewUser = () => {
+    {
+      return addNewUser ? (
+        <div
+          onClick={() => navigate("../AdicionarUsuarios")}
+          className="div-add-new-user-mananger-users"
+        >
+          <img src={user} alt={"imagem usuário"} />
+      Novo Usuário
+        </div>
+      ) : null
+    }
+  }
   const Employee = () => {
     let n = 0;
     return userList?.map((lista, index) =>
@@ -159,8 +171,8 @@ const UsersMananger = () => {
                 {item?.[1] === null ? (
                   <span style={{ fontSize: "0.80em" }}></span>
                 ) : (
-                  <span style={{ fontSize: "0.80em" }}>- {item[1]?.nome}</span>
-                )}
+                    <span style={{ fontSize: "0.80em" }}>- {item[1]?.nome}</span>
+                  )}
                 <br />
               </label>
             ))}
@@ -231,24 +243,18 @@ const UsersMananger = () => {
           <Titledecorated text="Usuários" />
           <Title text={"Gerenciar usuários"} />
         </div>
-        <div className="div-search">
-          {" "}
-          <Input
-            id="input-search"
-            placeholder="Buscar por nome"
-            onChange={(e) => handleSearch(e)}
-            value={searchValue}
-          />{" "}
-        </div>
-        {addNewUser ? (
-          <div
-            onClick={() => navigate("../AdicionarUsuarios")}
-            className="div-add-new-user-mananger-users"
-          >
-            <img src={user} alt={"imagem usuário"} />
-            Novo Usuário
+        <div className="div-search-user">
+          <div className="div-search">
+            <Input
+              id="input-search"
+              placeholder="Buscar por nome"
+              onChange={(e) => handleSearch(e)}
+              value={searchValue}
+            />
           </div>
-        ) : null}
+          <NewUser />
+        </div>
+
         {list ? (
           <table className="table-list-users-mananger pageView">
             <thead>
@@ -267,12 +273,12 @@ const UsersMananger = () => {
             <tbody style={{ fontSize: "0.9em" }}>{users && Employee()}</tbody>
           </table>
         ) : (
-          <div className="div-sub-nobody">
-            <h1>Nenhum Usuário</h1>
-            <p>Adicione usuários para gerenciar!</p>
-            <img src={Nobody} alt={"hands down"} />
-          </div>
-        )}
+            <div className="div-sub-nobody">
+              <h1>Nenhum Usuário</h1>
+              <p>Adicione usuários para gerenciar!</p>
+              <img src={Nobody} alt={"hands down"} />
+            </div>
+          )}
         <div className="div-pagination">
           <Pagination />
           <FinishResult />
