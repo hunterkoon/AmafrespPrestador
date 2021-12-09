@@ -143,7 +143,7 @@ const UsersMananger = () => {
 
   const NewUser = () => {
     {
-      return addNewUser ? (
+      return addNewUser || data.admin ? (
         <div
           onClick={() => navigate("../AdicionarUsuarios")}
           className="div-add-new-user-mananger-users"
@@ -245,12 +245,12 @@ const UsersMananger = () => {
         </div>
         <div className="div-search-user">
           <div className="div-search">
-            <Input
+            {list ? <Input
               id="input-search"
               placeholder="Buscar por nome"
               onChange={(e) => handleSearch(e)}
               value={searchValue}
-            />
+            /> : null}
           </div>
           <NewUser />
         </div>
@@ -279,10 +279,10 @@ const UsersMananger = () => {
               <img src={Nobody} alt={"hands down"} />
             </div>
           )}
-        <div className="div-pagination">
+        {list ? <div className="div-pagination">
           <Pagination />
           <FinishResult />
-        </div>
+        </div> : null}
       </div>
     </>
   );
