@@ -34,7 +34,7 @@
         "yarn": "^1.22.10"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "react-scripts --openssl-legacy-provider start",
         "build": "CI=false && react-scripts build",
         "build-local": "react-scripts build",
         "test": "react-scripts test",
